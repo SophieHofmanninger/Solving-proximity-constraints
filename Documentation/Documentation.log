@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.5.14)  14 MAY 2019 18:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.5.14)  14 MAY 2019 19:02
 entering extended mode
 **./Documentation.tex
 (Documentation.tex
@@ -784,6 +784,36 @@ File: listings.cfg 2019/02/27 1.8b listings configuration
 ))
 Package: listings 2019/02/27 1.8b (Carsten Heinz)
 
+("C:\Program Files\MiKTeX 2.9\tex/latex/pdfpages\pdfpages.sty"
+Package: pdfpages 2017/10/31 v0.5l Insert pages of external PDF documents (AM)
+ ("C:\Program Files\MiKTeX 2.9\tex/latex/tools\calc.sty"
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count299
+\calc@Bcount=\count300
+\calc@Adimen=\dimen260
+\calc@Bdimen=\dimen261
+\calc@Askip=\skip138
+\calc@Bskip=\skip139
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count301
+\calc@Cskip=\skip140
+)
+("C:\Program Files\MiKTeX 2.9\tex/latex/eso-pic\eso-pic.sty"
+Package: eso-pic 2018/04/12 v2.0h eso-pic (RN)
+)
+\AM@pagewidth=\dimen262
+\AM@pageheight=\dimen263
+
+("C:\Program Files\MiKTeX 2.9\tex/latex/pdfpages\pppdftex.def"
+File: pppdftex.def 2017/10/31 v0.5l Pdfpages driver for pdfTeX (AM)
+)
+\AM@pagebox=\box74
+\AM@global@opts=\toks34
+\AM@toc@title=\toks35
+\c@AM@survey=\count302
+\AM@templatesizebox=\box75
+)
 ("C:\Program Files\MiKTeX 2.9\tex/latex/geometry\geometry.sty"
 Package: geometry 2018/04/16 v5.8 Page Geometry
 
@@ -794,24 +824,24 @@ Package ifvtex Info: VTeX not detected.
 ("C:\Program Files\MiKTeX 2.9\tex/generic/ifxetex\ifxetex.sty"
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
-\Gm@cnth=\count299
-\Gm@cntv=\count300
-\c@Gm@tempcnt=\count301
-\Gm@bindingoffset=\dimen260
-\Gm@wd@mp=\dimen261
-\Gm@odd@mp=\dimen262
-\Gm@even@mp=\dimen263
-\Gm@layoutwidth=\dimen264
-\Gm@layoutheight=\dimen265
-\Gm@layouthoffset=\dimen266
-\Gm@layoutvoffset=\dimen267
-\Gm@dimlist=\toks34
+\Gm@cnth=\count303
+\Gm@cntv=\count304
+\c@Gm@tempcnt=\count305
+\Gm@bindingoffset=\dimen264
+\Gm@wd@mp=\dimen265
+\Gm@odd@mp=\dimen266
+\Gm@even@mp=\dimen267
+\Gm@layoutwidth=\dimen268
+\Gm@layoutheight=\dimen269
+\Gm@layouthoffset=\dimen270
+\Gm@layoutvoffset=\dimen271
+\Gm@dimlist=\toks36
 
 ("C:\Program Files\MiKTeX 2.9\tex/latex/geometry\geometry.cfg"))
 ("C:\Program Files\MiKTeX 2.9\tex/latex/base\inputenc.sty"
 Package: inputenc 2018/08/11 v1.3c Input encoding file
-\inpenc@prehook=\toks35
-\inpenc@posthook=\toks36
+\inpenc@prehook=\toks37
+\inpenc@posthook=\toks38
 ) ("C:\Program Files\MiKTeX 2.9\tex/latex/base\fontenc.sty"
 Package: fontenc 2018/08/11 v2.0j Standard LaTeX package
 
@@ -1325,13 +1355,13 @@ Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
 
 ("C:\Program Files\MiKTeX 2.9\tex/generic/xkeyval\xkeyval.tex"
 ("C:\Program Files\MiKTeX 2.9\tex/generic/xkeyval\xkvutils.tex"
-\XKV@toks=\toks37
-\XKV@tempa@toks=\toks38
+\XKV@toks=\toks39
+\XKV@tempa@toks=\toks40
 )
-\XKV@depth=\count302
+\XKV@depth=\count306
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 )))
-\c@Question=\count303
+\c@Question=\count307
 )
 LaTeX Font Info:    Try loading font information for T1+XCharter-TLF on input line 38.
 
@@ -1375,21 +1405,21 @@ LaTeX Font Info:    Try loading font information for TS1+cmr on input line 38.
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 38.
-\AtBeginShipoutBox=\box74
+\AtBeginShipoutBox=\box76
 
 ("C:\Program Files\MiKTeX 2.9\tex/context/base/mkii\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count304
-\scratchdimen=\dimen268
-\scratchbox=\box75
-\nofMPsegments=\count305
-\nofMParguments=\count306
-\everyMPshowfont=\toks39
-\MPscratchCnt=\count307
-\MPscratchDim=\dimen269
-\MPnumerator=\count308
-\makeMPintoPDFobject=\count309
-\everyMPtoPDFconversion=\toks40
+\scratchcounter=\count308
+\scratchdimen=\dimen272
+\scratchbox=\box77
+\nofMPsegments=\count309
+\nofMParguments=\count310
+\everyMPshowfont=\toks41
+\MPscratchCnt=\count311
+\MPscratchDim=\dimen273
+\MPnumerator=\count312
+\makeMPintoPDFobject=\count313
+\everyMPtoPDFconversion=\toks42
 ) ("C:\Program Files\MiKTeX 2.9\tex/latex/oberdiek\epstopdf-base.sty"
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -1401,8 +1431,16 @@ Package grfext Info: Graphics extension search list:
 (grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 ) ABD: EveryShipout initializing macros
-\c@lstlisting=\count310
+\c@lstlisting=\count314
 
+("C:\Program Files\MiKTeX 2.9\tex/latex/oberdiek\pdflscape.sty"
+Package: pdflscape 2016/05/14 v0.11 Display of landscape pages in PDF (HO)
+
+("C:\Program Files\MiKTeX 2.9\tex/latex/graphics\lscape.sty"
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
+)
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -1437,8 +1475,8 @@ Package grfext Info: Graphics extension search list:
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\c@mv@tabular=\count311
-\c@mv@boldtabular=\count312
+\c@mv@tabular=\count315
+\c@mv@boldtabular=\count316
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/n' will be
 (Font)              scaled to size 17.28pt on input line 40.
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/n' will be
@@ -1471,26 +1509,62 @@ LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/n' will be
 (Font)              scaled to size 14.4pt on input line 56.
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/b/n' will be
 (Font)              scaled to size 14.4pt on input line 56.
-LaTeX Font Info:    Font shape `T1/XCharter-TLF/b/n' will be
-(Font)              scaled to size 12.0pt on input line 75.
+<Model.pdf, id=4, 845.07718pt x 598.15468pt>
+File: Model.pdf Graphic file (type pdf)
+<use Model.pdf>
+Package pdftex.def Info: Model.pdf  used on input line 67.
+(pdftex.def)             Requested size: 845.07512pt x 598.15321pt.
+File: Model.pdf Graphic file (type pdf)
+<use Model.pdf>
+Package pdftex.def Info: Model.pdf  used on input line 67.
+(pdftex.def)             Requested size: 845.07512pt x 598.15321pt.
+<Model.pdf, id=7, page=1, 845.07718pt x 598.15468pt>
+File: Model.pdf Graphic file (type pdf)
+<use Model.pdf, page 1>
+Package pdftex.def Info: Model.pdf , page1 used on input line 67.
+(pdftex.def)             Requested size: 845.07512pt x 598.15321pt.
+File: Model.pdf Graphic file (type pdf)
+<use Model.pdf, page 1>
+Package pdftex.def Info: Model.pdf , page1 used on input line 67.
+(pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
  [1
 
-{C:/Users/JAN/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] (Documentation.aux) ) 
+{C:/Users/JAN/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+File: Model.pdf Graphic file (type pdf)
+<use Model.pdf, page 1>
+Package pdftex.def Info: Model.pdf , page1 used on input line 67.
+(pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
+File: Model.pdf Graphic file (type pdf)
+<use Model.pdf, page 1>
+Package pdftex.def Info: Model.pdf , page1 used on input line 67.
+(pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
+File: Model.pdf Graphic file (type pdf)
+<use Model.pdf, page 1>
+Package pdftex.def Info: Model.pdf , page1 used on input line 67.
+(pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
+ [2 <./Model.pdf
+
+pdfTeX warning: pdflatex.exe (file ./Model.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets',
+ type <array>); ignored.
+>]
+LaTeX Font Info:    Font shape `T1/XCharter-TLF/b/n' will be
+(Font)              scaled to size 12.0pt on input line 76.
+ [3] (Documentation.aux) ) 
 Here is how much of TeX's memory you used:
- 28178 strings out of 492895
- 529192 string characters out of 3133485
- 559888 words of memory out of 3000000
- 31659 multiletter control sequences out of 15000+200000
+ 28874 strings out of 492895
+ 540395 string characters out of 3133485
+ 574224 words of memory out of 3000000
+ 32333 multiletter control sequences out of 15000+200000
  592379 words of font info for 76 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 69i,11n,65p,913b,326s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX 2.9/font
-s/enc/dvips/xcharter/xch_a3psji.enc}{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/xcharter/xch_q7u3cc.enc}{C:/Program Fil
-es/MiKTeX 2.9/fonts/enc/dvips/xcharter/xch_tuu2ww.enc}<C:/Program Files/MiKTeX 2.9/fonts/type1/public/xcharter/XCharter-
-Bold.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/xcharter/XCharter-Roman.pfb>
-Output written on Documentation.pdf (1 page, 69857 bytes).
+ 69i,18n,65p,913b,519s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/xcharter/xch_a3psji.enc}{C:/Program Files/MiKTeX 
+2.9/fonts/enc/dvips/xcharter/xch_q7u3cc.enc}{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/xcharter/xch_tuu2ww.enc}<C:/Pro
+gram Files/MiKTeX 2.9/fonts/type1/public/xcharter/XCharter-Bold.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/xcha
+rter/XCharter-Roman.pfb>
+Output written on Documentation.pdf (3 pages, 96844 bytes).
 PDF statistics:
- 22 PDF objects out of 1000 (max. 8388607)
+ 41 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 33 words of extra memory for PDF output out of 10000 (max. 10000000)
 
