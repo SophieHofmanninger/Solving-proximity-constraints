@@ -57,11 +57,11 @@ Version Number & Changes Summary & Author\\
 
 We split the problem in 4 (5) smaller tasks:
 \begin{enumerate}
-	\item Input Processing
-	\item Pre-Unification
-	\item Neighborhood Constraints
-	\item Output
-	\item [O] Web-Integration
+	\item Input Processing,
+	\item Pre-Unification,
+	\item Constraint Simplification,
+	\item Output.
+	\item [O.] Web-Integration.
 \end{enumerate}
 
 \includepdf[pages=-]{Model}
@@ -76,17 +76,25 @@ We split the problem in 4 (5) smaller tasks:
 \subsection{Input Processing} 
 
 The first idea here is to use and probably extend the given code, to proximity relations. The class that can be used for this is InputParser.
+\\ \ \\
+\noindent
+For the Proximity Relations \(\mathcal{R}\) and the \(\lambda\)\textit{-cut} we have the following idea:\\
+\begin{enumerate}
+	\item We try to get the number of constants, variables and function symbols (\(n_1,n_2,n_3\)) respectively.
+	\item We let the user input 3 \(n_i\times n_i\) symmetric matrices that constist of values in \([0,1]\) for \(i=1,2,3\). These matrices must have a 1 in the main diagonal.
+	\item We let the user input \(\lambda\in[0,1]\) and calculate the set \(\mathcal{R}_\lambda\).
+\end{enumerate}
 
 
 %------------------------------------------------
 
-\subsection{Pre-Unification}
+\subsection{Pre-Unification Algorithm}
 
 
 	
 %------------------------------------------------
 
-\subsection{Neighborhood Constraints}
+\subsection{Constraint Simplification Algorithm}
 
 
 %----------------------------------------------------------------------------------------
