@@ -50,6 +50,8 @@ Version Number & Changes Summary & Author\\
 \hline
 0.1 & & Jan-Michael\\
 \hline
+0.2 & added System Model & Jan-Michael\\
+\hline
 \end{tabular}
 
 \end{center}
@@ -87,14 +89,19 @@ For the Proximity Relations \(\mathcal{R}\) and the \(\lambda\)\textit{-cut} we 
 
 
 %------------------------------------------------
+\subsection{Algorithms}
 
-\subsection{Pre-Unification Algorithm}
-
-
+We implement the Algorithms in an own class, that has two static functions, preUnification and CS.
+\subsubsection{Pre-Unification Algorithm}
+The preUnification method consists of a loop, that runs until either \(\mathrm{P}=\emptyset\) or it is detected, that there is no solution to the problem.\\
+Inside the loop body, the 7 pre-unification rules are iteratively applied to the first element (which gets popped by doing so).
+\\ \ \\
+\noindent 
+The method changes the problems constraints and pre-unifier accordingly.
 	
 %------------------------------------------------
 
-\subsection{Constraint Simplification Algorithm}
+\subsubsection{Constraint Simplification Algorithm}
 
 
 %----------------------------------------------------------------------------------------
@@ -103,7 +110,14 @@ For the Proximity Relations \(\mathcal{R}\) and the \(\lambda\)\textit{-cut} we 
 
 \subsection{Output}
 
-
+\section{System Model}
+The program consists of 3 packages,
+\begin{itemize}
+	\item tool
+	\item elements
+	\item unificationProblem
+\end{itemize}
+\includepdf[pages=-]{SystemModel}
 % File contents
 %\begin{file}[hello.py]
 %\begin{lstlisting}[language=Python]
