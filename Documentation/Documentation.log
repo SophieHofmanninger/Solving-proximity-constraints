@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.5.14)  15 MAY 2019 14:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.5.14)  19 MAY 2019 18:13
 entering extended mode
 **./Documentation.tex
 (Documentation.tex
@@ -1506,41 +1506,41 @@ LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/n' will be
 LaTeX Font Info:    Font shape `TS1/XCharter-TLF/m/n' will be
 (Font)              scaled to size 6.0pt on input line 40.
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/n' will be
-(Font)              scaled to size 14.4pt on input line 56.
+(Font)              scaled to size 14.4pt on input line 58.
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/b/n' will be
-(Font)              scaled to size 14.4pt on input line 56.
+(Font)              scaled to size 14.4pt on input line 58.
 <Model.pdf, id=4, 845.07718pt x 598.15468pt>
 File: Model.pdf Graphic file (type pdf)
 <use Model.pdf>
-Package pdftex.def Info: Model.pdf  used on input line 67.
+Package pdftex.def Info: Model.pdf  used on input line 69.
 (pdftex.def)             Requested size: 845.07512pt x 598.15321pt.
 File: Model.pdf Graphic file (type pdf)
 <use Model.pdf>
-Package pdftex.def Info: Model.pdf  used on input line 67.
+Package pdftex.def Info: Model.pdf  used on input line 69.
 (pdftex.def)             Requested size: 845.07512pt x 598.15321pt.
 <Model.pdf, id=7, page=1, 845.07718pt x 598.15468pt>
 File: Model.pdf Graphic file (type pdf)
 <use Model.pdf, page 1>
-Package pdftex.def Info: Model.pdf , page1 used on input line 67.
+Package pdftex.def Info: Model.pdf , page1 used on input line 69.
 (pdftex.def)             Requested size: 845.07512pt x 598.15321pt.
 File: Model.pdf Graphic file (type pdf)
 <use Model.pdf, page 1>
-Package pdftex.def Info: Model.pdf , page1 used on input line 67.
+Package pdftex.def Info: Model.pdf , page1 used on input line 69.
 (pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
  [1
 
 {C:/Users/JAN/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 File: Model.pdf Graphic file (type pdf)
 <use Model.pdf, page 1>
-Package pdftex.def Info: Model.pdf , page1 used on input line 67.
+Package pdftex.def Info: Model.pdf , page1 used on input line 69.
 (pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
 File: Model.pdf Graphic file (type pdf)
 <use Model.pdf, page 1>
-Package pdftex.def Info: Model.pdf , page1 used on input line 67.
+Package pdftex.def Info: Model.pdf , page1 used on input line 69.
 (pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
 File: Model.pdf Graphic file (type pdf)
 <use Model.pdf, page 1>
-Package pdftex.def Info: Model.pdf , page1 used on input line 67.
+Package pdftex.def Info: Model.pdf , page1 used on input line 69.
 (pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
  [2 <./Model.pdf
 
@@ -1548,38 +1548,118 @@ pdfTeX warning: pdflatex.exe (file ./Model.pdf): PDF inclusion: invalid other re
  type <array>); ignored.
 >]
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/b/n' will be
-(Font)              scaled to size 12.0pt on input line 76.
+(Font)              scaled to size 12.0pt on input line 78.
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/it' will be
-(Font)              scaled to size 10.0pt on input line 81.
+(Font)              scaled to size 10.0pt on input line 83.
 
-Underfull \hbox (badness 10000) in paragraph at lines 78--83
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 78--83
+Underfull \hbox (badness 10000) in paragraph at lines 80--85
 
  []
 
-[3] (Documentation.aux) ) 
+
+Underfull \hbox (badness 10000) in paragraph at lines 80--85
+
+ []
+
+LaTeX Font Info:    Font shape `T1/XCharter-TLF/b/n' will be
+(Font)              scaled to size 10.0pt on input line 95.
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--101
+
+ []
+
+LaTeX Font Info:    Font shape `TS1/XCharter-TLF/m/n' will be
+(Font)              scaled to size 10.0pt on input line 116.
+<SystemModel.pdf, id=27, 845.07718pt x 598.15468pt>
+File: SystemModel.pdf Graphic file (type pdf)
+<use SystemModel.pdf>
+Package pdftex.def Info: SystemModel.pdf  used on input line 120.
+(pdftex.def)             Requested size: 845.07512pt x 598.15321pt.
+File: SystemModel.pdf Graphic file (type pdf)
+<use SystemModel.pdf>
+Package pdftex.def Info: SystemModel.pdf  used on input line 120.
+(pdftex.def)             Requested size: 845.07512pt x 598.15321pt.
+<SystemModel.pdf, id=30, page=1, 845.07718pt x 598.15468pt>
+File: SystemModel.pdf Graphic file (type pdf)
+<use SystemModel.pdf, page 1>
+Package pdftex.def Info: SystemModel.pdf , page1 used on input line 120.
+(pdftex.def)             Requested size: 845.07512pt x 598.15321pt.
+File: SystemModel.pdf Graphic file (type pdf)
+<use SystemModel.pdf, page 1>
+Package pdftex.def Info: SystemModel.pdf , page1 used on input line 120.
+(pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
+[3]
+File: SystemModel.pdf Graphic file (type pdf)
+<use SystemModel.pdf, page 1>
+Package pdftex.def Info: SystemModel.pdf , page1 used on input line 120.
+(pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
+File: SystemModel.pdf Graphic file (type pdf)
+<use SystemModel.pdf, page 1>
+Package pdftex.def Info: SystemModel.pdf , page1 used on input line 120.
+(pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
+File: SystemModel.pdf Graphic file (type pdf)
+<use SystemModel.pdf, page 1>
+Package pdftex.def Info: SystemModel.pdf , page1 used on input line 120.
+(pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
+ [4 <./SystemModel.pdf
+
+pdfTeX warning: pdflatex.exe (file ./SystemModel.pdf): PDF inclusion: invalid other resource which is no dict (key 'Proc
+Sets', type <array>); ignored.
+>]
+<SystemModel.pdf, id=57, page=2, 845.07718pt x 598.15468pt>
+File: SystemModel.pdf Graphic file (type pdf)
+<use SystemModel.pdf, page 2>
+Package pdftex.def Info: SystemModel.pdf , page2 used on input line 120.
+(pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
+File: SystemModel.pdf Graphic file (type pdf)
+<use SystemModel.pdf, page 2>
+Package pdftex.def Info: SystemModel.pdf , page2 used on input line 120.
+(pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
+File: SystemModel.pdf Graphic file (type pdf)
+<use SystemModel.pdf, page 2>
+Package pdftex.def Info: SystemModel.pdf , page2 used on input line 120.
+(pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
+ [5 <./SystemModel.pdf
+
+pdfTeX warning: pdflatex.exe (file ./SystemModel.pdf): PDF inclusion: invalid other resource which is no dict (key 'Proc
+Sets', type <array>); ignored.
+>]
+<SystemModel.pdf, id=66, page=3, 845.07718pt x 598.15468pt>
+File: SystemModel.pdf Graphic file (type pdf)
+<use SystemModel.pdf, page 3>
+Package pdftex.def Info: SystemModel.pdf , page3 used on input line 120.
+(pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
+File: SystemModel.pdf Graphic file (type pdf)
+<use SystemModel.pdf, page 3>
+Package pdftex.def Info: SystemModel.pdf , page3 used on input line 120.
+(pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
+File: SystemModel.pdf Graphic file (type pdf)
+<use SystemModel.pdf, page 3>
+Package pdftex.def Info: SystemModel.pdf , page3 used on input line 120.
+(pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
+ [6 <./SystemModel.pdf
+
+pdfTeX warning: pdflatex.exe (file ./SystemModel.pdf): PDF inclusion: invalid other resource which is no dict (key 'Proc
+Sets', type <array>); ignored.
+>] (Documentation.aux) ) 
 Here is how much of TeX's memory you used:
- 28878 strings out of 492895
- 540490 string characters out of 3133485
- 574224 words of memory out of 3000000
- 32335 multiletter control sequences out of 15000+200000
- 598497 words of font info for 78 fonts, out of 3000000 for 9000
+ 28897 strings out of 492895
+ 541011 string characters out of 3133485
+ 575224 words of memory out of 3000000
+ 32351 multiletter control sequences out of 15000+200000
+ 605249 words of font info for 82 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 69i,18n,65p,913b,519s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/xcharter/xch_tuu2ww.enc}{C:/Program Files/MiKTeX 2
-.9/fonts/enc/dvips/xcharter/xch_a3psji.enc}{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/xcharter/xch_q7u3cc.enc}<C:/Prog
-ram Files/MiKTeX 2.9/fonts/type1/public/xcharter/XCharter-Bold.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/xchar
-ter/XCharter-Italic.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/xcharter/XCharter-Roman.pfb><C:/Program Files/Mi
-KTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb
-><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Documentation.pdf (3 pages, 159964 bytes).
+ 69i,18n,65p,913b,528s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/xcharter/xch_tuu2ww.enc}{C:/Program Files/MiKTeX 2.
+9/fonts/enc/dvips/xcharter/xch_a3psji.enc}{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/xcharter/xch_q7u3cc.enc}<C:/Progr
+am Files/MiKTeX 2.9/fonts/type1/public/xcharter/XCharter-Bold.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/xchart
+er/XCharter-Italic.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/xcharter/XCharter-Roman.pfb><C:/Program Files/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb>
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
+sfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on Documentation.pdf (6 pages, 247644 bytes).
 PDF statistics:
- 65 PDF objects out of 1000 (max. 8388607)
+ 99 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 33 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 63 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -10,12 +10,14 @@ package elements;
  * 
  */
 public abstract class Element {
-	public String name;
+	private String name;
 
-	/**
-	 * This method converts the element to a string.
-	 * @return This returns a string.
+	
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
 	 */
+	@Override
 	public String toString() {
 		return name;
 	}

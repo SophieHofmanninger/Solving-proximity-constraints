@@ -15,7 +15,7 @@ public class Constant extends Element{
 	 */
 	@Override
 	public String toString() {
-		return "Constant [name=" + name + "]";
+		return "Constant [name=" + this.getName() + "]";
 	}
 
 }

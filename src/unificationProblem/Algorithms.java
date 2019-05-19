@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import elements.Element;
 import elements.Variable;
+import tool.Tuple;
 
 /**
  * This class is stores the needed Algorithms as static functions.

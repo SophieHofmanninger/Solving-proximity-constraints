@@ -2,6 +2,7 @@ package unificationProblem;
 
 import java.util.ArrayList;
 import elements.Element;
+import tool.Tuple;
 
 /**
  *

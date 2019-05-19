@@ -1,7 +1,6 @@
 package elements;
 
 import java.util.ArrayList;
-import java.util.List;
 import elements.Element;
 
 /**
@@ -13,6 +12,7 @@ import elements.Element;
  * 
  */
 public class Function extends Element {
+	
 	public ArrayList<Element> arguments;
 
 	/**
@@ -20,10 +20,13 @@ public class Function extends Element {
 	 * @param name the name of the function.
 	 */
 	public Function(String name) {
-		this.name=name;
+		this.setName(name);
 		arguments = new ArrayList<>();
 	}
-
+	/**
+	 * The number of arguments of the function.
+	 * @return the functions arity.
+	 */
 	public int arity() {
 		return arguments.size();
 	}
@@ -34,7 +37,7 @@ public class Function extends Element {
 	 */
 	@Override
 	public String toString() {
-		String ret = this.name + "(";
+		String ret = this.getName() + "(";
 
 		for(Element e : arguments){
 			ret += e.toString() + ",";

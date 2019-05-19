@@ -1,4 +1,4 @@
-package unificationProblem;
+package tool;
 
 /**
  * Generic Tuple Class

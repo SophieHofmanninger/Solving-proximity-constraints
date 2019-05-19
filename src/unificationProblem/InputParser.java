@@ -1,8 +1,6 @@
 package unificationProblem;
 
 import java.util.ArrayList;
-import java.util.List;
-
 import elements.*;
 
 /**
@@ -18,16 +16,16 @@ import elements.*;
  */
 public class InputParser {
 
-	private static char FIRST_VARIABLE = 'u';
+	private static char first_variable = 'u';
 
 	/**
 	 * This method parses the input in two parts, left and right.
 	 * @param input String, which should be unified.
 	 * @return This returns a list with the parts.
 	 */
-	public static List<Unifier> parse(String input) {
+	public static ArrayList<Unifier> parse(String input) {
 
-		List<Unifier> ret = new ArrayList<>();
+		ArrayList<Unifier> ret = new ArrayList<>();
 		int split;
 		Unifier unif;
 
@@ -82,7 +80,7 @@ public class InputParser {
 				}
 				break;
 			}
-			else if(c<FIRST_VARIABLE) {
+			else if(c<first_variable) {
 				if(inName) {
 					name += c;
 				}
@@ -113,12 +111,12 @@ public class InputParser {
 				}
 			}
 			else {
-				elem.name = name;
+				elem.setName(name);
 				return elem;
 			}
 		}
 		if(name!="") {
-			elem.name = name;
+			elem.setName(name);
 		}
 		return elem;
 	}

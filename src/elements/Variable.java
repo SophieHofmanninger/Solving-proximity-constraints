@@ -15,7 +15,7 @@ public class Variable extends Element{
 	 */
 	@Override
 	public String toString() {
-		return "Variable [name=" + name + "]";
+		return "Variable [name=" + this.getName() + "]";
 	}
 
 }
