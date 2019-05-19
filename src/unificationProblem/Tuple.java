@@ -1,3 +1,4 @@
+package unificationProblem;
 
 /**
  * Generic Tuple Class
@@ -7,7 +8,7 @@
 public class Tuple<E> {
 
 	private E f,s;
-	
+
 	public Tuple(E first, E second) {
 		this.f=first;
 		this.s=second;
@@ -40,6 +41,14 @@ public class Tuple<E> {
 	public void setSecond(E s) {
 		this.s = s;
 	}
-	
-	
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Tuple [f=" + f + ", s=" + s + "]";
+	}
+
+
 }
