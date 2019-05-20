@@ -11,7 +11,7 @@ import elements.Element;
  * This means that the unification problem will be splitted in a left and right hand side.
  * For example: p(x,y,x) =? q(f(a),g(b),y) has the left= p(x,y,x) , right= q(f(a),g(b),y)
  *
- * @author  Jan-Michael Holzinger & Sophie Hofmanninger
+ * @author  Jan-Michael Holzinger &amp; Sophie Hofmanninger
  * @version 1.0
  * 
  */

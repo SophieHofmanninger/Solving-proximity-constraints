@@ -7,7 +7,7 @@ import elements.Element;
  *
  * The class Function handles the functions.
  *
- * @author  Jan-Michael Holzinger & Sophie Hofmanninger
+ * @author  Jan-Michael Holzinger &amp; Sophie Hofmanninger
  * @version 1.0
  * 
  */

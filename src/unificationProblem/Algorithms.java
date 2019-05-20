@@ -11,7 +11,7 @@ import tool.Tuple;
 
 /**
  * This class is stores the needed Algorithms as static functions.
- * @author Jan-Michael Holzinger & Sophie Hofmanninger
+ * @author Jan-Michael Holzinger &amp; Sophie Hofmanninger
  * @version 1.0
  *
  */
@@ -24,7 +24,12 @@ public class Algorithms {
 		while ((unificationProblem.size())!=0) {
 			if(trivial(unificationProblem.get(0))) {
 				unificationProblem.remove(0);
+				continue;
 			}
+			
+			// Clash
+			// Decompose
+			
 		}
 
 
@@ -38,7 +43,10 @@ public class Algorithms {
 			if(t.getFirst().equals(t.getSecond())) return true;
 		return false;
 	}
-
+	
+	private static void decomposition() {
+		
+	}
 
 
 }

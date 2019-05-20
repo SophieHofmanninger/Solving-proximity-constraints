@@ -10,7 +10,7 @@ import elements.*;
  * This means that constants are function symbols with arity zero and [u - z] are variables.
  * Names are witten in UPPER case letters.
  *
- * @author  Jan-Michael Holzinger & Sophie Hofmanninger
+ * @author  Jan-Michael Holzinger &amp; Sophie Hofmanninger
  * @version 1.0
  * 
  */

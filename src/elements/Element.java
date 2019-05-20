@@ -5,7 +5,7 @@ package elements;
  * The abstract class Element handles the elements, which can be functions,
  * constants, variables or names.
  *
- * @author  Jan-Michael Holzinger & Sophie Hofmanninger
+ * @author  Jan-Michael Holzinger &amp; Sophie Hofmanninger
  * @version 1.0
  * 
  */
@@ -39,8 +39,8 @@ public abstract class Element {
 	/**
 	 * Test if this is equal to another element, where equality means, the 
 	 * elements have the same name.
-	 * @param e
-	 * @return
+	 * @param e The other element to test equality with.
+	 * @return {@code boolean} true iff the elements are the same.
 	 */
 	public boolean equals(Element e) {
 		return (this.name.equals(e.name));

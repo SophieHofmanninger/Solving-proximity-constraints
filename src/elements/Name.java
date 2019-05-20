@@ -4,7 +4,7 @@ package elements;
 *
 * The class Name handles the names.
 *
-* @author  Jan-Michael Holzinger & Sophie Hofmanninger
+* @author  Jan-Michael Holzinger &amp; Sophie Hofmanninger
 * @version 1.0
 * 
 */

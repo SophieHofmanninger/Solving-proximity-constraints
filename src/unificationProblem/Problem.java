@@ -12,7 +12,7 @@ import tool.Tuple;
  * sigma - set of pre unifiers
  * psi - set of name-class mapping
  *
- * @author  Jan-Michael Holzinger & Sophie Hofmanninger
+ * @author  Jan-Michael Holzinger &amp; Sophie Hofmanninger
  * @version 1.0
  * 
  */

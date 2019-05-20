@@ -5,7 +5,7 @@ import unificationProblem.Unifier;
  *
  * The class Test contains the main method. 
  * 
- * @author  Jan-Michael Holzinger & Sophie Hofmanninger
+ * @author  Jan-Michael Holzinger &amp; Sophie Hofmanninger
  * @version 1.0
  * 
  */

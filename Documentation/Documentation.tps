@@ -35,7 +35,7 @@ Class=LaTeXView
 Document=structure.tex
 
 [Frame1_View0,0]
-TopLine=15
+TopLine=93
 Cursor=377
 
 [SessionInfo]
