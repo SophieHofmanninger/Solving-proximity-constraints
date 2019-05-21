@@ -12,7 +12,8 @@ package elements;
 public abstract class Element {
 	private String name;
 
-	
+	// TODO implement method occurs(Element)
+	// TODO implement method rename(Element) 
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
