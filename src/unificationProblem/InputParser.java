@@ -87,7 +87,7 @@ public class InputParser {
 				else {
 					inName = true;
 					name += c;
-					elem = new Constant();
+					elem = new Constant("");
 				}
 			}
 			else if(c<='z') {

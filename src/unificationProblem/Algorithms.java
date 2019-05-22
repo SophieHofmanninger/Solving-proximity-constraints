@@ -16,7 +16,7 @@ import tool.Tuple;
  * @version 1.0
  *
  */
-public class Algorithms {
+public final class Algorithms {
 
 
 	/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
