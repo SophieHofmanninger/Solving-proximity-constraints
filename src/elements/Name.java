@@ -15,8 +15,7 @@ public class Name extends Element{
 	 */
 	@Override
 	public boolean occurs(Element e) {
-		// TODO Auto-generated method stub
-		return false;
+		return equals(e);
 	}
 
 }
