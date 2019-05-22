@@ -47,6 +47,23 @@ public class Function extends Element {
 
 		return ret;
 	}
-
+	/* (non-Javadoc)
+	 * @see elements.Element#occurs(elements.Element)
+	 */
+	@Override
+	public boolean occurs(Element e) {
+		if(this.equals(e)) {
+			return true;
+		}else {
+			boolean retVal = false;
+			int i=0;
+			while(i<arguments.size()&&!(retVal)) {
+				retVal = retVal||arguments.get(i).occurs(e);
+			}
+			return retVal;
+		}
+	}
+	
+	
 
 }

@@ -12,7 +12,7 @@ package elements;
 public abstract class Element {
 	private String name;
 
-	// TODO implement method occurs(Element)
+	
 	// TODO implement method rename(Element) 
 
 	/* (non-Javadoc)
@@ -64,6 +64,13 @@ public abstract class Element {
 			return this.equals((Element) obj);
 		return false;
 	}
+	
+	/**
+	 * Checks if another element occurs in this term.
+	 * @param e The element to search for.
+	 * @return {@code boolean} true iff the element occurs.
+	 */
+	public abstract boolean occurs(Element e);
 
 
 }

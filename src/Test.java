@@ -20,14 +20,14 @@ public class Test {
 		String test = "p(x,y,x) =? q(f(a),g(d),y)";
 		Unifier uni = InputParser.parse(test).get(0);
 
-		System.out.println(uni.left.toString());
-		System.out.println(uni.right.toString());
+		System.out.println(uni.getLeft().toString());
+		System.out.println(uni.getRight().toString());
 
 		String test2 = "f(x1,x2,y) =? g(h(x2),y,x1)";
 		Unifier uni2 = InputParser.parse(test2).get(0);
 
-		System.out.println(uni2.left.toString());
-		System.out.println(uni2.right.toString());
+		System.out.println(uni2.getLeft().toString());
+		System.out.println(uni2.getRight().toString());
 
 
 	}

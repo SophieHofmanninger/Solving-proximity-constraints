@@ -1,6 +1,9 @@
 package unificationProblem;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
 import elements.*;
 
 /**
@@ -16,13 +19,17 @@ import elements.*;
  */
 public class InputParser {
 
-	private static char first_variable = 'u';
+	private static final char FIRST_VARIABLE= 'u';
 
 	/**
 	 * This method parses the input in two parts, left and right.
 	 * @param input String, which should be unified.
 	 * @return This returns a list with the parts.
 	 */
+
+	private static ArrayList<Function> listOfFunctions;
+
+
 	public static ArrayList<Unifier> parse(String input) {
 
 		ArrayList<Unifier> ret = new ArrayList<>();
@@ -32,22 +39,47 @@ public class InputParser {
 
 		for(String s : input.split(";")) {
 			unif = new Unifier();
+			listOfFunctions = new ArrayList<Function>();
 
 			if(s.contains("=?")){
 				split = s.indexOf("=?");
-				unif.left = parseSub(s.substring(0,split-1));
-				unif.right = parseSub(s.substring(split+2));
+				unif.setLeft(parseSub(s.substring(0,split-1)));
+				unif.setRight(parseSub(s.substring(split+2)));
 			}
 			else {
 				split = s.indexOf("=");
-				unif.left = parseSub(s.substring(split-1));
-				unif.right = parseSub(s.substring(split+1));
+				unif.setLeft(parseSub(s.substring(split-1)));
+				unif.setRight(parseSub(s.substring(split+1)));
 			}
-
+			
+			unif.setNumberOfFunctions(listOfFunctions.size());
+			
+			sort(listOfFunctions);
+			unif.setSortedListOfFunctions(listOfFunctions);
+			
+			/* TODO determine "open Cases" for unif.
+			 * Iterate through listOfFunctions, check for Functions with same
+			 * arity, and add the pair to the list of open cases.
+			 */
+			
 			ret.add(unif);
 		}
 
 		return ret;
+	}
+
+	/**
+	 * Sorts the list of function symbols, such that constants are at the beginning, and 
+	 * those with higher arity come later.
+	 * @param l
+	 */
+	private static void sort(ArrayList<Function> l) {
+		Collections.sort(l, new Comparator<Function>(){
+             public int compare(Function f1, Function f2) {
+               return f1.arity()-f2.arity();
+            }
+        });
+		
 	}
 
 	/**
@@ -75,12 +107,17 @@ public class InputParser {
 			if(c=='(') {
 				closing = input.lastIndexOf(')');
 				elem = new Function(name);
+				boolean alreadyIn = false;
+				for(int i =0; i< listOfFunctions.size();i++) {
+					if(elem.equals(listOfFunctions.get(i))) alreadyIn=true;
+				}
+				if(!alreadyIn) listOfFunctions.add((Function) elem);
 				for (String s : input.substring(pos+1, closing).split(",")) {
 					((Function)elem).arguments.add(parseSub(s));
 				}
 				break;
 			}
-			else if(c<first_variable) {
+			else if(c<FIRST_VARIABLE) {
 				if(inName) {
 					name += c;
 				}
@@ -97,7 +134,7 @@ public class InputParser {
 				else {
 					inName = true;
 					name += c;
-					elem = new Variable();
+					elem = new Variable();					
 				}
 			}
 			else if(Character.isUpperCase(c)) {
@@ -117,6 +154,13 @@ public class InputParser {
 		}
 		if(name!="") {
 			elem.setName(name);
+			if(elem instanceof Constant) {
+				boolean alreadyIn = false;
+				for(int i =0; i< listOfFunctions.size();i++) {
+					if(elem.equals(listOfFunctions.get(i))) alreadyIn=true;
+				}
+				if(!alreadyIn) listOfFunctions.add((Function) elem);
+			}
 		}
 		return elem;
 	}

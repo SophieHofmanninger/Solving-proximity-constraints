@@ -16,6 +16,8 @@ import tool.Tuple;
  * @version 1.0
  *
  */
+
+// TODO Allow injection of StringBuffer etc.
 public final class Algorithms {
 
 
@@ -43,6 +45,33 @@ public final class Algorithms {
 					unificationProblem.remove(0);
 					continue;
 				}
+
+				// Vars Only
+				boolean onlyVars = true;
+				int i=1;
+				while (i<unificationProblem.size() && onlyVars) {
+					Tuple<Element> current =unificationProblem.get(i);
+					onlyVars = (current.getFirst() instanceof Variable &&
+							current.getSecond() instanceof Variable);
+					i++;
+				}
+
+				if(onlyVars) {
+					// TODO probably better use a copy,...
+					prob.sigma.add(unificationProblem.get(0));
+					unificationProblem.remove(0);
+					varsOnly(var,unificationProblem);
+					continue;
+				}
+
+				/* Delay:
+				 * The first tuple is a tuple of variables, but they are neither the same,
+				 * nor are all other tuples of type (var,var). So this tuple
+				 * is placed at the end of the list, so other tuples can be dealt with before.
+				 */
+				unificationProblem.remove(0);
+				unificationProblem.add(t);
+				continue;
 			}
 
 			if(t.getFirst() instanceof Function && t.getSecond() instanceof Function) {
@@ -71,21 +100,27 @@ public final class Algorithms {
 				Tuple<Element> oriented = orient(t);
 				unificationProblem.remove(0);
 				unificationProblem.add(0,oriented);
+				continue;
 			}
 
+			if(t.getFirst() instanceof Variable && !(t.getSecond() instanceof Variable)) {
 
-			// Occur Check
-			// Var. Elimination
+				// Occur Check
+				if(occurs(t)) {
+					return false;
+				}
+
+				// TODO
+				// Var. Elimination
 
 
+			}
 
-			// Vars Only
 		}
 
 
 		return false;
 	}
-
 
 
 	// The Pre-Unification Rules:
@@ -141,6 +176,32 @@ public final class Algorithms {
 	private static boolean clash(Tuple<Function> t) {
 		if(t.getFirst().arity()!=t.getSecond().arity()) return true;
 		return false;
+	}
+
+	/**
+	 * The rule (Occ)
+	 * @param t The tuple to check.
+	 * @return {@code boolean} true iff the first occurs in the second.
+	 */
+	private static boolean occurs(Tuple<Element> t) {
+		return t.getSecond().occurs(t.getFirst());
+	}
+
+
+
+	/**
+	 * The rule (VO)
+	 * @param var the tuple to unify.
+	 * @param u the unification problem.
+	 */
+	private static void varsOnly(Tuple<Variable> var, ArrayList<Tuple<Element>> u) {
+		for(Tuple<Element> t:u) {
+			Variable f;
+			if((f= (Variable)t.getFirst()).equals(var.getFirst()))
+				f.mapsto(var.getSecond());
+			if((f= (Variable)t.getSecond()).equals(var.getFirst()))
+				f.mapsto(var.getSecond());
+		}
 	}
 
 

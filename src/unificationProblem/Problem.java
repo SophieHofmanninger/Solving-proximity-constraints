@@ -22,5 +22,8 @@ public class Problem {
 	public ArrayList<Tuple<Element>> c;
 	public ArrayList<Tuple<Element>> sigma;
 	public ArrayList<Tuple<Element>> psi;
-
+	
+	private float lambda;
+	
+	
 }

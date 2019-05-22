@@ -10,4 +10,13 @@ package elements;
 */
 public class Name extends Element{
 
+	/* (non-Javadoc)
+	 * @see elements.Element#occurs(elements.Element)
+	 */
+	@Override
+	public boolean occurs(Element e) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

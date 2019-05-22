@@ -24,7 +24,7 @@ public class Constant extends Function{
 	 */
 	@Override
 	public String toString() {
-		return "Constant [name=" + this.getName() + "]";
+		return this.getName();
 	}
 
 }
