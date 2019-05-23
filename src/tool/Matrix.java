@@ -5,12 +5,14 @@ package tool;
 
 /**
  * Proximity Matrix class.
+ * Representation of a matrix of size n>=1, where only the values above
+ * the main diagonal are stored and are different from 1.
  * @author Jan-Michael Holzinger &amp; Sophie Hofmanninger
- * @version 1.0
+ * @version 1.1
  */
 public class Matrix{
 
-	private float[][] content;
+	private float[] content;
 	private int size;
 
 
@@ -19,11 +21,12 @@ public class Matrix{
 	 * @param size of the n x n Matrix.
 	 */
 	public Matrix(int size){
+		if(size<1) size=1;
 		this.size=size;
-		content= new float[size][size];
-		for(int i = 0;i<size;i++) content[i][i]=1;
+		int realsize=((1+(size-1))*(size-1))/2;
+		content= new float[realsize];
 	}
-	
+
 	/**
 	 * Put a value at a position in the upper triangle-part of the Matrix.
 	 * @param indices The indices indicating the position
@@ -46,9 +49,9 @@ public class Matrix{
 		if(v<0||v>1)
 			throw new IllegalArgumentException("Value "+v+" not allowed,"
 					+ " only values between 0 and 1 are allowed.");
-		content[j][i]=v;
+		content[i*(size-1)+(j-1)]=v;
 	}
-	
+
 	/**
 	 * Get a value from the Matrix.
 	 * @param indices the position where the value is stored.
@@ -66,34 +69,37 @@ public class Matrix{
 			throw new IndexOutOfBoundsException("Index "+i+ " not allowed.");
 		if(j<0||j>=size)
 			throw new IndexOutOfBoundsException("Index "+j+" not allowed.");
-		
-		return content[j][i];
+		if(i==j) return 1;
+		return content[i*(size-1)+(j-1)];
 	}
-	
+
 	/**
 	 * Determines if a given matrix fulfills the criterion to be a proximity matrix.
 	 * I.e. all values stored must be in [0,1] and the values on the main diagonal
 	 *  must be 1.
 	 * @param m The matrix to check.
- 	 * @return {@code boolean} true, iff the matrix fulfills the above mentioned
- 	 * criterion.
+	 * @return {@code boolean} true, iff the matrix fulfills the above mentioned
+	 * criterion.
 	 */
 	public static boolean isPM(Matrix m) {
-		for(int j=0;j<m.size;j++) {
-			for(int i=0;i<=j;i++) {
-				float c=m.content[j][i];
-				if(i==j && c!=1) return false;
-				if(c<0||c>1) return false;
-			}
+		// The size must correspond to the array size.
+		int result = m.content.length;
+		result *= 2;
+		result /= (m.size-1);
+		result -= (m.size-1);
+		if(result != 1) return false;
+		// All values must be in [0,1].
+		for(int i=0;i<m.content.length;i++) {
+			if(m.content[i]<0||m.content[i]>1) return false;
 		}
 		return true;
 	}
-	
+
 	/**
 	 * @return the dimension of the Matrix.
 	 */
 	public int getSize() {
 		return size;
 	}
-	
+
 }
