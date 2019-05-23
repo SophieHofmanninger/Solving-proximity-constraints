@@ -18,4 +18,13 @@ public class Name extends Element{
 		return equals(e);
 	}
 
+	/* (non-Javadoc)
+	 * @see elements.Element#toString()
+	 */
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return this.getName();
+	}
+
 }

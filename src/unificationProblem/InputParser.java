@@ -20,16 +20,14 @@ import elements.*;
 public class InputParser {
 
 	private static final char FIRST_VARIABLE= 'u';
-
+	private static ArrayList<Function> listOfFunctions;
+	
+	
 	/**
 	 * This method parses the input in two parts, left and right.
 	 * @param input String, which should be unified.
 	 * @return This returns a list with the parts.
 	 */
-
-	private static ArrayList<Function> listOfFunctions;
-
-
 	public static ArrayList<Unifier> parse(String input) {
 
 		ArrayList<Unifier> ret = new ArrayList<>();

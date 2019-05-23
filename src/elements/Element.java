@@ -19,9 +19,7 @@ public abstract class Element {
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public String toString() {
-		return name;
-	}
+	public abstract String toString();
 
 	/**
 	 * @return the Name.
