@@ -80,7 +80,7 @@ public class Matrix{
 	 */
 	public static boolean isPM(Matrix m) {
 		for(int j=0;j<m.size;j++) {
-			for(int i=j;i<m.size;i++) {
+			for(int i=0;i<=j;i++) {
 				float c=m.content[j][i];
 				if(i==j && c!=1) return false;
 				if(c<0||c>1) return false;

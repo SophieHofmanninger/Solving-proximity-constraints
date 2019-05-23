@@ -52,6 +52,8 @@ Version Number & Changes Summary & Author\\
 \hline
 0.2 & added System Model & Jan-Michael\\
 \hline
+0.3 & modified Parser, added Workflow & Jan-Michael\\
+\hline
 \end{tabular}
 
 \end{center}
@@ -77,21 +79,21 @@ We split the problem in 4 (5) smaller tasks:
 
 \subsection{Input Processing} 
 
-The first idea here is to use and probably extend the given code, to proximity relations. The class that can be used for this is InputParser.
+The first idea here is to copy, alter and extend the existing code, in the class InputParser.
 \\ \ \\
 \noindent
 For the Proximity Relations \(\mathcal{R}\) and the \(\lambda\)\textit{-cut} we have the following idea:\\
 \begin{enumerate}
-	\item We try to get the number of constants, variables and function symbols (\(n_1,n_2,n_3\)) respectively.
-	\item We let the user input 3 \(n_i\times n_i\) symmetric matrices that constist of values in \([0,1]\) for \(i=1,2,3\). These matrices must have a 1 in the main diagonal.
-	\item We let the user input \(\lambda\in[0,1]\) and calculate the set \(\mathcal{R}_\lambda\).
+	\item We try to get the number of function symbols (\(n\)), constants are treated as 0-ary functions.
+	\item We let the user input the values to construct a symmetric matrix that consists of values in \([0,1]\). This matrix must have a 1 in the main diagonal. All values below are 0. Therefore they will not be stored in the implementation.
+	\item We let the user (later) input \(\lambda\in[0,1]\) and calculate the set \(\mathcal{R}_\lambda\).
 \end{enumerate}
 
 
 %------------------------------------------------
 \subsection{Algorithms}
 
-We implement the Algorithms in an own class, that has two static functions, preUnification and CS.
+We implement the Algorithms in an own class, that has two static functions, preUnification and ConstraintSolver.
 \subsubsection{Pre-Unification Algorithm}
 The preUnification method consists of a loop, that runs until either \(\mathrm{P}=\emptyset\) or it is detected, that there is no solution to the problem.\\
 Inside the loop body, the 7 pre-unification rules are iteratively applied to the first element (which gets popped by doing so).
@@ -118,6 +120,11 @@ The program consists of 3 packages,
 	\item unificationProblem
 \end{itemize}
 \includepdf[pages=-]{SystemModel}
+
+
+\section{Work Flow}
+The typical workflow looks like this:
+\includepdf[pages=-]{WorkFlow}
 % File contents
 %\begin{file}[hello.py]
 %\begin{lstlisting}[language=Python]
