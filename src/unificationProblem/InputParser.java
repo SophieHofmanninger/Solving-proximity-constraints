@@ -69,7 +69,7 @@ public class InputParser {
 	/**
 	 * Sorts the list of function symbols, such that constants are at the beginning, and 
 	 * those with higher arity come later.
-	 * @param l
+	 * @param l ArrayList to be sorted.
 	 */
 	private static void sort(ArrayList<Function> l) {
 		Collections.sort(l, new Comparator<Function>(){

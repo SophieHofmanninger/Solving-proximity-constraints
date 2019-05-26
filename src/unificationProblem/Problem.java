@@ -23,7 +23,8 @@ public class Problem {
 	public ArrayList<Tuple<Element>> sigma;
 	public ArrayList<Tuple<Element>> psi;
 	
-	private float lambda;
+	public float lambda;
 	
+	public Problem branch = null;
 	
 }

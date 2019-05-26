@@ -3,6 +3,11 @@
  */
 package tool;
 
+import java.util.ArrayList;
+import java.util.NoSuchElementException;
+
+import elements.Element;
+
 /**
  * Proximity Matrix class.
  * Representation of a matrix of size n>=1, where only the values above
@@ -13,6 +18,7 @@ package tool;
 public class Matrix{
 
 	private float[] content;
+	private Element[] contentE;
 	private int size;
 
 
@@ -25,8 +31,46 @@ public class Matrix{
 		this.size=size;
 		int realsize=((1+(size-1))*(size-1))/2;
 		content= new float[realsize];
+		contentE = new Element[size];
+	}
+	
+	/**
+	 * This method defines the position of the element.
+	 * @param elem The element, which should be specified to a position.
+	 * @param position The position of the element.
+	 */
+	public void setRef(Element elem, int position) {
+		if(position<0 || position>= size) {
+			throw new IndexOutOfBoundsException("Index "+position+ " not allowed.");
+		}
+		else {
+			contentE[position] = elem;
+		}
 	}
 
+	/**
+	 * This method puts a relation value between elements.
+	 * @param elems This are the elements which should be related with a value. 
+	 * @param v This is the relation value.
+	 * @throws NoSuchElementException Throws exception if element is not in the matrix.
+	 */
+	public void putRef(Tuple<Element> elems, float v) 
+			throws NoSuchElementException{
+		
+		Tuple<Integer> ti = new Tuple<>(getIndex(elems.getFirst()),getIndex(elems.getSecond()));
+		
+		if(ti.getFirst()<ti.getSecond()) {
+			int temp = ti.getSecond();
+			ti.setSecond(ti.getFirst());
+			ti.setFirst(temp);
+		}
+		if(ti.getSecond()<0) {
+			throw new NoSuchElementException("One of the Elements was not found!");
+		}
+		
+		putAt(ti, v);
+	}
+	
 	/**
 	 * Put a value at a position in the upper triangle-part of the Matrix.
 	 * @param indices The indices indicating the position
@@ -52,6 +96,26 @@ public class Matrix{
 		content[i*(size-1)+(j-1)]=v;
 	}
 
+	/**
+	 * This method gets a relation value between elements.
+	 * @param elems This are the elements where we want to know the relation value. 
+	 * @return This returns the relation value.
+	 * @throws NoSuchElementException Throws exception if element is not in the matrix.
+	 */
+	public float getRef(Tuple<Element> elems)
+			throws NoSuchElementException{
+		Tuple<Integer> ti = new Tuple<>(getIndex(elems.getFirst()),getIndex(elems.getSecond()));
+		if(ti.getFirst()<ti.getSecond()) {
+			int temp = ti.getSecond();
+			ti.setSecond(ti.getFirst());
+			ti.setFirst(temp);
+		}
+		if(ti.getSecond()<0) {
+			throw new NoSuchElementException("One of the Elements was not found!");
+		}
+		return getAt(ti);
+	}
+	
 	/**
 	 * Get a value from the Matrix.
 	 * @param indices the position where the value is stored.
@@ -102,4 +166,38 @@ public class Matrix{
 		return size;
 	}
 
+	/**
+	 * This method gets the index of an element.
+	 * @param elem This is the element where want to know the index.
+	 * @return Returns the index. -1 if not found.
+	 */
+	private int getIndex(Element elem) {
+		for(int i = 0; i<size;i++) {
+			if(elem.getName() == contentE[i].getName()) {
+				return i;
+			}
+		}
+		return -1;
+	}
+	
+	/**
+	 * This method delivers the relations.
+	 * @param elem This is the element from which we want the relatives.
+	 * @param lambda This is the lower bound of the relations.
+	 * @return Returns a list of all relations.
+	 */
+	public ArrayList<Element> getR(Element elem, float lambda){
+		
+		ArrayList<Element> ret = new ArrayList<>();
+		
+		for(int i = 0; i<size;i++) {
+			if(elem.getName() != contentE[i].getName()) {
+				Tuple<Element> t = new Tuple<>(elem,contentE[0]);
+				if(lambda <= getRef(t)) {
+					ret.add(contentE[i]);
+				}
+			}
+		}
+		return ret;
+	}
 }
