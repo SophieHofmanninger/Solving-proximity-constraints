@@ -65,11 +65,8 @@ public class Unifier {
 		if(openCases.contains(t)) {
 			int k= sortedListOfFunctions.indexOf(t.getFirst());
 			int l= sortedListOfFunctions.indexOf(t.getSecond());
-			if(k<l) {
-				proximityRelations.putAt(new Tuple<Integer>(k, l), p);
-			}else {
-				proximityRelations.putAt(new Tuple<Integer>(l,k), p);
-			}
+			proximityRelations.putAt(new Tuple<Integer>(k, l), p);
+
 			openCases.remove(t);			
 			return true;
 		}
@@ -77,11 +74,8 @@ public class Unifier {
 		if(openCases.contains(rev)) {
 			int k= sortedListOfFunctions.indexOf(rev.getFirst());
 			int l= sortedListOfFunctions.indexOf(rev.getSecond());
-			if(k<l) {
-				proximityRelations.putAt(new Tuple<Integer>(k, l), p);
-			}else {
-				proximityRelations.putAt(new Tuple<Integer>(l,k), p);
-			}
+			proximityRelations.putAt(new Tuple<Integer>(k, l), p);
+
 			openCases.remove(rev);			
 			return true;
 		}

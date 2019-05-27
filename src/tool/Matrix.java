@@ -10,10 +10,10 @@ import elements.Element;
 
 /**
  * Proximity Matrix class.
- * Representation of a matrix of size n>=1, where only the values above
- * the main diagonal are stored and are different from 1.
+ * Representation of a symmetric matrix of size n>=1, where only the values above
+ * the main diagonal are stored and are different from 1. All values must be in [0,1].
  * @author Jan-Michael Holzinger &amp; Sophie Hofmanninger
- * @version 1.1
+ * @version 1.2
  */
 public class Matrix{
 
@@ -78,7 +78,7 @@ public class Matrix{
 	 * @throws IndexOutOfBoundsException if <br><ul>
 	 * <li>the indices are negative,</li>
 	 * <li>exceed matrix size or</li>
-	 * <li>a position in the main diagonal or lower is accessed.</li>
+	 * <li>a position in the main diagonal is accessed.</li>
 	 * </ul>
 	 * @throws IllegalArgumentException if the value is not in [0,1]. 
 	 */
@@ -86,14 +86,14 @@ public class Matrix{
 			throws IndexOutOfBoundsException,IllegalArgumentException{
 		int i= indices.getFirst();
 		int j= indices.getSecond();
-		if(i<0||i>=size||i>=j) 
+		if(i<0||i>=size||i==j) 
 			throw new IndexOutOfBoundsException("Index "+i+ " not allowed.");
 		if(j<0||j>=size)
 			throw new IndexOutOfBoundsException("Index "+j+" not allowed.");
 		if(v<0||v>1)
 			throw new IllegalArgumentException("Value "+v+" not allowed,"
 					+ " only values between 0 and 1 are allowed.");
-		content[i*(size-1)+(j-1)]=v;
+		content[Math.min(i, j)*(size-1)+(Math.max(i, j)-1)]=v;
 	}
 
 	/**
@@ -127,8 +127,8 @@ public class Matrix{
 	 */
 	public float getAt(Tuple<Integer> indices)
 			throws IndexOutOfBoundsException{
-		int i= indices.getFirst();
-		int j= indices.getSecond();
+		int i = Math.min(indices.getFirst(),indices.getSecond());
+		int j = Math.max(indices.getFirst(),indices.getSecond());
 		if(i<0||i>=size) 
 			throw new IndexOutOfBoundsException("Index "+i+ " not allowed.");
 		if(j<0||j>=size)
