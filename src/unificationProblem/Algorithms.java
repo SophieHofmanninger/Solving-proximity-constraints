@@ -218,7 +218,8 @@ public final class Algorithms {
 	 * The constraint simplification algorithm transforms constraint configurations, 
 	 * exhaustively appling special rules.
 	 * @param prob The problem to solve.
-	 * @return True, if the constaints can be simplified and otherwise false.
+	 * @param proxR This is the proximity relation matrix.
+	 * @return True, if the constraints can be simplified and otherwise false.
 	 */
 	public static boolean constraintSimplification(Problem prob,Matrix proxR) {
 		
@@ -228,6 +229,7 @@ public final class Algorithms {
 		while(!constraintProblem.isEmpty()) {
 			t=constraintProblem.get(0);
 			
+			// FFS
 			if((t.getFirst() instanceof Function) && (t.getSecond() instanceof Function)) {
 				if(ffs((Function)t.getFirst(),(Function)t.getSecond(),proxR,prob.lambda)) {
 					constraintProblem.remove(0);
@@ -235,16 +237,19 @@ public final class Algorithms {
 				}
 				else {
 					return false;
-				}
-				
-				
+				}				
 			}
+			
+			//NFS
 			if((t.getFirst() instanceof Name) && (t.getSecond() instanceof Function)) {
 				//TODO NFS
 			}
+			
 			if((t.getFirst() instanceof Function) && (t.getSecond() instanceof Name)) {
 				//TODO FSN
 			}
+			
+			// NN1 and NN2
 			if((t.getFirst() instanceof Name) && (t.getSecond() instanceof Name)) {
 				if(isMemberOfPsi((Name)t.getFirst(),prob.psi)) {
 					if(nn1((Name)t.getFirst(),(Name)t.getSecond(),prob.psi, prob.branch)) {
