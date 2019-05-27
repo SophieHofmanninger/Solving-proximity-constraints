@@ -54,6 +54,8 @@ Version Number & Changes Summary & Author\\
 \hline
 0.3 & modified Parser, added Workflow & Jan-Michael\\
 \hline
+0.4 & add ConstraintSimplification & Sophie\\
+\hline
 \end{tabular}
 
 \end{center}
@@ -93,7 +95,7 @@ For the Proximity Relations \(\mathcal{R}\) and the \(\lambda\)\textit{-cut} we 
 %------------------------------------------------
 \subsection{Algorithms}
 
-We implement the Algorithms in an own class, that has two static functions, preUnification and ConstraintSolver.
+We implement the Algorithms in an own class, that has two static functions, preUnification and constraintSimplification.
 \subsubsection{Pre-Unification Algorithm}
 The preUnification method consists of a loop, that runs until either \(\mathrm{P}=\emptyset\) or it is detected, that there is no solution to the problem.\\
 Inside the loop body, the 7 pre-unification rules are iteratively applied to the first element (which gets popped by doing so).
@@ -104,7 +106,8 @@ The method changes the problems constraints and pre-unifier accordingly.
 %------------------------------------------------
 
 \subsubsection{Constraint Simplification Algorithm}
-
+The constraintSimplification method will be called, if the preUnification method returns true. As the preUnification method, the constraintSimplification method consists of a loop. This loop runs until the set of constraints is empty. As input the method needs the problem, more precisely the set of constraints, and the relation matrix \(\mathcal{R}\). If the set of constraints could be simplified, the method returns true and otherwise false.\\
+Inside the loop, the seven rules to simplify the constraint set, will be applied. Two of the seven rules are hidden, because we implement the FSN rule directly in the NFS rule and the NN2 rule is integrated in the NN1 rule. 
 
 %----------------------------------------------------------------------------------------
 %	PROBLEM 2
