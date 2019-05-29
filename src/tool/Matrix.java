@@ -93,7 +93,7 @@ public class Matrix{
 		if(v<0||v>1)
 			throw new IllegalArgumentException("Value "+v+" not allowed,"
 					+ " only values between 0 and 1 are allowed.");
-		content[Math.min(i, j)*(size-1)+(Math.max(i, j)-1)]=v;
+		content[(Math.max(i, j)*(Math.max(i, j)-1))/2+(Math.min(i, j))]=v;
 	}
 
 	/**
@@ -134,7 +134,7 @@ public class Matrix{
 		if(j<0||j>=size)
 			throw new IndexOutOfBoundsException("Index "+j+" not allowed.");
 		if(i==j) return 1;
-		return content[i*(size-1)+(j-1)];
+		return content[(j*(j-1))/2+i];
 	}
 
 	/**
