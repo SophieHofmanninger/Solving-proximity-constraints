@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 import elements.*;
+import tool.Tuple;
 
 /**
  *
@@ -53,11 +54,24 @@ public class InputParser {
 
 			sort(listOfFunctions);
 			unif.setSortedListOfFunctions(listOfFunctions);
-
-			/* TODO determine "open Cases" for unif.
+			
+			/* Determine "open Cases" for unif.
 			 * Iterate through listOfFunctions, check for Functions with same
 			 * arity, and add the pair to the list of open cases.
 			 */
+			
+			for(int i = 0;i<listOfFunctions.size()-1;i++) {
+				Function f1 = listOfFunctions.get(i);
+				for(int j=i+1;j<listOfFunctions.size();j++) {
+					Function f2 = listOfFunctions.get(j);
+					if(f1.arity()==f2.arity()) {
+						unif.addOpenCase(new Tuple<Function>(f1,f2));
+					}else {
+						break;
+					}
+				}
+			}
+
 
 			ret.add(unif);
 		}

@@ -23,7 +23,6 @@ public class Name extends Element{
 	 */
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return this.getName();
 	}
 
