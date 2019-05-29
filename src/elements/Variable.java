@@ -28,9 +28,9 @@ public class Variable extends Element{
 
 	/**
 	 * Unification of 2 variables
-	 * @param v the variable to unify with.
+	 * @param v the element to unify with.
 	 */
-	public void mapsto(Variable v) {
+	public void mapsto(Element v) {
 		setName(v.getName());
 	}
 

@@ -48,6 +48,20 @@ public class Function extends Element {
 	}
 
 	/**
+	 * Returns an argument of the function.
+	 * @param number the number of the argument.
+	 * @return the element at the specified position.
+	 * @throws IndexOutOfBoundsException if number is smaller than 0
+	 *  or greater/equal than the number of arguments.
+	 */
+	public Element getArgument(int number) throws IndexOutOfBoundsException {
+		if(number<0||arguments.size()<=number) throw new IndexOutOfBoundsException
+		("Index "+number+" not allowed.");
+		return arguments.get(number);
+	}
+
+
+	/**
 	 * This is the constructor to create a Function that can represent a Name.
 	 * @param name The name.
 	 * @param isName {@code boolean} indicating if this is a Name.

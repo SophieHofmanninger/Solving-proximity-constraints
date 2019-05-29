@@ -12,9 +12,27 @@ package elements;
 public abstract class Element {
 	private String name;
 	private boolean representsName=false;
+	private static int numberOfNames=0;
 
+	public static Element rename(Element e) {
 
-	// TODO implement method rename(Element) 
+		// Intentionally Strings begin with number.
+		String newName=numberOfNames+"N";
+		if (e instanceof Variable) {
+			Variable ret = new Variable(newName,true);
+			numberOfNames++;
+			return ret;
+		}else {
+			Function ret=new Function(newName,true);
+			numberOfNames++;
+			Function f = (Function)e;
+			for(int i=0;i<f.arity();i++) {
+				ret.addArgument(rename(f.getArgument(i)));
+			}
+			return ret;
+		}
+
+	}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()

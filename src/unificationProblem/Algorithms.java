@@ -31,10 +31,10 @@ public final class Algorithms {
 	 */
 	public static boolean preUnification(UnificationProblem prob) {
 
-		ArrayList<Tuple<Element>> unificationProblem = prob.p;
+		ArrayList<Tuple<Element>> problem = prob.p;
 
-		while ((unificationProblem.size())!=0) {
-			Tuple<Element> t = unificationProblem.get(0);
+		while ((problem.size())!=0) {
+			Tuple<Element> t = problem.get(0);
 
 
 			if(t.getFirst() instanceof Variable && t.getSecond() instanceof Variable) {
@@ -44,15 +44,15 @@ public final class Algorithms {
 				// Trivial
 				Tuple<Variable> var = new Tuple<Variable>(f,s);
 				if(trivial(var)) {
-					unificationProblem.remove(0);
+					problem.remove(0);
 					continue;
 				}
 
 				// Vars Only
 				boolean onlyVars = true;
 				int i=1;
-				while (i<unificationProblem.size() && onlyVars) {
-					Tuple<Element> current =unificationProblem.get(i);
+				while (i<problem.size() && onlyVars) {
+					Tuple<Element> current =problem.get(i);
 					onlyVars = (current.getFirst() instanceof Variable &&
 							current.getSecond() instanceof Variable);
 					i++;
@@ -60,9 +60,9 @@ public final class Algorithms {
 
 				if(onlyVars) {
 					// TODO probably better use a copy,...
-					prob.sigma.add(unificationProblem.get(0));
-					unificationProblem.remove(0);
-					varsOnly(var,unificationProblem);
+					prob.sigma.add(problem.get(0));
+					problem.remove(0);
+					varsOnly(var,problem);
 					continue;
 				}
 
@@ -71,8 +71,8 @@ public final class Algorithms {
 				 * nor are all other tuples of type (var,var). So this tuple
 				 * is placed at the end of the list, so other tuples can be dealt with before.
 				 */
-				unificationProblem.remove(0);
-				unificationProblem.add(t);
+				problem.remove(0);
+				problem.add(t);
 				continue;
 			}
 
@@ -88,8 +88,8 @@ public final class Algorithms {
 
 				// Decompose
 				Tuple<ArrayList<Tuple<Element>>> probAndCons = decomposition(fun);
-				unificationProblem.remove(0);
-				unificationProblem.addAll(0,probAndCons.getFirst());
+				problem.remove(0);
+				problem.addAll(0,probAndCons.getFirst());
 				prob.c.addAll(0,probAndCons.getSecond());
 				continue;
 			}
@@ -100,8 +100,8 @@ public final class Algorithms {
 
 				// Orient
 				Tuple<Element> oriented = orient(t);
-				unificationProblem.remove(0);
-				unificationProblem.add(0,oriented);
+				problem.remove(0);
+				problem.add(0,oriented);
 				continue;
 			}
 
@@ -112,10 +112,12 @@ public final class Algorithms {
 					return false;
 				}
 
-				// TODO
 				// Var. Elimination
-
-
+				problem.remove(0);
+				Tuple<Element> newTerm = varElim(t,problem);
+				problem.add(0, newTerm);
+				prob.sigma.add(new Tuple<Element>(t.getFirst(),newTerm.getFirst()));
+				continue;
 			}
 
 		}
@@ -155,6 +157,30 @@ public final class Algorithms {
 		conList.add(new Tuple<Element>(f,s));
 		return new Tuple<ArrayList<Tuple<Element>>>(probList,conList);
 
+	}
+
+	/**
+	 * The Rule (Var.Elim.)
+	 * @param t The tuple of Variable and Term to rename.
+	 * @param problem the unification Problem.
+	 * @return The renamed variable and term.
+	 */
+	private static Tuple<Element> varElim
+	(Tuple<Element> t, ArrayList<Tuple<Element>> problem) {
+		Element first = Element.rename(t.getSecond());
+		for(Tuple<Element> tuple:problem) {
+			tryRename(tuple.getFirst(),t.getFirst(),first);
+			tryRename(tuple.getSecond(),t.getFirst(),first);
+		}
+
+
+		return new Tuple<Element>(first,t.getSecond());
+	}
+
+	private static void tryRename(Element e, Element x, Element tprime) {
+		if(e instanceof Variable && e.equals(x)) {
+			((Variable)e).mapsto(tprime); 
+		}
 	}
 
 
