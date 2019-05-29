@@ -28,29 +28,28 @@ public class InputParser {
 	 * @param input String, which should be unified.
 	 * @return This returns a list with the parts.
 	 */
-	public static ArrayList<Unifier> parse(String input) {
+	public static ArrayList<UnificationProblem> parse(String input) {
 
-		ArrayList<Unifier> ret = new ArrayList<>();
+		ArrayList<UnificationProblem> ret = new ArrayList<>();
 		int split;
-		Unifier unif;
+		UnificationProblem unif;
 
 
 		for(String s : input.split(";")) {
-			unif = new Unifier();
 			listOfFunctions = new ArrayList<Function>();
-
+			Element left=null;
+			Element right=null;
 			if(s.contains("=?")){
 				split = s.indexOf("=?");
-				unif.setLeft(parseSub(s.substring(0,split-1)));
-				unif.setRight(parseSub(s.substring(split+2)));
+				left=parseSub(s.substring(0,split-1));
+				right=parseSub(s.substring(split+2));
 			}
 			else {
 				split = s.indexOf("=");
-				unif.setLeft(parseSub(s.substring(split-1)));
-				unif.setRight(parseSub(s.substring(split+1)));
+				left=parseSub(s.substring(split-1));
+				right=parseSub(s.substring(split+1));
 			}
-
-			unif.setNumberOfFunctions(listOfFunctions.size());
+			unif = new UnificationProblem(left,right);
 
 			sort(listOfFunctions);
 			unif.setSortedListOfFunctions(listOfFunctions);

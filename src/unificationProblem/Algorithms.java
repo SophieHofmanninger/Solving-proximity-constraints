@@ -29,7 +29,7 @@ public final class Algorithms {
 	 * +                                                                           +
 	 * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 	 */
-	public static boolean preUnification(Problem prob) {
+	public static boolean preUnification(UnificationProblem prob) {
 
 		ArrayList<Tuple<Element>> unificationProblem = prob.p;
 

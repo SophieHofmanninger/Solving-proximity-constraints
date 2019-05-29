@@ -17,18 +17,42 @@ import tool.Tuple;
  * For example: p(x,y,x) =? q(f(a),g(b),y) has the left= p(x,y,x) , right= q(f(a),g(b),y)
  *
  * @author  Jan-Michael Holzinger &amp; Sophie Hofmanninger
- * @version 1.0
+ * @version 1.1
  * 
  */
-public class Unifier {
+public class UnificationProblem {
+	// Left and right hand side of the equation:
 	private Element right;
 	private Element left;
-	private int numberOfFunctions;
+	
+	// A list of Functions and their proximity relations (represented as Matrix):
 	private ArrayList<Function> sortedListOfFunctions;
 	private Matrix proximityRelations;
+	
+	// The open cases for the proximity relations.
 	private ArrayList<Tuple<Function>> openCases;
+	
+	// The Unification Problem:
+	// TODO further encapsulation.
+	public ArrayList<Tuple<Element>> p;
+	public ArrayList<Tuple<Element>> c;
+	public ArrayList<Tuple<Element>> sigma;
+	public ArrayList<Tuple<Element>> psi;
+	public float lambda=1;
 
-
+	/**
+	 * Constructor for a UnificationProblem.
+	 * @param left lhs of the equation.
+	 * @param right rhs of the equation.
+	 */
+	public UnificationProblem(Element left, Element right) {
+		this.setLeft(left);
+		this.setRight(right);
+		p.add(new Tuple<Element>(left,right));
+		c= new ArrayList<Tuple<Element>>();
+		sigma=new ArrayList<Tuple<Element>>();
+		psi=new ArrayList<Tuple<Element>>();
+	}
 
 	/**
 	 * Adds a case where the proximity needs to be determined.
@@ -113,14 +137,9 @@ public class Unifier {
 	 * @return the number of functions symbols (and constants).
 	 */
 	public int getNumberOfFunctions() {
-		return numberOfFunctions;
+		return sortedListOfFunctions.size();
 	}
-	/**
-	 * @param numberOfFunctions the number Of functions symbols to set.
-	 */
-	public void setNumberOfFunctions(int numberOfFunctions) {
-		this.numberOfFunctions = numberOfFunctions;
-	}
+
 	/**
 	 * @return a list of functions appearing in the unification problem. Note: Constants
 	 * are treated as 0-ary functions.
@@ -171,7 +190,7 @@ public class Unifier {
 		}
 
 		if(error) {
-			this.proximityRelations= new Matrix(this.numberOfFunctions);
+			this.proximityRelations= new Matrix(this.getNumberOfFunctions());
 			return;
 		}
 
