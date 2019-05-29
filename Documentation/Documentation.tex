@@ -56,6 +56,8 @@ Version Number & Changes Summary & Author\\
 \hline
 0.4 & add ConstraintSimplification & Sophie\\
 \hline
+0.5 & Proximity Relation (as Matrix) added & Jan-Michael\\
+\hline
 \end{tabular}
 
 \end{center}
@@ -91,14 +93,46 @@ For the Proximity Relations \(\mathcal{R}\) and the \(\lambda\)\textit{-cut} we 
 	\item We let the user (later) input \(\lambda\in[0,1]\) and calculate the set \(\mathcal{R}_\lambda\).
 \end{enumerate}
 
-
+\noindent
+The current implementation of InputParser creates a list of all Functions. This list is then sorted by arity, i.e. let \(f,g\) be functions with arity \(a,b \in \mathbb{N}\) respectively. Then \(a<b \Rightarrow f\prec g\).\\
+Let now \(n\in\mathbb{N}\) be the size of the list, the list then represents the caption of a \(n\times n\) matrix. Assume the problem contains functions with arity 0,1,\dots,m. Let \(k_l\) be the number of Functions with arity \(l\). Then 
+\[\sum_{l=0}^{m}k_l=n.\]
+The matrix then looks like 
+\[\kbordermatrix{
+    & f_{0_1} & f_{0_2} & \dots & f_{0_{k_0}} & f_{1_1} & f_{1_2} & \dots & f_{1_{k_1}} & \dots & f_{m_1} & f_{m_2} & \dots & f_{m_{k_m}}\\
+    f_{0_1}     & 1 & (*) & (*) & (*) & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+    f_{0_2}     & * & 1 & (*) & (*) & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+    \vdots      & * & * & \ddots & (*) & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+    f_{0_{k_0}} & * & * & * & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+    f_{1_1}     & 0 & 0 & 0 & 0 & 1 & (*) & (*) & (*) & 0 & 0 & 0 & 0 & 0\\		
+		f_{1_2}     & 0 & 0 & 0 & 0 & * & 1 & (*) & (*) & 0 & 0 & 0 & 0 & 0\\
+		\vdots      & 0 & 0 & 0 & 0 & * & * & \ddots & (*) & 0 & 0 & 0 & 0 & 0\\
+		f_{1_{k_1}} & 0 & 0 & 0 & 0 & * & * & * & 1 & 0 & 0 & 0 & 0 & 0\\
+		\vdots      & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \ddots & 0 & 0 & 0 & 0\\
+		f_{m_1}     & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & (*) & (*) & (*)\\
+		f_{m_2}     & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & * & 1 & (*) & (*)\\
+		\vdots      & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & * & * & \ddots & (*)\\
+		f_{m_{k_m}} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & * & * & * & 1\\
+  }\quad,\]
+where:
+\begin{itemize}
+	\item the 1's in the diagonal are fixed, as a function must have proximity 1 to itself,
+	\item the 0's are fixed, as functions with different aritys can't be close,
+	\item the values where the entry is * must be of the same value as their (*) counterpart, as the matrix is symmetric.
+\end{itemize} 
+Hence, we only need to get the values for the positions marked with (*). We call such a position ``open case'', and we make a list of open cases. We will then wait for user input.\\ \ \\
+\noindent
+If we want to retrive a value, i.e. if we want to know \(\mathcal{R}(s_1,s_2)\) for given \(s_1,s_2\), we can set 
+\[i:= \mathrm{sortedListOfFunctions}.\mathrm{getIndex}(s_1)\quad\text{and}\quad j:= \mathrm{sortedListOfFunctions}.\mathrm{getIndex}(s_2),\]
+and then just get the value at position \((i,j)\).
 %------------------------------------------------
 \subsection{Algorithms}
 
 We implement the Algorithms in an own class, that has two static functions, preUnification and constraintSimplification.
+
 \subsubsection{Pre-Unification Algorithm}
 The preUnification method consists of a loop, that runs until either \(\mathrm{P}=\emptyset\) or it is detected, that there is no solution to the problem.\\
-Inside the loop body, the 7 pre-unification rules are iteratively applied to the first element (which gets popped by doing so).
+Inside the loop body, the 7 pre-unification rules are iteratively applied to the first element (which gets popped by doing so). The method returns true, iff the pre-unification was successful.
 \\ \ \\
 \noindent 
 The method changes the problems constraints and pre-unifier accordingly.
