@@ -33,7 +33,7 @@ public class Matrix{
 		content= new float[realsize];
 		contentE = new Element[size];
 	}
-	
+
 	/**
 	 * This method defines the position of the element.
 	 * @param elem The element, which should be specified to a position.
@@ -56,9 +56,9 @@ public class Matrix{
 	 */
 	public void putRef(Tuple<Element> elems, float v) 
 			throws NoSuchElementException{
-		
+
 		Tuple<Integer> ti = new Tuple<>(getIndex(elems.getFirst()),getIndex(elems.getSecond()));
-		
+
 		if(ti.getFirst()<ti.getSecond()) {
 			int temp = ti.getSecond();
 			ti.setSecond(ti.getFirst());
@@ -67,10 +67,10 @@ public class Matrix{
 		if(ti.getSecond()<0) {
 			throw new NoSuchElementException("One of the Elements was not found!");
 		}
-		
+
 		putAt(ti, v);
 	}
-	
+
 	/**
 	 * Put a value at a position in the upper triangle-part of the Matrix.
 	 * @param indices The indices indicating the position
@@ -115,7 +115,7 @@ public class Matrix{
 		}
 		return getAt(ti);
 	}
-	
+
 	/**
 	 * Get a value from the Matrix.
 	 * @param indices the position where the value is stored.
@@ -179,7 +179,7 @@ public class Matrix{
 		}
 		return -1;
 	}
-	
+
 	/**
 	 * This method delivers the relations.
 	 * @param elem This is the element from which we want the relatives.
@@ -187,9 +187,9 @@ public class Matrix{
 	 * @return Returns a list of all relations.
 	 */
 	public ArrayList<Element> getR(Element elem, float lambda){
-		
+
 		ArrayList<Element> ret = new ArrayList<>();
-		
+
 		for(int i = 0; i<size;i++) {
 			if(elem.getName() != contentE[i].getName()) {
 				Tuple<Element> t = new Tuple<>(elem,contentE[0]);

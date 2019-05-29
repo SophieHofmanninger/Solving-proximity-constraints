@@ -19,6 +19,16 @@ public class Constant extends Function{
 		super(name);
 	}
 
+	/**
+	 * This is the constructor to create a Constant that can represent a Name.
+	 * @param name The name.
+	 * @param isName {@code boolean} indicating if this is a Name.
+	 */
+	public Constant(String name, boolean isName) {
+		super(name,isName);
+	}
+
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */

@@ -12,8 +12,8 @@ import elements.Element;
  * 
  */
 public class Function extends Element {
-	
-	public ArrayList<Element> arguments;
+
+	private ArrayList<Element> arguments;
 
 	/**
 	 * This is the constructor for the class Function.
@@ -22,6 +22,39 @@ public class Function extends Element {
 	public Function(String name) {
 		this.setName(name);
 		arguments = new ArrayList<>();
+	}
+
+	/**
+	 * Return the list of arguments.
+	 * @return the arguments
+	 */
+	public ArrayList<Element> getArguments() {
+		return arguments;
+	}
+
+	/**
+	 * Set the arguments.
+	 * @param arguments the arguments to set.
+	 */
+	public void setArguments(ArrayList<Element> arguments) {
+		this.arguments = arguments;
+	}
+	/**
+	 * Add an argument.
+	 * @param argument the argument to add.
+	 */
+	public void addArgument(Element argument) {
+		this.arguments.add(argument);
+	}
+
+	/**
+	 * This is the constructor to create a Function that can represent a Name.
+	 * @param name The name.
+	 * @param isName {@code boolean} indicating if this is a Name.
+	 */
+	public Function(String name, boolean isName) {
+		this(name);
+		representName(isName);
 	}
 	/**
 	 * The number of arguments of the function.
@@ -63,7 +96,7 @@ public class Function extends Element {
 			return retVal;
 		}
 	}
-	
-	
+
+
 
 }

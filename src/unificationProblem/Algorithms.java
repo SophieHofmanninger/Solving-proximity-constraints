@@ -148,7 +148,7 @@ public final class Algorithms {
 
 		ArrayList<Tuple<Element>> probList = new ArrayList<Tuple<Element>>();
 		for(int i=0;i<f.arity();i++) {
-			Tuple<Element> p = new Tuple<Element>(f.arguments.get(i),s.arguments.get(0));
+			Tuple<Element> p = new Tuple<Element>(f.getArguments().get(i),s.getArguments().get(0));
 			probList.add(p);
 		}
 		ArrayList<Tuple<Element>> conList = new ArrayList<Tuple<Element>>();
@@ -213,7 +213,7 @@ public final class Algorithms {
 	 * +                                                                           +
 	 * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 	 */
-    
+
 	/**
 	 * The constraint simplification algorithm transforms constraint configurations, 
 	 * exhaustively appling special rules.
@@ -222,13 +222,13 @@ public final class Algorithms {
 	 * @return True, if the constraints can be simplified and otherwise false.
 	 */
 	public static boolean constraintSimplification(Problem prob,Matrix proxR) {
-		
+
 		ArrayList<Tuple<Element>> constraintProblem = prob.c;
 		Tuple<Element> t;
-		
+
 		while(!constraintProblem.isEmpty()) {
 			t=constraintProblem.get(0);
-			
+
 			// FFS
 			if((t.getFirst() instanceof Function) && (t.getSecond() instanceof Function)) {
 				if(ffs((Function)t.getFirst(),(Function)t.getSecond(),proxR,prob.lambda)) {
@@ -239,16 +239,16 @@ public final class Algorithms {
 					return false;
 				}				
 			}
-			
+
 			//NFS
 			if((t.getFirst() instanceof Name) && (t.getSecond() instanceof Function)) {
 				//TODO NFS
 			}
-			
+
 			if((t.getFirst() instanceof Function) && (t.getSecond() instanceof Name)) {
 				//TODO FSN
 			}
-			
+
 			// NN1 and NN2
 			if((t.getFirst() instanceof Name) && (t.getSecond() instanceof Name)) {
 				if(isMemberOfPsi((Name)t.getFirst(),prob.psi)) {
@@ -271,7 +271,7 @@ public final class Algorithms {
 				}
 			}
 		}
-		
+
 		return true;
 	}
 
@@ -284,9 +284,9 @@ public final class Algorithms {
 	 * @return Returns true if method worked successful, false otherwise.
 	 */ 
 	private static boolean ffs(Function f1, Function f2, Matrix r, float lambda) {
-		
+
 		float relation = r.getRef(new Tuple<>(f1,f2));
-		
+
 		if(relation >= lambda) {
 			return true;
 		}
@@ -294,7 +294,7 @@ public final class Algorithms {
 			return false;
 		}
 	}
-	
+
 	/**
 	 * This method describes the rule (NFS).
 	 * @param n1 name 1
@@ -303,12 +303,12 @@ public final class Algorithms {
 	 * @return Returns true if method worked successful, false otherwise.
 	 */
 	private static boolean nfs(Name n1, Function f2, ArrayList<Tuple<Element>> psi) {
-	
+
 		//TODO
-		
+
 		return false;
 	}
-	
+
 	/**
 	 * This method describes the rule (NN1).
 	 * @param n1 name 1
@@ -318,7 +318,7 @@ public final class Algorithms {
 	 * @return Returns true if method worked successful, false otherwise.
 	 */
 	private static boolean nn1(Name n1, Name n2, ArrayList<Tuple<Element>> psi, Problem branch) {
-		
+
 		if(isMemberOfPsi(n1,psi)) {
 			//TODO
 			return true;
@@ -335,7 +335,7 @@ public final class Algorithms {
 	 * @return Returns true if name is member of psi.
 	 */
 	private static boolean isMemberOfPsi(Name n, ArrayList<Tuple<Element>> psi) {
-		
+
 		for(Tuple<Element> t : psi) {
 			if(t.getFirst().getName() == n.getName()) {
 				return true;
@@ -343,5 +343,5 @@ public final class Algorithms {
 		}
 		return false;
 	}
-	
+
 }

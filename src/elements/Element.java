@@ -6,13 +6,14 @@ package elements;
  * constants, variables or names.
  *
  * @author  Jan-Michael Holzinger &amp; Sophie Hofmanninger
- * @version 1.0
+ * @version 1.1
  * 
  */
 public abstract class Element {
 	private String name;
+	private boolean representsName=false;
 
-	
+
 	// TODO implement method rename(Element) 
 
 	/* (non-Javadoc)
@@ -34,6 +35,14 @@ public abstract class Element {
 	public void setName(String name) {
 		this.name = name;
 	}
+	/**
+	 * Set a value, that indicates if this Element represents a Name.
+	 * @param isName {@code boolean} indicating if this represents a Name.
+	 */
+	protected void representName(boolean isName) {
+		representsName=isName;
+	}
+
 
 	/**
 	 * Test if this is equal to another element, where equality means, the 
@@ -62,7 +71,7 @@ public abstract class Element {
 			return this.equals((Element) obj);
 		return false;
 	}
-	
+
 	/**
 	 * Checks if another element occurs in this term.
 	 * @param e The element to search for.
@@ -70,5 +79,12 @@ public abstract class Element {
 	 */
 	public abstract boolean occurs(Element e);
 
+	/**
+	 * Get a boolean value, that indicates if this Element represents a Name.
+	 * @return {@code boolean} indicating if this is a Name.
+	 */
+	public boolean isName() {
+		return representsName;
+	}
 
 }

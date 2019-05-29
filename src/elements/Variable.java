@@ -33,5 +33,30 @@ public class Variable extends Element{
 	public void mapsto(Variable v) {
 		setName(v.getName());
 	}
-	
+
+
+	/**
+	 * This is the default constructor for the class Variable.
+	 * @param name The name.
+	 */
+	public Variable() {	}
+
+	/**
+	 * This is the constructor for the class Variable.
+	 * @param name The name.
+	 */
+	public Variable(String name) {
+		this.setName(name);
+	}
+
+	/**
+	 * This is the constructor to create a Variable that can represent a Name.
+	 * @param name The name.
+	 * @param isName {@code boolean} indicating if this is a Name.
+	 */
+	public Variable(String name, boolean isName) {
+		this(name);
+		representName(isName);
+	}
+
 }

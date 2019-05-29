@@ -21,8 +21,8 @@ public class InputParser {
 
 	private static final char FIRST_VARIABLE= 'u';
 	private static ArrayList<Function> listOfFunctions;
-	
-	
+
+
 	/**
 	 * This method parses the input in two parts, left and right.
 	 * @param input String, which should be unified.
@@ -49,17 +49,17 @@ public class InputParser {
 				unif.setLeft(parseSub(s.substring(split-1)));
 				unif.setRight(parseSub(s.substring(split+1)));
 			}
-			
+
 			unif.setNumberOfFunctions(listOfFunctions.size());
-			
+
 			sort(listOfFunctions);
 			unif.setSortedListOfFunctions(listOfFunctions);
-			
+
 			/* TODO determine "open Cases" for unif.
 			 * Iterate through listOfFunctions, check for Functions with same
 			 * arity, and add the pair to the list of open cases.
 			 */
-			
+
 			ret.add(unif);
 		}
 
@@ -73,11 +73,11 @@ public class InputParser {
 	 */
 	private static void sort(ArrayList<Function> l) {
 		Collections.sort(l, new Comparator<Function>(){
-             public int compare(Function f1, Function f2) {
-               return f1.arity()-f2.arity();
-            }
-        });
-		
+			public int compare(Function f1, Function f2) {
+				return f1.arity()-f2.arity();
+			}
+		});
+
 	}
 
 	/**
@@ -111,7 +111,7 @@ public class InputParser {
 				}
 				if(!alreadyIn) listOfFunctions.add((Function) elem);
 				for (String s : input.substring(pos+1, closing).split(",")) {
-					((Function)elem).arguments.add(parseSub(s));
+					((Function)elem).addArgument((parseSub(s)));
 				}
 				break;
 			}

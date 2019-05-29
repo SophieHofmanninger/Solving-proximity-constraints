@@ -10,15 +10,15 @@ MinPos.y=-1
 MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
-NormalPos.top=53
-NormalPos.right=1099
-NormalPos.bottom=489
+NormalPos.top=36
+NormalPos.right=1701
+NormalPos.bottom=441
 Class=LaTeXView
 Document=Documentation.tex
 
 [Frame0_View0,0]
-TopLine=121
-Cursor=4246
+TopLine=51
+Cursor=2002
 
 [Frame1]
 Flags=0
@@ -28,15 +28,15 @@ MinPos.y=-1
 MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
-NormalPos.top=53
-NormalPos.right=1099
-NormalPos.bottom=489
+NormalPos.top=36
+NormalPos.right=1701
+NormalPos.bottom=441
 Class=LaTeXView
 Document=structure.tex
 
 [Frame1_View0,0]
-TopLine=244
-Cursor=377
+TopLine=57
+Cursor=1918
 
 [SessionInfo]
 FrameCount=2
