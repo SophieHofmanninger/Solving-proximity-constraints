@@ -28,8 +28,7 @@ public class Test {
 
 		System.out.println(uni2.getLeft().toString());
 		System.out.println(uni2.getRight().toString());
-
-
+		///*
 	}
 
 }

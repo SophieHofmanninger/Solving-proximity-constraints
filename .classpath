@@ -3,7 +3,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
-	<classpathentry kind="lib" path="C:/Program Files/Eclipse/easymock-4.0.2/easymock-4.0.2.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/Eclipse/objenesis-3.0.1/objenesis-3.0.1.jar"/>
+	<classpathentry kind="lib" path="libs/easymock-4.0.2.jar"/>
+	<classpathentry kind="lib" path="libs/objenesis-tck-3.0.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

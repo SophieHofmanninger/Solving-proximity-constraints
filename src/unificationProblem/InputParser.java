@@ -47,7 +47,7 @@ public class InputParser {
 			}
 			else {
 				split = s.indexOf("=");
-				left=parseSub(s.substring(split-1));
+				left=parseSub(s.substring(0,split-1));
 				right=parseSub(s.substring(split+1));
 			}
 			unif = new UnificationProblem(left,right);
