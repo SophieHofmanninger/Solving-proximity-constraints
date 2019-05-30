@@ -24,14 +24,14 @@ public class UnificationProblem {
 	// Left and right hand side of the equation:
 	private Element right;
 	private Element left;
-	
+
 	// A list of Functions and their proximity relations (represented as Matrix):
 	private ArrayList<Function> sortedListOfFunctions;
 	private Matrix proximityRelations;
-	
+
 	// The open cases for the proximity relations.
 	private ArrayList<Tuple<Function>> openCases;
-	
+
 	// The Unification Problem:
 	// TODO further encapsulation.
 	public ArrayList<Tuple<Element>> p;
@@ -48,6 +48,8 @@ public class UnificationProblem {
 	public UnificationProblem(Element left, Element right) {
 		this.setLeft(left);
 		this.setRight(right);
+		openCases = new ArrayList<Tuple<Function>>();
+		p=new ArrayList<Tuple<Element>>();
 		p.add(new Tuple<Element>(left,right));
 		c= new ArrayList<Tuple<Element>>();
 		sigma=new ArrayList<Tuple<Element>>();
@@ -78,11 +80,19 @@ public class UnificationProblem {
 	}
 
 	/**
+	 * Get the number of open cases.
+	 * @return the number of open Cases.
+	 */
+	public int getNumberOfOpenCases() {
+		return openCases.size();
+	}
+
+	/**
 	 * Close an open Case.
 	 * @param t the tuple to remove from the list. Note: (a,b) will also be removed, if the
 	 * method is called with (b,a).
 	 * @param p the value to set. Must be in [0,1].
-	 * @return boolean indicating if the case could be closed.
+	 * @return boolean indicating if the case could have been closed.
 	 */
 	public boolean CloseCase(Tuple<Function> t, float p) {
 		if(p<0||p>1) return false;
@@ -163,6 +173,25 @@ public class UnificationProblem {
 		return proximityRelations;
 	}
 
+	/**
+	 * @param lambda float value, to calculate the lambda-cut.
+	 * @return a list of proximity relations
+	 */
+	public ArrayList<Tuple<Function>> getProximityRelations(float lambda){
+		ArrayList<Tuple<Function>> ret = new ArrayList<Tuple<Function>>();
+		for(int i=0;i<sortedListOfFunctions.size()-1;i++) {
+			for(int j=i+1;j<sortedListOfFunctions.size();j++) {
+				if(proximityRelations.getAt
+						(new Tuple<Integer>(i,j))>=lambda) {
+					Function f = sortedListOfFunctions.get(i);
+					Function g = sortedListOfFunctions.get(j);
+					Tuple<Function> addMe = new Tuple<Function>(f,g);
+					ret.add(addMe);
+				}
+			}
+		}
+		return ret;
+	}
 
 	/**
 	 * @param proximityRelations the proximity relations to set, represented as a matrix.
@@ -199,9 +228,32 @@ public class UnificationProblem {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		String s="";
+		s+=left.toString()+" =?" + right.toString();
+		s+=System.lineSeparator();
+		s+="Lambda = "+lambda;
+		s+=" and proximity relations :{ ";
+		ArrayList<Tuple<Function>> prl = getProximityRelations(lambda);
+		for(int i=0;i<prl.size();i++) {
+			s+="(";
+			s+=prl.get(i).getFirst().toString();
+			s+=",";
+			s+=prl.get(i).getSecond().toString();
+			s+=")";
+			if(i<prl.size()-1) s+=" , ";
+		}
+		s+="} ";
+		return s;
+	}
 
 
-	// TODO ToString()
+
+
 
 
 
