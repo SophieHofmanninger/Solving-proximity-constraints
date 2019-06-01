@@ -12,8 +12,20 @@ package elements;
 public abstract class Element {
 	private String name;
 	private boolean representsName=false;
-	private static int numberOfNames=0;
+	private static int numberOfNames=1;
 
+	/**
+	 * Creates a copy of an element.
+	 * @param e the element to copy.
+	 * @return the copy.
+	 */
+	public abstract Element copy();
+
+	/**
+	 * Creates an element with a new name from an element.
+	 * @param e the element that is renamed.
+	 * @return A new name.
+	 */
 	public static Element rename(Element e) {
 
 		// Intentionally Strings begin with number.
@@ -23,15 +35,22 @@ public abstract class Element {
 			numberOfNames++;
 			return ret;
 		}else {
-			Function ret=new Function(newName,true);
-			numberOfNames++;
-			Function f = (Function)e;
-			for(int i=0;i<f.arity();i++) {
-				ret.addArgument(rename(f.getArgument(i)));
-			}
-			return ret;
-		}
+			if(e instanceof Constant) {
+				Constant ret=new Constant(newName,true);
+				numberOfNames++;
+				return ret;
+			}else {
 
+
+				Function ret=new Function(newName,true);
+				numberOfNames++;
+				Function f = (Function)e;
+				for(int i=0;i<f.arity();i++) {
+					ret.addArgument(rename(f.getArgument(i)));
+				}
+				return ret;
+			}
+		}
 	}
 
 	/* (non-Javadoc)
@@ -39,6 +58,12 @@ public abstract class Element {
 	 */
 	@Override
 	public abstract String toString();
+
+	/**
+	 * Full string representation.
+	 * @return a string representation.
+	 */
+	public abstract String toFullString();
 
 	/**
 	 * @return the Name.

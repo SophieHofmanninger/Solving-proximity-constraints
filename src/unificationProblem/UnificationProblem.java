@@ -251,7 +251,21 @@ public class UnificationProblem {
 		return s;
 	}
 
+	/**
+	 * Return the set P.
+	 * @return the set P.
+	 */
+	public ArrayList<Tuple<Element>> getP() {
+		return p;
+	}
 
+	/**
+	 * Set the set P.
+	 * @param p the set P to set.
+	 */
+	public void setP(ArrayList<Tuple<Element>> p) {
+		this.p = p;
+	}
 
 
 

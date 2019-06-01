@@ -27,6 +27,16 @@ public class Variable extends Element{
 	}
 
 	/**
+	 * Replaces a Variable with an Element.
+	 * @param e the element the Variable is replaced with
+	 * @return A new Element.
+	 */
+	public static Element replace(Element e) {
+		return e.copy();
+	}
+	
+	
+	/**
 	 * Unification of 2 variables
 	 * @param v the element to unify with.
 	 */
@@ -59,4 +69,21 @@ public class Variable extends Element{
 		representName(isName);
 	}
 
+	/* (non-Javadoc)
+	 * @see elements.Element#copy(elements.Element)
+	 */
+	@Override
+	public Element copy() {
+		return new Variable(this.getName(),this.isName());
+	}
+
+	/* (non-Javadoc)
+	 * @see elements.Element#toFullString()
+	 */
+	@Override
+	public String toFullString() {
+		return this.toString();
+	}
+
+	
 }

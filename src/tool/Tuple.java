@@ -47,7 +47,7 @@ public class Tuple<E> {
 	 */
 	@Override
 	public String toString() {
-		return "Tuple [f=" + f + ", s=" + s + "]";
+		return "(" + f.toString() + ", " + s.toString() + ")";
 	}
 
 
