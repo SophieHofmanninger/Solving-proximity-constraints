@@ -21,14 +21,14 @@ public class Test {
 		String test = "p(x,y,x) =? q(f(a),g(d),y)";
 		UnificationProblem uni = InputParser.parse(test).get(0);
 
-		System.out.println(uni.getLeft().toString());
-		System.out.println(uni.getRight().toString());
+		System.out.println(uni.getLeft().toFullString());
+		System.out.println(uni.getRight().toFullString());
 
 		String test2 = "f(x1,x2,y) =? g(h(x2),y,x1)";
 		UnificationProblem uni2 = InputParser.parse(test2).get(0);
 
-		System.out.println(uni2.getLeft().toString());
-		System.out.println(uni2.getRight().toString());
+		System.out.println(uni2.getLeft().toFullString());
+		System.out.println(uni2.getRight().toFullString());
 		
 		// Test
 		Matrix matr = new Matrix();

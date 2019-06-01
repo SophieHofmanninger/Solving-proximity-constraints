@@ -37,4 +37,13 @@ public class Constant extends Function{
 		return this.getName();
 	}
 
+	/* (non-Javadoc)
+	 * @see elements.Element#copy(elements.Element)
+	 */
+	@Override
+	public Element copy() {
+		return new Constant(this.getName(),this.isName());
+	}
+	
+	
 }

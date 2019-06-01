@@ -30,10 +30,15 @@ public final class Algorithms {
 	 * +                                                                           +
 	 * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 	 */
-	public static boolean preUnification(UnificationProblem unif) {
 
-		// NOTE: changed prob to unif in arguments and changed prob to unif.prob in code.
-		ArrayList<Tuple<Element>> problem = unif.prob.p; 
+	/**
+	 * Performs the Pre-Unification Algorithm 
+	 *
+	 * @param prob the Unification Problem
+	 * @return {@code boolean} false, if there is no unifier.
+	 */
+	public static boolean preUnification(UnificationProblem unif) {
+		ArrayList<Tuple<Element>> problem = unif.getP();
 
 		while ((problem.size())!=0) {
 			Tuple<Element> t = problem.get(0);
@@ -92,7 +97,7 @@ public final class Algorithms {
 				Tuple<ArrayList<Tuple<Element>>> probAndCons = decomposition(fun);
 				problem.remove(0);
 				problem.addAll(0,probAndCons.getFirst());
-				unif.prob.c.addAll(0,probAndCons.getSecond());
+				unif.prob.c.addAll(probAndCons.getSecond());
 				continue;
 			}
 
@@ -125,7 +130,7 @@ public final class Algorithms {
 		}
 
 
-		return false;
+		return true;
 	}
 
 
@@ -152,11 +157,12 @@ public final class Algorithms {
 
 		ArrayList<Tuple<Element>> probList = new ArrayList<Tuple<Element>>();
 		for(int i=0;i<f.arity();i++) {
-			Tuple<Element> p = new Tuple<Element>(f.getArguments().get(i),s.getArguments().get(0));
+			Tuple<Element> p = new Tuple<Element>(f.getArguments().get(i),s.getArguments().get(i));
 			probList.add(p);
 		}
 		ArrayList<Tuple<Element>> conList = new ArrayList<Tuple<Element>>();
 		conList.add(new Tuple<Element>(f,s));
+		// TODO Maybe new Function
 		return new Tuple<ArrayList<Tuple<Element>>>(probList,conList);
 
 	}
@@ -170,18 +176,29 @@ public final class Algorithms {
 	private static Tuple<Element> varElim
 	(Tuple<Element> t, ArrayList<Tuple<Element>> problem) {
 		Element first = Element.rename(t.getSecond());
-		for(Tuple<Element> tuple:problem) {
-			tryRename(tuple.getFirst(),t.getFirst(),first);
-			tryRename(tuple.getSecond(),t.getFirst(),first);
+		for(int i=0;i<problem.size();i++) {
+			problem.get(i).setFirst
+			(tryReplace(problem.get(i).getFirst(),t.getFirst(),first));
+			problem.get(i).setSecond
+			(tryReplace(problem.get(i).getSecond(),t.getFirst(),first));
 		}
 
 
 		return new Tuple<Element>(first,t.getSecond());
 	}
 
-	private static void tryRename(Element e, Element x, Element tprime) {
+	/**
+	 * Helper Function makes the checks for replacement and provides a copy.
+	 * @param e The Element (Variable) to replace.
+	 * @param x The Match.
+	 * @param tprime the term to replace with.
+	 * @return the replacement/original term.
+	 */
+	private static Element tryReplace(Element e, Element x, Element tprime) {
 		if(e instanceof Variable && e.equals(x)) {
-			((Variable)e).mapsto(tprime); 
+			return Variable.replace(tprime); 
+		}else {
+			return e;
 		}
 	}
 

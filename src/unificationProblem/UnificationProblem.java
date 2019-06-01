@@ -235,7 +235,7 @@ public class UnificationProblem {
 	@Override
 	public String toString() {
 		String s="";
-		s+=left.toString()+" =?" + right.toString();
+		s+=left.toFullString()+" =?" + right.toFullString();
 		s+=System.lineSeparator();
 		s+="Lambda = "+lambda;
 		s+=" and proximity relations : ";
@@ -295,8 +295,8 @@ public class UnificationProblem {
 				ret += System.lineSeparator();
 				ret += "sigma = {";				
 				for(Tuple<Element> t : this.prob.sigma) {
-					ret+=t.getFirst().toString() + " -> ";
-					ret+=t.getSecond().toString() + ",";
+					ret+=t.getFirst().toFullString() + " -> ";
+					ret+=t.getSecond().toFullString() + ",";
 				}
 				ret = ret.substring(0,ret.length()-1)+"}";
 				
@@ -335,5 +335,22 @@ public class UnificationProblem {
 		
 		return ret;
 	}
+
+	/**
+	 * Return the set P.
+	 * @return the set P.
+	 */
+	public ArrayList<Tuple<Element>> getP() {
+		return prob.p;
+	}
+
+	/**
+	 * Set the set P.
+	 * @param p the set P to set.
+	 */
+	public void setP(ArrayList<Tuple<Element>> p) {
+		this.prob.p = p;
+	}
+
 
 }

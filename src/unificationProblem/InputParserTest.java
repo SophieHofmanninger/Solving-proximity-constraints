@@ -64,9 +64,6 @@ class InputParserTest {
 		String test2=s+" = "+t;
 		UnificationProblem unif2 = InputParser.parse(test2).get(0);
 		assertEquals(6, unif2.getNumberOfFunctions());
-		System.out.println(test2);
-		System.out.println(unif2.getLeft().toString());
-		System.out.println(unif2.getRight().toString());
 					
 		
 	}
@@ -80,8 +77,11 @@ class InputParserTest {
 		
 		String test3=s+" =? "+t+ ";" +s+" = "+t;
 		ArrayList<UnificationProblem> twoProblems = InputParser.parse(test3);
-		
-					
+		assertEquals(2,twoProblems.size());
+		UnificationProblem unif1 =  twoProblems.get(0);
+		UnificationProblem unif2 = twoProblems.get(1);
+		assertTrue(unif1.getLeft().equals(unif2.getLeft()));
+		assertTrue(unif1.getRight().equals(unif2.getRight()));
 		
 	}
 	

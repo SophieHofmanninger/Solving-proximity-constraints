@@ -26,4 +26,21 @@ public class Name extends Element{
 		return this.getName();
 	}
 
+	/* (non-Javadoc)
+	 * @see elements.Element#copy()
+	 */
+	@Override
+	public Element copy() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see elements.Element#toFullString()
+	 */
+	@Override
+	public String toFullString() {
+		return this.toString();
+	}
+
 }

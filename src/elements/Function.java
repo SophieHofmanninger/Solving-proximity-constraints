@@ -78,12 +78,11 @@ public class Function extends Element {
 		return arguments.size();
 	}
 
-	/**
-	 * This method converts the function to a string.
-	 * @return String This returns a string.
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toFullString()
 	 */
 	@Override
-	public String toString() {
+	public String toFullString() {
 		String ret = this.getName() + "(";
 
 		for(Element e : arguments){
@@ -106,11 +105,31 @@ public class Function extends Element {
 			int i=0;
 			while(i<arguments.size()&&!(retVal)) {
 				retVal = retVal||arguments.get(i).occurs(e);
+				i++;
 			}
 			return retVal;
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see elements.Element#copy(elements.Element)
+	 */
+	@Override
+	public Element copy() {
+		Function ret = new Function(this.getName(),this.isName());
+		for(Element e:this.arguments) {
+			ret.addArgument(e.copy());
+		}
+		return ret;
+	}
+
+	/* (non-Javadoc)
+	 * @see elements.Element#toString()
+	 */
+	@Override
+	public String toString() {
+		return this.getName();
+	}
 
 
 }
