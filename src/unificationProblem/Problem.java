@@ -1,6 +1,7 @@
 package unificationProblem;
 
 import java.util.ArrayList;
+import java.util.Map;
 import elements.Element;
 import tool.Tuple;
 
@@ -11,6 +12,7 @@ import tool.Tuple;
  * c - set of neighborhood constraint
  * sigma - set of pre unifiers
  * psi - set of name-class mapping
+ * branch - contains branch of the problem when psi splits
  *
  * @author  Jan-Michael Holzinger &amp; Sophie Hofmanninger
  * @version 1.0
@@ -21,10 +23,7 @@ public class Problem {
 	public ArrayList<Tuple<Element>> p;
 	public ArrayList<Tuple<Element>> c;
 	public ArrayList<Tuple<Element>> sigma;
-	public ArrayList<Tuple<Element>> psi;
-
-	public float lambda;
+	public Map<String,ArrayList<Element>> psi;
 
 	public Problem branch = null;
-
 }

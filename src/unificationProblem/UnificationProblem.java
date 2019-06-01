@@ -4,11 +4,15 @@
 package unificationProblem;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import elements.Element;
 import elements.Function;
 import tool.Matrix;
 import tool.Tuple;
+
+import unificationProblem.Algorithms;
 
 /**
  *
@@ -33,12 +37,12 @@ public class UnificationProblem {
 	private ArrayList<Tuple<Function>> openCases;
 
 	// The Unification Problem:
-	// TODO further encapsulation.
-	public ArrayList<Tuple<Element>> p;
-	public ArrayList<Tuple<Element>> c;
-	public ArrayList<Tuple<Element>> sigma;
-	public ArrayList<Tuple<Element>> psi;
+	public Problem prob;
 	public float lambda=1;
+	
+	//Solving status
+	private int status=0; //0: nothing done, 1: pre-unification succesfull, 2: constaint Simplification succesfull
+						  //-1: pre-unification failed, -2: constaint Simplification failed
 
 	/**
 	 * Constructor for a UnificationProblem.
@@ -49,11 +53,12 @@ public class UnificationProblem {
 		this.setLeft(left);
 		this.setRight(right);
 		openCases = new ArrayList<Tuple<Function>>();
-		p=new ArrayList<Tuple<Element>>();
-		p.add(new Tuple<Element>(left,right));
-		c= new ArrayList<Tuple<Element>>();
-		sigma=new ArrayList<Tuple<Element>>();
-		psi=new ArrayList<Tuple<Element>>();
+		prob = new Problem();
+		prob.p=new ArrayList<Tuple<Element>>();
+		prob.p.add(new Tuple<Element>(left,right));
+		prob.c= new ArrayList<Tuple<Element>>();
+		prob.sigma=new ArrayList<Tuple<Element>>();
+		prob.psi=new HashMap<String,ArrayList<Element>>();
 	}
 
 	/**
@@ -97,24 +102,19 @@ public class UnificationProblem {
 	public boolean CloseCase(Tuple<Function> t, float p) {
 		if(p<0||p>1) return false;
 		if(openCases.contains(t)) {
-			int k= sortedListOfFunctions.indexOf(t.getFirst());
-			int l= sortedListOfFunctions.indexOf(t.getSecond());
-			proximityRelations.putAt(new Tuple<Integer>(k, l), p);
-
+			
+			proximityRelations.addRelation(t.getFirst(), t.getSecond(), p);
+			
 			openCases.remove(t);			
 			return true;
 		}
 		Tuple<Function> rev = new Tuple<Function>(t.getSecond(),t.getFirst());
 		if(openCases.contains(rev)) {
-			int k= sortedListOfFunctions.indexOf(rev.getFirst());
-			int l= sortedListOfFunctions.indexOf(rev.getSecond());
-			proximityRelations.putAt(new Tuple<Integer>(k, l), p);
+			proximityRelations.addRelation(rev.getFirst(), rev.getSecond(), p);
 
 			openCases.remove(rev);			
 			return true;
 		}
-
-
 		return false;
 	}
 
@@ -177,7 +177,7 @@ public class UnificationProblem {
 	 * @param lambda float value, to calculate the lambda-cut.
 	 * @return a list of proximity relations
 	 */
-	public ArrayList<Tuple<Function>> getProximityRelations(float lambda){
+	/*public ArrayList<Tuple<Function>> getProximityRelations(float lambda){
 		ArrayList<Tuple<Function>> ret = new ArrayList<Tuple<Function>>();
 		for(int i=0;i<sortedListOfFunctions.size()-1;i++) {
 			for(int j=i+1;j<sortedListOfFunctions.size();j++) {
@@ -191,7 +191,7 @@ public class UnificationProblem {
 			}
 		}
 		return ret;
-	}
+	}*/
 
 	/**
 	 * @param proximityRelations the proximity relations to set, represented as a matrix.
@@ -200,9 +200,10 @@ public class UnificationProblem {
 	 * corresponding unity matrix. Also, function symbols with different arity have to be
 	 * set to have proximity 0.
 	 */
+	// TODO überarbeiten
 	public void setProximityRelations(Matrix proximityRelations) {
-		boolean error= false;
-		if(!Matrix.isPM(proximityRelations)) {
+		/*boolean error= false;
+		if(!proximityRelations.isPM()) {
 			error=true;
 		}
 		for(int j=1;j<proximityRelations.getSize();j++) {
@@ -221,7 +222,7 @@ public class UnificationProblem {
 		if(error) {
 			this.proximityRelations= new Matrix(this.getNumberOfFunctions());
 			return;
-		}
+		}*/
 
 
 		this.proximityRelations = proximityRelations;
@@ -237,24 +238,102 @@ public class UnificationProblem {
 		s+=left.toString()+" =?" + right.toString();
 		s+=System.lineSeparator();
 		s+="Lambda = "+lambda;
-		s+=" and proximity relations :{ ";
-		ArrayList<Tuple<Function>> prl = getProximityRelations(lambda);
-		for(int i=0;i<prl.size();i++) {
-			s+="(";
-			s+=prl.get(i).getFirst().toString();
-			s+=",";
-			s+=prl.get(i).getSecond().toString();
-			s+=")";
-			if(i<prl.size()-1) s+=" , ";
-		}
-		s+="} ";
+		s+=" and proximity relations : ";
+		s+= proximityRelations.toString(lambda);
 		return s;
 	}
-
-
-
-
-
-
+	
+	/**
+	 * Solves the next algorithm. 
+	 * @return True, if it was successful and False otherwise.
+	 */
+	public boolean solveNext() {
+				
+		if(status==0) {
+			if(Algorithms.preUnification(this)) {
+				status = 1;
+			}
+			else {
+				status = -1;
+				return false;
+			}
+		}
+		
+		if(status == 1) {
+			if(Algorithms.constraintSimplification(prob,proximityRelations,lambda)){
+				status = 2;
+				return true;
+			}
+			else {
+				status = -2;
+				return false;
+			}
+		}
+		
+		return false;
+	}
+ 
+	/**
+	 * Generates the output depending on the status. 
+	 * @return Returns the output string.
+	 */
+	public String resultString() {		
+		String ret = "";
+		
+		switch(status) {
+			case -2:
+				ret = "Problem not solveable! Constraint Simplification failed!";
+				break;
+			case -1:
+				ret = "Problem not solveable! pre-Unification failed!";
+				break;
+			case 0:
+				ret = this.toString();
+				break;
+			case 1:
+				ret = this.toString();
+				ret += System.lineSeparator();
+				ret += "sigma = {";				
+				for(Tuple<Element> t : this.prob.sigma) {
+					ret+=t.getFirst().toString() + " -> ";
+					ret+=t.getSecond().toString() + ",";
+				}
+				ret = ret.substring(0,ret.length()-1)+"}";
+				
+				break;
+			case 2:
+				Problem p = this.prob;
+				int i = 1;
+				do {
+					ret += "psi"+i+" = [";
+					for(Map.Entry<String, ArrayList<Element>> m : p.psi.entrySet()) {
+						ret += m.getKey() + " -> {";
+						for(Element e : m.getValue()) {
+							ret += e.getName() + ",";
+						}
+						ret = ret.substring(0,ret.length()-1) + "},";					
+					}					
+					ret = ret.substring(0,ret.length()-1)+"],";
+					ret += System.lineSeparator();
+					
+					p=p.branch;
+					i++;
+				}while(p.branch != null);
+				
+				ret += "sigma = {";
+				
+				for(Tuple<Element> t : this.prob.sigma) {
+					ret+=t.getFirst().toString() + " -> ";
+					ret+=t.getSecond().toString() + ",";
+				}
+				ret = ret.substring(0,ret.length()-1)+"}";
+				
+				break;
+			default:
+				ret = "Unknown Error!";
+		}
+		
+		return ret;
+	}
 
 }

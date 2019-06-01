@@ -4,10 +4,11 @@
 package unificationProblem;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import elements.Element;
 import elements.Function;
-import elements.Name;
+//import elements.Name;
 import elements.Variable;
 import tool.Matrix;
 import tool.Tuple;
@@ -29,9 +30,10 @@ public final class Algorithms {
 	 * +                                                                           +
 	 * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 	 */
-	public static boolean preUnification(UnificationProblem prob) {
+	public static boolean preUnification(UnificationProblem unif) {
 
-		ArrayList<Tuple<Element>> problem = prob.p;
+		// NOTE: changed prob to unif in arguments and changed prob to unif.prob in code.
+		ArrayList<Tuple<Element>> problem = unif.prob.p; 
 
 		while ((problem.size())!=0) {
 			Tuple<Element> t = problem.get(0);
@@ -60,7 +62,7 @@ public final class Algorithms {
 
 				if(onlyVars) {
 					// TODO probably better use a copy,...
-					prob.sigma.add(problem.get(0));
+					unif.prob.sigma.add(problem.get(0));
 					problem.remove(0);
 					varsOnly(var,problem);
 					continue;
@@ -90,7 +92,7 @@ public final class Algorithms {
 				Tuple<ArrayList<Tuple<Element>>> probAndCons = decomposition(fun);
 				problem.remove(0);
 				problem.addAll(0,probAndCons.getFirst());
-				prob.c.addAll(0,probAndCons.getSecond());
+				unif.prob.c.addAll(0,probAndCons.getSecond());
 				continue;
 			}
 
@@ -116,7 +118,7 @@ public final class Algorithms {
 				problem.remove(0);
 				Tuple<Element> newTerm = varElim(t,problem);
 				problem.add(0, newTerm);
-				prob.sigma.add(new Tuple<Element>(t.getFirst(),newTerm.getFirst()));
+				unif.prob.sigma.add(new Tuple<Element>(t.getFirst(),newTerm.getFirst()));
 				continue;
 			}
 
@@ -247,58 +249,91 @@ public final class Algorithms {
 	 * @param proxR This is the proximity relation matrix.
 	 * @return True, if the constraints can be simplified and otherwise false.
 	 */
-	public static boolean constraintSimplification(Problem prob,Matrix proxR) {
+	public static boolean constraintSimplification(Problem prob,Matrix proxR, float lambda) {
 
 		ArrayList<Tuple<Element>> constraintProblem = prob.c;
 		Tuple<Element> t;
-
+		boolean error = false;
+		
 		while(!constraintProblem.isEmpty()) {
 			t=constraintProblem.get(0);
 
-			// FFS
-			if((t.getFirst() instanceof Function) && (t.getSecond() instanceof Function)) {
-				if(ffs((Function)t.getFirst(),(Function)t.getSecond(),proxR,prob.lambda)) {
-					constraintProblem.remove(0);
-					continue;
-				}
-				else {
-					return false;
-				}				
-			}
-
-			//NFS
-			if((t.getFirst() instanceof Name) && (t.getSecond() instanceof Function)) {
-				//TODO NFS
-			}
-
-			if((t.getFirst() instanceof Function) && (t.getSecond() instanceof Name)) {
-				//TODO FSN
-			}
-
 			// NN1 and NN2
-			if((t.getFirst() instanceof Name) && (t.getSecond() instanceof Name)) {
-				if(isMemberOfPsi((Name)t.getFirst(),prob.psi)) {
-					if(nn1((Name)t.getFirst(),(Name)t.getSecond(),prob.psi, prob.branch)) {
+			if((t.getFirst().isName()) && (t.getSecond().isName())) {
+				if(prob.psi.containsKey(t.getFirst().getName())) {
+					if(nn1(t.getFirst(),t.getSecond(),prob, proxR, lambda)) {
 						constraintProblem.remove(0);
 						continue;
 					}
 					else {
-						return false;
+						error = true;
+						break;
 					}
 				}
 				else {
-					if(nn1((Name)t.getSecond(),(Name)t.getFirst(),prob.psi, prob.branch)) {
+					if(nn1(t.getSecond(),t.getFirst(),prob, proxR, lambda)) {
 						constraintProblem.remove(0);
 						continue;						
 					}
 					else {
-						return false;
+						error = true;
+						break;
 					}
+				}
+			}
+			
+			// FFS
+			if((t.getFirst() instanceof Function) && (t.getSecond() instanceof Function)) {
+				if(ffs((Function)t.getFirst(),(Function)t.getSecond(),proxR,lambda)) {
+					constraintProblem.remove(0);
+					continue;
+				}
+				else {
+					error = true;
+					break;
+				}				
+			}
+
+			//NFS
+			if(t.getFirst().isName() && (t.getSecond() instanceof Function)) {
+				if(nfs(t.getFirst(),(Function)t.getSecond(),prob.psi,proxR,lambda)) {
+					constraintProblem.remove(0);
+				}
+				else {
+					error = true;
+					break;
+				}
+			}
+
+			//FSN
+			if((t.getFirst() instanceof Function) && t.getSecond().isName()) {
+				if(nfs(t.getSecond(),(Function)t.getFirst(),prob.psi,proxR,lambda)) {
+					constraintProblem.remove(0);
+				}
+				else {
+					error = true;
+					break;
 				}
 			}
 		}
 
-		return true;
+		if(error) {
+			if(prob.branch != null) {
+				prob.p = prob.branch.p;
+				prob.c = prob.branch.c;
+				prob.sigma = prob.branch.sigma;
+				prob.psi = prob.branch.psi;
+				prob.branch = prob.branch.branch;
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		else {
+			return true;	
+		}
+		
 	}
 
 	/**
@@ -307,11 +342,11 @@ public final class Algorithms {
 	 * @param f2 function 2
 	 * @param r Relation matrix
 	 * @param lambda lower bound of relations
-	 * @return Returns true if method worked successful, false otherwise.
+	 * @return  true if method worked successful, false otherwise.
 	 */ 
 	private static boolean ffs(Function f1, Function f2, Matrix r, float lambda) {
 
-		float relation = r.getRef(new Tuple<>(f1,f2));
+		float relation = r.getRelation(f1, f2);
 
 		if(relation >= lambda) {
 			return true;
@@ -326,11 +361,32 @@ public final class Algorithms {
 	 * @param n1 name 1
 	 * @param f2 function 2
 	 * @param psi name class mapping
-	 * @return Returns true if method worked successful, false otherwise.
+	 * @param r relation matrix
+	 * @return  true if method worked successful, false otherwise.
 	 */
-	private static boolean nfs(Name n1, Function f2, ArrayList<Tuple<Element>> psi) {
+	private static boolean nfs(Element n1, Function f2, Map<String,ArrayList<Element>> psi, Matrix r, float lambda) {
 
-		//TODO
+		ArrayList<Element> list;
+		
+		if(psi.containsKey(n1.getName())) {
+			ArrayList<Element> old = psi.get(n1.getName());			
+			list = r.getRelations(f2,lambda);
+			
+			list = intersection(old,list);
+			
+			if(list.isEmpty()) {
+				return false;
+			}
+			else {
+				psi.put(n1.getName(), list);
+				return true;
+			}
+			
+		}
+		else {
+			list = r.getRelations(f2,lambda);
+			psi.put(n1.getName(), list);	
+		}
 
 		return false;
 	}
@@ -339,14 +395,40 @@ public final class Algorithms {
 	 * This method describes the rule (NN1).
 	 * @param n1 name 1
 	 * @param n2 name 2
-	 * @param psi name class mapping
-	 * @param branch Branch if a splitting happens.
-	 * @return Returns true if method worked successful, false otherwise.
+	 * @param cur current problem
+	 * @param r relation matrix
+	 * @param lambda lambda of the relation
+	 * @return  true if method worked successful, false otherwise.
 	 */
-	private static boolean nn1(Name n1, Name n2, ArrayList<Tuple<Element>> psi, Problem branch) {
+	private static boolean nn1(Element n1, Element n2, Problem cur, Matrix r, float lambda) {
 
-		if(isMemberOfPsi(n1,psi)) {
-			//TODO
+		if(cur.psi.containsKey(n1.getName())) { //psi.containsKey(n1.getName()) is same a isMemberPsi
+			if(cur.psi.get(n1.getName()).size() > 1) {
+				//branchen
+				
+				Problem nextBranch = cur.branch;
+				cur.branch = new Problem();
+				cur.branch.branch=nextBranch;
+				
+				cur.branch.c = cur.c;
+				cur.branch.p = cur.p;
+				cur.branch.sigma = cur.sigma;
+				
+				cur.branch.psi = cur.psi;
+				
+				cur.psi.put(n1.getName(), new ArrayList<Element>());
+				cur.psi.get(n1.getName()).add(cur.branch.psi.get(n1.getName()).get(0));
+				cur.branch.psi.get(n1.getName()).remove(0);
+				
+				if(!constraintSimplification(cur.branch,r,lambda)) {
+					cur.branch = null;
+				}
+				
+			}
+			
+			nfs(n2,new Function(n1.getName()),cur.psi,r,lambda);
+			
+			
 			return true;
 		}
 		else {
@@ -355,19 +437,25 @@ public final class Algorithms {
 	}
 
 	/**
-	 * This method checks if name is member of psi.
-	 * @param n name to check
-	 * @param psi name class mapping
-	 * @return Returns true if name is member of psi.
+	 * Generates the intersection of two lists.
+	 * @param list1 the first list.
+	 * @param list2 the second list.
+	 * @return the intersection list of list1 and list2.
 	 */
-	private static boolean isMemberOfPsi(Name n, ArrayList<Tuple<Element>> psi) {
-
-		for(Tuple<Element> t : psi) {
-			if(t.getFirst().getName() == n.getName()) {
-				return true;
+	private static ArrayList<Element> intersection(ArrayList<Element> list1, ArrayList<Element> list2){
+		ArrayList<Element> ret = new ArrayList<Element>();
+		
+		for(Element m : list1) {
+			for(Element n : list2) {
+				
+				if(m.getName() == n.getName()) {
+					ret.add(m);
+				}
+				
 			}
 		}
-		return false;
+		
+		return ret;
 	}
 
 }
