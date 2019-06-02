@@ -11,6 +11,7 @@ import elements.Function;
 //import elements.Name;
 import elements.Variable;
 import tool.Matrix;
+import tool.PCSSet;
 import tool.Tuple;
 
 /**
@@ -38,7 +39,7 @@ public final class Algorithms {
 	 * @return {@code boolean} false, if there is no unifier.
 	 */
 	public static boolean preUnification(UnificationProblem unif) {
-		ArrayList<Tuple<Element>> problem = unif.getP();
+		PCSSet problem = unif.getP();
 
 		while ((problem.size())!=0) {
 			Tuple<Element> t = problem.get(0);
@@ -157,7 +158,8 @@ public final class Algorithms {
 
 		ArrayList<Tuple<Element>> probList = new ArrayList<Tuple<Element>>();
 		for(int i=0;i<f.arity();i++) {
-			Tuple<Element> p = new Tuple<Element>(f.getArguments().get(i),s.getArguments().get(i));
+			Tuple<Element> p = new Tuple<Element>(f.getArguments().get(i),
+					s.getArguments().get(i));
 			probList.add(p);
 		}
 		ArrayList<Tuple<Element>> conList = new ArrayList<Tuple<Element>>();
@@ -174,7 +176,7 @@ public final class Algorithms {
 	 * @return The renamed variable and term.
 	 */
 	private static Tuple<Element> varElim
-	(Tuple<Element> t, ArrayList<Tuple<Element>> problem) {
+	(Tuple<Element> t, PCSSet problem) {
 		Element first = Element.rename(t.getSecond());
 		for(int i=0;i<problem.size();i++) {
 			problem.get(i).setFirst
@@ -239,10 +241,11 @@ public final class Algorithms {
 	/**
 	 * The rule (VO)
 	 * @param var the tuple to unify.
-	 * @param u the unification problem.
+	 * @param problem the unification problem.
 	 */
-	private static void varsOnly(Tuple<Variable> var, ArrayList<Tuple<Element>> u) {
-		for(Tuple<Element> t:u) {
+	private static void varsOnly(Tuple<Variable> var, PCSSet problem) {
+		for(int i=0;i<problem.size();i++) {
+			Tuple<Element> t=problem.get(i);
 			Variable f;
 			if((f= (Variable)t.getFirst()).equals(var.getFirst()))
 				f.mapsto(var.getSecond());
@@ -268,7 +271,7 @@ public final class Algorithms {
 	 */
 	public static boolean constraintSimplification(Problem prob,Matrix proxR, float lambda) {
 
-		ArrayList<Tuple<Element>> constraintProblem = prob.c;
+		PCSSet constraintProblem = prob.c;
 		Tuple<Element> t;
 		boolean error = false;
 		

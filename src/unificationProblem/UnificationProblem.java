@@ -9,6 +9,7 @@ import java.util.Map;
 import elements.Element;
 import elements.Function;
 import tool.Matrix;
+import tool.PCSSet;
 import tool.Tuple;
 
 import unificationProblem.Algorithms;
@@ -287,12 +288,8 @@ public class UnificationProblem {
 			case 1:
 				ret = this.toString();
 				ret += System.lineSeparator();
-				ret += "sigma = {";				
-				for(Tuple<Element> t : this.prob.sigma) {
-					ret+=t.getFirst().toFullString() + " -> ";
-					ret+=t.getSecond().toFullString() + ",";
-				}
-				ret = ret.substring(0,ret.length()-1)+"}";
+				ret += "sigma = ";				
+				ret += prob.sigma.toString();
 				
 				break;
 			case 2:
@@ -314,13 +311,9 @@ public class UnificationProblem {
 					i++;
 				}while(p.branch != null);
 				
-				ret += "sigma = {";
+				ret += "sigma = ";
 				
-				for(Tuple<Element> t : this.prob.sigma) {
-					ret+=t.getFirst().toString() + " -> ";
-					ret+=t.getSecond().toString() + ",";
-				}
-				ret = ret.substring(0,ret.length()-1)+"}";
+				ret += p.sigma.toString();
 				
 				break;
 			default:
@@ -334,7 +327,7 @@ public class UnificationProblem {
 	 * Return the set P.
 	 * @return the set P.
 	 */
-	public ArrayList<Tuple<Element>> getP() {
+	public PCSSet getP() {
 		return prob.p;
 	}
 
@@ -342,7 +335,7 @@ public class UnificationProblem {
 	 * Set the set P.
 	 * @param p the set P to set.
 	 */
-	public void setP(ArrayList<Tuple<Element>> p) {
+	public void setP(PCSSet p) {
 		this.prob.p = p;
 	}
 

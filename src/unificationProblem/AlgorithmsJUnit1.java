@@ -5,16 +5,9 @@ package unificationProblem;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import elements.Element;
-import tool.Tuple;
-
-import static org.easymock.EasyMock.*;
 
 
 /**
@@ -25,15 +18,13 @@ import static org.easymock.EasyMock.*;
 class AlgorithmsJUnit1 {
 
 	UnificationProblem unif;
-	ArrayList<Tuple<Element>> problem;
+
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@BeforeEach
 	void setUp() throws Exception {
-		String s="p(x,y,x)";
-		String t="q(f(a),g(d),y)";
-		unif= InputParser.parse(s+" =? "+t).get(0);
+
 	}
 
 	/**
@@ -41,19 +32,46 @@ class AlgorithmsJUnit1 {
 	 */
 	@AfterEach
 	void tearDown() throws Exception {
+		System.out.println("After:");
+		System.out.println("P = " + unif.prob.p.toString());
+		System.out.println("C = " + unif.prob.c.toString());
+		System.out.println("s = " + unif.prob.sigma.toString());
 	}
 
 	/**
 	 * Test method for {@link unificationProblem.Algorithms#preUnification(unificationProblem.UnificationProblem)}.
 	 */
 	@Test
-	void testPreUnification() {
+	void testPreUnification1() {
+		String s="p(x,y,x)";
+		String t="q(f(a),g(d),y)";
+		unif= InputParser.parse(s+" =? "+t).get(0);
+		
+		System.out.println("Before:");
+		System.out.println("P = " + unif.prob.p.toString());
+		System.out.println("C = " + unif.prob.c.toString());
+		System.out.println("s = " + unif.prob.sigma.toString());
+		
 		boolean result=Algorithms.preUnification(unif);
-		System.out.println(unif.prob.p.toString());
-		System.out.println(unif.prob.c.toString());
-		System.out.println(unif.prob.sigma.toString());
 		assertTrue(result);
 		
 	}
-
+	/**
+	 * Test method for {@link unificationProblem.Algorithms#preUnification(unificationProblem.UnificationProblem)}.
+	 */
+	@Test
+	void testPreUnification2() {
+		String s="p(x,x)";
+		String t="q(f(y,y),f(a,c))";
+		unif= InputParser.parse(s+" =? "+t).get(0);
+		
+		System.out.println("Before:");
+		System.out.println("P = " + unif.prob.p.toString());
+		System.out.println("C = " + unif.prob.c.toString());
+		System.out.println("s = " + unif.prob.sigma.toString());
+		
+		boolean result=Algorithms.preUnification(unif);
+		assertTrue(result);
+		
+	}
 }

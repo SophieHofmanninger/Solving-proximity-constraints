@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import elements.Element;
+import tool.PCSSet;
 import tool.Tuple;
 
 /**
@@ -21,9 +22,9 @@ import tool.Tuple;
  */
 public class Problem {
 
-	public ArrayList<Tuple<Element>> p;
-	public ArrayList<Tuple<Element>> c;
-	public ArrayList<Tuple<Element>> sigma;
+	public PCSSet p;
+	public PCSSet c;
+	public PCSSet sigma;
 	public Map<String,ArrayList<Element>> psi;
 
 	public Problem branch = null;
@@ -32,9 +33,9 @@ public class Problem {
 	 * Default Constructor.
 	 */
 	public Problem() {
-		p = new ArrayList<Tuple<Element>>();
-		c= new ArrayList<Tuple<Element>>();
-		sigma=new ArrayList<Tuple<Element>>();
+		p = new PCSSet('p');
+		c = new PCSSet('c');
+		sigma=new PCSSet('s');
 		psi=new HashMap<String,ArrayList<Element>>();
 	}
 	
@@ -43,10 +44,10 @@ public class Problem {
 	 * @param first The first Tuple to add to P.
 	 */
 	public Problem(Tuple<Element> first) {
-		p = new ArrayList<Tuple<Element>>();
+		p = new PCSSet('p');
 		p.add(first);
-		c= new ArrayList<Tuple<Element>>();
-		sigma=new ArrayList<Tuple<Element>>();
+		c= new PCSSet('c');
+		sigma=new PCSSet('s');
 		psi=new HashMap<String,ArrayList<Element>>();
 	}
 }

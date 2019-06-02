@@ -20,6 +20,8 @@ class InputParserTest {
 
 	String s;
 	String t;
+	String u;
+	String v;
 	
 	/**
 	 * @throws java.lang.Exception ignored 
@@ -28,6 +30,8 @@ class InputParserTest {
 	void setUp() throws Exception {
 		s="p(x,y,x)";
 		t="q(f(a),g(d),y)";
+		u="p(x,x)";
+		v="q(f(y,y),f(a,c))";
 	}
 
 	/**
@@ -42,15 +46,32 @@ class InputParserTest {
 	 * Test method for {@link unificationProblem.InputParser#parse(java.lang.String)}.
 	 */
 	@Test
-	void testParseNormal1() {
+	void testParseNormal1_1() {
 		
 		String test1 =s+" =? "+t;
 		
 		
 		UnificationProblem unif1 = InputParser.parse(test1).get(0);
 		assertEquals(6,unif1.getNumberOfFunctions());
-		assertEquals(s,unif1.getLeft().toString());
+		assertEquals(s,unif1.getLeft().toFullString());
 		assertEquals(3,unif1.getNumberOfOpenCases());
+				
+	}
+	
+	/**
+	 * Test normal input with "=?"
+	 * Test method for {@link unificationProblem.InputParser#parse(java.lang.String)}.
+	 */
+	@Test
+	void testParseNormal1_2() {
+		
+		String test1 =u+" =? "+v;
+		
+		
+		UnificationProblem unif1 = InputParser.parse(test1).get(0);
+		assertEquals(5,unif1.getNumberOfFunctions());
+		assertEquals(s,unif1.getLeft().toFullString());
+		assertEquals(1,unif1.getNumberOfOpenCases());
 				
 	}
 	
@@ -59,7 +80,7 @@ class InputParserTest {
 	 * Test method for {@link unificationProblem.InputParser#parse(java.lang.String)}.
 	 */
 	@Test
-	void testParseNormal2() {
+	void testParseNormal2_1() {
 		
 		String test2=s+" = "+t;
 		UnificationProblem unif2 = InputParser.parse(test2).get(0);
