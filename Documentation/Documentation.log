@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.5.14)  29 MAY 2019 15:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.5.14)  2 JUN 2019 23:59
 entering extended mode
 **./Documentation.tex
 (Documentation.tex
@@ -1587,122 +1587,77 @@ Underfull \hbox (badness 10000) in paragraph at lines 134--139
  []
 
 [3]
-<SystemModel.pdf, id=40, 845.07718pt x 598.15468pt>
-File: SystemModel.pdf Graphic file (type pdf)
-<use SystemModel.pdf>
-Package pdftex.def Info: SystemModel.pdf  used on input line 159.
-(pdftex.def)             Requested size: 845.07512pt x 598.15321pt.
-File: SystemModel.pdf Graphic file (type pdf)
-<use SystemModel.pdf>
-Package pdftex.def Info: SystemModel.pdf  used on input line 159.
-(pdftex.def)             Requested size: 845.07512pt x 598.15321pt.
-<SystemModel.pdf, id=43, page=1, 845.07718pt x 598.15468pt>
-File: SystemModel.pdf Graphic file (type pdf)
-<use SystemModel.pdf, page 1>
-Package pdftex.def Info: SystemModel.pdf , page1 used on input line 159.
-(pdftex.def)             Requested size: 845.07512pt x 598.15321pt.
-File: SystemModel.pdf Graphic file (type pdf)
-<use SystemModel.pdf, page 1>
-Package pdftex.def Info: SystemModel.pdf , page1 used on input line 159.
-(pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
- [4]
-File: SystemModel.pdf Graphic file (type pdf)
-<use SystemModel.pdf, page 1>
-Package pdftex.def Info: SystemModel.pdf , page1 used on input line 159.
-(pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
-File: SystemModel.pdf Graphic file (type pdf)
-<use SystemModel.pdf, page 1>
-Package pdftex.def Info: SystemModel.pdf , page1 used on input line 159.
-(pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
-File: SystemModel.pdf Graphic file (type pdf)
-<use SystemModel.pdf, page 1>
-Package pdftex.def Info: SystemModel.pdf , page1 used on input line 159.
-(pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
- [5 <./SystemModel.pdf
+<ToolsModel.png, id=40, 896.34875pt x 665.48625pt>
+File: ToolsModel.png Graphic file (type png)
+<use ToolsModel.png>
+Package pdftex.def Info: ToolsModel.png  used on input line 159.
+(pdftex.def)             Requested size: 448.17328pt x 332.74231pt.
+ [4] [5 <./ToolsModel.png (PNG copy)>]
+<ElementsModel.png, id=47, 919.435pt x 853.1875pt>
+File: ElementsModel.png Graphic file (type png)
+<use ElementsModel.png>
+Package pdftex.def Info: ElementsModel.png  used on input line 161.
+(pdftex.def)             Requested size: 459.71637pt x 426.59271pt.
 
-pdfTeX warning: pdflatex.exe (file ./SystemModel.pdf): PDF inclusion: invalid other resource which is no dict (key 'Proc
-Sets', type <array>); ignored.
->]
-<SystemModel.pdf, id=69, page=2, 845.07718pt x 598.15468pt>
-File: SystemModel.pdf Graphic file (type pdf)
-<use SystemModel.pdf, page 2>
-Package pdftex.def Info: SystemModel.pdf , page2 used on input line 159.
-(pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
-File: SystemModel.pdf Graphic file (type pdf)
-<use SystemModel.pdf, page 2>
-Package pdftex.def Info: SystemModel.pdf , page2 used on input line 159.
-(pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
-File: SystemModel.pdf Graphic file (type pdf)
-<use SystemModel.pdf, page 2>
-Package pdftex.def Info: SystemModel.pdf , page2 used on input line 159.
-(pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
- [6 <./SystemModel.pdf
+Overfull \hbox (19.47226pt too wide) in paragraph at lines 161--162
+[][] 
+ []
 
-pdfTeX warning: pdflatex.exe (file ./SystemModel.pdf): PDF inclusion: invalid other resource which is no dict (key 'Proc
-Sets', type <array>); ignored.
->]
-<SystemModel.pdf, id=78, page=3, 845.07718pt x 598.15468pt>
-File: SystemModel.pdf Graphic file (type pdf)
-<use SystemModel.pdf, page 3>
-Package pdftex.def Info: SystemModel.pdf , page3 used on input line 159.
-(pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
-File: SystemModel.pdf Graphic file (type pdf)
-<use SystemModel.pdf, page 3>
-Package pdftex.def Info: SystemModel.pdf , page3 used on input line 159.
-(pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
-File: SystemModel.pdf Graphic file (type pdf)
-<use SystemModel.pdf, page 3>
-Package pdftex.def Info: SystemModel.pdf , page3 used on input line 159.
-(pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
- [7 <./SystemModel.pdf
+[6 <./ElementsModel.png (PNG copy)>]
+<UnificationProblemModel.png, id=51, 1003.75pt x 1141.26375pt>
+File: UnificationProblemModel.png Graphic file (type png)
+<use UnificationProblemModel.png>
+Package pdftex.def Info: UnificationProblemModel.png  used on input line 163.
+(pdftex.def)             Requested size: 501.87378pt x 570.63048pt.
 
-pdfTeX warning: pdflatex.exe (file ./SystemModel.pdf): PDF inclusion: invalid other resource which is no dict (key 'Proc
-Sets', type <array>); ignored.
->]
-<WorkFlow.pdf, id=83, 845.1575pt x 597.23125pt>
+Overfull \hbox (61.62967pt too wide) in paragraph at lines 163--164
+[][] 
+ []
+
+<WorkFlow.pdf, id=52, 845.1575pt x 597.23125pt>
 File: WorkFlow.pdf Graphic file (type pdf)
 <use WorkFlow.pdf>
-Package pdftex.def Info: WorkFlow.pdf  used on input line 164.
+Package pdftex.def Info: WorkFlow.pdf  used on input line 167.
 (pdftex.def)             Requested size: 845.15544pt x 597.22978pt.
 File: WorkFlow.pdf Graphic file (type pdf)
 <use WorkFlow.pdf>
-Package pdftex.def Info: WorkFlow.pdf  used on input line 164.
+Package pdftex.def Info: WorkFlow.pdf  used on input line 167.
 (pdftex.def)             Requested size: 845.15544pt x 597.22978pt.
-<WorkFlow.pdf, id=86, page=1, 845.1575pt x 597.23125pt>
+<WorkFlow.pdf, id=55, page=1, 845.1575pt x 597.23125pt>
 File: WorkFlow.pdf Graphic file (type pdf)
 <use WorkFlow.pdf, page 1>
-Package pdftex.def Info: WorkFlow.pdf , page1 used on input line 164.
+Package pdftex.def Info: WorkFlow.pdf , page1 used on input line 167.
 (pdftex.def)             Requested size: 845.15544pt x 597.22978pt.
 File: WorkFlow.pdf Graphic file (type pdf)
 <use WorkFlow.pdf, page 1>
-Package pdftex.def Info: WorkFlow.pdf , page1 used on input line 164.
+Package pdftex.def Info: WorkFlow.pdf , page1 used on input line 167.
 (pdftex.def)             Requested size: 597.61578pt x 422.30568pt.
- [8]
+[7 <./UnificationProblemModel.png (PNG copy)>]
 File: WorkFlow.pdf Graphic file (type pdf)
 <use WorkFlow.pdf, page 1>
-Package pdftex.def Info: WorkFlow.pdf , page1 used on input line 164.
-(pdftex.def)             Requested size: 597.61578pt x 422.30568pt.
-File: WorkFlow.pdf Graphic file (type pdf)
-<use WorkFlow.pdf, page 1>
-Package pdftex.def Info: WorkFlow.pdf , page1 used on input line 164.
+Package pdftex.def Info: WorkFlow.pdf , page1 used on input line 167.
 (pdftex.def)             Requested size: 597.61578pt x 422.30568pt.
 File: WorkFlow.pdf Graphic file (type pdf)
 <use WorkFlow.pdf, page 1>
-Package pdftex.def Info: WorkFlow.pdf , page1 used on input line 164.
+Package pdftex.def Info: WorkFlow.pdf , page1 used on input line 167.
 (pdftex.def)             Requested size: 597.61578pt x 422.30568pt.
- [9 <./WorkFlow.pdf
+File: WorkFlow.pdf Graphic file (type pdf)
+<use WorkFlow.pdf, page 1>
+Package pdftex.def Info: WorkFlow.pdf , page1 used on input line 167.
+(pdftex.def)             Requested size: 597.61578pt x 422.30568pt.
+ [8 <./WorkFlow.pdf
 
 pdfTeX warning: pdflatex.exe (file ./WorkFlow.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSet
 s', type <array>); ignored.
 >] (Documentation.aux) ) 
 Here is how much of TeX's memory you used:
- 28928 strings out of 492895
- 541653 string characters out of 3133485
+ 28930 strings out of 492895
+ 541595 string characters out of 3133485
  592624 words of memory out of 3000000
- 32377 multiletter control sequences out of 15000+200000
+ 32376 multiletter control sequences out of 15000+200000
  616911 words of font info for 84 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 69i,18n,65p,913b,528s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 69i,18n,65p,913b,522s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/xcharter/xch_tuu2ww.enc}{C:/Program Files/MiKTeX 2.
 9/fonts/enc/dvips/xcharter/xch_a3psji.enc}{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/xcharter/xch_q7u3cc.enc}<C:/Progr
 am Files/MiKTeX 2.9/fonts/type1/public/xcharter/XCharter-Bold.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/xchart
@@ -1713,9 +1668,9 @@ msfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
 fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program
  Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/sym
 bols/msbm10.pfb>
-Output written on Documentation.pdf (9 pages, 432336 bytes).
+Output written on Documentation.pdf (8 pages, 482369 bytes).
 PDF statistics:
- 172 PDF objects out of 1000 (max. 8388607)
+ 142 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 83 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 68 words of extra memory for PDF output out of 10000 (max. 10000000)
 

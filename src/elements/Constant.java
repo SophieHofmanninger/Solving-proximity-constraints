@@ -45,5 +45,15 @@ public class Constant extends Function{
 		return new Constant(this.getName(),this.isName());
 	}
 	
+	/* (non-Javadoc)
+	 * @see elements.Element#rename()
+	 */
+	@Override
+	public Element rename() {
+		String newName=getNumberOfNames()+"N";
+		Constant ret=new Constant(newName,true);
+		setNumberOfNames(getNumberOfNames() + 1);
+		return ret;
+	}
 	
 }

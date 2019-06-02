@@ -136,5 +136,19 @@ public class Function extends Element {
 		return this.getName();
 	}
 
+	/* (non-Javadoc)
+	 * @see elements.Element#rename()
+	 */
+	@Override
+	public Element rename() {
+		String newName=getNumberOfNames()+"N";
+		Function ret=new Function(newName,true);
+		setNumberOfNames(getNumberOfNames() + 1);
+		for(int i=0;i<this.arity();i++) {
+			ret.addArgument(this.getArgument(i).rename());
+		}
+		return ret;
+	}
+
 
 }

@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
  * @author Jan-Michael Holzinger &amp; Sophie Hofmanninger
  * @version 1.0
  */
-class InputParserTest {
+class InputParserJUnit {
 
 	String s;
 	String t;

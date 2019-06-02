@@ -12,7 +12,7 @@ import java.util.List;
 import elements.*;
 
 /**
- * Proximity Matrix class. Representation of a symmetric matrix of size n>=1,
+ * Proximity Matrix class. Representation of a symmetric matrix of size n&gt;=1,
  * where only the values above the main diagonal are stored and are different
  * from 1. All values must be in [0,1].
  * 

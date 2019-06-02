@@ -34,8 +34,8 @@ public class Variable extends Element{
 	public static Element replace(Element e) {
 		return e.copy();
 	}
-	
-	
+
+
 	/**
 	 * Unification of 2 variables
 	 * @param v the element to unify with.
@@ -47,7 +47,6 @@ public class Variable extends Element{
 
 	/**
 	 * This is the default constructor for the class Variable.
-	 * @param name The name.
 	 */
 	public Variable() {	}
 
@@ -85,5 +84,18 @@ public class Variable extends Element{
 		return this.toString();
 	}
 
-	
+	/* (non-Javadoc)
+	 * @see elements.Element#rename()
+	 */
+	@Override
+	public Element rename() {
+		String newName=getNumberOfNames()+"N";
+		Variable ret = new Variable(newName,true);
+		setNumberOfNames(getNumberOfNames() + 1);
+		return ret;
+	}
+
+
+
+
 }

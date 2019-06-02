@@ -197,7 +197,7 @@ public final class Algorithms {
 	 */
 	private static Tuple<Element> varElim
 	(Tuple<Element> t, PCSSet problem) {
-		Element first = Element.rename(t.getSecond());
+		Element first = (t.getSecond().rename());
 		for(int i=0;i<problem.size();i++) {
 			problem.get(i).setFirst
 			(tryReplace(problem.get(i).getFirst(),t.getFirst(),first));

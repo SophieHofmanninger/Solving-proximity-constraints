@@ -16,42 +16,15 @@ public abstract class Element {
 
 	/**
 	 * Creates a copy of an element.
-	 * @param e the element to copy.
 	 * @return the copy.
 	 */
 	public abstract Element copy();
 
 	/**
 	 * Creates an element with a new name from an element.
-	 * @param e the element that is renamed.
 	 * @return A new name.
 	 */
-	public static Element rename(Element e) {
-
-		// Intentionally Strings begin with number.
-		String newName=numberOfNames+"N";
-		if (e instanceof Variable) {
-			Variable ret = new Variable(newName,true);
-			numberOfNames++;
-			return ret;
-		}else {
-			if(e instanceof Constant) {
-				Constant ret=new Constant(newName,true);
-				numberOfNames++;
-				return ret;
-			}else {
-
-
-				Function ret=new Function(newName,true);
-				numberOfNames++;
-				Function f = (Function)e;
-				for(int i=0;i<f.arity();i++) {
-					ret.addArgument(rename(f.getArgument(i)));
-				}
-				return ret;
-			}
-		}
-	}
+	public abstract Element rename();
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
@@ -134,8 +107,21 @@ public abstract class Element {
 	 * Resets the number of names used.
 	 */
 	public static void reset() {
-		numberOfNames=1;
-		
+		setNumberOfNames(1);
+	}
+
+	/**
+	 * @return the numberOfNames
+	 */
+	protected static int getNumberOfNames() {
+		return numberOfNames;
+	}
+
+	/**
+	 * @param numberOfNames the numberOfNames to set
+	 */
+	protected static void setNumberOfNames(int numberOfNames) {
+		Element.numberOfNames = numberOfNames;
 	}
 
 }

@@ -1,0 +1,6 @@
+WARNING - 22:58:21: Creating types 
+WARNING - 22:58:21: Initializing types
+WARNING - 22:58:22: Generic post-process : Creating usages and associations
+WARNING - 22:58:22: Generic post-process : Creating activities
+WARNING - 22:58:23: Saving uml file /resource/ConstraintUnifier/ConstraintUnifier.uml
+WARNING - 22:58:23: Uml file /resource/ConstraintUnifier/ConstraintUnifier.uml saved

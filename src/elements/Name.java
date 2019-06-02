@@ -43,4 +43,13 @@ public class Name extends Element{
 		return this.toString();
 	}
 
+	/* (non-Javadoc)
+	 * @see elements.Element#rename()
+	 */
+	@Override
+	public Element rename() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

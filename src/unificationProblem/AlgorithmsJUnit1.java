@@ -23,7 +23,7 @@ class AlgorithmsJUnit1 {
 	UnificationProblem unif;
 
 	/**
-	 * @throws java.lang.Exception
+	 * @throws java.lang.Exception ignored
 	 */
 	@BeforeEach
 	void setUp() throws Exception {
@@ -31,7 +31,7 @@ class AlgorithmsJUnit1 {
 	}
 
 	/**
-	 * @throws java.lang.Exception
+	 * @throws java.lang.Exception ignored.
 	 */
 	@AfterEach
 	void tearDown() throws Exception {
@@ -50,15 +50,15 @@ class AlgorithmsJUnit1 {
 		String s="p(x,y,x)";
 		String t="q(f(a),g(d),y)";
 		unif= InputParser.parse(s+" =? "+t).get(0);
-		
+
 		System.out.println("Before:");
 		System.out.println("P = " + unif.prob.getP().toString());
 		System.out.println("C = " + unif.prob.getC().toString());
 		System.out.println("s = " + unif.prob.getSigma().toString());
-		
+
 		boolean result=Algorithms.preUnification(unif);
 		assertTrue(result);
-		
+
 	}
 	/**
 	 * Test method for {@link unificationProblem.Algorithms#preUnification(unificationProblem.UnificationProblem)}.
@@ -69,17 +69,17 @@ class AlgorithmsJUnit1 {
 		String s="p(x,x)";
 		String t="q(f(y,y),f(a,c))";
 		unif= InputParser.parse(s+" =? "+t).get(0);
-		
+
 		System.out.println("Before:");
 		System.out.println("P = " + unif.prob.getP().toString());
 		System.out.println("C = " + unif.prob.getC().toString());
 		System.out.println("s = " + unif.prob.getSigma().toString());
-		
+
 		boolean result=Algorithms.preUnification(unif);
 		assertTrue(result);
-		
+
 	}
-	
+
 	/**
 	 * Test method for {@link unificationProblem.Algorithms#preUnification(unificationProblem.UnificationProblem)}.
 	 * Tests FAIL from (Occ).
@@ -89,17 +89,17 @@ class AlgorithmsJUnit1 {
 		String s="p(f(x))";
 		String t="q(x)";
 		unif= InputParser.parse(s+" =? "+t).get(0);
-		
+
 		System.out.println("Before:");
 		System.out.println("P = " + unif.prob.getP().toString());
 		System.out.println("C = " + unif.prob.getC().toString());
 		System.out.println("s = " + unif.prob.getSigma().toString());
-		
+
 		boolean result=Algorithms.preUnification(unif);
 		assertFalse(result);
-		
+
 	}
-	
+
 	/**
 	 * Test method for {@link unificationProblem.Algorithms#preUnification(unificationProblem.UnificationProblem)}.
 	 * Tests FAIL from (Cla).
@@ -109,20 +109,21 @@ class AlgorithmsJUnit1 {
 		String s="p(f(x))";
 		String t="q(a,y)";
 		unif= InputParser.parse(s+" =? "+t).get(0);
-		
+
 		System.out.println("Before:");
 		System.out.println("P = " + unif.prob.getP().toString());
 		System.out.println("C = " + unif.prob.getC().toString());
 		System.out.println("s = " + unif.prob.getSigma().toString());
-		
+
 		boolean result=Algorithms.preUnification(unif);
 		assertFalse(result);
-		
+
 	}
-	
+
+
+
 	/**
-	 * Test method for {@link unificationProblem.
-	 * Algorithms#preUnification(unificationProblem.UnificationProblem, PrintStream)}.
+	 * Test method for {@link unificationProblem.Algorithms#preUnification(unificationProblem.UnificationProblem, java.lang.StringBuffer)}.
 	 * @throws FileNotFoundException ignored
 	 */
 	@Test
@@ -131,7 +132,7 @@ class AlgorithmsJUnit1 {
 		String t="q(f(a),g(d),y)";
 		unif= InputParser.parse(s+" =? "+t).get(0);
 		StringBuffer step=new StringBuffer();
-		
+
 		System.out.println("Before:");
 		System.out.println("P = " + unif.prob.getP().toString());
 		System.out.println("C = " + unif.prob.getC().toString());
@@ -143,5 +144,5 @@ class AlgorithmsJUnit1 {
 		assertTrue(result);
 
 	}
-	
+
 }
