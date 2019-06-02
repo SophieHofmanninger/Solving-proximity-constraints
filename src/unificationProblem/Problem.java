@@ -1,6 +1,7 @@
 package unificationProblem;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import elements.Element;
 import tool.Tuple;
@@ -26,4 +27,12 @@ public class Problem {
 	public Map<String,ArrayList<Element>> psi;
 
 	public Problem branch = null;
+	
+	public Problem(Tuple<Element> first) {
+		p = new ArrayList<Tuple<Element>>();
+		p.add(first);
+		c= new ArrayList<Tuple<Element>>();
+		sigma=new ArrayList<Tuple<Element>>();
+		psi=new HashMap<String,ArrayList<Element>>();
+	}
 }

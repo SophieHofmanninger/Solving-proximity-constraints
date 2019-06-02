@@ -41,8 +41,8 @@ public class UnificationProblem {
 	public float lambda=1;
 	
 	//Solving status
-	private int status=0; //0: nothing done, 1: pre-unification succesfull, 2: constaint Simplification succesfull
-						  //-1: pre-unification failed, -2: constaint Simplification failed
+	private int status=0; //0: nothing done, 1: pre-unification successful, 2: constraint Simplification successful
+						  //-1: pre-unification failed, -2: constraint Simplification failed
 
 	/**
 	 * Constructor for a UnificationProblem.
@@ -53,12 +53,7 @@ public class UnificationProblem {
 		this.setLeft(left);
 		this.setRight(right);
 		openCases = new ArrayList<Tuple<Function>>();
-		prob = new Problem();
-		prob.p=new ArrayList<Tuple<Element>>();
-		prob.p.add(new Tuple<Element>(left,right));
-		prob.c= new ArrayList<Tuple<Element>>();
-		prob.sigma=new ArrayList<Tuple<Element>>();
-		prob.psi=new HashMap<String,ArrayList<Element>>();
+		prob = new Problem(new Tuple<Element>(left,right));
 	}
 
 	/**
