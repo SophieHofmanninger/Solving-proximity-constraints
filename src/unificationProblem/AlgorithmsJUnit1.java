@@ -5,6 +5,9 @@ package unificationProblem;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -116,4 +119,29 @@ class AlgorithmsJUnit1 {
 		assertFalse(result);
 		
 	}
+	
+	/**
+	 * Test method for {@link unificationProblem.
+	 * Algorithms#preUnification(unificationProblem.UnificationProblem, PrintStream)}.
+	 * @throws FileNotFoundException ignored
+	 */
+	@Test
+	void testPreUnification5() throws FileNotFoundException {
+		String s="p(x,y,x)";
+		String t="q(f(a),g(d),y)";
+		unif= InputParser.parse(s+" =? "+t).get(0);
+		StringBuffer step=new StringBuffer();
+		
+		System.out.println("Before:");
+		System.out.println("P = " + unif.prob.getP().toString());
+		System.out.println("C = " + unif.prob.getC().toString());
+		System.out.println("s = " + unif.prob.getSigma().toString());
+
+		boolean result=Algorithms.preUnification(unif,step);
+		if(step.length()>0) step.delete(step.length()-2, step.length()-1);
+		System.out.println(step);
+		assertTrue(result);
+
+	}
+	
 }

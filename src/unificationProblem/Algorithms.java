@@ -21,7 +21,7 @@ import tool.Tuple;
  *
  */
 
-// TODO Allow injection of StringBuffer etc.
+
 public final class Algorithms {
 
 
@@ -39,6 +39,19 @@ public final class Algorithms {
 	 * @return {@code false}, if there is no unifier.
 	 */
 	public static boolean preUnification(UnificationProblem unif) {
+		StringBuffer dummy= new StringBuffer();;
+		return preUnification(unif,dummy);
+	}
+	
+	
+	/**
+	 * Performs the Pre-Unification Algorithm 
+	 *
+	 * @param unif the Unification Problem
+	 * @param steps PrintStream to keep track of the performed steps.
+	 * @return {@code false}, if there is no unifier.
+	 */
+	public static boolean preUnification(UnificationProblem unif, StringBuffer steps) {
 		PCSSet problem = unif.getP();
 
 		while ((problem.size())!=0) {
@@ -52,6 +65,7 @@ public final class Algorithms {
 				// Trivial
 				Tuple<Variable> var = new Tuple<Variable>(f,s);
 				if(trivial(var)) {
+					steps.append("(Tri), ");
 					problem.remove(0);
 					continue;
 				}
@@ -67,9 +81,9 @@ public final class Algorithms {
 				}
 
 				if(onlyVars) {
-					// TODO probably better use a copy,...
 					unif.prob.getSigma().add(problem.get(0));
 					problem.remove(0);
+					steps.append("(VO), ");
 					varsOnly(var,problem);
 					continue;
 				}
@@ -91,10 +105,12 @@ public final class Algorithms {
 				// Clash
 				Tuple<Function> fun = new Tuple<Function>(f,s);
 				if(clash(fun)) {
+					steps.append("(Cla), ");
 					return false;
 				}
 
 				// Decompose
+				steps.append("(Dec), ");
 				Tuple<ArrayList<Tuple<Element>>> probAndCons = decomposition(fun);
 				problem.remove(0);
 				problem.addAll(0,probAndCons.getFirst());
@@ -107,6 +123,7 @@ public final class Algorithms {
 			if(!(t.getFirst() instanceof Variable) && t.getSecond() instanceof Variable) {
 
 				// Orient
+				steps.append("(Ori), ");
 				Tuple<Element> oriented = orient(t);
 				problem.remove(0);
 				problem.add(0,oriented);
@@ -117,11 +134,13 @@ public final class Algorithms {
 
 				// Occur Check
 				if(occurs(t)) {
+					steps.append("(Occ), ");
 					return false;
 				}
 
 				// Var. Elimination
 				problem.remove(0);
+				steps.append("(VE), ");
 				Tuple<Element> newTerm = varElim(t,problem);
 				problem.add(0, newTerm);
 				unif.prob.getSigma().add(new Tuple<Element>(t.getFirst(),newTerm.getFirst()));
@@ -166,7 +185,6 @@ public final class Algorithms {
 		}
 		ArrayList<Tuple<Element>> conList = new ArrayList<Tuple<Element>>();
 		conList.add(new Tuple<Element>(f,s));
-		// TODO Maybe new Function
 		return new Tuple<ArrayList<Tuple<Element>>>(probList,conList);
 
 	}
