@@ -35,8 +35,8 @@ public final class Algorithms {
 	/**
 	 * Performs the Pre-Unification Algorithm 
 	 *
-	 * @param prob the Unification Problem
-	 * @return {@code boolean} false, if there is no unifier.
+	 * @param unif the Unification Problem
+	 * @return {@code false}, if there is no unifier.
 	 */
 	public static boolean preUnification(UnificationProblem unif) {
 		PCSSet problem = unif.getP();
@@ -68,7 +68,7 @@ public final class Algorithms {
 
 				if(onlyVars) {
 					// TODO probably better use a copy,...
-					unif.prob.sigma.add(problem.get(0));
+					unif.prob.getSigma().add(problem.get(0));
 					problem.remove(0);
 					varsOnly(var,problem);
 					continue;
@@ -98,7 +98,7 @@ public final class Algorithms {
 				Tuple<ArrayList<Tuple<Element>>> probAndCons = decomposition(fun);
 				problem.remove(0);
 				problem.addAll(0,probAndCons.getFirst());
-				unif.prob.c.addAll(probAndCons.getSecond());
+				unif.prob.getC().addAll(probAndCons.getSecond());
 				continue;
 			}
 
@@ -124,7 +124,7 @@ public final class Algorithms {
 				problem.remove(0);
 				Tuple<Element> newTerm = varElim(t,problem);
 				problem.add(0, newTerm);
-				unif.prob.sigma.add(new Tuple<Element>(t.getFirst(),newTerm.getFirst()));
+				unif.prob.getSigma().add(new Tuple<Element>(t.getFirst(),newTerm.getFirst()));
 				continue;
 			}
 
@@ -271,7 +271,7 @@ public final class Algorithms {
 	 */
 	public static boolean constraintSimplification(Problem prob,Matrix proxR, float lambda) {
 
-		PCSSet constraintProblem = prob.c;
+		PCSSet constraintProblem = prob.getC();
 		Tuple<Element> t;
 		boolean error = false;
 		
@@ -339,9 +339,9 @@ public final class Algorithms {
 
 		if(error) {
 			if(prob.branch != null) {
-				prob.p = prob.branch.p;
-				prob.c = prob.branch.c;
-				prob.sigma = prob.branch.sigma;
+				prob.setP(prob.branch.getP());
+				prob.setC(prob.branch.getC());
+				prob.setSigma(prob.branch.getSigma());
 				prob.psi = prob.branch.psi;
 				prob.branch = prob.branch.branch;
 				return true;
@@ -430,9 +430,9 @@ public final class Algorithms {
 				cur.branch = new Problem();
 				cur.branch.branch=nextBranch;
 				
-				cur.branch.c = cur.c;
-				cur.branch.p = cur.p;
-				cur.branch.sigma = cur.sigma;
+				cur.branch.setC(cur.getC());
+				cur.branch.setP(cur.getP());
+				cur.branch.setSigma(cur.getSigma());
 				
 				cur.branch.psi = cur.psi;
 				

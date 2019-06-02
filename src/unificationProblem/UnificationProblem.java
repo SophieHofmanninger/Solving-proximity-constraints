@@ -289,7 +289,7 @@ public class UnificationProblem {
 				ret = this.toString();
 				ret += System.lineSeparator();
 				ret += "sigma = ";				
-				ret += prob.sigma.toString();
+				ret += prob.getSigma().toString();
 				
 				break;
 			case 2:
@@ -313,7 +313,7 @@ public class UnificationProblem {
 				
 				ret += "sigma = ";
 				
-				ret += p.sigma.toString();
+				ret += p.getSigma().toString();
 				
 				break;
 			default:
@@ -328,7 +328,7 @@ public class UnificationProblem {
 	 * @return the set P.
 	 */
 	public PCSSet getP() {
-		return prob.p;
+		return prob.getP();
 	}
 
 	/**
@@ -336,8 +336,39 @@ public class UnificationProblem {
 	 * @param p the set P to set.
 	 */
 	public void setP(PCSSet p) {
-		this.prob.p = p;
+		prob.setP(p);
 	}
 
+	/**
+	 * Return the set C.
+	 * @return the set C.
+	 */
+	public PCSSet getC() {
+		return prob.getC();
+	}
+
+	/**
+	 * Set the set C.
+	 * @param c the set C to set.
+	 */
+	public void setC(PCSSet c) {
+		prob.setC(c);
+	}
+	
+	/**
+	 * Return the set Sigma.
+	 * @return the set Sigma.
+	 */
+	public PCSSet getSigma() {
+		return prob.getSigma();
+	}
+
+	/**
+	 * Set the set Sigma.
+	 * @param s the set Sigma to set.
+	 */
+	public void setSigma(PCSSet s) {
+		prob.setSigma(s);
+	}
 
 }

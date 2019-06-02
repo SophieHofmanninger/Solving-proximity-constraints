@@ -33,9 +33,9 @@ class AlgorithmsJUnit1 {
 	@AfterEach
 	void tearDown() throws Exception {
 		System.out.println("After:");
-		System.out.println("P = " + unif.prob.p.toString());
-		System.out.println("C = " + unif.prob.c.toString());
-		System.out.println("s = " + unif.prob.sigma.toString());
+		System.out.println("P = " + unif.prob.getP().toString());
+		System.out.println("C = " + unif.prob.getC().toString());
+		System.out.println("s = " + unif.prob.getSigma().toString());
 	}
 
 	/**
@@ -48,30 +48,30 @@ class AlgorithmsJUnit1 {
 		unif= InputParser.parse(s+" =? "+t).get(0);
 		
 		System.out.println("Before:");
-		System.out.println("P = " + unif.prob.p.toString());
-		System.out.println("C = " + unif.prob.c.toString());
-		System.out.println("s = " + unif.prob.sigma.toString());
+		System.out.println("P = " + unif.prob.getP().toString());
+		System.out.println("C = " + unif.prob.getC().toString());
+		System.out.println("s = " + unif.prob.getSigma().toString());
 		
 		boolean result=Algorithms.preUnification(unif);
 		assertTrue(result);
 		
 	}
-	/**
-	 * Test method for {@link unificationProblem.Algorithms#preUnification(unificationProblem.UnificationProblem)}.
-	 */
-	@Test
-	void testPreUnification2() {
-		String s="p(x,x)";
-		String t="q(f(y,y),f(a,c))";
-		unif= InputParser.parse(s+" =? "+t).get(0);
-		
-		System.out.println("Before:");
-		System.out.println("P = " + unif.prob.p.toString());
-		System.out.println("C = " + unif.prob.c.toString());
-		System.out.println("s = " + unif.prob.sigma.toString());
-		
-		boolean result=Algorithms.preUnification(unif);
-		assertTrue(result);
-		
-	}
+//	/**
+//	 * Test method for {@link unificationProblem.Algorithms#preUnification(unificationProblem.UnificationProblem)}.
+//	 */
+//	@Test
+//	void testPreUnification2() {
+//		String s="p(x,x)";
+//		String t="q(f(y,y),f(a,c))";
+//		unif= InputParser.parse(s+" =? "+t).get(0);
+//		
+//		System.out.println("Before:");
+//		System.out.println("P = " + unif.prob.getP().toString());
+//		System.out.println("C = " + unif.prob.getC().toString());
+//		System.out.println("s = " + unif.prob.getSigma().toString());
+//		
+//		boolean result=Algorithms.preUnification(unif);
+//		assertTrue(result);
+//		
+//	}
 }

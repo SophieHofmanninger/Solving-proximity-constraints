@@ -22,9 +22,9 @@ import tool.Tuple;
  */
 public class Problem {
 
-	public PCSSet p;
-	public PCSSet c;
-	public PCSSet sigma;
+	private PCSSet p;
+	private PCSSet c;
+	private PCSSet sigma;
 	public Map<String,ArrayList<Element>> psi;
 
 	public Problem branch = null;
@@ -50,4 +50,48 @@ public class Problem {
 		sigma=new PCSSet('s');
 		psi=new HashMap<String,ArrayList<Element>>();
 	}
+
+	/**
+	 * @return the p
+	 */
+	public PCSSet getP() {
+		return p;
+	}
+
+	/**
+	 * @param p the p to set
+	 */
+	public void setP(PCSSet p) {
+		this.p = p;
+	}
+
+	/**
+	 * @return the c
+	 */
+	public PCSSet getC() {
+		return c;
+	}
+
+	/**
+	 * @param c the c to set
+	 */
+	public void setC(PCSSet c) {
+		this.c = c;
+	}
+
+	/**
+	 * @return the sigma
+	 */
+	public PCSSet getSigma() {
+		return sigma;
+	}
+
+	/**
+	 * @param sigma the sigma to set
+	 */
+	public void setSigma(PCSSet sigma) {
+		this.sigma = sigma;
+	}
+	
+	
 }
