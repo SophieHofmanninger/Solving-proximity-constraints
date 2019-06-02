@@ -172,10 +172,10 @@ public class Matrix {
 		List<String> keys = new ArrayList<String>(relations.keySet());
 		for (String s1 : keys) {
 			for (String s2 : keys) {
-				if (relations.get(s1).get(s2) != 1 && s1 == s2) {
+				if (this.getRelation(s1, s2) != 1 && s1 == s2) {
 					return false;
 				}
-				if (relations.get(s1).get(s2) > 1 || relations.get(s1).get(s2) < 0) {
+				if (this.getRelation(s1, s2) > 1 || this.getRelation(s1, s2) < 0) {
 					return false;
 				}
 			}

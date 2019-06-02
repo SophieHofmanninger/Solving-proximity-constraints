@@ -1,3 +1,5 @@
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import tool.Matrix;
 import unificationProblem.InputParser;
 import unificationProblem.UnificationProblem;
