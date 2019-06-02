@@ -70,8 +70,8 @@ class InputParserTest {
 		
 		UnificationProblem unif1 = InputParser.parse(test1).get(0);
 		assertEquals(5,unif1.getNumberOfFunctions());
-		assertEquals(s,unif1.getLeft().toFullString());
-		assertEquals(1,unif1.getNumberOfOpenCases());
+		assertEquals(u,unif1.getLeft().toFullString());
+		assertEquals(4,unif1.getNumberOfOpenCases());
 				
 	}
 	

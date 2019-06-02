@@ -68,4 +68,9 @@ public interface TupleSet<E> {
 	 */
 	public boolean isEmpty();
 	
+	/**
+	 * Trims the set, that means duplicate elements get removed.
+	 */
+	public void trim();
+	
 }

@@ -30,7 +30,7 @@ public class InputParser {
 	 * @return This returns a list with the parts.
 	 */
 	public static ArrayList<UnificationProblem> parse(String input) {
-
+		Element.reset();
 		ArrayList<UnificationProblem> ret = new ArrayList<>();
 		int split;
 		UnificationProblem unif;

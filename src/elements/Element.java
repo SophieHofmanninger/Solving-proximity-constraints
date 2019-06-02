@@ -130,4 +130,12 @@ public abstract class Element {
 		return representsName;
 	}
 
+	/**
+	 * Resets the number of names used.
+	 */
+	public static void reset() {
+		numberOfNames=1;
+		
+	}
+
 }

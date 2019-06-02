@@ -9,7 +9,7 @@ import java.util.Collection;
 import elements.Element;
 
 /**
- * Class for the problem/Constraint/Sigma sets.
+ * Class for the problem/constraint/sigma sets.
  * @author Jan-Michael Holzinger &amp; Sophie Hofmanninger
  * @version 1.0
  */
@@ -18,23 +18,13 @@ public class PCSSet implements TupleSet<Element> {
 	private ArrayList<Tuple<Element>> content;
 	private final String TOKEN;
 
-
-	public PCSSet(char pcs) {
+/**
+ * A set of Tuple &lt;Element &gt;s
+ * @param symbol The symbol to use between the first and second element.
+ */
+	public PCSSet(String symbol) {
 		content=new ArrayList<Tuple<Element>>();
-		// TODO Probably use other Tokens.
-		switch(pcs) {
-		case 'p': 
-			TOKEN = "~";
-			break;
-		case 'c':
-			TOKEN = "=";
-			break;
-		case 's': 
-			TOKEN = "->";
-			break;
-		default:
-			TOKEN = ",";
-		}
+		TOKEN = symbol;
 	}
 
 	/* (non-Javadoc)
@@ -122,6 +112,34 @@ public class PCSSet implements TupleSet<Element> {
 	@Override
 	public boolean isEmpty() {
 		return content.isEmpty();
+	}
+
+	/* (non-Javadoc)
+	 * @see tool.TupleSet#trim()
+	 */
+	@Override
+	public void trim() {
+		ArrayList<Tuple<Element>> contentNew = new ArrayList<Tuple<Element>>();
+		for(int i=0;i<content.size();i++) {
+			boolean alreadyIn = false;
+			Tuple<Element> t1 = content.get(i);
+			for(int j=0;j<contentNew.size();j++) {
+				Tuple<Element> t2= contentNew.get(j);
+				if((t1.getFirst().equals(t2.getFirst()))
+						&& (t1.getSecond().equals(t2.getSecond()))) {
+					alreadyIn=true;
+					break;
+				}
+				if((t1.getSecond().equals(t2.getFirst()))
+						&& (t1.getFirst().equals(t2.getSecond()))) {
+					alreadyIn=true;
+					break;
+				}
+				
+			}
+			if(!alreadyIn) contentNew.add(t1);
+		}
+		content=contentNew;
 	}
 
 

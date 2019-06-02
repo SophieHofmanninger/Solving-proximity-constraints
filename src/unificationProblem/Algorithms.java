@@ -129,6 +129,8 @@ public final class Algorithms {
 			}
 
 		}
+		
+		unif.getC().trim();
 
 
 		return true;

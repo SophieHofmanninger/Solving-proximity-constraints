@@ -40,6 +40,7 @@ class AlgorithmsJUnit1 {
 
 	/**
 	 * Test method for {@link unificationProblem.Algorithms#preUnification(unificationProblem.UnificationProblem)}.
+	 * Tests "Example 4".
 	 */
 	@Test
 	void testPreUnification1() {
@@ -56,22 +57,63 @@ class AlgorithmsJUnit1 {
 		assertTrue(result);
 		
 	}
-//	/**
-//	 * Test method for {@link unificationProblem.Algorithms#preUnification(unificationProblem.UnificationProblem)}.
-//	 */
-//	@Test
-//	void testPreUnification2() {
-//		String s="p(x,x)";
-//		String t="q(f(y,y),f(a,c))";
-//		unif= InputParser.parse(s+" =? "+t).get(0);
-//		
-//		System.out.println("Before:");
-//		System.out.println("P = " + unif.prob.getP().toString());
-//		System.out.println("C = " + unif.prob.getC().toString());
-//		System.out.println("s = " + unif.prob.getSigma().toString());
-//		
-//		boolean result=Algorithms.preUnification(unif);
-//		assertTrue(result);
-//		
-//	}
+	/**
+	 * Test method for {@link unificationProblem.Algorithms#preUnification(unificationProblem.UnificationProblem)}.
+	 * Tests Example 5.
+	 */
+	@Test
+	void testPreUnification2() {
+		String s="p(x,x)";
+		String t="q(f(y,y),f(a,c))";
+		unif= InputParser.parse(s+" =? "+t).get(0);
+		
+		System.out.println("Before:");
+		System.out.println("P = " + unif.prob.getP().toString());
+		System.out.println("C = " + unif.prob.getC().toString());
+		System.out.println("s = " + unif.prob.getSigma().toString());
+		
+		boolean result=Algorithms.preUnification(unif);
+		assertTrue(result);
+		
+	}
+	
+	/**
+	 * Test method for {@link unificationProblem.Algorithms#preUnification(unificationProblem.UnificationProblem)}.
+	 * Tests FAIL from (Occ).
+	 */
+	@Test
+	void testPreUnification3() {
+		String s="p(f(x))";
+		String t="q(x)";
+		unif= InputParser.parse(s+" =? "+t).get(0);
+		
+		System.out.println("Before:");
+		System.out.println("P = " + unif.prob.getP().toString());
+		System.out.println("C = " + unif.prob.getC().toString());
+		System.out.println("s = " + unif.prob.getSigma().toString());
+		
+		boolean result=Algorithms.preUnification(unif);
+		assertFalse(result);
+		
+	}
+	
+	/**
+	 * Test method for {@link unificationProblem.Algorithms#preUnification(unificationProblem.UnificationProblem)}.
+	 * Tests FAIL from (Cla).
+	 */
+	@Test
+	void testPreUnification4() {
+		String s="p(f(x))";
+		String t="q(a,y)";
+		unif= InputParser.parse(s+" =? "+t).get(0);
+		
+		System.out.println("Before:");
+		System.out.println("P = " + unif.prob.getP().toString());
+		System.out.println("C = " + unif.prob.getC().toString());
+		System.out.println("s = " + unif.prob.getSigma().toString());
+		
+		boolean result=Algorithms.preUnification(unif);
+		assertFalse(result);
+		
+	}
 }

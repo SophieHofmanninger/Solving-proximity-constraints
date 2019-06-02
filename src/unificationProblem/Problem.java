@@ -33,9 +33,9 @@ public class Problem {
 	 * Default Constructor.
 	 */
 	public Problem() {
-		p = new PCSSet('p');
-		c = new PCSSet('c');
-		sigma=new PCSSet('s');
+		p = new PCSSet("~?");
+		c = new PCSSet("=?");
+		sigma=new PCSSet("->");
 		psi=new HashMap<String,ArrayList<Element>>();
 	}
 	
@@ -44,10 +44,10 @@ public class Problem {
 	 * @param first The first Tuple to add to P.
 	 */
 	public Problem(Tuple<Element> first) {
-		p = new PCSSet('p');
+		p = new PCSSet("~?");
 		p.add(first);
-		c= new PCSSet('c');
-		sigma=new PCSSet('s');
+		c= new PCSSet("=?");
+		sigma=new PCSSet("->");
 		psi=new HashMap<String,ArrayList<Element>>();
 	}
 
