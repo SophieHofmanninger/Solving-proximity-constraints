@@ -83,7 +83,7 @@ public class Matrix {
 			return 1;
 		}
 		else {
-			if(relations.containsKey(s1) && relations.containsKey(s2)) {
+			if(relations.containsKey(s1) && relations.get(s1).containsKey(s2)) {
 				return relations.get(s1).get(s2);				
 			}
 			else {
@@ -184,6 +184,23 @@ public class Matrix {
 		return true;
 	}
 
+
+	/**
+	 * To get all elements of the relation matrix.
+	 * @return List of all relation elements.
+	 */
+	public ArrayList<Element> getAllElements(){
+		ArrayList<Element> ret = new ArrayList<Element>();
+		
+		for(String s : relations.keySet()) {
+			
+			ret.add(new Function(s));
+			
+		}
+		
+		return ret;
+	}
+	
 	//TODO delete code if everything works correctly, where this methods were used
 	/**
 	 * Constructor
