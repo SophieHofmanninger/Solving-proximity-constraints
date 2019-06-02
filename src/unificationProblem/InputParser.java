@@ -15,7 +15,7 @@ import tool.Tuple;
  * Names are witten in UPPER case letters.
  *
  * @author  Jan-Michael Holzinger &amp; Sophie Hofmanninger
- * @version 1.0
+ * @version 3.0
  * 
  */
 public class InputParser {
@@ -116,14 +116,14 @@ public class InputParser {
 				continue;
 			}
 			if(c=='(') {
-				closing = input.lastIndexOf(')');
+				closing = getIndexOfCorrespondingBracket(input,pos);
 				elem = new Function(name);
 				boolean alreadyIn = false;
 				for(int i =0; i< listOfFunctions.size();i++) {
 					if(elem.equals(listOfFunctions.get(i))) alreadyIn=true;
 				}
 				if(!alreadyIn) listOfFunctions.add((Function) elem);
-				for (String s : input.substring(pos+1, closing).split(",")) {
+				for (String s : getCorrectSubstrings(input,pos+1,closing-1)) {
 					((Function)elem).addArgument((parseSub(s)));
 				}
 				break;
@@ -155,7 +155,7 @@ public class InputParser {
 				else {
 					inName = true;
 					name += c;
-					elem = new Name();
+					elem = new Function(name, true);
 				}
 			}
 			else {
@@ -164,6 +164,7 @@ public class InputParser {
 			}
 		}
 		if(name!="") {
+			
 			elem.setName(name);
 			if(elem instanceof Constant) {
 				boolean alreadyIn = false;
@@ -176,5 +177,71 @@ public class InputParser {
 		return elem;
 	}
 
+	/**
+	 * Get the corresponding to a opening bracket.
+	 * @param s input String.
+	 * @param startIndex index of the opening bracket in the string.
+	 * @return the index of the closing bracket, -1 if startIndex isn't an opening bracket.
+	 */
+	private static int getIndexOfCorrespondingBracket(String s,int startIndex) {
+		//startIndex has to be the Index of the opening Bracket
+		if(s.charAt(startIndex) != '(') {
+			return -1;
+		}
+		
+		int level=0;
+		int index=startIndex;
+		
+		do {
+			if(s.charAt(index)=='(') {
+				level++;
+			}
+			
+			if(s.charAt(index)==')') {
+				level--;
+			}
+			
+			index++;
+		}while(level>0);
+		
+		return --index;
+		
+	}
+	
+	/**
+	 * Generates Substring of a String, splitting the String on ',' chars, which are on the right level.
+	 * @param s input String.
+	 * @param startIndex Index of first char.
+	 * @param endIndex Index of the last char.
+	 * @return List of Substrings.
+	 */
+	private static ArrayList<String> getCorrectSubstrings(String s, int startIndex, int endIndex){
+		ArrayList<String> ret = new ArrayList<String>();
+		
+		int start = startIndex;
+		int index = startIndex;
+		int level=0;
+		
+		do {
+			if(s.charAt(index)=='(') {
+				level++;
+			}
+			
+			if(s.charAt(index)==')') {
+				level--;
+			}
+			
+			if(s.charAt(index)==','&&level==0) {
+				ret.add(s.substring(start,index));
+				start=++index;
+			}
+			
+			index++;
+		}while(index<endIndex);
+		
+		ret.add(s.substring(start,endIndex+1));
+		
+		return ret;
+	}
 
 }

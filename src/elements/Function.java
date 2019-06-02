@@ -83,10 +83,15 @@ public class Function extends Element {
 	 */
 	@Override
 	public String toFullString() {
+		
+		if(this.arguments.isEmpty()) {
+			return this.getName();
+		}
+		
 		String ret = this.getName() + "(";
 
 		for(Element e : arguments){
-			ret += e.toString() + ",";
+			ret += e.toFullString() + ",";
 		}
 
 		ret = ret.substring(0,ret.length()-1) + ")";

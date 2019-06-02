@@ -29,6 +29,13 @@ public class Test {
 
 		System.out.println(uni2.getLeft().toFullString());
 		System.out.println(uni2.getRight().toFullString());
+
+		String test3 = "p(x,x) =? q(f(y,y),f(a,c))";
+		UnificationProblem uni3 = InputParser.parse(test3).get(0);
+
+		System.out.println(uni3.getLeft().toFullString());
+		System.out.println(uni3.getRight().toFullString());
+		
 		
 		// Test
 		Matrix matr = new Matrix();
