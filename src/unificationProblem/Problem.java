@@ -28,6 +28,20 @@ public class Problem {
 
 	public Problem branch = null;
 	
+	/**
+	 * Default Constructor.
+	 */
+	public Problem() {
+		p = new ArrayList<Tuple<Element>>();
+		c= new ArrayList<Tuple<Element>>();
+		sigma=new ArrayList<Tuple<Element>>();
+		psi=new HashMap<String,ArrayList<Element>>();
+	}
+	
+	/**
+	 * Constructor with Input.
+	 * @param first The first Tuple to add to P.
+	 */
 	public Problem(Tuple<Element> first) {
 		p = new ArrayList<Tuple<Element>>();
 		p.add(first);
