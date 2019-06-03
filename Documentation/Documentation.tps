@@ -17,8 +17,8 @@ Class=LaTeXView
 Document=Documentation.tex
 
 [Frame0_View0,0]
-TopLine=52
-Cursor=2043
+TopLine=54
+Cursor=2068
 
 [Frame1]
 Flags=0
@@ -35,8 +35,8 @@ Class=LaTeXView
 Document=structure.tex
 
 [Frame1_View0,0]
-TopLine=57
-Cursor=1918
+TopLine=17
+Cursor=1052
 
 [SessionInfo]
 FrameCount=2

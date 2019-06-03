@@ -39,7 +39,7 @@ public final class Algorithms {
 	 * @return {@code false}, if there is no unifier.
 	 */
 	public static boolean preUnification(UnificationProblem unif) {
-		StringBuffer dummy= new StringBuffer();;
+		StringBuffer dummy= new StringBuffer();
 		return preUnification(unif,dummy);
 	}
 	
@@ -53,8 +53,8 @@ public final class Algorithms {
 	 */
 	public static boolean preUnification(UnificationProblem unif, StringBuffer steps) {
 		PCSSet problem = unif.getP();
-
-		while ((problem.size())!=0) {
+		if(problem==null) return false;
+		while (problem.size()!=0) {
 			Tuple<Element> t = problem.get(0);
 
 
