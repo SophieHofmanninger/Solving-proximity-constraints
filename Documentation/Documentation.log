@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.4.29)  3 JUN 2019 10:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.4.29)  3 JUN 2019 11:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1687,56 +1687,70 @@ Underfull \hbox (badness 10000) in paragraph at lines 88--93
 LaTeX Font Info:    Font shape `TS1/XCharter-TLF/m/n' will be
 (Font)              scaled to size 10.0pt on input line 121.
 
-Underfull \hbox (badness 10000) in paragraph at lines 125--128
+Underfull \hbox (badness 10000) in paragraph at lines 125--130
 
  []
 
-LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/n' will be
-(Font)              scaled to size 7.0pt on input line 128.
-LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/n' will be
-(Font)              scaled to size 5.0pt on input line 128.
+
+Overfull \hbox (9.98755pt too wide) in paragraph at lines 125--130
+\T1/XCharter-TLF/m/n/10 If we want to re-trieve a value, i.e. if we want to kno
+w $\OMS/cmsy/m/n/10 R\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 s[]; s[]\OT1/cmr/m/n/10 
+)$ \T1/XCharter-TLF/m/n/10 for given $\OML/cmm/m/it/10 s[]; s[]$\T1/XCharter-TL
+F/m/n/10 , we can call $\OML/cmm/m/it/10 getRelation\OT1/cmr/m/n/10 (\OML/cmm/m
+/it/10 s[]; s[]\OT1/cmr/m/n/10 )$\T1/XCharter-TLF/m/n/10 .
+ []
+
+
+Overfull \hbox (2.14153pt too wide) in paragraph at lines 125--130
+\T1/XCharter-TLF/m/n/10 To get all re-la-tion pairs of $\OML/cmm/m/it/10 s[]$\T
+1/XCharter-TLF/m/n/10 , that have a re-la-tion value greater or equal to $\OML/
+cmm/m/it/10 ^^U$\T1/XCharter-TLF/m/n/10 , the method $\OML/cmm/m/it/10 getRelat
+ions\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 s[]; ^^U\OT1/cmr/m/n/10 )$
+ []
+
+[3]
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/b/n' will be
-(Font)              scaled to size 10.0pt on input line 135.
+(Font)              scaled to size 10.0pt on input line 136.
 
-Underfull \hbox (badness 10000) in paragraph at lines 136--141
+Underfull \hbox (badness 10000) in paragraph at lines 137--142
 
  []
 
-[3] <SystemModel.pdf, id=41, 845.07718pt x 598.15468pt>
+<SystemModel.pdf, id=41, 845.07718pt x 598.15468pt>
 File: SystemModel.pdf Graphic file (type pdf)
  <use SystemModel.pdf>
-Package pdftex.def Info: SystemModel.pdf used on input line 161.
+Package pdftex.def Info: SystemModel.pdf used on input line 162.
 (pdftex.def)             Requested size: 845.07512pt x 598.15321pt.
 File: SystemModel.pdf Graphic file (type pdf)
 
 <use SystemModel.pdf>
-Package pdftex.def Info: SystemModel.pdf used on input line 161.
+Package pdftex.def Info: SystemModel.pdf used on input line 162.
 (pdftex.def)             Requested size: 845.07512pt x 598.15321pt.
 
 <SystemModel.pdf, id=44, page=1, 845.07718pt x 598.15468pt>
 File: SystemModel.pdf Graphic file (type pdf)
 
 <use SystemModel.pdf, page 1>
-Package pdftex.def Info: SystemModel.pdf, page1 used on input line 161.
+Package pdftex.def Info: SystemModel.pdf, page1 used on input line 162.
 (pdftex.def)             Requested size: 845.07512pt x 598.15321pt.
 File: SystemModel.pdf Graphic file (type pdf)
  <use SystemModel.pdf, page 1>
-Package pdftex.def Info: SystemModel.pdf, page1 used on input line 161.
+Package pdftex.def Info: SystemModel.pdf, page1 used on input line 162.
 (pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
  [4]
 File: SystemModel.pdf Graphic file (type pdf)
 
 <use SystemModel.pdf, page 1>
-Package pdftex.def Info: SystemModel.pdf, page1 used on input line 161.
+Package pdftex.def Info: SystemModel.pdf, page1 used on input line 162.
 (pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
 File: SystemModel.pdf Graphic file (type pdf)
  <use SystemModel.pdf, page 1>
-Package pdftex.def Info: SystemModel.pdf, page1 used on input line 161.
+Package pdftex.def Info: SystemModel.pdf, page1 used on input line 162.
 (pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
 File: SystemModel.pdf Graphic file (type pdf)
 
 <use SystemModel.pdf, page 1>
-Package pdftex.def Info: SystemModel.pdf, page1 used on input line 161.
+Package pdftex.def Info: SystemModel.pdf, page1 used on input line 162.
 (pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
  [5 <./SystemModel.pdf
 
@@ -1746,16 +1760,16 @@ ther resource which is no dict (key 'ProcSets', type <array>); ignored.
 File: SystemModel.pdf Graphic file (type pdf)
 
 <use SystemModel.pdf, page 2>
-Package pdftex.def Info: SystemModel.pdf, page2 used on input line 161.
+Package pdftex.def Info: SystemModel.pdf, page2 used on input line 162.
 (pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
 File: SystemModel.pdf Graphic file (type pdf)
  <use SystemModel.pdf, page 2>
-Package pdftex.def Info: SystemModel.pdf, page2 used on input line 161.
+Package pdftex.def Info: SystemModel.pdf, page2 used on input line 162.
 (pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
 File: SystemModel.pdf Graphic file (type pdf)
 
 <use SystemModel.pdf, page 2>
-Package pdftex.def Info: SystemModel.pdf, page2 used on input line 161.
+Package pdftex.def Info: SystemModel.pdf, page2 used on input line 162.
 (pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
  [6 <./SystemModel.pdf
 
@@ -1765,76 +1779,57 @@ ther resource which is no dict (key 'ProcSets', type <array>); ignored.
 File: SystemModel.pdf Graphic file (type pdf)
 
 <use SystemModel.pdf, page 3>
-Package pdftex.def Info: SystemModel.pdf, page3 used on input line 161.
+Package pdftex.def Info: SystemModel.pdf, page3 used on input line 162.
 (pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
 File: SystemModel.pdf Graphic file (type pdf)
  <use SystemModel.pdf, page 3>
-Package pdftex.def Info: SystemModel.pdf, page3 used on input line 161.
+Package pdftex.def Info: SystemModel.pdf, page3 used on input line 162.
 (pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
 File: SystemModel.pdf Graphic file (type pdf)
 
 <use SystemModel.pdf, page 3>
-Package pdftex.def Info: SystemModel.pdf, page3 used on input line 161.
+Package pdftex.def Info: SystemModel.pdf, page3 used on input line 162.
 (pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
  [7 <./SystemModel.pdf
 
 pdfTeX warning: pdflatex.exe (file ./SystemModel.pdf): PDF inclusion: invalid o
 ther resource which is no dict (key 'ProcSets', type <array>); ignored.
->] <SystemModel.pdf, id=84, page=4, 845.07718pt x 598.15468pt>
-File: SystemModel.pdf Graphic file (type pdf)
-
-<use SystemModel.pdf, page 4>
-Package pdftex.def Info: SystemModel.pdf, page4 used on input line 161.
-(pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
-File: SystemModel.pdf Graphic file (type pdf)
- <use SystemModel.pdf, page 4>
-Package pdftex.def Info: SystemModel.pdf, page4 used on input line 161.
-(pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
-File: SystemModel.pdf Graphic file (type pdf)
-
-<use SystemModel.pdf, page 4>
-Package pdftex.def Info: SystemModel.pdf, page4 used on input line 161.
-(pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
- [8 <./SystemModel.pdf
-
-pdfTeX warning: pdflatex.exe (file ./SystemModel.pdf): PDF inclusion: invalid o
-ther resource which is no dict (key 'ProcSets', type <array>); ignored.
->] <WorkFlow.pdf, id=88, 845.1575pt x 597.23125pt>
+>] <WorkFlow.pdf, id=84, 845.1575pt x 597.23125pt>
 File: WorkFlow.pdf Graphic file (type pdf)
  <use WorkFlow.pdf>
-Package pdftex.def Info: WorkFlow.pdf used on input line 166.
+Package pdftex.def Info: WorkFlow.pdf used on input line 167.
 (pdftex.def)             Requested size: 845.15544pt x 597.22978pt.
 File: WorkFlow.pdf Graphic file (type pdf)
 
 <use WorkFlow.pdf>
-Package pdftex.def Info: WorkFlow.pdf used on input line 166.
+Package pdftex.def Info: WorkFlow.pdf used on input line 167.
 (pdftex.def)             Requested size: 845.15544pt x 597.22978pt.
- <WorkFlow.pdf, id=91, page=1, 845.1575pt x 597.23125pt>
+ <WorkFlow.pdf, id=87, page=1, 845.1575pt x 597.23125pt>
 File: WorkFlow.pdf Graphic file (type pdf)
 
 <use WorkFlow.pdf, page 1>
-Package pdftex.def Info: WorkFlow.pdf, page1 used on input line 166.
+Package pdftex.def Info: WorkFlow.pdf, page1 used on input line 167.
 (pdftex.def)             Requested size: 845.15544pt x 597.22978pt.
 File: WorkFlow.pdf Graphic file (type pdf)
  <use WorkFlow.pdf, page 1>
-Package pdftex.def Info: WorkFlow.pdf, page1 used on input line 166.
+Package pdftex.def Info: WorkFlow.pdf, page1 used on input line 167.
 (pdftex.def)             Requested size: 597.61578pt x 422.30568pt.
- [9]
+ [8]
 File: WorkFlow.pdf Graphic file (type pdf)
 
 <use WorkFlow.pdf, page 1>
-Package pdftex.def Info: WorkFlow.pdf, page1 used on input line 166.
+Package pdftex.def Info: WorkFlow.pdf, page1 used on input line 167.
 (pdftex.def)             Requested size: 597.61578pt x 422.30568pt.
 File: WorkFlow.pdf Graphic file (type pdf)
  <use WorkFlow.pdf, page 1>
-Package pdftex.def Info: WorkFlow.pdf, page1 used on input line 166.
+Package pdftex.def Info: WorkFlow.pdf, page1 used on input line 167.
 (pdftex.def)             Requested size: 597.61578pt x 422.30568pt.
 File: WorkFlow.pdf Graphic file (type pdf)
 
 <use WorkFlow.pdf, page 1>
-Package pdftex.def Info: WorkFlow.pdf, page1 used on input line 166.
+Package pdftex.def Info: WorkFlow.pdf, page1 used on input line 167.
 (pdftex.def)             Requested size: 597.61578pt x 422.30568pt.
- [10 <./WorkFlow.pdf
+ [9 <./WorkFlow.pdf
 
 pdfTeX warning: pdflatex.exe (file ./WorkFlow.pdf): PDF inclusion: invalid othe
 r resource which is no dict (key 'ProcSets', type <array>); ignored.
@@ -1844,11 +1839,11 @@ r resource which is no dict (key 'ProcSets', type <array>); ignored.
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 26188 strings out of 493013
- 491386 string characters out of 6136993
+ 26183 strings out of 493013
+ 491271 string characters out of 6136993
  551472 words of memory out of 5000000
- 29277 multiletter control sequences out of 15000+600000
- 87371 words of font info for 74 fonts, out of 8000000 for 9000
+ 29272 multiletter control sequences out of 15000+600000
+ 75915 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  69i,18n,64p,10499b,18660s stack positions out of 5000i,500n,10000p,200000b,80000s
 {d:/texlive/2016/texmf-dist/fonts/enc/dvips/xcharter/xch_tuu2ww
@@ -1864,10 +1859,10 @@ cm/cmr10.pfb><d:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pf
 b><d:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><d:/texli
 ve/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/texlive/2016/t
 exmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Documentation.pdf (10 pages, 389064 bytes).
+Output written on Documentation.pdf (9 pages, 386042 bytes).
 PDF statistics:
- 178 PDF objects out of 1000 (max. 8388607)
- 113 compressed objects within 2 object streams
+ 174 PDF objects out of 1000 (max. 8388607)
+ 111 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 88 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 83 words of extra memory for PDF output out of 10000 (max. 10000000)
 

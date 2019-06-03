@@ -90,7 +90,7 @@ The first idea here is to copy, alter and extend the existing code, in the class
 \noindent
 For the Proximity Relations \(\mathcal{R}\) and the \(\lambda\)\textit{-cut} we have the following idea:\\
 \begin{enumerate}
-	\item We try to get the number of function symbols (\(n\)), constants are treated as 0-ary functions.
+	\item We try to get the number of function symbols with the same arity. 
 	\item We let the user input the values to construct a symmetric matrix that consists of values in \([0,1]\). This matrix must have a 1 in the main diagonal. All values below are 0. Therefore they will not be stored in the implementation.
 	\item We let the user (later) input \(\lambda\in[0,1]\) and calculate the set \(\mathcal{R}_\lambda\).
 \end{enumerate}
@@ -122,15 +122,16 @@ where:
 	\item the 0's are fixed, as functions with different aritys can't be close,
 	\item the values where the entry is * must be of the same value as their (*) counterpart, as the matrix is symmetric.
 \end{itemize} 
-Hence, we only need to get the values for the positions marked with (*). We call such a position ``open case'', and we make a list of open cases. We will then wait for user input.\\ \ \\
+Hence, we only need to get the values for the positions marked with (*). We call such a position ``open case'', and we make a list of open cases. Before asking the user to enter relation values, we will generate the list of open cases outside of the matrix. After generation of the list, we will wait for user input. With the valid user input we will build the proximity relation matrix. \\ \ \\
 \noindent
-If we want to retrive a value, i.e. if we want to know \(\mathcal{R}(s_1,s_2)\) for given \(s_1,s_2\), we can set 
-\[i:= \mathrm{sortedListOfFunctions}.\mathrm{getIndex}(s_1)\quad\text{and}\quad j:= \mathrm{sortedListOfFunctions}.\mathrm{getIndex}(s_2),\]
-and then just get the value at position \((i,j)\).
+If we want to retrieve a value, i.e. if we want to know \(\mathcal{R}(s_1,s_2)\) for given \(s_1,s_2\), we can call \(getRelation(s_1,s_2)\). To get all relation pairs of \(s_1\), that have a relation value greater or equal to \(\lambda\), the method \(getRelations(s_1,\lambda)\) can be used. Moreover it is possible to get all reation elements of the matirix by calling \(getAllElements()\). This will return all \( f_{i_{k_j}}\), where \( 0\leq i \leq m\) and \( 0\leq j \leq m\).
+%\[i:= \mathrm{sortedListOfFunctions}.\mathrm{getIndex}(s_1)\quad\text{and}\quad j:= \mathrm{sortedListOfFunctions}.\mathrm{getIndex}(s_2),\]
+%and then just get the value at position \((i,j)\).
+
 %------------------------------------------------
 \subsection{Algorithms}
 
-We implement the Algorithms in an own class, that has two static functions, preUnification and constraintSimplification.
+We implement the Algorithms in an own class, that has two public  static functions, preUnification and constraintSimplification. The other methods are only used for the construction of the two simplification algorithms and therefore they are private and static.
 
 \subsubsection{Pre-Unification Algorithm}
 The preUnification method consists of a loop, that runs until either \(\mathrm{P}=\emptyset\) or it is detected, that there is no solution to the problem.\\
