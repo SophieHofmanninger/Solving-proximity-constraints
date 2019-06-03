@@ -12,9 +12,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import elements.Element;
+import tool.Matrix;
 import tool.Tuple;
-
-import static org.easymock.EasyMock.*;
 
 
 /**
@@ -55,5 +54,35 @@ class AlgorithmsJUnit1 {
 		assertTrue(result);
 		
 	}
+	
+	
+	/**
+	 * Test method for {@link unificationProblem.Algorithms#constrainSimplification(unificationProblem.Problem, tool.Matrix, float)}.
+	 */
+	@Test
+	void testConstraintSimplification() {
+		Algorithms.preUnification(unif);
+		System.out.println("\n" + "C = " + unif.prob.c.toString());
+		
+		Matrix matrix = new Matrix();
+		matrix.addRelation("a", "b", 0.7f);
+		matrix.addRelation("b", "c", 0.7f);
+		matrix.addRelation("c", "d", 0.7f);
+		matrix.addRelation("a", "b1", 0.7f);
+		matrix.addRelation("b1", "c1", 0.7f);
+		matrix.addRelation("c1", "d", 0.7f);
+		matrix.addRelation("f", "g", 0.7f);
+		matrix.addRelation("p", "q", 0.7f);
+		
+		System.out.println("R =" + matrix.toString());
+		
+		boolean result=Algorithms.constraintSimplification(unif.prob, matrix, 0.5f);
+		// TODO find the bugs
+		System.out.println(unif.prob.c.toString());
+		System.out.println(unif.prob.sigma.toString());
+		assertTrue(result);
+		
+	}
+	//*/
 
 }
