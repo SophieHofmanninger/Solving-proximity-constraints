@@ -63,10 +63,13 @@ class MatrixJUnit {
 		  m.addRelation("a", "b", 0.7f);
 		  m.addRelation("a", "c", 0.7f);
 		  m.addRelation("d", "c", 0.6f);
+		  m.addRelation("e", "c", -0.6f);
 		  
 		  assertEquals(0.7f,m.getRelation("b", "a"));
+		  assertEquals(0.7f,m.getRelation("a", "c"));
 		  assertEquals(0.6f,m.getRelation("c","d"));
 		  assertEquals(0f,m.getRelation("c","b"));
+		  assertEquals(-0.6f,m.getRelation("e","c"));
 		  
 		// Test Symmetry 
 		  assertEquals(0.11f,m.getRelation(f, g));
@@ -136,7 +139,7 @@ class MatrixJUnit {
 		  m.addRelation("b", "b", 0.5f);
 		  assertTrue(m.isPM());
 		  
-		  //one entry greater than 0
+		  //one entry greater than 1
 		  m.addRelation("b", "d", 1.5f);
 		  assertFalse(m.isPM());
 		  
