@@ -247,6 +247,7 @@ public class UnificationProblem {
 		if(status==0) {
 			if(Algorithms.preUnification(this)) {
 				status = 1;
+				return true;
 			}
 			else {
 				status = -1;

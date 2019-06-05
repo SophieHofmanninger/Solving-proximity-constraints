@@ -53,11 +53,10 @@ public class Test {
 		uni.lambda = 0.5f;
 		
 		System.out.println(uni.resultString());
-		//Following is in endless loop, because of pre-Unification (conjecture)
-		//uni.solveNext();
-		//System.out.println(uni.resultString());
-		//uni.solveNext();
-		//System.out.println(uni.resultString());
+		uni.solveNext();
+		System.out.println(uni.resultString());
+		uni.solveNext();
+		System.out.println(uni.resultString());
 		
 	}
 

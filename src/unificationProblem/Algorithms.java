@@ -4,11 +4,11 @@
 package unificationProblem;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import elements.Element;
 import elements.Function;
-//import elements.Name;
 import elements.Variable;
 import tool.Matrix;
 import tool.PCSSet;
@@ -323,7 +323,7 @@ public final class Algorithms {
 			}
 			
 			// FFS
-			if((t.getFirst() instanceof Function) && (t.getSecond() instanceof Function)) {
+			if(t.getFirst().isName()== false && t.getSecond().isName()==false ) {
 				if(ffs((Function)t.getFirst(),(Function)t.getSecond(),proxR,lambda)) {
 					constraintProblem.remove(0);
 					continue;
@@ -335,9 +335,10 @@ public final class Algorithms {
 			}
 
 			//NFS
-			if(t.getFirst().isName() && (t.getSecond() instanceof Function)) {
+			if(t.getFirst().isName() && t.getSecond().isName() ==false) {
 				if(nfs(t.getFirst(),(Function)t.getSecond(),prob.psi,proxR,lambda)) {
 					constraintProblem.remove(0);
+					continue;
 				}
 				else {
 					error = true;
@@ -346,7 +347,7 @@ public final class Algorithms {
 			}
 
 			//FSN
-			if((t.getFirst() instanceof Function) && t.getSecond().isName()) {
+			if(t.getFirst().isName()==false && t.getSecond().isName()) {
 				if(nfs(t.getSecond(),(Function)t.getFirst(),prob.psi,proxR,lambda)) {
 					constraintProblem.remove(0);
 				}
@@ -426,9 +427,10 @@ public final class Algorithms {
 		else {
 			list = r.getRelations(f2,lambda);
 			psi.put(n1.getName(), list);	
+			return true;
 		}
 
-		return false;
+		//return false;
 	}
 
 	/**
@@ -454,7 +456,7 @@ public final class Algorithms {
 				cur.branch.setP(cur.getP());
 				cur.branch.setSigma(cur.getSigma());
 				
-				cur.branch.psi = cur.psi;
+				cur.branch.psi = new HashMap<String,ArrayList<Element>>(cur.psi);
 				
 				cur.psi.put(n1.getName(), new ArrayList<Element>());
 				cur.psi.get(n1.getName()).add(cur.branch.psi.get(n1.getName()).get(0));
@@ -466,8 +468,7 @@ public final class Algorithms {
 				
 			}
 			
-			nfs(n2,new Function(n1.getName()),cur.psi,r,lambda);
-			
+			nfs(n2,new Function(cur.psi.get(n1.getName()).get(0).getName()),cur.psi,r,lambda);
 			
 			return true;
 		}
