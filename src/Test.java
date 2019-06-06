@@ -50,7 +50,7 @@ public class Test {
 		matr.addRelation("f", "q", 0.2f);
 		
 		uni.setProximityRelations(matr);
-		uni.lambda = 0.5f;
+		uni.setLambda(0.5f);
 		
 		System.out.println(uni.resultString());
 		uni.solveNext();

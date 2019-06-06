@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import elements.Element;
-import tool.PCSSet;
+import tool.SPCSet;
 import tool.Tuple;
 
 /**
@@ -22,9 +22,9 @@ import tool.Tuple;
  */
 public class Problem {
 
-	private PCSSet p;
-	private PCSSet c;
-	private PCSSet sigma;
+	private SPCSet p;
+	private SPCSet c;
+	private SPCSet sigma;
 	public Map<String,ArrayList<Element>> psi;
 
 	public Problem branch = null;
@@ -33,9 +33,9 @@ public class Problem {
 	 * Default Constructor.
 	 */
 	public Problem() {
-		p = new PCSSet("~?");
-		c = new PCSSet("=?");
-		sigma=new PCSSet("->");
+		p = new SPCSet("~?");
+		c = new SPCSet("=?");
+		sigma=new SPCSet("->");
 		psi=new HashMap<String,ArrayList<Element>>();
 	}
 	
@@ -44,52 +44,52 @@ public class Problem {
 	 * @param first The first Tuple to add to P.
 	 */
 	public Problem(Tuple<Element> first) {
-		p = new PCSSet("~?");
+		p = new SPCSet("~?");
 		p.add(first);
-		c= new PCSSet("=?");
-		sigma=new PCSSet("->");
+		c= new SPCSet("=?");
+		sigma=new SPCSet("->");
 		psi=new HashMap<String,ArrayList<Element>>();
 	}
 
 	/**
 	 * @return the p
 	 */
-	public PCSSet getP() {
+	public SPCSet getP() {
 		return p;
 	}
 
 	/**
 	 * @param p the p to set
 	 */
-	public void setP(PCSSet p) {
+	public void setP(SPCSet p) {
 		this.p = p;
 	}
 
 	/**
 	 * @return the c
 	 */
-	public PCSSet getC() {
+	public SPCSet getC() {
 		return c;
 	}
 
 	/**
 	 * @param c the c to set
 	 */
-	public void setC(PCSSet c) {
+	public void setC(SPCSet c) {
 		this.c = c;
 	}
 
 	/**
 	 * @return the sigma
 	 */
-	public PCSSet getSigma() {
+	public SPCSet getSigma() {
 		return sigma;
 	}
 
 	/**
 	 * @param sigma the sigma to set
 	 */
-	public void setSigma(PCSSet sigma) {
+	public void setSigma(SPCSet sigma) {
 		this.sigma = sigma;
 	}
 	

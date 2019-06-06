@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.5.14)  3 JUN 2019 19:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.5.14)  6 JUN 2019 10:23
 entering extended mode
 **./Documentation.tex
 (Documentation.tex
@@ -1512,41 +1512,41 @@ LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/n' will be
 LaTeX Font Info:    Font shape `TS1/XCharter-TLF/m/n' will be
 (Font)              scaled to size 6.0pt on input line 40.
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/n' will be
-(Font)              scaled to size 14.4pt on input line 68.
+(Font)              scaled to size 14.4pt on input line 70.
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/b/n' will be
-(Font)              scaled to size 14.4pt on input line 68.
+(Font)              scaled to size 14.4pt on input line 70.
 <Model.pdf, id=4, 845.07718pt x 598.15468pt>
 File: Model.pdf Graphic file (type pdf)
 <use Model.pdf>
-Package pdftex.def Info: Model.pdf  used on input line 79.
+Package pdftex.def Info: Model.pdf  used on input line 81.
 (pdftex.def)             Requested size: 845.07512pt x 598.15321pt.
 File: Model.pdf Graphic file (type pdf)
 <use Model.pdf>
-Package pdftex.def Info: Model.pdf  used on input line 79.
+Package pdftex.def Info: Model.pdf  used on input line 81.
 (pdftex.def)             Requested size: 845.07512pt x 598.15321pt.
 <Model.pdf, id=7, page=1, 845.07718pt x 598.15468pt>
 File: Model.pdf Graphic file (type pdf)
 <use Model.pdf, page 1>
-Package pdftex.def Info: Model.pdf , page1 used on input line 79.
+Package pdftex.def Info: Model.pdf , page1 used on input line 81.
 (pdftex.def)             Requested size: 845.07512pt x 598.15321pt.
 File: Model.pdf Graphic file (type pdf)
 <use Model.pdf, page 1>
-Package pdftex.def Info: Model.pdf , page1 used on input line 79.
+Package pdftex.def Info: Model.pdf , page1 used on input line 81.
 (pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
  [1
 
 {C:/Users/JAN/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 File: Model.pdf Graphic file (type pdf)
 <use Model.pdf, page 1>
-Package pdftex.def Info: Model.pdf , page1 used on input line 79.
+Package pdftex.def Info: Model.pdf , page1 used on input line 81.
 (pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
 File: Model.pdf Graphic file (type pdf)
 <use Model.pdf, page 1>
-Package pdftex.def Info: Model.pdf , page1 used on input line 79.
+Package pdftex.def Info: Model.pdf , page1 used on input line 81.
 (pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
 File: Model.pdf Graphic file (type pdf)
 <use Model.pdf, page 1>
-Package pdftex.def Info: Model.pdf , page1 used on input line 79.
+Package pdftex.def Info: Model.pdf , page1 used on input line 81.
 (pdftex.def)             Requested size: 597.55899pt x 422.95865pt.
  [2 <./Model.pdf
 
@@ -1554,28 +1554,28 @@ pdfTeX warning: pdflatex.exe (file ./Model.pdf): PDF inclusion: invalid other re
  type <array>); ignored.
 >]
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/b/n' will be
-(Font)              scaled to size 12.0pt on input line 88.
+(Font)              scaled to size 12.0pt on input line 90.
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/it' will be
-(Font)              scaled to size 10.0pt on input line 93.
+(Font)              scaled to size 10.0pt on input line 95.
 
-Underfull \hbox (badness 10000) in paragraph at lines 90--95
+Underfull \hbox (badness 10000) in paragraph at lines 92--97
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 90--95
+Underfull \hbox (badness 10000) in paragraph at lines 92--97
 
  []
 
 LaTeX Font Info:    Font shape `TS1/XCharter-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 123.
+(Font)              scaled to size 10.0pt on input line 125.
 
-Underfull \hbox (badness 10000) in paragraph at lines 127--132
+Underfull \hbox (badness 10000) in paragraph at lines 129--134
 
  []
 
 
-Overfull \hbox (9.98755pt too wide) in paragraph at lines 127--132
+Overfull \hbox (9.98755pt too wide) in paragraph at lines 129--134
 \T1/XCharter-TLF/m/n/10 If we want to re-trieve a value, i.e. if we want to know $\OMS/cmsy/m/n/10 R\OT1/cmr/m/n/10 (\OM
 L/cmm/m/it/10 s[]; s[]\OT1/cmr/m/n/10 )$ \T1/XCharter-TLF/m/n/10 for given $\OML/cmm/m/it/10 s[]; s[]$\T1/XCharter-TLF/m
 /n/10 , we can call $\OML/cmm/m/it/10 getRelation\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 s[]; s[]\OT1/cmr/m/n/10 )$\T1/XCharte
@@ -1583,7 +1583,7 @@ r-TLF/m/n/10 .
  []
 
 
-Overfull \hbox (2.14153pt too wide) in paragraph at lines 127--132
+Overfull \hbox (2.14153pt too wide) in paragraph at lines 129--134
 \T1/XCharter-TLF/m/n/10 To get all re-la-tion pairs of $\OML/cmm/m/it/10 s[]$\T1/XCharter-TLF/m/n/10 , that have a re-la
 -tion value greater or equal to $\OML/cmm/m/it/10 $\T1/XCharter-TLF/m/n/10 , the method $\OML/cmm/m/it/10 getRelations\
 OT1/cmr/m/n/10 (\OML/cmm/m/it/10 s[]; \OT1/cmr/m/n/10 )$
@@ -1591,83 +1591,84 @@ OT1/cmr/m/n/10 (\OML/cmm/m/it/10 s[]; \OT1/cmr/m/n/10 )$
 
 [3]
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/b/n' will be
-(Font)              scaled to size 10.0pt on input line 138.
+(Font)              scaled to size 10.0pt on input line 140.
 
-Underfull \hbox (badness 10000) in paragraph at lines 139--144
+Underfull \hbox (badness 10000) in paragraph at lines 141--146
 
  []
 
-<ToolsModel.png, id=40, 896.34875pt x 665.48625pt>
+<ToolsModel.png, id=40, 761.84625pt x 640.3925pt>
 File: ToolsModel.png Graphic file (type png)
 <use ToolsModel.png>
-Package pdftex.def Info: ToolsModel.png  used on input line 164.
-(pdftex.def)             Requested size: 448.17328pt x 332.74231pt.
+Package pdftex.def Info: ToolsModel.png  used on input line 167.
+(pdftex.def)             Requested size: 380.9222pt x 320.19547pt.
 [4] [5 <./ToolsModel.png (PNG copy)>]
-<ElementsModel.png, id=47, 919.435pt x 853.1875pt>
+<ElementsModel.png, id=47, 556.0775pt x 1042.89626pt>
 File: ElementsModel.png Graphic file (type png)
 <use ElementsModel.png>
-Package pdftex.def Info: ElementsModel.png  used on input line 166.
-(pdftex.def)             Requested size: 459.71637pt x 426.59271pt.
-
-Overfull \hbox (19.47226pt too wide) in paragraph at lines 166--167
-[][] 
- []
-
-[6 <./ElementsModel.png (PNG copy)>]
-<UnificationProblemModel.png, id=51, 1003.75pt x 1141.26375pt>
+Package pdftex.def Info: ElementsModel.png  used on input line 169.
+(pdftex.def)             Requested size: 278.03807pt x 521.44685pt.
+ [6 <./ElementsModel.png (PNG copy)>]
+<UnificationProblemModel.png, id=51, 1415.2875pt x 1154.3125pt>
 File: UnificationProblemModel.png Graphic file (type png)
 <use UnificationProblemModel.png>
-Package pdftex.def Info: UnificationProblemModel.png  used on input line 168.
-(pdftex.def)             Requested size: 501.87378pt x 570.63048pt.
+Package pdftex.def Info: UnificationProblemModel.png  used on input line 171.
+(pdftex.def)             Requested size: 707.64203pt x 577.15485pt.
 
-Overfull \hbox (61.62967pt too wide) in paragraph at lines 168--169
+Overfull \hbox (267.39792pt too wide) in paragraph at lines 171--172
 [][] 
  []
 
-<WorkFlow.pdf, id=52, 845.1575pt x 597.23125pt>
-File: WorkFlow.pdf Graphic file (type pdf)
-<use WorkFlow.pdf>
-Package pdftex.def Info: WorkFlow.pdf  used on input line 172.
-(pdftex.def)             Requested size: 845.15544pt x 597.22978pt.
-File: WorkFlow.pdf Graphic file (type pdf)
-<use WorkFlow.pdf>
-Package pdftex.def Info: WorkFlow.pdf  used on input line 172.
-(pdftex.def)             Requested size: 845.15544pt x 597.22978pt.
-<WorkFlow.pdf, id=55, page=1, 845.1575pt x 597.23125pt>
-File: WorkFlow.pdf Graphic file (type pdf)
-<use WorkFlow.pdf, page 1>
-Package pdftex.def Info: WorkFlow.pdf , page1 used on input line 172.
-(pdftex.def)             Requested size: 845.15544pt x 597.22978pt.
-File: WorkFlow.pdf Graphic file (type pdf)
-<use WorkFlow.pdf, page 1>
-Package pdftex.def Info: WorkFlow.pdf , page1 used on input line 172.
-(pdftex.def)             Requested size: 597.61578pt x 422.30568pt.
 [7 <./UnificationProblemModel.png (PNG copy)>]
+<UIModel.png, id=56, 158.5925pt x 122.4575pt>
+File: UIModel.png Graphic file (type png)
+<use UIModel.png>
+Package pdftex.def Info: UIModel.png  used on input line 173.
+(pdftex.def)             Requested size: 79.29604pt x 61.22859pt.
+<WorkFlow.pdf, id=57, 1195.5867pt x 845.07718pt>
+File: WorkFlow.pdf Graphic file (type pdf)
+<use WorkFlow.pdf>
+Package pdftex.def Info: WorkFlow.pdf  used on input line 178.
+(pdftex.def)             Requested size: 1195.58379pt x 845.07512pt.
+File: WorkFlow.pdf Graphic file (type pdf)
+<use WorkFlow.pdf>
+Package pdftex.def Info: WorkFlow.pdf  used on input line 178.
+(pdftex.def)             Requested size: 1195.58379pt x 845.07512pt.
+<WorkFlow.pdf, id=60, page=1, 1195.5867pt x 845.07718pt>
 File: WorkFlow.pdf Graphic file (type pdf)
 <use WorkFlow.pdf, page 1>
-Package pdftex.def Info: WorkFlow.pdf , page1 used on input line 172.
-(pdftex.def)             Requested size: 597.61578pt x 422.30568pt.
+Package pdftex.def Info: WorkFlow.pdf , page1 used on input line 178.
+(pdftex.def)             Requested size: 1195.58379pt x 845.07512pt.
 File: WorkFlow.pdf Graphic file (type pdf)
 <use WorkFlow.pdf, page 1>
-Package pdftex.def Info: WorkFlow.pdf , page1 used on input line 172.
-(pdftex.def)             Requested size: 597.61578pt x 422.30568pt.
+Package pdftex.def Info: WorkFlow.pdf , page1 used on input line 178.
+(pdftex.def)             Requested size: 845.40631pt x 597.55899pt.
+ [8 <./UIModel.png (PNG copy)>]
 File: WorkFlow.pdf Graphic file (type pdf)
 <use WorkFlow.pdf, page 1>
-Package pdftex.def Info: WorkFlow.pdf , page1 used on input line 172.
-(pdftex.def)             Requested size: 597.61578pt x 422.30568pt.
- [8 <./WorkFlow.pdf
+Package pdftex.def Info: WorkFlow.pdf , page1 used on input line 178.
+(pdftex.def)             Requested size: 845.40631pt x 597.55899pt.
+File: WorkFlow.pdf Graphic file (type pdf)
+<use WorkFlow.pdf, page 1>
+Package pdftex.def Info: WorkFlow.pdf , page1 used on input line 178.
+(pdftex.def)             Requested size: 845.40631pt x 597.55899pt.
+File: WorkFlow.pdf Graphic file (type pdf)
+<use WorkFlow.pdf, page 1>
+Package pdftex.def Info: WorkFlow.pdf , page1 used on input line 178.
+(pdftex.def)             Requested size: 845.40631pt x 597.55899pt.
+ [9 <./WorkFlow.pdf
 
 pdfTeX warning: pdflatex.exe (file ./WorkFlow.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSet
 s', type <array>); ignored.
 >] (Documentation.aux) ) 
 Here is how much of TeX's memory you used:
- 28927 strings out of 492895
- 541453 string characters out of 3133485
+ 28932 strings out of 492895
+ 541527 string characters out of 3133485
  592624 words of memory out of 3000000
- 32374 multiletter control sequences out of 15000+200000
+ 32378 multiletter control sequences out of 15000+200000
  605249 words of font info for 82 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 69i,18n,65p,913b,522s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 69i,18n,65p,913b,526s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/xcharter/xch_tuu2ww.enc}{C:/Program Files/MiKTeX 2.
 9/fonts/enc/dvips/xcharter/xch_a3psji.enc}{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/xcharter/xch_q7u3cc.enc}<C:/Progr
 am Files/MiKTeX 2.9/fonts/type1/public/xcharter/XCharter-Bold.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/xchart
@@ -1678,9 +1679,9 @@ msfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
 fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program
  Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/sym
 bols/msbm10.pfb>
-Output written on Documentation.pdf (8 pages, 480152 bytes).
+Output written on Documentation.pdf (9 pages, 485410 bytes).
 PDF statistics:
- 142 PDF objects out of 1000 (max. 8388607)
+ 146 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 68 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 73 words of extra memory for PDF output out of 10000 (max. 10000000)
 

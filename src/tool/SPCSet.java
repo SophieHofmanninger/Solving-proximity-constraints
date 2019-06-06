@@ -9,11 +9,12 @@ import java.util.Collection;
 import elements.Element;
 
 /**
- * Class for the problem/constraint/sigma sets.
+ * Class for the sigma/problem/constraint sets.
+ * Now the name is also a shortcut for SolvingProximityConstraints.
  * @author Jan-Michael Holzinger &amp; Sophie Hofmanninger
- * @version 1.0
+ * @version 1.1
  */
-public class PCSSet implements TupleSet<Element> {
+public class SPCSet implements TupleSet<Element> {
 
 	private ArrayList<Tuple<Element>> content;
 	private final String TOKEN;
@@ -22,7 +23,7 @@ public class PCSSet implements TupleSet<Element> {
  * A set of Tuple &lt;Element &gt;s
  * @param symbol The symbol to use between the first and second element.
  */
-	public PCSSet(String symbol) {
+	public SPCSet(String symbol) {
 		content=new ArrayList<Tuple<Element>>();
 		TOKEN = symbol;
 	}

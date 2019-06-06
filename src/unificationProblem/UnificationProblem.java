@@ -9,7 +9,7 @@ import java.util.Map;
 import elements.Element;
 import elements.Function;
 import tool.Matrix;
-import tool.PCSSet;
+import tool.SPCSet;
 import tool.Tuple;
 
 import unificationProblem.Algorithms;
@@ -37,12 +37,12 @@ public class UnificationProblem {
 	private ArrayList<Tuple<Function>> openCases;
 
 	// The Unification Problem:
-	public Problem prob;
-	public float lambda=1;
-	
+	private Problem prob;
+	private float lambda=1;
+
 	//Solving status
 	private int status=0; //0: nothing done, 1: pre-unification successful, 2: constraint Simplification successful
-						  //-1: pre-unification failed, -2: constraint Simplification failed
+	//-1: pre-unification failed, -2: constraint Simplification failed
 
 	/**
 	 * Constructor for a UnificationProblem.
@@ -97,9 +97,9 @@ public class UnificationProblem {
 	public boolean CloseCase(Tuple<Function> t, float p) {
 		if(p<0||p>1) return false;
 		if(openCases.contains(t)) {
-			
+
 			proximityRelations.addRelation(t.getFirst(), t.getSecond(), p);
-			
+
 			openCases.remove(t);			
 			return true;
 		}
@@ -237,15 +237,26 @@ public class UnificationProblem {
 		s+= proximityRelations.toString(lambda);
 		return s;
 	}
-	
+
 	/**
 	 * Solves the next algorithm. 
 	 * @return True, if it was successful and False otherwise.
 	 */
 	public boolean solveNext() {
-				
+		StringBuffer dummy= new StringBuffer();
+		return solveNext(dummy);
+	}
+
+
+	/**
+	 * Solves the next algorithm. 
+	 * @param steps StringBuffer to log the performed steps.
+	 * @return True, if it was successful and False otherwise.
+	 */
+	public boolean solveNext(StringBuffer steps) {
+
 		if(status==0) {
-			if(Algorithms.preUnification(this)) {
+			if(Algorithms.preUnification(this,steps)) {
 				status = 1;
 				return true;
 			}
@@ -254,9 +265,9 @@ public class UnificationProblem {
 				return false;
 			}
 		}
-		
+
 		if(status == 1) {
-			if(Algorithms.constraintSimplification(prob,proximityRelations,lambda)){
+			if(Algorithms.constraintSimplification(this,steps)){
 				status = 2;
 				return true;
 			}
@@ -265,62 +276,62 @@ public class UnificationProblem {
 				return false;
 			}
 		}
-		
+
 		return false;
 	}
- 
+
 	/**
 	 * Generates the output depending on the status. 
 	 * @return Returns the output string.
 	 */
 	public String resultString() {		
 		String ret = "";
-		
+
 		switch(status) {
-			case -2:
-				ret = "Problem not solveable! Constraint Simplification failed!";
-				break;
-			case -1:
-				ret = "Problem not solveable! pre-Unification failed!";
-				break;
-			case 0:
-				ret = this.toString();
-				break;
-			case 1:
-				ret = this.toString();
+		case -2:
+			ret = "Problem not solveable! Constraint Simplification failed!";
+			break;
+		case -1:
+			ret = "Problem not solveable! pre-Unification failed!";
+			break;
+		case 0:
+			ret = this.toString();
+			break;
+		case 1:
+			ret = this.toString();
+			ret += System.lineSeparator();
+			ret += "sigma = ";				
+			ret += prob.getSigma().toString();
+
+			break;
+		case 2:
+			Problem p = this.prob;
+			int i = 1;
+			do {
+				ret += "psi"+i+" = [";
+				for(Map.Entry<String, ArrayList<Element>> m : p.psi.entrySet()) {
+					ret += m.getKey() + " -> {";
+					for(Element e : m.getValue()) {
+						ret += e.getName() + ",";
+					}
+					ret = ret.substring(0,ret.length()-1) + "},";					
+				}					
+				ret = ret.substring(0,ret.length()-1)+"],";
 				ret += System.lineSeparator();
-				ret += "sigma = ";				
-				ret += prob.getSigma().toString();
-				
-				break;
-			case 2:
-				Problem p = this.prob;
-				int i = 1;
-				do {
-					ret += "psi"+i+" = [";
-					for(Map.Entry<String, ArrayList<Element>> m : p.psi.entrySet()) {
-						ret += m.getKey() + " -> {";
-						for(Element e : m.getValue()) {
-							ret += e.getName() + ",";
-						}
-						ret = ret.substring(0,ret.length()-1) + "},";					
-					}					
-					ret = ret.substring(0,ret.length()-1)+"],";
-					ret += System.lineSeparator();
-					
-					p=p.branch;
-					i++;
-				}while(p.branch != null);
-				
-				ret += "sigma = ";
-				
-				ret += p.getSigma().toString();
-				
-				break;
-			default:
-				ret = "Unknown Error!";
+
+				p=p.branch;
+				i++;
+			}while(p.branch != null);
+
+			ret += "sigma = ";
+
+			ret += p.getSigma().toString();
+
+			break;
+		default:
+			ret = "Unknown Error!";
 		}
-		
+
 		return ret;
 	}
 
@@ -328,7 +339,7 @@ public class UnificationProblem {
 	 * Return the set P.
 	 * @return the set P.
 	 */
-	public PCSSet getP() {
+	public SPCSet getP() {
 		return prob.getP();
 	}
 
@@ -336,7 +347,7 @@ public class UnificationProblem {
 	 * Set the set P.
 	 * @param p the set P to set.
 	 */
-	public void setP(PCSSet p) {
+	public void setP(SPCSet p) {
 		prob.setP(p);
 	}
 
@@ -344,7 +355,7 @@ public class UnificationProblem {
 	 * Return the set C.
 	 * @return the set C.
 	 */
-	public PCSSet getC() {
+	public SPCSet getC() {
 		return prob.getC();
 	}
 
@@ -352,15 +363,15 @@ public class UnificationProblem {
 	 * Set the set C.
 	 * @param c the set C to set.
 	 */
-	public void setC(PCSSet c) {
+	public void setC(SPCSet c) {
 		prob.setC(c);
 	}
-	
+
 	/**
 	 * Return the set Sigma.
 	 * @return the set Sigma.
 	 */
-	public PCSSet getSigma() {
+	public SPCSet getSigma() {
 		return prob.getSigma();
 	}
 
@@ -368,8 +379,40 @@ public class UnificationProblem {
 	 * Set the set Sigma.
 	 * @param s the set Sigma to set.
 	 */
-	public void setSigma(PCSSet s) {
+	public void setSigma(SPCSet s) {
 		prob.setSigma(s);
+	}
+
+	/**
+	 * Returns the Problem.
+	 * @return the problem.
+	 */
+	public Problem getProb() {
+		return this.prob;
+	}
+
+	/**
+	 * Returns Lambda.
+	 * @return lambda.
+	 */
+	public float getLambda() {
+		return this.lambda;
+	}
+
+	/**
+	 * Sets the problem.
+	 * @param prob the problem to set
+	 */
+	public void setProb(Problem prob) {
+		this.prob = prob;
+	}
+
+	/**
+	 * Sets lambda.
+	 * @param lambda the lambda to set
+	 */
+	public void setLambda(float lambda) {
+		this.lambda = lambda;
 	}
 
 }

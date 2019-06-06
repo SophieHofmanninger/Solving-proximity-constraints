@@ -34,9 +34,9 @@ class AlgorithmsJUnit2 {
 	@AfterEach
 	void tearDown() throws Exception {
 		System.out.println("After:");
-		System.out.println("P = " + unif.prob.getP().toString());
-		System.out.println("C = " + unif.prob.getC().toString());
-		System.out.println("s = " + unif.prob.getSigma().toString());
+		System.out.println("P = " + unif.getP().toString());
+		System.out.println("C = " + unif.getC().toString());
+		System.out.println("s = " + unif.getSigma().toString());
 	}
 
 	
@@ -50,7 +50,7 @@ class AlgorithmsJUnit2 {
 		String t="q(f(a),g(d),y)";
 		unif= InputParser.parse(s+" =? "+t).get(0);
 		Algorithms.preUnification(unif);
-		System.out.println("\n" + "C = " + unif.prob.getC().toString());
+		System.out.println("\n" + "C = " + unif.getC().toString());
 		
 		Matrix matrix = new Matrix();
 		matrix.addRelation("a", "b", 0.7f);
@@ -63,11 +63,12 @@ class AlgorithmsJUnit2 {
 		matrix.addRelation("p", "q", 0.7f);
 		
 		System.out.println("R =" + matrix.toString());
-		
-		boolean result=Algorithms.constraintSimplification(unif.prob, matrix, 0.5f);
+		unif.setProximityRelations(matrix);
+		unif.setLambda(0.5f);
+		boolean result=Algorithms.constraintSimplification(unif);
 		// TODO find the bugs
-		System.out.println(unif.prob.getC().toString());
-		System.out.println(unif.prob.getSigma().toString());
+		System.out.println(unif.getProb().getC().toString());
+		System.out.println(unif.getProb().getSigma().toString());
 		assertTrue(result);
 		
 	}

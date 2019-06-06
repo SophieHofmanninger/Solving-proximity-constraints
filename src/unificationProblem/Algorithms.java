@@ -11,7 +11,7 @@ import elements.Element;
 import elements.Function;
 import elements.Variable;
 import tool.Matrix;
-import tool.PCSSet;
+import tool.SPCSet;
 import tool.Tuple;
 
 /**
@@ -42,8 +42,8 @@ public final class Algorithms {
 		StringBuffer dummy= new StringBuffer();
 		return preUnification(unif,dummy);
 	}
-	
-	
+
+
 	/**
 	 * Performs the Pre-Unification Algorithm 
 	 *
@@ -52,7 +52,7 @@ public final class Algorithms {
 	 * @return {@code false}, if there is no unifier.
 	 */
 	public static boolean preUnification(UnificationProblem unif, StringBuffer steps) {
-		PCSSet problem = unif.getP();
+		SPCSet problem = unif.getP();
 		if(problem==null) return false;
 		while (problem.size()!=0) {
 			Tuple<Element> t = problem.get(0);
@@ -81,7 +81,7 @@ public final class Algorithms {
 				}
 
 				if(onlyVars) {
-					unif.prob.getSigma().add(problem.get(0));
+					unif.getSigma().add(problem.get(0));
 					problem.remove(0);
 					steps.append("(VO), ");
 					varsOnly(var,problem);
@@ -114,7 +114,7 @@ public final class Algorithms {
 				Tuple<ArrayList<Tuple<Element>>> probAndCons = decomposition(fun);
 				problem.remove(0);
 				problem.addAll(0,probAndCons.getFirst());
-				unif.prob.getC().addAll(probAndCons.getSecond());
+				unif.getC().addAll(probAndCons.getSecond());
 				continue;
 			}
 
@@ -143,12 +143,12 @@ public final class Algorithms {
 				steps.append("(VE), ");
 				Tuple<Element> newTerm = varElim(t,problem);
 				problem.add(0, newTerm);
-				unif.prob.getSigma().add(new Tuple<Element>(t.getFirst(),newTerm.getFirst()));
+				unif.getSigma().add(new Tuple<Element>(t.getFirst(),newTerm.getFirst()));
 				continue;
 			}
 
 		}
-		
+
 		unif.getC().trim();
 
 
@@ -196,7 +196,7 @@ public final class Algorithms {
 	 * @return The renamed variable and term.
 	 */
 	private static Tuple<Element> varElim
-	(Tuple<Element> t, PCSSet problem) {
+	(Tuple<Element> t, SPCSet problem) {
 		Element first = (t.getSecond().rename());
 		for(int i=0;i<problem.size();i++) {
 			problem.get(i).setFirst
@@ -263,7 +263,7 @@ public final class Algorithms {
 	 * @param var the tuple to unify.
 	 * @param problem the unification problem.
 	 */
-	private static void varsOnly(Tuple<Variable> var, PCSSet problem) {
+	private static void varsOnly(Tuple<Variable> var, SPCSet problem) {
 		for(int i=0;i<problem.size();i++) {
 			Tuple<Element> t=problem.get(i);
 			Variable f;
@@ -282,6 +282,20 @@ public final class Algorithms {
 	 * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 	 */
 
+
+	public static boolean constraintSimplification(UnificationProblem unif) {
+		StringBuffer dummy= new StringBuffer();
+		return constraintSimplification(unif,dummy);
+	}
+
+
+	public static boolean constraintSimplification(UnificationProblem unif, StringBuffer steps) {
+		Problem prob=unif.getProb();
+		Matrix proxR=unif.getProximityRelations();
+		float lambda=unif.getLambda();
+		return constraintSimp(prob,proxR,lambda);
+	}
+
 	/**
 	 * The constraint simplification algorithm transforms constraint configurations, 
 	 * exhaustively appling special rules.
@@ -289,12 +303,12 @@ public final class Algorithms {
 	 * @param proxR This is the proximity relation matrix.
 	 * @return True, if the constraints can be simplified and otherwise false.
 	 */
-	public static boolean constraintSimplification(Problem prob,Matrix proxR, float lambda) {
+	private static boolean constraintSimp(Problem prob,Matrix proxR, float lambda) {
 
-		PCSSet constraintProblem = prob.getC();
+		SPCSet constraintProblem = prob.getC();
 		Tuple<Element> t;
 		boolean error = false;
-		
+
 		while(!constraintProblem.isEmpty()) {
 			t=constraintProblem.get(0);
 
@@ -321,7 +335,7 @@ public final class Algorithms {
 					}
 				}
 			}
-			
+
 			// FFS
 			if(t.getFirst().isName()== false && t.getSecond().isName()==false ) {
 				if(ffs((Function)t.getFirst(),(Function)t.getSecond(),proxR,lambda)) {
@@ -374,7 +388,7 @@ public final class Algorithms {
 		else {
 			return true;	
 		}
-		
+
 	}
 
 	/**
@@ -408,13 +422,13 @@ public final class Algorithms {
 	private static boolean nfs(Element n1, Function f2, Map<String,ArrayList<Element>> psi, Matrix r, float lambda) {
 
 		ArrayList<Element> list;
-		
+
 		if(psi.containsKey(n1.getName())) {
 			ArrayList<Element> old = psi.get(n1.getName());			
 			list = r.getRelations(f2,lambda);
-			
+
 			list = intersection(old,list);
-			
+
 			if(list.isEmpty()) {
 				return false;
 			}
@@ -422,7 +436,7 @@ public final class Algorithms {
 				psi.put(n1.getName(), list);
 				return true;
 			}
-			
+
 		}
 		else {
 			list = r.getRelations(f2,lambda);
@@ -447,29 +461,29 @@ public final class Algorithms {
 		if(cur.psi.containsKey(n1.getName())) { //psi.containsKey(n1.getName()) is same a isMemberPsi
 			if(cur.psi.get(n1.getName()).size() > 1) {
 				//branchen
-				
+
 				Problem nextBranch = cur.branch;
 				cur.branch = new Problem();
 				cur.branch.branch=nextBranch;
-				
+
 				cur.branch.setC(cur.getC());
 				cur.branch.setP(cur.getP());
 				cur.branch.setSigma(cur.getSigma());
-				
+
 				cur.branch.psi = new HashMap<String,ArrayList<Element>>(cur.psi);
-				
+
 				cur.psi.put(n1.getName(), new ArrayList<Element>());
 				cur.psi.get(n1.getName()).add(cur.branch.psi.get(n1.getName()).get(0));
 				cur.branch.psi.get(n1.getName()).remove(0);
-				
-				if(!constraintSimplification(cur.branch,r,lambda)) {
+
+				if(!constraintSimp(cur.branch,r,lambda)) {
 					cur.branch = null;
 				}
-				
+
 			}
-			
+
 			nfs(n2,new Function(cur.psi.get(n1.getName()).get(0).getName()),cur.psi,r,lambda);
-			
+
 			return true;
 		}
 		else {
@@ -485,17 +499,17 @@ public final class Algorithms {
 	 */
 	private static ArrayList<Element> intersection(ArrayList<Element> list1, ArrayList<Element> list2){
 		ArrayList<Element> ret = new ArrayList<Element>();
-		
+
 		for(Element m : list1) {
 			for(Element n : list2) {
-				
+
 				if(m.getName() == n.getName()) {
 					ret.add(m);
 				}
-				
+
 			}
 		}
-		
+
 		return ret;
 	}
 

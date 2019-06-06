@@ -62,6 +62,8 @@ Version Number & Changes Summary & Author\\
 \hline
 0.7 & added UML & Jan-Michael\\
 \hline
+0.8 & added User Interfaces & Jan-Michael\\
+\hline
 \end{tabular}
 
 \end{center}
@@ -133,7 +135,7 @@ If we want to retrieve a value, i.e. if we want to know \(\mathcal{R}(s_1,s_2)\)
 %------------------------------------------------
 \subsection{Algorithms}
 
-We implement the Algorithms in an own class, that has two public  static functions, preUnification and constraintSimplification. The other methods are only used for the construction of the two simplification algorithms and therefore they are private and static.
+We implement the Algorithms in an own class, that has two public  static functions, preUnification and constraintSimplification. The other methods are only used for the construction of the two simplification algorithms and therefore they are private and static. The methods should take two inputs, mandatory an unification problem, and optional a StringBuffer, to log certain events.
 
 \subsubsection{Pre-Unification Algorithm}
 The preUnification method consists of a loop, that runs until either \(\mathrm{P}=\emptyset\) or it is detected, that there is no solution to the problem.\\
@@ -155,21 +157,25 @@ Inside the loop, the seven rules to simplify the constraint set, will be applied
 \subsection{Output}
 
 \section{System Model}
-The program consists of 3 packages,
+The program consists of 4 packages,
 \begin{itemize}
 	\item tool
 	\item elements
 	\item unificationProblem
+	\item userInterfaces
 \end{itemize}
 \includegraphics[scale=0.5]{ToolsModel}
 \newpage
 \includegraphics[scale=0.5]{ElementsModel}
 \newpage
 \includegraphics[scale=0.5]{UnificationProblemModel}
+\newpage
+\includegraphics[scale=0.5]{UIModel}
+
 
 \section{Work Flow}
 The typical workflow looks like this:
-\includepdf[pages=-]{WorkFlow}
+\includepdf[landscape=true, pages=-]{WorkFlow}
 % File contents
 %\begin{file}[hello.py]
 %\begin{lstlisting}[language=Python]

@@ -31,9 +31,9 @@ class AlgorithmsJUnit1 {
 	@AfterEach
 	void tearDown() throws Exception {
 		System.out.println("After:");
-		System.out.println("P = " + unif.prob.getP().toString());
-		System.out.println("C = " + unif.prob.getC().toString());
-		System.out.println("s = " + unif.prob.getSigma().toString());
+		System.out.println("P = " + unif.getP().toString());
+		System.out.println("C = " + unif.getC().toString());
+		System.out.println("s = " + unif.getSigma().toString());
 	}
 
 	/**
@@ -47,9 +47,9 @@ class AlgorithmsJUnit1 {
 		unif= InputParser.parse(s+" =? "+t).get(0);
 
 		System.out.println("Before:");
-		System.out.println("P = " + unif.prob.getP().toString());
-		System.out.println("C = " + unif.prob.getC().toString());
-		System.out.println("s = " + unif.prob.getSigma().toString());
+		System.out.println("P = " + unif.getP().toString());
+		System.out.println("C = " + unif.getC().toString());
+		System.out.println("s = " + unif.getSigma().toString());
 
 		boolean result=Algorithms.preUnification(unif);
 		assertTrue(result);
@@ -66,9 +66,9 @@ class AlgorithmsJUnit1 {
 		unif= InputParser.parse(s+" =? "+t).get(0);
 
 		System.out.println("Before:");
-		System.out.println("P = " + unif.prob.getP().toString());
-		System.out.println("C = " + unif.prob.getC().toString());
-		System.out.println("s = " + unif.prob.getSigma().toString());
+		System.out.println("P = " + unif.getP().toString());
+		System.out.println("C = " + unif.getC().toString());
+		System.out.println("s = " + unif.getSigma().toString());
 
 		boolean result=Algorithms.preUnification(unif);
 		assertTrue(result);
@@ -86,9 +86,9 @@ class AlgorithmsJUnit1 {
 		unif= InputParser.parse(s+" =? "+t).get(0);
 
 		System.out.println("Before:");
-		System.out.println("P = " + unif.prob.getP().toString());
-		System.out.println("C = " + unif.prob.getC().toString());
-		System.out.println("s = " + unif.prob.getSigma().toString());
+		System.out.println("P = " + unif.getP().toString());
+		System.out.println("C = " + unif.getC().toString());
+		System.out.println("s = " + unif.getSigma().toString());
 
 		boolean result=Algorithms.preUnification(unif);
 		assertFalse(result);
@@ -106,9 +106,9 @@ class AlgorithmsJUnit1 {
 		unif= InputParser.parse(s+" =? "+t).get(0);
 
 		System.out.println("Before:");
-		System.out.println("P = " + unif.prob.getP().toString());
-		System.out.println("C = " + unif.prob.getC().toString());
-		System.out.println("s = " + unif.prob.getSigma().toString());
+		System.out.println("P = " + unif.getP().toString());
+		System.out.println("C = " + unif.getC().toString());
+		System.out.println("s = " + unif.getSigma().toString());
 
 		boolean result=Algorithms.preUnification(unif);
 		assertFalse(result);
@@ -129,9 +129,9 @@ class AlgorithmsJUnit1 {
 		StringBuffer step=new StringBuffer();
 
 		System.out.println("Before:");
-		System.out.println("P = " + unif.prob.getP().toString());
-		System.out.println("C = " + unif.prob.getC().toString());
-		System.out.println("s = " + unif.prob.getSigma().toString());
+		System.out.println("P = " + unif.getP().toString());
+		System.out.println("C = " + unif.getC().toString());
+		System.out.println("s = " + unif.getSigma().toString());
 
 		boolean result=Algorithms.preUnification(unif,step);
 		if(step.length()>0) step.delete(step.length()-2, step.length()-1);
