@@ -36,8 +36,11 @@ public class Test {
 		System.out.println(uni3.getLeft().toFullString());
 		System.out.println(uni3.getRight().toFullString());
 		
+		StringBuffer steps = new StringBuffer();
 		
 		// Test
+		System.out.println(System.lineSeparator()+"Test1:");
+		
 		Matrix matr = new Matrix();
 		matr.addRelation("a", "b", 0.7f);
 		matr.addRelation("b", "c", 0.7f);
@@ -53,10 +56,34 @@ public class Test {
 		uni.setLambda(0.5f);
 		
 		System.out.println(uni.resultString());
-		uni.solveNext();
+		uni.solveNext(steps);
 		System.out.println(uni.resultString());
-		uni.solveNext();
+		System.out.print(steps);
+		steps = new StringBuffer();
+		uni.solveNext(steps);
 		System.out.println(uni.resultString());
+		System.out.print(steps);
+		
+		
+		// Test3
+		System.out.println(System.lineSeparator()+"Test3:");
+
+		Matrix matr3 = new Matrix();
+		matr3.addRelation("a", "a1", 0.7f);
+		matr3.addRelation("a1", "b", 0.7f);
+		matr3.addRelation("b", "c1", 0.7f);
+		matr3.addRelation("c1", "c", 0.7f);
+		matr3.addRelation("p", "q", 0.7f);
+
+		uni3.setProximityRelations(matr3);
+		uni3.setLambda(0.5f);
+
+
+		System.out.println(uni3.resultString());
+		uni3.solveNext();
+		System.out.println(uni3.resultString());
+		uni3.solveNext();
+		System.out.println(uni3.resultString());
 		
 	}
 

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package tool;
 
 import java.util.ArrayList;
@@ -112,15 +109,17 @@ public class Matrix {
 		ArrayList<Element> ret = new ArrayList<>();
 		boolean self = false;
 		
-		for (Map.Entry<String, Float> m : relations.get(s1).entrySet()) {
-			if(m.getKey()==s1) {
-				self = true;
-			}
-			if(m.getValue()>=lambda) {
-				ret.add(new Function(m.getKey()));
+		if(relations.containsKey(s1)) {
+			for (Map.Entry<String, Float> m : relations.get(s1).entrySet()) {
+				if(m.getKey()==s1) {
+					self = true;
+				}
+				if(m.getValue()>=lambda) {
+					ret.add(new Function(m.getKey()));
+				}
 			}
 		}
-
+		
 		if(!self) {
 			ret.add(new Function(s1));
 		}

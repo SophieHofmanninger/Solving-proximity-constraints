@@ -24,6 +24,7 @@ import tool.Tuple;
 
 public final class Algorithms {
 
+	private static int NEXT_BRANCH=0; 
 
 	/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	 * +                                                                           +
@@ -293,7 +294,7 @@ public final class Algorithms {
 		Problem prob=unif.getProb();
 		Matrix proxR=unif.getProximityRelations();
 		float lambda=unif.getLambda();
-		return constraintSimp(prob,proxR,lambda);
+		return constraintSimp(prob,proxR,lambda,steps,0);
 	}
 
 	/**
@@ -303,20 +304,28 @@ public final class Algorithms {
 	 * @param proxR This is the proximity relation matrix.
 	 * @return True, if the constraints can be simplified and otherwise false.
 	 */
-	private static boolean constraintSimp(Problem prob,Matrix proxR, float lambda) {
+	private static boolean constraintSimp(Problem prob,Matrix proxR, float lambda, StringBuffer steps,int branch) {
 
+		StringBuffer branchSteps = new StringBuffer();
+		StringBuffer branchStepsTemp;
 		SPCSet constraintProblem = prob.getC();
 		Tuple<Element> t;
 		boolean error = false;
+		NEXT_BRANCH = branch+1;
 
 		while(!constraintProblem.isEmpty()) {
 			t=constraintProblem.get(0);
 
 			// NN1 and NN2
 			if((t.getFirst().isName()) && (t.getSecond().isName())) {
+				branchStepsTemp = new StringBuffer();
 				if(prob.psi.containsKey(t.getFirst().getName())) {
-					if(nn1(t.getFirst(),t.getSecond(),prob, proxR, lambda)) {
+					steps.append("(NN1), ");
+					if(nn1(t.getFirst(),t.getSecond(),prob, proxR, lambda, steps, branchStepsTemp)) {
 						constraintProblem.remove(0);
+						if(branchStepsTemp.length()>0) {
+							branchSteps.append(branchStepsTemp);
+						}
 						continue;
 					}
 					else {
@@ -325,8 +334,12 @@ public final class Algorithms {
 					}
 				}
 				else {
-					if(nn1(t.getSecond(),t.getFirst(),prob, proxR, lambda)) {
+					steps.append("(NN2), (NN1), ");
+					if(nn1(t.getSecond(),t.getFirst(),prob, proxR, lambda, steps, branchStepsTemp)) {
 						constraintProblem.remove(0);
+						if(branchStepsTemp.length()>0) {
+							branchSteps.append(branchStepsTemp);
+						}
 						continue;						
 					}
 					else {
@@ -334,11 +347,13 @@ public final class Algorithms {
 						break;
 					}
 				}
+				
 			}
 
 			// FFS
 			if(t.getFirst().isName()== false && t.getSecond().isName()==false ) {
-				if(ffs((Function)t.getFirst(),(Function)t.getSecond(),proxR,lambda)) {
+				steps.append("(FFS), ");
+				if(ffs((Function)t.getFirst(),(Function)t.getSecond(),proxR,lambda,steps)) {
 					constraintProblem.remove(0);
 					continue;
 				}
@@ -350,6 +365,7 @@ public final class Algorithms {
 
 			//NFS
 			if(t.getFirst().isName() && t.getSecond().isName() ==false) {
+				steps.append("(NFS), ");
 				if(nfs(t.getFirst(),(Function)t.getSecond(),prob.psi,proxR,lambda)) {
 					constraintProblem.remove(0);
 					continue;
@@ -362,8 +378,10 @@ public final class Algorithms {
 
 			//FSN
 			if(t.getFirst().isName()==false && t.getSecond().isName()) {
+				steps.append("(FSN), ");
 				if(nfs(t.getSecond(),(Function)t.getFirst(),prob.psi,proxR,lambda)) {
 					constraintProblem.remove(0);
+					continue;
 				}
 				else {
 					error = true;
@@ -372,7 +390,15 @@ public final class Algorithms {
 			}
 		}
 
+		steps.delete(steps.length()-2, steps.length()); //remove last ,
+		steps.append(System.lineSeparator());
+		
+		if(branchSteps.length() > 0) {
+			steps.append(branchSteps);
+		}
+		
 		if(error) {
+			steps.insert(0, branch+"[Failed!]: ");
 			if(prob.branch != null) {
 				prob.setP(prob.branch.getP());
 				prob.setC(prob.branch.getC());
@@ -386,6 +412,9 @@ public final class Algorithms {
 			}
 		}
 		else {
+			if(branch!=0) {
+				steps.insert(0, branch+": ");
+			}
 			return true;	
 		}
 
@@ -399,7 +428,7 @@ public final class Algorithms {
 	 * @param lambda lower bound of relations
 	 * @return  true if method worked successful, false otherwise.
 	 */ 
-	private static boolean ffs(Function f1, Function f2, Matrix r, float lambda) {
+	private static boolean ffs(Function f1, Function f2, Matrix r, float lambda, StringBuffer steps) {
 
 		float relation = r.getRelation(f1, f2);
 
@@ -407,6 +436,7 @@ public final class Algorithms {
 			return true;
 		}
 		else {
+			steps.append("(Fail1), ");
 			return false;
 		}
 	}
@@ -456,35 +486,53 @@ public final class Algorithms {
 	 * @param lambda lambda of the relation
 	 * @return  true if method worked successful, false otherwise.
 	 */
-	private static boolean nn1(Element n1, Element n2, Problem cur, Matrix r, float lambda) {
+	private static boolean nn1(Element n1, Element n2, Problem cur, Matrix r, float lambda, StringBuffer steps, StringBuffer branchSteps) {
 
 		if(cur.psi.containsKey(n1.getName())) { //psi.containsKey(n1.getName()) is same a isMemberPsi
 			if(cur.psi.get(n1.getName()).size() > 1) {
 				//branchen
-
+				
+				steps.delete(steps.length()-3, steps.length());
+				steps.append(" - Create Branch ["+NEXT_BRANCH+"]), ");
+	
 				Problem nextBranch = cur.branch;
 				cur.branch = new Problem();
 				cur.branch.branch=nextBranch;
 
-				cur.branch.setC(cur.getC());
+				cur.branch.setC(cur.getC().copy());
 				cur.branch.setP(cur.getP());
 				cur.branch.setSigma(cur.getSigma());
 
-				cur.branch.psi = new HashMap<String,ArrayList<Element>>(cur.psi);
+				cur.branch.psi = new HashMap<String,ArrayList<Element>>();
 
+				for(Map.Entry<String, ArrayList<Element>> m : cur.psi.entrySet()) {
+					ArrayList<Element> temp = new ArrayList<Element>();
+					for(Element t : m.getValue()) {
+						temp.add(t);
+					}
+
+					cur.branch.psi.put(m.getKey(), temp);
+
+				}
+				
 				cur.psi.put(n1.getName(), new ArrayList<Element>());
 				cur.psi.get(n1.getName()).add(cur.branch.psi.get(n1.getName()).get(0));
 				cur.branch.psi.get(n1.getName()).remove(0);
-
-				if(!constraintSimp(cur.branch,r,lambda)) {
+				
+				if(!constraintSimp(cur.branch,r,lambda,branchSteps,NEXT_BRANCH)) {
 					cur.branch = null;
 				}
 
+				
 			}
 
-			nfs(n2,new Function(cur.psi.get(n1.getName()).get(0).getName()),cur.psi,r,lambda);
-
-			return true;
+			if(nfs(n2,new Function(cur.psi.get(n1.getName()).get(0).getName()),cur.psi,r,lambda)) {
+				return true;
+			}
+			else {
+				steps.append("(Fail2), ");
+				return false;
+			}
 		}
 		else {
 			return false;
@@ -503,7 +551,7 @@ public final class Algorithms {
 		for(Element m : list1) {
 			for(Element n : list2) {
 
-				if(m.getName() == n.getName()) {
+				if(m.getName().compareTo(n.getName())==0) {
 					ret.add(m);
 				}
 

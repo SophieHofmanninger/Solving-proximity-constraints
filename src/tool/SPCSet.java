@@ -89,9 +89,9 @@ public class SPCSet implements TupleSet<Element> {
 		for(int i=0;i<size();i++) {
 			s+="";
 			Tuple<Element> t = content.get(i);
-			s+=t.getFirst();
+			s+=t.getFirst().toFullString();
 			s+=TOKEN;
-			s+=t.getSecond();
+			s+=t.getSecond().toFullString();
 			s+="";
 			if(i<size()-1) s+=", ";
 		}
@@ -143,6 +143,17 @@ public class SPCSet implements TupleSet<Element> {
 		content=contentNew;
 	}
 
-
+	/**
+	 * Copies the current SPC set.
+	 * @return the copy of the SPC set
+	 */
+	public SPCSet copy() {
+		SPCSet ret = new SPCSet(this.TOKEN);
+		ret.content = new ArrayList<Tuple<Element>>();
+		for(Tuple<Element> c : this.content) {
+			ret.content.add(new Tuple<Element>(c.getFirst(),c.getSecond()));
+		}
+		return ret;
+	}
 
 }

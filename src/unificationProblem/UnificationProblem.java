@@ -308,6 +308,9 @@ public class UnificationProblem {
 			Problem p = this.prob;
 			int i = 1;
 			do {
+				if(i!=1) {
+					p=p.branch;
+				}
 				ret += "psi"+i+" = [";
 				for(Map.Entry<String, ArrayList<Element>> m : p.psi.entrySet()) {
 					ret += m.getKey() + " -> {";
@@ -318,8 +321,6 @@ public class UnificationProblem {
 				}					
 				ret = ret.substring(0,ret.length()-1)+"],";
 				ret += System.lineSeparator();
-
-				p=p.branch;
 				i++;
 			}while(p.branch != null);
 
@@ -414,5 +415,20 @@ public class UnificationProblem {
 	public void setLambda(float lambda) {
 		this.lambda = lambda;
 	}
+	
+	/**
+	 * @return the current Status
+	 */
+	public int getStatus() {
+		return this.status;
+	}
 
+	/**
+	 * @param status the status to set
+	 */
+	public void setStatus(int status) {
+		if(status >= -2 && status <= 2) {
+			this.status = status;
+		}
+	}
 }
