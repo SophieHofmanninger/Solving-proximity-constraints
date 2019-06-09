@@ -40,5 +40,5 @@ Cursor=1052
 
 [SessionInfo]
 FrameCount=2
-ActiveFrame=0
+ActiveFrame=1
 

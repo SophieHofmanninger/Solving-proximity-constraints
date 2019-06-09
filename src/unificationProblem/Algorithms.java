@@ -49,7 +49,7 @@ public final class Algorithms {
 	 * Performs the Pre-Unification Algorithm 
 	 *
 	 * @param unif the Unification Problem
-	 * @param steps PrintStream to keep track of the performed steps.
+	 * @param steps StringBuffer to keep track of the performed steps.
 	 * @return {@code false}, if there is no unifier.
 	 */
 	public static boolean preUnification(UnificationProblem unif, StringBuffer steps) {
@@ -296,12 +296,15 @@ public final class Algorithms {
 		float lambda=unif.getLambda();
 		return constraintSimp(prob,proxR,lambda,steps,0);
 	}
-
+	// TODO JAVADOC
 	/**
 	 * The constraint simplification algorithm transforms constraint configurations, 
 	 * exhaustively appling special rules.
 	 * @param prob The problem to solve.
 	 * @param proxR This is the proximity relation matrix.
+	 * @param lambda the lambda.
+	 * @param steps StringBuffer to keep track of the performed steps.
+	 * @param branch int the branch.
 	 * @return True, if the constraints can be simplified and otherwise false.
 	 */
 	private static boolean constraintSimp(Problem prob,Matrix proxR, float lambda, StringBuffer steps,int branch) {
@@ -426,6 +429,7 @@ public final class Algorithms {
 	 * @param f2 function 2
 	 * @param r Relation matrix
 	 * @param lambda lower bound of relations
+	 * @param steps StringBuffer to keep track of the performed steps.
 	 * @return  true if method worked successful, false otherwise.
 	 */ 
 	private static boolean ffs(Function f1, Function f2, Matrix r, float lambda, StringBuffer steps) {
@@ -447,6 +451,7 @@ public final class Algorithms {
 	 * @param f2 function 2
 	 * @param psi name class mapping
 	 * @param r relation matrix
+	 * @param lambda the lambda.
 	 * @return  true if method worked successful, false otherwise.
 	 */
 	private static boolean nfs(Element n1, Function f2, Map<String,ArrayList<Element>> psi, Matrix r, float lambda) {
@@ -484,6 +489,9 @@ public final class Algorithms {
 	 * @param cur current problem
 	 * @param r relation matrix
 	 * @param lambda lambda of the relation
+	 * @param steps StringBuffer to keep track of the performed steps.
+	 * @param branchSteps StringBuffer to keep track of the performed steps
+	 * in the branch.
 	 * @return  true if method worked successful, false otherwise.
 	 */
 	private static boolean nn1(Element n1, Element n2, Problem cur, Matrix r, float lambda, StringBuffer steps, StringBuffer branchSteps) {

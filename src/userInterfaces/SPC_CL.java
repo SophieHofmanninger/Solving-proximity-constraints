@@ -42,6 +42,7 @@ public class SPC_CL {
 			unif.setProximityRelations(mat);
 			// TODO Get lambda
 			float lambda = 0.5f;
+			unif.setLambda(lambda);
 			if(log) {
 				StringBuffer logBuffer=new StringBuffer();
 				if(!Algorithms.preUnification(unif, logBuffer)) {
