@@ -64,6 +64,9 @@ Version Number & Changes Summary & Author\\
 \hline
 0.8 & added User Interfaces & Jan-Michael\\
 \hline
+0.9 & minor changes in matrix description & Sophie\\
+& update constraint simplification&\\
+\hline
 \end{tabular}
 
 \end{center}
@@ -126,9 +129,9 @@ where:
 	\item the 0's are fixed, as functions with different aritys can't be close,
 	\item the values where the entry is * must be of the same value as their (*) counterpart, as the matrix is symmetric.
 \end{itemize} 
-Hence, we only need to get the values for the positions marked with (*). We call such a position ``open case'', and we make a list of open cases. Before asking the user to enter relation values, we will generate the list of open cases outside of the matrix. After generation of the list, we will wait for user input. With the valid user input we will build the proximity relation matrix. \\ \ \\
+Hence, we only need to get the values for the positions marked with (*). We call such a position ``open case'', and we make a list of open cases. Before asking the user to enter relation values, we will generate the list of open cases inside of the matrix. After generation of the list, we will wait for user input. With the valid user input we will build the proximity relation matrix. \\ \ \\
 \noindent
-If we want to retrieve a value, i.e. if we want to know \(\mathcal{R}(s_1,s_2)\) for given \(s_1,s_2\), we can call \(getRelation(s_1,s_2)\). To get all relation pairs of \(s_1\), that have a relation value greater or equal to \(\lambda\), the method \(getRelations(s_1,\lambda)\) can be used. Moreover it is possible to get all reation elements of the matirix by calling \(getAllElements()\). This will return all \( f_{i_{k_j}}\), where \( 0\leq i \leq m\) and \( 0\leq j \leq m\).
+If we want to retrieve a value, i.e. if we want to know \(\mathcal{R}(s_1,s_2)\) for given \(s_1,s_2\), we can call \(getRelation(s_1,s_2)\). To get all relation pairs of \(s_1\), that have a relation value greater or equal to \(\lambda\), the method \(getRelations(s_1,\lambda)\) can be used. Moreover it is possible to get all reation elements of the matirix by calling \(getListOf Functions()\). This will return all \( f_{i_{k_j}}\), where \( 0\leq i \leq m\) and \( 0\leq j \leq m\).
 %\[i:= \mathrm{sortedListOfFunctions}.\mathrm{getIndex}(s_1)\quad\text{and}\quad j:= \mathrm{sortedListOfFunctions}.\mathrm{getIndex}(s_2),\]
 %and then just get the value at position \((i,j)\).
 
@@ -148,7 +151,7 @@ The method changes the problems constraints and pre-unifier accordingly.
 
 \subsubsection{Constraint Simplification Algorithm}
 The constraintSimplification method will be called, if the preUnification method returns true. As the preUnification method, the constraintSimplification method consists of a loop. This loop runs until the set of constraints is empty. As input the method needs the problem, more precisely the set of constraints, and the relation matrix \(\mathcal{R}\). If the set of constraints could be simplified, the method returns true and otherwise false.\\
-Inside the loop, the seven rules to simplify the constraint set, will be applied. Two of the seven rules are hidden, because we implement the FSN rule directly in the NFS rule and the NN2 rule is integrated in the NN1 rule. 
+Inside the loop, the seven rules to simplify the constraint set, will be applied. Three of the seven rules are hidden, because the NN2 rule is integrated in the NN1 rule, the Fail1 is implemented in FFS and the Fail2 is integrated in the NN1 rule. Moreover it is possible to run the constraint simplification algorithm with and without logging. 
 
 %----------------------------------------------------------------------------------------
 %	PROBLEM 2
