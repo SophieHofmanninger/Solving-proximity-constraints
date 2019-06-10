@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 import tool.Matrix;
 import unificationProblem.InputParser;
 import unificationProblem.UnificationProblem;
@@ -85,6 +87,21 @@ public class Test {
 		uni3.solveNext();
 		System.out.println(uni3.resultString());
 		
+		//Test InputParser
+		System.out.println(System.lineSeparator()+"Test InputParser Matrix");
+		
+		String testString="";
+		testString += "f g h" + System.lineSeparator();
+		testString += "f 1 0.4 0.7" + System.lineSeparator();
+		testString += "g 0.4 1 0.5" + System.lineSeparator();
+		testString += "h 0.7 0.5 1";
+		
+		try {
+			Matrix mat = InputParser.parseMatrixFromString(testString);
+			System.out.println(mat.toString());
+		} catch (IOException e) {
+			
+		}
 	}
 
 }

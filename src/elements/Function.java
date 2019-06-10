@@ -98,6 +98,7 @@ public class Function extends Element {
 
 		return ret;
 	}
+	
 	/* (non-Javadoc)
 	 * @see elements.Element#occurs(elements.Element)
 	 */

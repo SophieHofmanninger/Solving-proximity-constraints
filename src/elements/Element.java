@@ -22,7 +22,7 @@ public abstract class Element {
 
 	/**
 	 * Creates an element with a new name from an element.
-	 * @return A new name.
+	 * @return a new name.
 	 */
 	public abstract Element rename();
 

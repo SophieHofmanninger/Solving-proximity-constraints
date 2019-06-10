@@ -5,11 +5,14 @@ package unificationProblem;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import tool.Matrix;
 
 /**
  * Test Cases for InputParser.
@@ -71,8 +74,7 @@ class InputParserJUnit {
 		UnificationProblem unif1 = InputParser.parse(test1).get(0);
 		assertEquals(5,unif1.getNumberOfFunctions());
 		assertEquals(u,unif1.getLeft().toFullString());
-		assertEquals(4,unif1.getNumberOfOpenCases());
-				
+		assertEquals(4,unif1.getNumberOfOpenCases());		
 	}
 	
 	/**
@@ -85,8 +87,6 @@ class InputParserJUnit {
 		String test2=s+" = "+t;
 		UnificationProblem unif2 = InputParser.parse(test2).get(0);
 		assertEquals(6, unif2.getNumberOfFunctions());
-					
-		
 	}
 	
 	/**
@@ -106,6 +106,50 @@ class InputParserJUnit {
 		
 	}
 	
+	/**
+	 * Test method for {@link unificationProblem.InputParser#parseMatrixFromString(java.lang.String)}.
+	 */
+	@Test
+	void testParseMatrixFromString() {
+		String test="";
+		test += "f g h" + System.lineSeparator();
+		test += "f 1 0.4 0.7" + System.lineSeparator();
+		test += "g 0.4 1 0.5" + System.lineSeparator();
+		test += "h 0.7 0.5 1";
+		
+		
+		try {
+			Matrix m = InputParser.parseMatrixFromString(test);
+			assertTrue(m.getRelation("f", "g")==0.4f);
+			assertTrue(m.getRelation("f", "h")==0.7f);
+			assertTrue(m.getRelation("h", "g")==0.5f);
+		} catch (IOException e) {
+			fail();
+		}
+
+	}
+	/**
+	 * Test method for {@link unificationProblem.InputParser#parseMatrixFromString(java.lang.String)}.
+	 */
+	@Test
+	void testParseMatrixFromString2() {
+		String test="";
+		test += "f g h a b" + System.lineSeparator();
+		test += "f 1 0.4 0.7 0.1 0.2" + System.lineSeparator();
+		test += "g 0.4 1 0.5" + System.lineSeparator();
+		test += "a 0.7 0.5 0.3 1 0.5";
+		
+			
+		try {
+			Matrix m = InputParser.parseMatrixFromString(test);
+			assertTrue(m.getRelation("f", "f")==1f);
+			assertTrue(m.getRelation("f", "h")==0.7f);
+			assertTrue(m.getRelation("a", "b")==0.5f);
+		} catch (IOException e) {
+			fail();
+		}
+		
+	}
 	
 
 }

@@ -42,9 +42,9 @@ class MatrixJUnit {
 	  
 	  /**
 	   * Test method for {@link tool.Matrix#addRelation(elemets.Element,elemets.Element, float)} and 
-	   * {@link tool.Matrix#addRelation(string, string, float)} and
+	   * {@link tool.Matrix#addRelation(java.lang.string, java.lang.string, float)} and
 	   * {@link tool.Matrix#getRelation(elemets.Element,elemets.Element)} and 
-	   * {@link tool.Matrix#getRelation(string , string)}.
+	   * {@link tool.Matrix#getRelation(java.lang.string , java.lang.string)}.
 	   */
 	  @Test 
 	  void testAddGetRelation() {
@@ -81,7 +81,7 @@ class MatrixJUnit {
 	  }
 	  
 	  /**
-	   * Test method for {@link tool.Matrix#agetRelations(String, float)}.
+	   * Test method for {@link tool.Matrix#agetRelations(java.lang.String, float)}.
 	   */
 	  @Test 
 	  void testGetRelations() {
@@ -191,4 +191,37 @@ class MatrixJUnit {
 		  }
 		  assertEquals(elem.size(),test.size());
 	  }		
+	  
+	  /**
+	   * Test method for {@link tool.Matrix#openCases()}.
+	   */
+	  @Test 
+	  void testOpenCases() {
+		  Function f =new Function("f");
+		  Function g =new Function("g");
+		  Function h =new Function("h");
+		  Function a =new Function("a");
+		  Function b =new Function("b");
+		  Function d =new Function("d");
+		  
+		  f.addArgument(a);
+		  g.addArgument(b);
+		  h.addArgument(d);
+		  
+		  m.addRelation(f, g, 0.11f);
+		  m.addRelation(h, g, 0.22f);
+		  m.addRelation(h, f, 0.33f);
+		  m.addRelation(a, b, 0.44f);
+		  m.addRelation(b, d, 0.55f);
+		  
+		  ArrayList<Tuple<Function>> testList =new ArrayList<Tuple<Function>>();
+		  testList.add(new Tuple<Function>(a,d));
+		  
+		  ArrayList<Tuple<Function>> returnList = m.getOpenCases();
+		  
+		  assertTrue(returnList.size()==1);
+		  assertTrue(returnList.get(0).getFirst().getName()==testList.get(0).getFirst().getName());
+		  assertTrue(returnList.get(0).getSecond().getName()==testList.get(0).getSecond().getName());
+		  
+	  }
 }

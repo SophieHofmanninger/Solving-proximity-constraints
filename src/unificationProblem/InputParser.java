@@ -5,19 +5,15 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
-//import java.util.Collections;
-//import java.util.Comparator;
 
 import elements.*;
 import tool.Matrix;
-//import tool.Tuple;
 
 /**
  *
  * The class InputParser handles the input.
  * [a - t] are function symbols and u is the fist variable. 
  * This means that constants are function symbols with arity zero and [u - z] are variables.
- * Names are witten in UPPER case letters.
  *
  * @author  Jan-Michael Holzinger &amp; Sophie Hofmanninger
  * @version 3.0
@@ -57,27 +53,7 @@ public class InputParser {
 			unif = new UnificationProblem(left,right);
 
 			unif.setProximityRelations(new Matrix(listOfFunctions));
-			//sort(listOfFunctions);
-			//unif.setSortedListOfFunctions(listOfFunctions);
 			
-			/* Determine "open Cases" for unif.
-			 * Iterate through listOfFunctions, check for Functions with same
-			 * arity, and add the pair to the list of open cases.
-			 */
-			//not needed anymore - gets determined in Matrix
-			/*for(int i = 0;i<listOfFunctions.size()-1;i++) {
-				Function f1 = listOfFunctions.get(i);
-				for(int j=i+1;j<listOfFunctions.size();j++) {
-					Function f2 = listOfFunctions.get(j);
-					if(f1.arity()==f2.arity()) {
-						unif.addOpenCase(new Tuple<Function>(f1,f2));
-					}else {
-						break;
-					}
-				}
-			}*/
-
-
 			ret.add(unif);
 		}
 
@@ -85,22 +61,8 @@ public class InputParser {
 	}
 
 	/**
-	 * Sorts the list of function symbols, such that constants are at the beginning, and 
-	 * those with higher arity come later.
-	 * @param l ArrayList to be sorted.
-	 */
-	//Not needed anymore
-	/*private static void sort(ArrayList<Function> l) {
-		Collections.sort(l, new Comparator<Function>(){
-			public int compare(Function f1, Function f2) {
-				return f1.arity()-f2.arity();
-			}
-		});
-	}*/
-
-	/**
 	 * This method parses a string and identifies to which element each character 
-	 * belongs (function, variable, constant,name).
+	 * belongs (function, variable).
 	 * @param input This is a string.
 	 * @return This returns an element.
 	 */
@@ -249,20 +211,35 @@ public class InputParser {
 		return ret;
 	}
 	
-	
+	/**
+	 * To parse the matrix from a file.
+	 * @param inputFile name of the file with the matrix.
+	 * @return the relation matrix.
+	 * @throws IOException is thrown when file not found.
+	 */
 	public static Matrix parseMatrixFromFile(String inputFile) throws IOException {
 		FileReader fReader = new FileReader(inputFile);
 		BufferedReader bReader = new BufferedReader(fReader);
 		return parseMatrix(bReader);
 	}
 	
-	
+	/**
+	 * To parse the matrix from a string.
+	 * @param input matrix in string form.
+	 * @return the relation matrix.
+	 * @throws IOException if string is invalid.
+	 */
 	public static Matrix parseMatrixFromString(String input) throws IOException {
 		BufferedReader bReader = new BufferedReader(new StringReader(input));
 		return parseMatrix(bReader);
 	}
 	
-	
+	/**
+	 * Parses the matrix.
+	 * @param reader BufferedReader of the input.
+	 * @return the relation matrix.
+	 * @throws IOException if reader invalid.
+	 */
 	private static Matrix parseMatrix(BufferedReader reader) throws IOException {
 		Matrix ret = new Matrix();
 		ArrayList<String> functions = new ArrayList<String>();
@@ -288,6 +265,10 @@ public class InputParser {
 				str += c;
 			}
 		}
+		if(inStr && str!="") {
+			functions.add(str);
+			str="";
+		}
 		
 		while((line=reader.readLine()) != null) {
 			for(int pos = 0; pos< line.length();pos++) {
@@ -304,22 +285,25 @@ public class InputParser {
 							str="";
 							hasFName=true;
 						}
-					}
-					else
-					{
-						str+=c;
+						inStr=false;
 					}
 				}
-				if(str!=""&&hasFName) {
-					ret.addRelation(functions.get(column), fName, Float.parseFloat(str));
-					column++;
-					str="";
+				else {
+					str+=c;
+					inStr=true;
 				}
 				
-				hasFName = false;
-				str="";
-				column=0;
+				
 			}
+			if(str!=""&&hasFName) {
+				ret.addRelation(functions.get(column), fName, Float.parseFloat(str));
+				column++;
+				str="";
+			}
+			hasFName = false;
+			str="";
+			column=0;
+			inStr=false;
 		}
 		return ret;
 	}

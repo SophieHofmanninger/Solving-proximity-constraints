@@ -57,19 +57,9 @@ public class UnificationProblem {
 	}
 
 	/**
-	 * Adds a case where the proximity needs to be determined.
-	 * @param t The tuple of functions to add.
-	 * @return boolean indicating if the case was added.
+	 * Recalculate open cases and if there are open cases.
+	 * @return true, if there are no open cases, otherwise false
 	 */
-	//public boolean addOpenCase(Tuple<Function> t) {
-	//	if(t.getFirst().arity()==t.getSecond().arity() 
-	//			&& !(t.getFirst().equals(t.getSecond()))) {
-	//		openCases.add(t);
-	//		return true;
-	//	}
-	//	return false;
-	//}
-	
 	public boolean checkOpenCases() {
 		this.openCases = this.proximityRelations.getOpenCases();
 		if(this.openCases.size()==0) {
@@ -123,6 +113,10 @@ public class UnificationProblem {
 		return false;
 	}
 	
+	/**
+	 * Sets all open cases to a desired float value.
+	 * @param p value for the open cases.
+	 */
 	public void setAllOpenCasesTo(float p) {
 		if(this.checkOpenCases()) {
 			ArrayList<Tuple<Function>> tempOC = new ArrayList<Tuple<Function>>(openCases);
@@ -165,22 +159,6 @@ public class UnificationProblem {
 	}
 
 	/**
-	 * @return a list of functions appearing in the unification problem. Note: Constants
-	 * are treated as 0-ary functions.
-	 */
-	/*public ArrayList<Function> getSortedListOfFunctions() {
-		return sortedListOfFunctions;
-	}*/
-	/**
-	 * Sets the list of functions.
-	 * @param sortedListOfFunctions the list of functions of this unification problem
-	 */
-	/*public void setSortedListOfFunctions(ArrayList<Function> sortedListOfFunctions) {
-		this.sortedListOfFunctions = sortedListOfFunctions;
-	}*/
-
-
-	/**
 	 * @return the proximity relations, represented as a matrix.
 	 */
 	public Matrix getProximityRelations() {
@@ -188,13 +166,13 @@ public class UnificationProblem {
 	}
 
 	/**
+	 * Sets the proximity relations.
 	 * @param proximityRelations the proximity relations to set, represented as a matrix.
 	 * Note: If the matrix is not a proximity relations Matrix (i.e. all values are in
 	 * [0,1], and all values on the main diagonal are 1) the matrix will be set to the
 	 * corresponding unity matrix. Also, function symbols with different arity have to be
 	 * set to have proximity 0.
 	 */
-	// TODO überarbeiten
 	public void setProximityRelations(Matrix proximityRelations) {
 
 		if(this.proximityRelations == null) {

@@ -21,7 +21,6 @@ import tool.Tuple;
  *
  */
 
-
 public final class Algorithms {
 
 	private static int NEXT_BRANCH=0; 
@@ -284,24 +283,35 @@ public final class Algorithms {
 	 */
 
 
+	/**
+	 * Calls the constraint simplification algorithm without logging.
+	 * @param unif is the unification problem.
+	 * @return true if the constraint algorithm is successful, otherwise false.
+	 */
 	public static boolean constraintSimplification(UnificationProblem unif) {
 		StringBuffer dummy= new StringBuffer();
 		return constraintSimplification(unif,dummy);
 	}
 
 
+	/**
+	 * Calls the constraint simplification algorithm with logging.
+	 * @param unif is the unification problem.
+	 * @param steps StringBuffer where the steps are logged to.
+	 * @return true if the constraint algorithm is successful, otherwise false.
+	 */
 	public static boolean constraintSimplification(UnificationProblem unif, StringBuffer steps) {
 		Problem prob=unif.getProb();
 		Matrix proxR=unif.getProximityRelations();
 		float lambda=unif.getLambda();
 		return constraintSimp(prob,proxR,lambda,steps,0);
 	}
-	// TODO JAVADOC
+	
 	/**
 	 * The constraint simplification algorithm transforms constraint configurations, 
 	 * exhaustively appling special rules.
-	 * @param prob The problem to solve.
-	 * @param proxR This is the proximity relation matrix.
+	 * @param prob problem to solve.
+	 * @param proxR is the proximity relation matrix.
 	 * @param lambda the lambda.
 	 * @param steps StringBuffer to keep track of the performed steps.
 	 * @param branch int the branch.

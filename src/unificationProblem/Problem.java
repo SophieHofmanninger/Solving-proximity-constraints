@@ -41,7 +41,7 @@ public class Problem {
 	
 	/**
 	 * Constructor with Input.
-	 * @param first The first Tuple to add to P.
+	 * @param first first Tuple to add to P.
 	 */
 	public Problem(Tuple<Element> first) {
 		p = new SPCSet("~?");
