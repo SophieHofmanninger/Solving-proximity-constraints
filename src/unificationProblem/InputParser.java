@@ -1,11 +1,16 @@
 package unificationProblem;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.StringReader;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+//import java.util.Collections;
+//import java.util.Comparator;
 
 import elements.*;
-import tool.Tuple;
+import tool.Matrix;
+//import tool.Tuple;
 
 /**
  *
@@ -35,7 +40,6 @@ public class InputParser {
 		int split;
 		UnificationProblem unif;
 
-
 		for(String s : input.split(";")) {
 			listOfFunctions = new ArrayList<Function>();
 			Element left=null;
@@ -52,15 +56,16 @@ public class InputParser {
 			}
 			unif = new UnificationProblem(left,right);
 
-			sort(listOfFunctions);
-			unif.setSortedListOfFunctions(listOfFunctions);
+			unif.setProximityRelations(new Matrix(listOfFunctions));
+			//sort(listOfFunctions);
+			//unif.setSortedListOfFunctions(listOfFunctions);
 			
 			/* Determine "open Cases" for unif.
 			 * Iterate through listOfFunctions, check for Functions with same
 			 * arity, and add the pair to the list of open cases.
 			 */
-			
-			for(int i = 0;i<listOfFunctions.size()-1;i++) {
+			//not needed anymore - gets determined in Matrix
+			/*for(int i = 0;i<listOfFunctions.size()-1;i++) {
 				Function f1 = listOfFunctions.get(i);
 				for(int j=i+1;j<listOfFunctions.size();j++) {
 					Function f2 = listOfFunctions.get(j);
@@ -70,7 +75,7 @@ public class InputParser {
 						break;
 					}
 				}
-			}
+			}*/
 
 
 			ret.add(unif);
@@ -84,14 +89,14 @@ public class InputParser {
 	 * those with higher arity come later.
 	 * @param l ArrayList to be sorted.
 	 */
-	private static void sort(ArrayList<Function> l) {
+	//Not needed anymore
+	/*private static void sort(ArrayList<Function> l) {
 		Collections.sort(l, new Comparator<Function>(){
 			public int compare(Function f1, Function f2) {
 				return f1.arity()-f2.arity();
 			}
 		});
-
-	}
+	}*/
 
 	/**
 	 * This method parses a string and identifies to which element each character 
@@ -135,7 +140,7 @@ public class InputParser {
 				else {
 					inName = true;
 					name += c;
-					elem = new Constant("");
+					elem = new Function("");
 				}
 			}
 			else if(c<='z') {
@@ -166,7 +171,7 @@ public class InputParser {
 		if(name!="") {
 			
 			elem.setName(name);
-			if(elem instanceof Constant) {
+			if(elem instanceof Function && ((Function) elem).arity()==0) {
 				boolean alreadyIn = false;
 				for(int i =0; i< listOfFunctions.size();i++) {
 					if(elem.equals(listOfFunctions.get(i))) alreadyIn=true;
@@ -241,6 +246,81 @@ public class InputParser {
 		
 		ret.add(s.substring(start,endIndex+1));
 		
+		return ret;
+	}
+	
+	
+	public static Matrix parseMatrixFromFile(String inputFile) throws IOException {
+		FileReader fReader = new FileReader(inputFile);
+		BufferedReader bReader = new BufferedReader(fReader);
+		return parseMatrix(bReader);
+	}
+	
+	
+	public static Matrix parseMatrixFromString(String input) throws IOException {
+		BufferedReader bReader = new BufferedReader(new StringReader(input));
+		return parseMatrix(bReader);
+	}
+	
+	
+	private static Matrix parseMatrix(BufferedReader reader) throws IOException {
+		Matrix ret = new Matrix();
+		ArrayList<String> functions = new ArrayList<String>();
+		char c;
+		int column=0;
+		String line = reader.readLine();
+		String str="";
+		String fName = "";
+		boolean inStr=false;
+		boolean hasFName=false;
+		
+		for(int pos = 0; pos<line.length();pos++) {
+			c = line.charAt(pos);
+			if(c==' ') {
+				if(inStr) {
+					functions.add(str);
+					str="";
+					inStr=false;
+				}
+			}
+			else {
+				inStr = true;
+				str += c;
+			}
+		}
+		
+		while((line=reader.readLine()) != null) {
+			for(int pos = 0; pos< line.length();pos++) {
+				c=line.charAt(pos);
+				if(c == ' ') {
+					if(inStr) {
+						if(hasFName) {
+							ret.addRelation(functions.get(column), fName, Float.parseFloat(str));
+							column++;
+							str="";
+						}
+						else {
+							fName=str;
+							str="";
+							hasFName=true;
+						}
+					}
+					else
+					{
+						str+=c;
+					}
+				}
+				if(str!=""&&hasFName) {
+					ret.addRelation(functions.get(column), fName, Float.parseFloat(str));
+					column++;
+					str="";
+				}
+				
+				hasFName = false;
+				str="";
+				column=0;
+			}
+		}
 		return ret;
 	}
 

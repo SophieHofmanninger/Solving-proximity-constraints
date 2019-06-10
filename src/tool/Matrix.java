@@ -19,21 +19,45 @@ import elements.*;
 public class Matrix {
 
 	private Map<String, Map<String, Float>> relations;
+	private ArrayList<Function> listOfFunctions;
 
 	/**
 	 * Constructor of the class.
 	 */
 	public Matrix() {
 		relations = new HashMap<String, Map<String, Float>>();
+		listOfFunctions= new ArrayList<Function>();
 	}
 
+	/**
+	 * Constructor of the class.
+	 */
+	public Matrix(ArrayList<Function> lOF) {
+		relations = new HashMap<String, Map<String, Float>>();
+		listOfFunctions = lOF;
+		for(Function f : listOfFunctions) {
+			this.addRelation(f, f, 1.0f);
+		}
+	}
+	
 	/**
 	 * Adds a relation to the matrix given by two elements.
 	 * @param elem1 first element.
 	 * @param elem2 second element.
 	 * @param f relation value to be set.
 	 */
-	public void addRelation(Element elem1, Element elem2, float f) {
+	public void addRelation(Function elem1, Function elem2, float f) {
+		
+		if(!existsFunction(elem1.getName())) {
+			Function fun = (Function) elem1.copy();
+			listOfFunctions.add(fun);
+		}
+		
+		if(!existsFunction(elem2.getName())) {
+			Function fun = (Function) elem2.copy();
+			listOfFunctions.add(fun);
+		}
+		
 		addRelation(elem1.getName(), elem2.getName(), f);
 	}
 
@@ -44,6 +68,20 @@ public class Matrix {
 	 * @param f relation value to be set.
 	 */
 	public void addRelation(String s1, String s2, float f) {
+		
+		if(!existsFunction(s1)) {
+			Function fun = new Function(s1);
+			listOfFunctions.add(fun);
+		}
+		if(!existsFunction(s2)) {
+			Function fun = new Function(s2);
+			listOfFunctions.add(fun);
+		}
+		
+		if(!hasSameArity(s1,s2)) {
+			return;
+		}
+		
 		if (relations.containsKey(s1)) {
 			relations.get(s1).put(s2, f);
 		} else {
@@ -188,7 +226,7 @@ public class Matrix {
 	 * To get all elements of the relation matrix.
 	 * @return List of all relation elements.
 	 */
-	public ArrayList<Element> getAllElements(){
+	/*public ArrayList<Element> getAllElements(){
 		ArrayList<Element> ret = new ArrayList<Element>();
 		
 		for(String s : relations.keySet()) {
@@ -198,6 +236,61 @@ public class Matrix {
 		}
 		
 		return ret;
+	}*/
+	
+	private boolean existsFunction(String s) {
+		for(Function f : listOfFunctions) {
+			if(f.getName().compareTo(s)==0) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public ArrayList<Function> getListOfFunctions(){
+		return listOfFunctions;
+	}
+	
+	public ArrayList<Tuple<Function>> getOpenCases(){
+		
+		ArrayList<Tuple<Function>> ret = new ArrayList<Tuple<Function>>();
+		Tuple<Function> temp;
+		
+		for(Function f1: listOfFunctions) {
+			for(Function f2:listOfFunctions) {
+				
+				if(f1.getName().compareTo(f2.getName()) < 0 && f1.arity()==f2.arity()) {
+					if(!relations.get(f1.getName()).containsKey(f2.getName())) {
+						temp = new Tuple<Function>((Function)f1.copy(),(Function)f2.copy());
+						ret.add(temp);
+					}
+				}
+				
+				
+			}
+		}
+		
+		return ret;
+		
+	}
+	
+	private boolean hasSameArity(String s1, String s2) {
+		
+		for(Function f1: listOfFunctions) {
+			for(Function f2:listOfFunctions) {
+				
+				if(f1.getName().compareTo(s1) == 0 && f2.getName().compareTo(s2) == 0) {
+					if(f1.arity()==f2.arity()) {
+						return true;
+					}
+					else {
+						return false;
+					}
+				}
+			}
+		}
+		
+		return false;
 	}
 	
 	//TODO delete code if everything works correctly, where this methods were used

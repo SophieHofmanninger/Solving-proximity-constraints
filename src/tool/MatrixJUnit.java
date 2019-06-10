@@ -11,7 +11,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import elements.Constant;
 import elements.Element;
 import elements.Function;
 
@@ -49,9 +48,9 @@ class MatrixJUnit {
 	   */
 	  @Test 
 	  void testAddGetRelation() {
-		  Element f =new Function("f");
-		  Element g =new Function("g");
-		  Element h =new Function("h");
+		  Function f =new Function("f");
+		  Function g =new Function("g");
+		  Function h =new Function("h");
 		  
 		  m.addRelation(f, g, 0.11f);
 		  m.addRelation(h, g, 0.22f);
@@ -76,7 +75,7 @@ class MatrixJUnit {
 		  assertEquals(0.11f,m.getRelation(g,f));
 		  
 		// Test Main diagonal 
-		  for(Element i : m.getAllElements()) { 
+		  for(Element i : m.getListOfFunctions()) { 
 			  assertEquals(1f,m.getRelation(i,i)); 
 		  }
 	  }
@@ -86,12 +85,12 @@ class MatrixJUnit {
 	   */
 	  @Test 
 	  void testGetRelations() {
-		  Element f =new Function("f");
-		  Element g =new Function("g");
-		  Element h =new Function("h");
-		  Element j =new Function("j");
-		  Element a =new Constant("a");
-		  Element b =new Constant("b");
+		  Function f =new Function("f");
+		  Function g =new Function("g");
+		  Function h =new Function("h");
+		  Function j =new Function("j");
+		  Function a =new Function("a");
+		  Function b =new Function("b");
 		  
 		  ArrayList<Element> list=new ArrayList<Element>();
 		  ArrayList<Element> test;
@@ -152,19 +151,19 @@ class MatrixJUnit {
 	   * Test method for {@link tool.Matrix#getAllElements()}.
 	   */
 	  @Test 
-	  void testGetAllElements() {
-		  Element f =new Function("f");
-		  Element g =new Function("g");
-		  Element h =new Function("h");
-		  Element a =new Function("a");
-		  Element b =new Function("b");
-		  Element d =new Function("d");
+	  void testGetListOfFunctions() {
+		  Function f =new Function("f");
+		  Function g =new Function("g");
+		  Function h =new Function("h");
+		  Function a =new Function("a");
+		  Function b =new Function("b");
+		  Function d =new Function("d");
 		  
 		  ArrayList<Element> elem = new ArrayList<Element>(); 
-		  ArrayList<Element> test;
+		  ArrayList<Function> test;
 		  
 		  //empty matrix
-		  test=m.getAllElements();
+		  test=m.getListOfFunctions();
 		  
 		  for(Element e : test) {
 			  assertTrue(elem.contains(e));
@@ -185,7 +184,7 @@ class MatrixJUnit {
 		  elem.add(b);
 		  elem.add(d);
 		  
-		  test=m.getAllElements();
+		  test=m.getListOfFunctions();
 		  
 		  for(Element e : test) {
 			  assertTrue(elem.contains(e));

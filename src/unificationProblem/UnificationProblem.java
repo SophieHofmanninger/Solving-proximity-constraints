@@ -30,7 +30,7 @@ public class UnificationProblem {
 	private Element left;
 
 	// A list of Functions and their proximity relations (represented as Matrix):
-	private ArrayList<Function> sortedListOfFunctions;
+	private ArrayList<Function> listOfNessesaryFunctions;
 	private Matrix proximityRelations;
 
 	// The open cases for the proximity relations.
@@ -61,13 +61,23 @@ public class UnificationProblem {
 	 * @param t The tuple of functions to add.
 	 * @return boolean indicating if the case was added.
 	 */
-	public boolean addOpenCase(Tuple<Function> t) {
-		if(t.getFirst().arity()==t.getSecond().arity() 
-				&& !(t.getFirst().equals(t.getSecond()))) {
-			openCases.add(t);
+	//public boolean addOpenCase(Tuple<Function> t) {
+	//	if(t.getFirst().arity()==t.getSecond().arity() 
+	//			&& !(t.getFirst().equals(t.getSecond()))) {
+	//		openCases.add(t);
+	//		return true;
+	//	}
+	//	return false;
+	//}
+	
+	public boolean checkOpenCases() {
+		this.openCases = this.proximityRelations.getOpenCases();
+		if(this.openCases.size()==0) {
 			return true;
 		}
-		return false;
+		else {
+			return false;
+		}
 	}
 
 	/**
@@ -112,6 +122,15 @@ public class UnificationProblem {
 		}
 		return false;
 	}
+	
+	public void setAllOpenCasesTo(float p) {
+		if(this.checkOpenCases()) {
+			ArrayList<Tuple<Function>> tempOC = new ArrayList<Tuple<Function>>(openCases);
+			for(Tuple<Function> t : tempOC) {
+				this.CloseCase(t, p);
+			}
+		}
+	}
 
 
 	/**
@@ -142,23 +161,23 @@ public class UnificationProblem {
 	 * @return the number of functions symbols (and constants).
 	 */
 	public int getNumberOfFunctions() {
-		return sortedListOfFunctions.size();
+		return proximityRelations.getListOfFunctions().size();
 	}
 
 	/**
 	 * @return a list of functions appearing in the unification problem. Note: Constants
 	 * are treated as 0-ary functions.
 	 */
-	public ArrayList<Function> getSortedListOfFunctions() {
+	/*public ArrayList<Function> getSortedListOfFunctions() {
 		return sortedListOfFunctions;
-	}
+	}*/
 	/**
 	 * Sets the list of functions.
 	 * @param sortedListOfFunctions the list of functions of this unification problem
 	 */
-	public void setSortedListOfFunctions(ArrayList<Function> sortedListOfFunctions) {
+	/*public void setSortedListOfFunctions(ArrayList<Function> sortedListOfFunctions) {
 		this.sortedListOfFunctions = sortedListOfFunctions;
-	}
+	}*/
 
 
 	/**
@@ -169,26 +188,6 @@ public class UnificationProblem {
 	}
 
 	/**
-	 * @param lambda float value, to calculate the lambda-cut.
-	 * @return a list of proximity relations
-	 */
-	/*public ArrayList<Tuple<Function>> getProximityRelations(float lambda){
-		ArrayList<Tuple<Function>> ret = new ArrayList<Tuple<Function>>();
-		for(int i=0;i<sortedListOfFunctions.size()-1;i++) {
-			for(int j=i+1;j<sortedListOfFunctions.size();j++) {
-				if(proximityRelations.getAt
-						(new Tuple<Integer>(i,j))>=lambda) {
-					Function f = sortedListOfFunctions.get(i);
-					Function g = sortedListOfFunctions.get(j);
-					Tuple<Function> addMe = new Tuple<Function>(f,g);
-					ret.add(addMe);
-				}
-			}
-		}
-		return ret;
-	}*/
-
-	/**
 	 * @param proximityRelations the proximity relations to set, represented as a matrix.
 	 * Note: If the matrix is not a proximity relations Matrix (i.e. all values are in
 	 * [0,1], and all values on the main diagonal are 1) the matrix will be set to the
@@ -197,33 +196,23 @@ public class UnificationProblem {
 	 */
 	// TODO überarbeiten
 	public void setProximityRelations(Matrix proximityRelations) {
-		/*boolean error= false;
-		if(!proximityRelations.isPM()) {
-			error=true;
+
+		if(this.proximityRelations == null) {
+			this.listOfNessesaryFunctions = proximityRelations.getListOfFunctions();
 		}
-		for(int j=1;j<proximityRelations.getSize();j++) {
-			if(error) break;
-			for(int i=0;i<j;i++) {
-				if(proximityRelations.getAt(new Tuple<Integer>(i,j))>0
-						&& sortedListOfFunctions.get(i).arity()!=
-						sortedListOfFunctions.get(j).arity()){
-					error= true;
-					break;
-				}
-				if(error) break;
+		else {
+			for(Function fn : this.listOfNessesaryFunctions) {
+				proximityRelations.addRelation(fn, fn, 1.0f);
 			}
 		}
-
-		if(error) {
-			this.proximityRelations= new Matrix(this.getNumberOfFunctions());
-			return;
-		}*/
-
-
+		
 		this.proximityRelations = proximityRelations;
+		this.openCases = proximityRelations.getOpenCases();
 
 	}
 
+	
+	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
