@@ -30,7 +30,7 @@ public class UnificationProblem {
 	private Element left;
 
 	// A list of Functions and their proximity relations (represented as Matrix):
-	private ArrayList<Function> listOfNessesaryFunctions;
+	private ArrayList<Function> listOfNecesaryFunctions;
 	private Matrix proximityRelations;
 
 	// The open cases for the proximity relations.
@@ -62,7 +62,7 @@ public class UnificationProblem {
 	 */
 	public boolean checkOpenCases() {
 		this.openCases = this.proximityRelations.getOpenCases();
-		if(this.openCases.size()==0) {
+		if(this.openCases.size()!=0) {
 			return true;
 		}
 		else {
@@ -94,7 +94,7 @@ public class UnificationProblem {
 	 * @param p the value to set. Must be in [0,1].
 	 * @return boolean indicating if the case could have been closed.
 	 */
-	public boolean CloseCase(Tuple<Function> t, float p) {
+	public boolean closeCase(Tuple<Function> t, float p) {
 		if(p<0||p>1) return false;
 		if(openCases.contains(t)) {
 
@@ -121,7 +121,7 @@ public class UnificationProblem {
 		if(this.checkOpenCases()) {
 			ArrayList<Tuple<Function>> tempOC = new ArrayList<Tuple<Function>>(openCases);
 			for(Tuple<Function> t : tempOC) {
-				this.CloseCase(t, p);
+				this.closeCase(t, p);
 			}
 		}
 	}
@@ -176,10 +176,10 @@ public class UnificationProblem {
 	public void setProximityRelations(Matrix proximityRelations) {
 
 		if(this.proximityRelations == null) {
-			this.listOfNessesaryFunctions = proximityRelations.getListOfFunctions();
+			this.listOfNecesaryFunctions = proximityRelations.getListOfFunctions();
 		}
 		else {
-			for(Function fn : this.listOfNessesaryFunctions) {
+			for(Function fn : this.listOfNecesaryFunctions) {
 				proximityRelations.addRelation(fn, fn, 1.0f);
 			}
 		}
@@ -202,6 +202,16 @@ public class UnificationProblem {
 		s+="Lambda = "+lambda;
 		s+=" and proximity relations : ";
 		s+= proximityRelations.toString(lambda);
+		return s;
+	}
+	
+	/**
+	 * Returns a String representation of the problem.
+	 * @return a string representation.
+	 */
+	public String problemToString() {
+		String s = "";
+		s+=prob.toString();
 		return s;
 	}
 

@@ -53,7 +53,7 @@ public final class Algorithms {
 	 */
 	public static boolean preUnification(UnificationProblem unif, StringBuffer steps) {
 		SPCSet problem = unif.getP();
-		if(problem==null) return false;
+		if(problem==null||problem.size()==0) return true;
 		while (problem.size()!=0) {
 			Tuple<Element> t = problem.get(0);
 

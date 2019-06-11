@@ -92,6 +92,23 @@ public class Problem {
 	public void setSigma(SPCSet sigma) {
 		this.sigma = sigma;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		String sb= "";
+		sb+=("P=" + p);
+		sb+=System.lineSeparator();
+		sb+=("C=" + c);
+		sb+=System.lineSeparator();
+		sb+=("sigma=" + sigma);
+		sb+=System.lineSeparator();
+		sb+=("psi=" + psi);
+		return sb;
+	}
+	
 	
 	
 }
