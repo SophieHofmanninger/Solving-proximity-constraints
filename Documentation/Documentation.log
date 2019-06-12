@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.5.14)  11 JUN 2019 10:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.5.14)  12 JUN 2019 22:15
 entering extended mode
 **./Documentation.tex
 (Documentation.tex
@@ -1603,11 +1603,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 146--151
 
  []
 
-<ToolsModel.png, id=40, 983.675pt x 688.5725pt>
+<ToolsModel.png, id=40, 983.675pt x 722.7pt>
 File: ToolsModel.png Graphic file (type png)
 <use ToolsModel.png>
 Package pdftex.def Info: ToolsModel.png  used on input line 172.
-(pdftex.def)             Requested size: 491.8363pt x 344.2854pt.
+(pdftex.def)             Requested size: 491.8363pt x 361.3491pt.
 
 Overfull \hbox (36.5922pt too wide) in paragraph at lines 172--173
 [] 
@@ -1620,17 +1620,20 @@ File: ElementsModel.png Graphic file (type png)
 Package pdftex.def Info: ElementsModel.png  used on input line 174.
 (pdftex.def)             Requested size: 344.2854pt x 381.92593pt.
  [6 <./ElementsModel.png (PNG copy)>]
-<UnificationProblemModel.png, id=51, 1025.8325pt x 1156.32pt>
+<UnificationProblemModel.png, id=51, 934.49126pt x 1390.19376pt>
 File: UnificationProblemModel.png Graphic file (type png)
 <use UnificationProblemModel.png>
 Package pdftex.def Info: UnificationProblemModel.png  used on input line 176.
-(pdftex.def)             Requested size: 512.91501pt x 578.15858pt.
+(pdftex.def)             Requested size: 467.24449pt x 695.09518pt.
 
-Overfull \hbox (72.6709pt too wide) in paragraph at lines 176--177
+Overfull \hbox (27.00038pt too wide) in paragraph at lines 176--177
 [][] 
  []
 
-[7 <./UnificationProblemModel.png (PNG copy)>]
+
+Overfull \vbox (6.53848pt too high) has occurred while \output is active []
+
+ [7 <./UnificationProblemModel.png (PNG copy)>]
 <UIModel.png, id=56, 216.81pt x 182.6825pt>
 File: UIModel.png Graphic file (type png)
 <use UIModel.png>
@@ -1654,7 +1657,8 @@ File: WorkFlow.pdf Graphic file (type pdf)
 <use WorkFlow.pdf, page 1>
 Package pdftex.def Info: WorkFlow.pdf , page1 used on input line 183.
 (pdftex.def)             Requested size: 845.40631pt x 597.55899pt.
- [8 <./UIModel.png (PNG copy)>]
+
+[8 <./UIModel.png (PNG copy)>]
 File: WorkFlow.pdf Graphic file (type pdf)
 <use WorkFlow.pdf, page 1>
 Package pdftex.def Info: WorkFlow.pdf , page1 used on input line 183.
@@ -1690,7 +1694,7 @@ msfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
 fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program
  Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/sym
 bols/msbm10.pfb>
-Output written on Documentation.pdf (9 pages, 503420 bytes).
+Output written on Documentation.pdf (9 pages, 512261 bytes).
 PDF statistics:
  146 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

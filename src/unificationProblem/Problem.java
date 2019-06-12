@@ -25,10 +25,24 @@ public class Problem {
 	private SPCSet p;
 	private SPCSet c;
 	private SPCSet sigma;
-	public Map<String,ArrayList<Element>> psi;
+	private Map<String,ArrayList<Element>> psi;
 
-	public Problem branch = null;
-	
+	/**
+	 * @return the psi
+	 */
+	public Map<String, ArrayList<Element>> getPsi() {
+		return psi;
+	}
+
+	/**
+	 * @param psi the psi to set
+	 */
+	public void setPsi(Map<String, ArrayList<Element>> psi) {
+		this.psi = psi;
+	}
+
+	private Problem branch = null;
+
 	/**
 	 * Default Constructor.
 	 */
@@ -38,7 +52,7 @@ public class Problem {
 		sigma=new SPCSet("->");
 		psi=new HashMap<String,ArrayList<Element>>();
 	}
-	
+
 	/**
 	 * Constructor with Input.
 	 * @param first first Tuple to add to P.
@@ -93,6 +107,21 @@ public class Problem {
 		this.sigma = sigma;
 	}
 
+	/**
+	 * @return the branch
+	 */
+	public Problem getBranch() {
+		return branch;
+	}
+
+	/**
+	 * @param branch the branch to set
+	 */
+	public void setBranch(Problem branch) {
+		this.branch = branch;
+	}
+
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
@@ -108,7 +137,65 @@ public class Problem {
 		sb+=("psi=" + psi);
 		return sb;
 	}
-	
-	
-	
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#clone()
+	 */
+	@Override
+	public Problem clone(){
+		Problem probcopy = new Problem();
+		SPCSet pcopy = p.clone();
+		SPCSet ccopy = c.clone();
+		SPCSet sigmacopy = sigma.clone();
+		Map<String,ArrayList<Element>> psicopy =
+				new HashMap<String,ArrayList<Element>>();
+		psicopy.putAll(psi);
+		Problem branchcopy;
+		if(branch==null) {
+			branchcopy=null;
+		}else {
+			branchcopy = branch.clone();
+		}
+		probcopy.setP(pcopy);
+		probcopy.setC(ccopy);
+		probcopy.setSigma(sigmacopy);
+		probcopy.setPsi(psicopy);
+		probcopy.setBranch(branchcopy);
+
+		return probcopy;
+
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if(!(obj instanceof Problem)) return false;
+		Problem o = (Problem) obj;
+		if(!(p.equals(o.p))) return false;
+		if(!(c.equals(o.c))) return false;
+		if(!(sigma.equals(o.sigma))) return false;
+		if(!(psi.equals(psi))) return false;
+		if(branch==null&&o.branch!=null) return false;
+		if(branch!=null&&o.branch==null) return false;
+		if(!(branch.equals(o.branch))) return false;
+		return true;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		int hc=p.hashCode()+c.hashCode()+sigma.hashCode();
+		hc+=psi.hashCode();
+		hc+=branch.hashCode();
+		return hc;
+	}
+
+
+
+
+
 }

@@ -32,7 +32,7 @@ public class Variable extends Element{
 	 * @return A new Element.
 	 */
 	public static Element replace(Element e) {
-		return e.copy();
+		return e.clone();
 	}
 
 
@@ -69,10 +69,10 @@ public class Variable extends Element{
 	}
 
 	/* (non-Javadoc)
-	 * @see elements.Element#copy(elements.Element)
+	 * @see java.lang.Object#clone()
 	 */
 	@Override
-	public Element copy() {
+	public Element clone() {
 		return new Variable(this.getName(),this.isName());
 	}
 

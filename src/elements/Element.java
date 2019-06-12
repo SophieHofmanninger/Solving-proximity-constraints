@@ -14,11 +14,11 @@ public abstract class Element {
 	private boolean representsName=false;
 	private static int numberOfNames=1;
 
-	/**
-	 * Creates a copy of an element.
-	 * @return the copy.
+	/* (non-Javadoc)
+	 * @see java.lang.Object#clone()
 	 */
-	public abstract Element copy();
+	@Override
+	public abstract Element clone();
 
 	/**
 	 * Creates an element with a new name from an element.

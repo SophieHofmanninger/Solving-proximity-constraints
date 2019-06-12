@@ -223,7 +223,7 @@ class AlgorithmsJUnit2 {
 	 */
 	private boolean hasPsi(Problem p, Map<String,ArrayList<Element>> psi) {
 
-		Map<String,ArrayList<Element>> curPsi = p.psi;
+		Map<String,ArrayList<Element>> curPsi = p.getPsi();
 		boolean ok = true;
 		boolean eok = false;
 
@@ -269,8 +269,8 @@ class AlgorithmsJUnit2 {
 			return true;
 		}
 
-		if(p.branch != null) {
-			return hasPsi(p.branch,psi);
+		if(p.getBranch() != null) {
+			return hasPsi(p.getBranch(),psi);
 		}
 		else {
 			return false;

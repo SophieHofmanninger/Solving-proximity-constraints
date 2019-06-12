@@ -11,6 +11,7 @@ import elements.Element;
 /**
  * Class for the sigma/problem/constraint sets.
  * Now the name is also a shortcut for SolvingProximityConstraints.
+ * Basically a facade for ArrayList<Tuple<Element>>
  * @author Jan-Michael Holzinger &amp; Sophie Hofmanninger
  * @version 1.1
  */
@@ -143,11 +144,11 @@ public class SPCSet implements TupleSet<Element> {
 		content=contentNew;
 	}
 
-	/**
-	 * Copies the current SPC set.
-	 * @return the copy of the SPC set
+	/* (non-Javadoc)
+	 * @see java.lang.Object#clone()
 	 */
-	public SPCSet copy() {
+	@Override
+	public SPCSet clone() {
 		SPCSet ret = new SPCSet(this.TOKEN);
 		ret.content = new ArrayList<Tuple<Element>>();
 		for(Tuple<Element> c : this.content) {
@@ -156,4 +157,28 @@ public class SPCSet implements TupleSet<Element> {
 		return ret;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if(!(obj instanceof SPCSet)) return false;
+		SPCSet o = (SPCSet) obj;
+		if(!(o.TOKEN.equals(TOKEN))) return false;
+		if(!(o.content.equals(content))) return false;
+		return true;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		return TOKEN.hashCode()+content.hashCode();
+	}
+
+	
+	
+	
+	
 }

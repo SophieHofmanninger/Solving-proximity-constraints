@@ -184,6 +184,7 @@ public class SPC_CL {
 				break;
 			}else {
 				System.out.println("Pre-unification successful.");
+				// TODO Create intermediate result.
 				if(!silentOn) {
 					System.out.println(sb);
 					System.out.println("After pre-unification");

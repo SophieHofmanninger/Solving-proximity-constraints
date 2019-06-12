@@ -17,7 +17,7 @@ Class=LaTeXView
 Document=main.tex
 
 [Frame0_View0,0]
-TopLine=142
+TopLine=0
 Cursor=0
 
 [Frame1]
@@ -35,7 +35,7 @@ Class=LaTeXView
 Document=Documentation.tex
 
 [Frame1_View0,0]
-TopLine=60
+TopLine=64
 Cursor=2289
 
 [Frame2]

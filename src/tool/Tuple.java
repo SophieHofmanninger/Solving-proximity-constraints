@@ -50,5 +50,4 @@ public class Tuple<E> {
 		return "(" + f.toString() + ", " + s.toString() + ")";
 	}
 
-
 }

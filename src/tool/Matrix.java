@@ -49,12 +49,12 @@ public class Matrix {
 	public void addRelation(Function elem1, Function elem2, float f) {
 		
 		if(!existsFunction(elem1.getName())) {
-			Function fun = (Function) elem1.copy();
+			Function fun = (Function) elem1.clone();
 			listOfFunctions.add(fun);
 		}
 		
 		if(!existsFunction(elem2.getName())) {
-			Function fun = (Function) elem2.copy();
+			Function fun = (Function) elem2.clone();
 			listOfFunctions.add(fun);
 		}
 		
@@ -257,7 +257,7 @@ public class Matrix {
 				
 				if(f1.getName().compareTo(f2.getName()) < 0 && f1.arity()==f2.arity()) {
 					if(!relations.get(f1.getName()).containsKey(f2.getName())) {
-						temp = new Tuple<Function>((Function)f1.copy(),(Function)f2.copy());
+						temp = new Tuple<Function>((Function)f1.clone(),(Function)f2.clone());
 						ret.add(temp);
 					}
 				}
@@ -293,4 +293,35 @@ public class Matrix {
 		
 		return false;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#clone()
+	 */
+	@Override
+	public Matrix clone(){
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		return super.equals(obj);
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return super.hashCode();
+	}
+	
+	
+	
+	
 }

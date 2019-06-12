@@ -118,13 +118,13 @@ public class Function extends Element {
 	}
 
 	/* (non-Javadoc)
-	 * @see elements.Element#copy(elements.Element)
+	 * @see java.lang.Object#clone()
 	 */
 	@Override
-	public Element copy() {
+	public Element clone() {
 		Function ret = new Function(this.getName(),this.isName());
 		for(Element e:this.arguments) {
-			ret.addArgument(e.copy());
+			ret.addArgument(e.clone());
 		}
 		return ret;
 	}

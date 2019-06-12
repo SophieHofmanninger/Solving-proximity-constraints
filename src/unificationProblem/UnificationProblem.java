@@ -30,7 +30,7 @@ public class UnificationProblem {
 	private Element left;
 
 	// A list of Functions and their proximity relations (represented as Matrix):
-	private ArrayList<Function> listOfNecesaryFunctions;
+	private ArrayList<Function> listOfNecessaryFunctions;
 	private Matrix proximityRelations;
 
 	// The open cases for the proximity relations.
@@ -112,7 +112,7 @@ public class UnificationProblem {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Sets all open cases to a desired float value.
 	 * @param p value for the open cases.
@@ -176,21 +176,21 @@ public class UnificationProblem {
 	public void setProximityRelations(Matrix proximityRelations) {
 
 		if(this.proximityRelations == null) {
-			this.listOfNecesaryFunctions = proximityRelations.getListOfFunctions();
+			this.listOfNecessaryFunctions = proximityRelations.getListOfFunctions();
 		}
 		else {
-			for(Function fn : this.listOfNecesaryFunctions) {
+			for(Function fn : this.listOfNecessaryFunctions) {
 				proximityRelations.addRelation(fn, fn, 1.0f);
 			}
 		}
-		
+
 		this.proximityRelations = proximityRelations;
 		this.openCases = proximityRelations.getOpenCases();
 
 	}
 
-	
-	
+
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
@@ -204,7 +204,7 @@ public class UnificationProblem {
 		s+= proximityRelations.toString(lambda);
 		return s;
 	}
-	
+
 	/**
 	 * Returns a String representation of the problem.
 	 * @return a string representation.
@@ -286,10 +286,10 @@ public class UnificationProblem {
 			int i = 1;
 			do {
 				if(i!=1) {
-					p=p.branch;
+					p=p.getBranch();
 				}
 				ret += "psi"+i+" = [";
-				for(Map.Entry<String, ArrayList<Element>> m : p.psi.entrySet()) {
+				for(Map.Entry<String, ArrayList<Element>> m : p.getPsi().entrySet()) {
 					ret += m.getKey() + " -> {";
 					for(Element e : m.getValue()) {
 						ret += e.getName() + ",";
@@ -299,7 +299,7 @@ public class UnificationProblem {
 				ret = ret.substring(0,ret.length()-1)+"],";
 				ret += System.lineSeparator();
 				i++;
-			}while(p.branch != null);
+			}while(p.getBranch() != null);
 
 			ret += "sigma = ";
 
@@ -392,7 +392,7 @@ public class UnificationProblem {
 	public void setLambda(float lambda) {
 		this.lambda = lambda;
 	}
-	
+
 	/**
 	 * @return the current Status
 	 */
@@ -408,4 +408,99 @@ public class UnificationProblem {
 			this.status = status;
 		}
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#clone()
+	 */
+	@Override
+	public Object clone(){
+		UnificationProblem copy = new UnificationProblem(left.clone(),right.clone());
+		// A list of Functions and their proximity relations (represented as Matrix):
+		ArrayList<Function> lONFcopy = new ArrayList<Function>();
+		for(Function f:listOfNecessaryFunctions) {
+			lONFcopy.add((Function)f.clone());
+		}
+		copy.listOfNecessaryFunctions=lONFcopy;
+		copy.proximityRelations=proximityRelations.clone();
+
+		ArrayList<Tuple<Function>> oCcopy = new ArrayList<Tuple<Function>>();
+		for(Tuple<Function> t: openCases) {
+			Tuple<Function> tcopy = 
+					new Tuple<Function>((Function)t.getFirst().clone(),
+							(Function) t.getSecond().clone());
+			oCcopy.add(tcopy);
+		}
+
+		copy.prob = prob.clone();
+		copy.lambda=lambda;
+		copy.status=status;
+
+		return copy;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object arg0) {
+		if(!(arg0 instanceof UnificationProblem)) return false;
+		UnificationProblem o = (UnificationProblem) arg0;
+
+		if(o.status!=status) return false;
+		if(o.lambda!=lambda) return false;
+		if(!(o.right.equals(right))) return false;
+		if(!(o.left.equals(left))) return false;
+
+		if(o.listOfNecessaryFunctions==null && this.listOfNecessaryFunctions!=null)
+			return false;
+		if(o.listOfNecessaryFunctions!=null && this.listOfNecessaryFunctions==null)
+			return false;
+		if(o.listOfNecessaryFunctions!=null)
+			for(Function f: o.listOfNecessaryFunctions) {
+				if(!(this.listOfNecessaryFunctions.contains(f))) return false;
+			}
+
+		if(o.openCases==null&&this.openCases!=null) return false;
+		if(o.openCases!=null&&this.openCases==null) return false;
+		if(o.openCases!=null)
+			for(Tuple<Function> t: o.openCases) {
+				if(!(this.openCases.contains(t))) return false;
+			}
+
+		if(o.proximityRelations==null&&this.proximityRelations!=null)
+			return false;
+		if(o.proximityRelations!=null&&this.proximityRelations==null)
+			return false;
+		if(o.proximityRelations!=null)
+			if(!proximityRelations.equals(o.proximityRelations)) return false;
+
+		if(o.prob==null&&this.prob!=null)
+			return false;
+		if(o.prob!=null&&this.prob==null)
+			return false;
+		if(o.prob!=null)
+			if(!prob.equals(o.prob)) return false;
+
+
+		return true;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		int hc = left.hashCode()+right.hashCode();
+		hc+=listOfNecessaryFunctions.hashCode();
+		hc+=proximityRelations.hashCode();
+		hc+=openCases.hashCode();
+		hc+=prob.hashCode();
+		hc+=Float.valueOf(lambda).hashCode();
+		hc+=status;
+		return hc;
+	}
+
+
+
+
 }
