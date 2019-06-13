@@ -569,7 +569,7 @@ public final class Algorithms {
 		for(Element m : list1) {
 			for(Element n : list2) {
 
-				if(m.getName().compareTo(n.getName())==0) {
+				if(m.getName().compareTo(n.getName())==0 && ret.contains(m)==false) {
 					ret.add(m);
 				}
 

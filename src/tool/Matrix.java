@@ -149,7 +149,7 @@ public class Matrix {
 		
 		if(relations.containsKey(s1)) {
 			for (Map.Entry<String, Float> m : relations.get(s1).entrySet()) {
-				if(m.getKey()==s1) {
+				if(m.getKey()==s1||m.getValue()<lambda) {
 					self = true;
 				}
 				if(m.getValue()>=lambda) {
@@ -158,7 +158,7 @@ public class Matrix {
 			}
 		}
 		
-		if(!self) {
+		if(self) {
 			ret.add(new Function(s1));
 		}
 		

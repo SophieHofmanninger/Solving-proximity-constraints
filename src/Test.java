@@ -63,6 +63,7 @@ public class Test {
 		System.out.print(steps);
 		steps = new StringBuffer();
 		uni.solveNext(steps);
+		System.out.println("\n");
 		System.out.println(uni.resultString());
 		System.out.print(steps);
 		
