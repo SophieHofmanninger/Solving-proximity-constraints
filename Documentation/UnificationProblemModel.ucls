@@ -3,7 +3,7 @@
   realizations="true" associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="unificationProblem.Algorithms" project="ConstraintUnifier" 
     file="/ConstraintUnifier/src/unificationProblem/Algorithms.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="757" y="539"/>    
+    <position height="-1" width="-1" x="660" y="532"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="unificationProblem.Problem" project="ConstraintUnifier" 
     file="/ConstraintUnifier/src/unificationProblem/Problem.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="541" y="977"/>    
+    <position height="-1" width="-1" x="183" y="1110"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -38,24 +38,24 @@
     </display>  
   </class>  
   <association id="5">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="6" name="branch">        
-        <position height="0" width="0" x="-59" y="-29"/>      
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="6" name="prob">        
+        <position height="0" width="0" x="-417" y="104"/>      
       </attribute>      
       <multiplicity id="7" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-59" y="-29"/>      
+        <position height="0" width="0" x="-417" y="104"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="8">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="9" name="prob">        
-        <position height="0" width="0" x="-59" y="-29"/>      
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="9" name="branch">        
+        <position height="0" width="0" x="-417" y="104"/>      
       </attribute>      
       <multiplicity id="10" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-59" y="-29"/>      
+        <position height="0" width="0" x="-417" y="104"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
