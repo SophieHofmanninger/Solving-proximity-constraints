@@ -413,7 +413,7 @@ public class UnificationProblem {
 	 * @see java.lang.Object#clone()
 	 */
 	@Override
-	public Object clone(){
+	public UnificationProblem clone(){
 		UnificationProblem copy = new UnificationProblem(left.clone(),right.clone());
 		// A list of Functions and their proximity relations (represented as Matrix):
 		ArrayList<Function> lONFcopy = new ArrayList<Function>();

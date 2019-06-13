@@ -8,6 +8,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import elements.Function;
+import tool.DummyInputChecker;
+import tool.InputChecker;
 import tool.Tuple;
 import unificationProblem.InputParser;
 import unificationProblem.UnificationProblem;
@@ -21,15 +23,19 @@ import unificationProblem.UnificationProblem;
 public class SPC_CL {
 	private static BufferedReader br = 
 			new BufferedReader(new InputStreamReader(System.in));
+	private static UnificationProblem intermediateResult;
+	private static InputChecker iC = new DummyInputChecker();
+	
 	
 	/**
 	 * @param args the Unification Problem as String; if empty
 	 * the program will ask for it.
 	 * Suitable for one equation.
+	 * @return the final status of the problem.
+	 * @see unificationProblem.UnificationProblem#status
 	 */
-	// TODO maybe change to solveNext()
 	// TODO File not yet supported.
-	public static void main(String[] args) {
+	public static int main(String[] args) {
 		// equation, file, lambda, silentOn
 		String equation=null;
 		File f;
@@ -67,7 +73,7 @@ public class SPC_CL {
 
 
 		if(!silentSet) {
-			
+
 			System.out.println
 			("Do you want to see intermediate results and steps? Enter y/n");
 			try {
@@ -135,12 +141,7 @@ public class SPC_CL {
 					}				
 				}
 
-
-
-				while(sTP.checkOpenCases()) {
-					Tuple<Function> oC=sTP.getNextOpenCase();
-					sTP.closeCase(oC, value);
-				}
+				sTP.setAllOpenCasesTo(value);
 			}
 
 		}
@@ -165,7 +166,7 @@ public class SPC_CL {
 
 		boolean nextRound=true;
 		while(nextRound) {
-			if(!lambdaSet) lambda=setLambda();
+			if(!lambdaSet) lambda=getLambda();
 			sTP.setLambda(lambda);
 			lambdaSet=true;
 			nextRound=false;
@@ -184,7 +185,7 @@ public class SPC_CL {
 				break;
 			}else {
 				System.out.println("Pre-unification successful.");
-				// TODO Create intermediate result.
+				intermediateResult = sTP.clone();
 				if(!silentOn) {
 					System.out.println(sb);
 					System.out.println("After pre-unification");
@@ -204,36 +205,38 @@ public class SPC_CL {
 					}
 
 				}
-			}
 
-			System.out.println
-			("Do you want to perform the algorithm again with another lambda? y/n");
-			try {
-				String input = br.readLine();
-				if(input.equals("y")) {
-					nextRound=true;
-					lambdaSet=false;
+
+				System.out.println
+				("Do you want to perform the algorithm again with another lambda? y/n");
+				try {
+					String input = br.readLine();
+					if(input.equals("y")) {
+						nextRound=true;
+						lambdaSet=false;
+						sTP=intermediateResult.clone();
+					}
+
+				} catch (IOException e) {
+
 				}
-
-			} catch (IOException e) {
-
 			}
 		}
 
 		try {
 			br.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Stream could not be closed.");
 		}
-		System.out.println("END");
+		return sTP.getStatus();
 
 	}
 
 	/**
-	 * @return
+	 * Ask for user input for lambda.
+	 * @return {@code float} lambda.
 	 */
-	private static float setLambda() {
+	private static float getLambda() {
 		float ret =0;
 		boolean succ=false;
 		while(!succ) {
@@ -255,14 +258,13 @@ public class SPC_CL {
 	}
 
 	/**
-	 * @param equation
-	 * @return
+	 * Checks the String via the defined InputChecker.
+	 * @param equation the equation to check.
+	 * @return {@code true} if the equation fits.
 	 */
+	// TODO allow injection
 	private static boolean checkInput(String equation) {
-		if(equation==null) return false;
-
-		// TODO EQUATION CHECKER (number of parenthesis,...)
-		return true;
+		return iC.check(equation);
 
 	}
 }

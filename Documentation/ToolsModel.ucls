@@ -3,7 +3,7 @@
   realizations="true" associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="tool.Tuple" project="ConstraintUnifier" 
     file="/ConstraintUnifier/src/tool/Tuple.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="540" y="272"/>    
+    <position height="-1" width="-1" x="458" y="198"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,26 +30,48 @@
   </class>  
   <class id="4" language="java" name="tool.Matrix" project="ConstraintUnifier" 
     file="/ConstraintUnifier/src/tool/Matrix.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="833" y="306"/>    
+    <position height="-1" width="-1" x="743" y="313"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="5">    
+  <interface id="5" language="java" name="tool.InputChecker" project="ConstraintUnifier" 
+    file="/ConstraintUnifier/src/tool/InputChecker.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="508" y="636"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="6" language="java" name="tool.DummyInputChecker" project="ConstraintUnifier" 
+    file="/ConstraintUnifier/src/tool/DummyInputChecker.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="750" y="646"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="7">    
     <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="6" name="content">        
-        <position height="0" width="0" x="420" y="-339"/>      
+      <attribute id="8" name="content">        
+        <position height="0" width="0" x="338" y="-413"/>      
       </attribute>      
-      <multiplicity id="7" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="420" y="-339"/>      
+      <multiplicity id="9" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="338" y="-413"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="8">    
+  <realization id="10">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <realization id="11">    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="2"/>  
   </realization>  

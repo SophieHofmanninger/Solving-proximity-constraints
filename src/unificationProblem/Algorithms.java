@@ -43,6 +43,7 @@ public final class Algorithms {
 		return preUnification(unif,dummy);
 	}
 
+	private Algorithms() {};
 
 	/**
 	 * Performs the Pre-Unification Algorithm 

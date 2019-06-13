@@ -69,6 +69,8 @@ Version Number & Changes Summary & Author\\
 \hline
 0.10 & updated UML files & Jan-Michael\\
 \hline
+0.11 & added Input Checker & Jan-Michael\\
+\hline
 \end{tabular}
 
 \end{center}
@@ -93,10 +95,13 @@ We split the problem in 4 (5) smaller tasks:
 %----------------------------------------------------------------------------------------
 
 \subsection{Input Processing} 
-
+\subsubsection{InputParser}
 The first idea here is to copy, alter and extend the existing code, in the class InputParser.
 \\ \ \\
 \noindent
+\subsubsection{Input Checker}
+We want to be able to check the input for example for missing parenthesis and so on. Therefore we will allow the user to specify an InputChecker. The idea is, to create an Interface, with just a method check(String):boolean. This then can be implemented by the implementation of the checkers.
+\subsubsection{Proximity Relations}
 For the Proximity Relations \(\mathcal{R}\) and the \(\lambda\)\textit{-cut} we have the following idea:\\
 \begin{enumerate}
 	\item We try to get the number of function symbols with the same arity. 
