@@ -5,6 +5,7 @@ package unificationProblem;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import elements.Element;
@@ -23,7 +24,7 @@ import tool.Tuple;
 
 public final class Algorithms {
 
-	private static int NEXT_BRANCH=0; 
+	private static int NEXT_BRANCH=1; 
 
 	/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	 * +                                                                           +
@@ -325,7 +326,7 @@ public final class Algorithms {
 		SPCSet constraintProblem = prob.getC();
 		Tuple<Element> t;
 		boolean error = false;
-		NEXT_BRANCH = branch+1;
+		//NEXT_BRANCH = branch+1;
 
 		while(!constraintProblem.isEmpty()) {
 			t=constraintProblem.get(0);
@@ -338,11 +339,15 @@ public final class Algorithms {
 					if(nn1(t.getFirst(),t.getSecond(),prob, proxR, lambda, steps, branchStepsTemp)) {
 						constraintProblem.remove(0);
 						if(branchStepsTemp.length()>0) {
+							constraintProblem = prob.getC();
 							branchSteps.append(branchStepsTemp);
 						}
 						continue;
 					}
 					else {
+						if(branchStepsTemp.length()>0) {
+							branchSteps.append(branchStepsTemp);
+						}
 						error = true;
 						break;
 					}
@@ -490,7 +495,6 @@ public final class Algorithms {
 			return true;
 		}
 
-		//return false;
 	}
 
 	/**
@@ -511,47 +515,62 @@ public final class Algorithms {
 			if(cur.getPsi().get(n1.getName()).size() > 1) {
 				//branchen
 				
-				steps.delete(steps.length()-3, steps.length());
-				steps.append(" - Create Branch ["+NEXT_BRANCH+"]), ");
+				List<Problem> branches = new ArrayList<Problem>();
+				List<StringBuffer> bSteps = new ArrayList<StringBuffer>();
+				int cBranches = cur.getPsi().get(n1.getName()).size();
+				int nextBranch = NEXT_BRANCH;
+				int lastBranch = NEXT_BRANCH + cBranches-1;
+				boolean success = false;
+				
+				steps.delete(steps.length()-6, steps.length());
+				steps.append("Create Branch ["+NEXT_BRANCH+" - "+lastBranch+"]), ");
 	
-				Problem nextBranch = cur.getBranch();
-				cur.setBranch(new Problem());
-				cur.getBranch().setBranch(nextBranch);
-
-				cur.getBranch().setC(cur.getC().clone());
-				cur.getBranch().setP(cur.getP());
-				cur.getBranch().setSigma(cur.getSigma());
-
-				cur.getBranch().setPsi(new HashMap<String,ArrayList<Element>>());
-
-				for(Map.Entry<String, ArrayList<Element>> m : cur.getPsi().entrySet()) {
-					ArrayList<Element> temp = new ArrayList<Element>();
-					for(Element t : m.getValue()) {
-						temp.add(t);
+				NEXT_BRANCH += cBranches;
+				
+				for(int i = 0; i<cBranches;i++) {
+					Problem tmp = new Problem();
+					tmp.setC(cur.getC().clone());
+					tmp.setP(cur.getP());
+					tmp.setSigma(cur.getSigma());
+					tmp.setPsi(clonePsi(cur.getPsi()));
+					tmp.getPsi().put(n1.getName(), new ArrayList<Element>());
+					tmp.getPsi().get(n1.getName()).add(cur.getPsi().get(n1.getName()).get(i));
+					StringBuffer tmpB = new StringBuffer();
+					
+					if(constraintSimp(tmp,r,lambda,tmpB,i+nextBranch)){
+						branches.add(tmp);
+						success = true;
 					}
-
-					cur.getBranch().getPsi().put(m.getKey(), temp);
-
+					
+					branchSteps.append(tmpB);
 				}
 				
-				cur.getPsi().put(n1.getName(), new ArrayList<Element>());
-				cur.getPsi().get(n1.getName()).add(cur.getBranch().getPsi().get(n1.getName()).get(0));
-				cur.getBranch().getPsi().get(n1.getName()).remove(0);
-				
-				if(!constraintSimp(cur.getBranch(),r,lambda,branchSteps,NEXT_BRANCH)) {
-					cur.setBranch(null);
+				for(Problem p : branches) {
+					if(!cur.getC().isEmpty()) {
+						cur.setC(p.getC());
+						cur.setPsi(p.getPsi());
+						if(p.getBranch()!=null) {
+							appendBranch(cur,p.getBranch());
+						}
+					}
+					else {
+						appendBranch(cur,p);
+					}
 				}
-
 				
-			}
-
-			if(nfs(n2,new Function(cur.getPsi().get(n1.getName()).get(0).getName()),cur.getPsi(),r,lambda)) {
-				return true;
+				return success;
 			}
 			else {
-				steps.append("(Fail2), ");
-				return false;
+				if(nfs(n2,new Function(cur.getPsi().get(n1.getName()).get(0).getName()),cur.getPsi(),r,lambda)) {
+					return true;
+				}
+				else {
+					steps.append("(Fail2), ");
+					return false;
+				}
 			}
+
+			
 		}
 		else {
 			return false;
@@ -580,4 +599,39 @@ public final class Algorithms {
 		return ret;
 	}
 
+	/**
+	 * Clones the HashMap psi.
+	 * @param map the psi to clone.
+	 * @return a clone of psi.
+	 */
+	private static Map<String,ArrayList<Element>> clonePsi(Map<String, ArrayList<Element>> map){
+		Map<String,ArrayList<Element>> ret = new HashMap<String,ArrayList<Element>>();
+		
+		for(Map.Entry<String, ArrayList<Element>> m : map.entrySet()) {
+			ArrayList<Element> temp = new ArrayList<Element>();
+			for(Element t : m.getValue()) {
+				temp.add(t);
+			}
+
+			ret.put(m.getKey(), temp);
+
+		}
+		
+		return ret;
+	}
+	
+	/**
+	 * Appends a branch to a Problem.
+	 * If the Problem has already a branch, it appends it to the branch.
+	 * @param origin the original Problem.
+	 * @param branch the branch Problem to append.
+	 */
+	private static void appendBranch(Problem origin, Problem branch) {
+		if(origin.getBranch()==null) {
+			origin.setBranch(branch);
+		}
+		else {
+			appendBranch(origin.getBranch(),branch);
+		}
+	}
 }
