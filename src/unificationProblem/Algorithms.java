@@ -516,7 +516,6 @@ public final class Algorithms {
 				//branchen
 				
 				List<Problem> branches = new ArrayList<Problem>();
-				List<StringBuffer> bSteps = new ArrayList<StringBuffer>();
 				int cBranches = cur.getPsi().get(n1.getName()).size();
 				int nextBranch = NEXT_BRANCH;
 				int lastBranch = NEXT_BRANCH + cBranches-1;

@@ -224,4 +224,31 @@ class MatrixJUnit {
 		  assertTrue(returnList.get(0).getSecond().getName()==testList.get(0).getSecond().getName());
 		  
 	  }
+	  
+	  /**
+	   * Test method for {@link tool.Matrix#clone()} and 
+	   * {@link tool.Matrix#equals(Object)}.
+	   */
+	  @Test 
+	  void testCloneAndEquals() {
+		  Function f =new Function("f");
+		  Function g =new Function("g");
+		  Function h =new Function("h");
+		  Function j =new Function("j");
+		  Function a =new Function("a");
+		  Function b =new Function("b");
+		  
+		// set matrix
+		  m.addRelation(f, g, 0.11f);
+		  m.addRelation(h, g, 0.22f);
+		  m.addRelation(h, f, 0.33f);		  
+		  m.addRelation(f,j, 0.6f);
+		  m.addRelation(a,b, 0.7f);
+		  
+		  Matrix n= m.clone();
+		  assertTrue(n.equals(m));
+		  
+		  n.addRelation(g,j, 0.5f);
+		  assertFalse(n.equals(m));
+	  }
 }

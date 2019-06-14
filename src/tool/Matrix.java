@@ -17,7 +17,7 @@ import elements.*;
  */
 public class Matrix {
 
-	private Map<String, Map<String, Float>> relations;
+	private HashMap<String, Map<String, Float>> relations;
 	private ArrayList<Function> listOfFunctions;
 
 	/**
@@ -300,7 +300,24 @@ public class Matrix {
 	@Override
 	public Matrix clone(){
 		// TODO Auto-generated method stub
-		return null;
+		Matrix ret = new Matrix();
+		
+		ret.listOfFunctions = new ArrayList<Function>();
+		ret.relations = new HashMap<String, Map<String, Float>>();
+		
+		for(Function f : this.listOfFunctions) {
+			ret.listOfFunctions.add((Function) f.clone());
+		}
+
+		for(Map.Entry<String, Map<String, Float>> m : this.relations.entrySet()) {
+			Map<String, Float> tmp = new HashMap<String, Float>();
+			for(Map.Entry<String, Float> n : m.getValue().entrySet()) {
+				tmp.put(n.getKey(), n.getValue());
+			}
+			ret.relations.put(m.getKey(), tmp);
+		}
+		
+		return ret;
 	}
 
 	/* (non-Javadoc)
@@ -308,8 +325,20 @@ public class Matrix {
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		// TODO Auto-generated method stub
-		return super.equals(obj);
+		if(obj instanceof Matrix) {
+			Matrix m = (Matrix) obj;
+			
+			if(m.relations.equals(this.relations) &&
+					m.listOfFunctions.equals(this.listOfFunctions)) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		else {
+			return false;
+		}
 	}
 
 	/* (non-Javadoc)
@@ -317,11 +346,7 @@ public class Matrix {
 	 */
 	@Override
 	public int hashCode() {
-		// TODO Auto-generated method stub
-		return super.hashCode();
+		return relations.hashCode()+listOfFunctions.hashCode();
 	}
-	
-	
-	
 	
 }
