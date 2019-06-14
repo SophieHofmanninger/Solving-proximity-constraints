@@ -5,7 +5,7 @@ package tool;
 
 /**
  * Checks correctness of Inputs for the Problem.
- * @author Jan-Michael Holzinger &amp; Sophie Hofmanninger
+ * @author Jan-Michael Holzinger
  * @version 1.0
  *
  */

@@ -7,7 +7,7 @@ import java.util.Collection;
 
 /**
  * Interface for sets, that consist of Tuples of Elements and behave like ArrayLists.
- * @author Jan-Michael Holzinger &amp; Sophie Hofmanninger
+ * @author Jan-Michael Holzinger
  * @version 1.0
  */
 public interface TupleSet<E> {

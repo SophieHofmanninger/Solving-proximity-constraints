@@ -17,7 +17,7 @@ import elements.Function;
 /**
  * Test Cases for Matrix.
  * 
- * @author Jan-Michael Holzinger &amp; Sophie Hofmanninger
+ * @author Sophie Hofmanninger
  * @version 2.0
  */
 class MatrixJUnit {

@@ -12,7 +12,7 @@ import elements.*;
  * Proximity Matrix class. Representation of a symmetric matrix where
  * the diagonal consists of 1 and all other values must be in [0,1].
  * 
- * @author Jan-Michael Holzinger &amp; Sophie Hofmanninger
+ * @author Sophie Hofmanninger
  * @version 2.0
  */
 public class Matrix {

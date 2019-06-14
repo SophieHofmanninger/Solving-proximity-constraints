@@ -12,7 +12,7 @@ import elements.Element;
  * Class for the sigma/problem/constraint sets.
  * Now the name is also a shortcut for SolvingProximityConstraints.
  * Basically a facade for ArrayList<Tuple<Element>>
- * @author Jan-Michael Holzinger &amp; Sophie Hofmanninger
+ * @author Jan-Michael Holzinger
  * @version 1.1
  */
 public class SPCSet implements TupleSet<Element> {

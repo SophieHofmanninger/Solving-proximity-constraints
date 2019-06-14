@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test Cases for Pre-Unification.
- * @author Jan-Michael Holzinger &amp; Sophie Hofmanninger
+ * @author Jan-Michael Holzinger
  * @version 1.0
  */
 class AlgorithmsJUnit1 {

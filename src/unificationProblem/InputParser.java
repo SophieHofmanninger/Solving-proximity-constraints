@@ -15,7 +15,7 @@ import tool.Matrix;
  * [a - t] are function symbols and u is the fist variable. 
  * This means that constants are function symbols with arity zero and [u - z] are variables.
  *
- * @author  Jan-Michael Holzinger &amp; Sophie Hofmanninger
+ * @author  Sophie Hofmanninger
  * @version 3.0
  * 
  */

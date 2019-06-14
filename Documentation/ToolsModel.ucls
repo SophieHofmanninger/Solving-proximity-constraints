@@ -46,8 +46,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="6" language="java" name="tool.DummyInputChecker" project="ConstraintUnifier" 
-    file="/ConstraintUnifier/src/tool/DummyInputChecker.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="6" language="java" name="tool.SimpleInputChecker" project="ConstraintUnifier" 
+    file="/ConstraintUnifier/src/tool/SimpleInputChecker.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="750" y="646"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      

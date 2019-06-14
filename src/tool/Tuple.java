@@ -2,7 +2,7 @@ package tool;
 
 /**
  * Generic Tuple Class
- * @author Jan-Michael Holzinger &amp; Sophie Hofmanninger
+ * @author Jan-Michael Holzinger
  * @version 1.0
  */
 public class Tuple<E> {

@@ -7,24 +7,26 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import elements.Function;
-import tool.DummyInputChecker;
-import tool.InputChecker;
+import tool.SimpleInputChecker;
 import tool.Tuple;
 import unificationProblem.InputParser;
 import unificationProblem.UnificationProblem;
 
 /**
  * Use the Algorithm via the command line.
- * @author Jan-Michael Holzinger &amp; Sophie Hofmanninger
+ * @author Jan-Michael Holzinger
  * @version 1.0
  *
  */
+// TODO make it use -f , -e,....
 public class SPC_CL {
 	private static BufferedReader br = 
 			new BufferedReader(new InputStreamReader(System.in));
 	private static UnificationProblem intermediateResult;
-	private static InputChecker iC = new DummyInputChecker();
 	
 	
 	/**
@@ -36,6 +38,7 @@ public class SPC_CL {
 	 */
 	// TODO File not yet supported.
 	public static int main(String[] args) {
+		ArrayList<String> aal = new ArrayList<String>(Arrays.asList(args));
 		// equation, file, lambda, silentOn
 		String equation=null;
 		File f;
@@ -262,9 +265,8 @@ public class SPC_CL {
 	 * @param equation the equation to check.
 	 * @return {@code true} if the equation fits.
 	 */
-	// TODO allow injection
 	private static boolean checkInput(String equation) {
-		return iC.check(equation);
-
+	
+		return new SimpleInputChecker().check(equation);
 	}
 }

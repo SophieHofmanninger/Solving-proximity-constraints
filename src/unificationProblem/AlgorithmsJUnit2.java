@@ -18,7 +18,7 @@ import tool.Tuple;
 
 /**
  * Test Cases for constraint simplification algorithm.
- * @author Jan-Michael Holzinger &amp; Sophie Hofmanninger
+ * @author Sophie Hofmanninger
  * @version 1.0
  */
 class AlgorithmsJUnit2 {
