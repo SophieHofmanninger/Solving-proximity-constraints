@@ -71,6 +71,8 @@ Version Number & Changes Summary & Author\\
 \hline
 0.11 & added Input Checker & Jan-Michael\\
 \hline
+0.12 & added Command Line Interface & Jan-Michael\\
+\hline
 \end{tabular}
 
 \end{center}
@@ -81,7 +83,7 @@ We split the problem in 4 (5) smaller tasks:
 	\item Input Processing,
 	\item Pre-Unification,
 	\item Constraint Simplification,
-	\item Output.
+	\item Input/Output.
 	\item [O.] Web-Integration.
 \end{enumerate}
 
@@ -164,7 +166,18 @@ Inside the loop, the seven rules to simplify the constraint set, will be applied
 %	PROBLEM 2
 %----------------------------------------------------------------------------------------
 
-\subsection{Output}
+\subsection{Input/Output}
+
+We provide a command line user interface for the program. This user interface is implemented in the ``SPC\_CL'' class(SolvingProximityConstraints\_via\_CommandLine). The program can be accessed with no or some of this optional arguments:
+Note: the first argument if any are given is always the equation in the format ``lhs =? rhs'' where the blanks in between are mandatory.
+\begin{itemize}
+	\item [] the equation in the format ``lhs =? rhs'' (left hand side and right hand side of the equation.
+	\item [-f] <PATH> a path given to a file where (parts) of the proximity relations are stored the format must follow the convention, that is mentioned below.
+	\item [-s] silent mode on/off, default is off, -s with no argument switches on, optional argument ``n'' switches off.
+	\item [-l] followed by the lambda value.
+\end{itemize}
+
+The proximity relations must be stored in a text file, one line for each relation, where the two functions (or constants) are separated with ``,'' (comma) and the lambda value, also separated with ``,''.
 
 \section{System Model}
 The program consists of 4 packages,

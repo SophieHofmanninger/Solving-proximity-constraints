@@ -11,7 +11,7 @@ import elements.Element;
 /**
  * Class for the sigma/problem/constraint sets.
  * Now the name is also a shortcut for SolvingProximityConstraints.
- * Basically a facade for ArrayList<Tuple<Element>>
+ * Basically a facade for ArrayList&lt;Tuple&lt;Element&gt;&gt;
  * @author Jan-Michael Holzinger
  * @version 1.1
  */
@@ -174,7 +174,11 @@ public class SPCSet implements TupleSet<Element> {
 	 */
 	@Override
 	public int hashCode() {
-		return TOKEN.hashCode()+content.hashCode();
+		int h = TOKEN.hashCode();
+		for (Tuple<Element> t:content) {
+			h+=t.hashCode();
+		}
+		return h;
 	}
 
 	

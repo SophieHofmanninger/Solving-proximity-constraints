@@ -179,6 +179,7 @@ public class Problem {
 		if(!(psi.equals(psi))) return false;
 		if(branch==null&&o.branch!=null) return false;
 		if(branch!=null&&o.branch==null) return false;
+		if(branch==null&&o.branch==null) return true;
 		if(!(branch.equals(o.branch))) return false;
 		return true;
 	}
@@ -190,7 +191,9 @@ public class Problem {
 	public int hashCode() {
 		int hc=p.hashCode()+c.hashCode()+sigma.hashCode();
 		hc+=psi.hashCode();
-		hc+=branch.hashCode();
+		if(branch!=null) {
+			hc+=branch.hashCode();
+		}
 		return hc;
 	}
 

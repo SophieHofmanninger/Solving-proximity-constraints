@@ -38,7 +38,7 @@ public class UnificationProblem {
 
 	// The Unification Problem:
 	private Problem prob;
-	private float lambda=1;
+	private float lambda=1f;
 
 	//Solving status
 	private int status=0; //0: nothing done, 1: pre-unification successful, 2: constraint Simplification successful
@@ -52,6 +52,9 @@ public class UnificationProblem {
 	public UnificationProblem(Element left, Element right) {
 		this.setLeft(left);
 		this.setRight(right);
+
+		listOfNecessaryFunctions = new ArrayList<Function>();
+		proximityRelations = new Matrix();
 		openCases = new ArrayList<Tuple<Function>>();
 		prob = new Problem(new Tuple<Element>(left,right));
 	}
@@ -96,20 +99,27 @@ public class UnificationProblem {
 	 */
 	public boolean closeCase(Tuple<Function> t, float p) {
 		if(p<0||p>1) return false;
-		if(openCases.contains(t)) {
 
-			proximityRelations.addRelation(t.getFirst(), t.getSecond(), p);
-
-			openCases.remove(t);			
-			return true;
+		for(int i=0;i<openCases.size();i++) {
+			Tuple<Function> contained =openCases.get(i);
+			Function cf=contained.getFirst();
+			Function cs=contained.getSecond();
+			if((cf.getName().equals(t.getFirst().getName()))&&
+					(cs.getName().equals(t.getSecond().getName()))){
+				proximityRelations.addRelation
+				(t.getFirst(), t.getSecond(), p);
+				openCases.remove(i);
+				return true;
+			}
+			if((cs.getName().equals(t.getFirst().getName()))&&
+					(cf.getName().equals(t.getSecond().getName()))){
+				proximityRelations.addRelation
+				(t.getFirst(), t.getSecond(), p);
+				openCases.remove(i);
+				return true;
+			}
 		}
-		Tuple<Function> rev = new Tuple<Function>(t.getSecond(),t.getFirst());
-		if(openCases.contains(rev)) {
-			proximityRelations.addRelation(rev.getFirst(), rev.getSecond(), p);
 
-			openCases.remove(rev);			
-			return true;
-		}
 		return false;
 	}
 
@@ -197,7 +207,7 @@ public class UnificationProblem {
 	@Override
 	public String toString() {
 		String s="";
-		s+=left.toFullString()+" =?" + right.toFullString();
+		s+=left.toFullString()+" =? " + right.toFullString();
 		s+=System.lineSeparator();
 		s+="Lambda = "+lambda;
 		s+=" and proximity relations : ";

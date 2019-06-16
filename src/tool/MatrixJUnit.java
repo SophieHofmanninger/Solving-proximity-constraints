@@ -41,11 +41,12 @@ class MatrixJUnit {
 	  void tearDown() throws Exception { }
 	  
 	  /**
-	   * Test method for {@link tool.Matrix#addRelation(elemets.Element,elemets.Element, float)} and 
-	   * {@link tool.Matrix#addRelation(java.lang.string, java.lang.string, float)} and
-	   * {@link tool.Matrix#getRelation(elemets.Element,elemets.Element)} and 
-	   * {@link tool.Matrix#getRelation(java.lang.string , java.lang.string)}.
+	   * Test method for {@link tool.Matrix#addRelation(elements.Function,elements.Function, float)} and 
+	   * {@link tool.Matrix#addRelation(java.lang.String, java.lang.String, float)} and
+	   * {@link tool.Matrix#getRelation(elements.Element,elements.Element)} and 
+	   * {@link tool.Matrix#getRelation(java.lang.String , java.lang.String)}.
 	   */
+
 	  @Test 
 	  void testAddGetRelation() {
 		  Function f =new Function("f");
@@ -81,7 +82,7 @@ class MatrixJUnit {
 	  }
 	  
 	  /**
-	   * Test method for {@link tool.Matrix#agetRelations(java.lang.String, float)}.
+	   * Test method for {@link tool.Matrix#getRelations(java.lang.String, float)}.
 	   */
 	  @Test 
 	  void testGetRelations() {
@@ -148,7 +149,7 @@ class MatrixJUnit {
 	  }		 
 
 	  /**
-	   * Test method for {@link tool.Matrix#getAllElements()}.
+	   * Test method for getting all functions.
 	   */
 	  @Test 
 	  void testGetListOfFunctions() {
@@ -193,7 +194,7 @@ class MatrixJUnit {
 	  }		
 	  
 	  /**
-	   * Test method for {@link tool.Matrix#openCases()}.
+	   * Test method for {@link tool.Matrix#getOpenCases()}.
 	   */
 	  @Test 
 	  void testOpenCases() {

@@ -195,8 +195,10 @@ public class Matrix {
 				}
 			}
 		}
-
-		ret = ret.substring(0, ret.length() - 1) + "}";
+		if(ret.length()>1) {
+		ret = ret.substring(0, ret.length() - 1);
+		}
+		ret += "}";
 		return ret;
 	}
 	
@@ -299,7 +301,7 @@ public class Matrix {
 	 */
 	@Override
 	public Matrix clone(){
-		// TODO Auto-generated method stub
+
 		Matrix ret = new Matrix();
 		
 		ret.listOfFunctions = new ArrayList<Function>();

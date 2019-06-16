@@ -14,8 +14,11 @@ import org.junit.jupiter.api.Test;
  * @author Jan-Michael Holzinger &amp; Sophie Hofmanninger
  * @version 1.0
  */
-class SimpleInputCheckerTest {
+class SimpleInputCheckerJUnit {
 	InputChecker inpC;
+	
+
+	
 	/**
 	 * @throws java.lang.Exception ignored
 	 */

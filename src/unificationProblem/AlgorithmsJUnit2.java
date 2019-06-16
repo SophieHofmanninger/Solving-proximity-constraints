@@ -46,7 +46,7 @@ class AlgorithmsJUnit2 {
 
 	
 	/**
-	 * Test method for {@link unificationProblem.Algorithms#constrainSimplification(unificationProblem.Problem, tool.Matrix, float)}.
+	 * Test method for {@link unificationProblem.Algorithms#constraintSimplification(unificationProblem.UnificationProblem)}.
 	 * Tests "Example 3".
 	 **/
 	@Test
@@ -157,7 +157,7 @@ class AlgorithmsJUnit2 {
 	}
 	
 	/**
-	 * Test method for {@link unificationProblem.Algorithms#constrainSimplification(unificationProblem.Problem, tool.Matrix, float)}.
+	 * Test method for {@link unificationProblem.Algorithms#constraintSimplification(unificationProblem.UnificationProblem)}.
 	 * Tests "Example 5".
 	 **/
 	@Test
