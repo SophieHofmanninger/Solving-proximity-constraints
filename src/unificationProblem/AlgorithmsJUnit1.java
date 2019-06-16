@@ -97,7 +97,7 @@ class AlgorithmsJUnit1 {
 
 	/**
 	 * Test method for {@link unificationProblem.Algorithms#preUnification(unificationProblem.UnificationProblem)}.
-	 * Tests FAIL from (Cla).
+	 * Tests FAIL from (Cla). (Simple occurrence)
 	 */
 	@Test
 	void testPreUnification4() {
@@ -140,4 +140,29 @@ class AlgorithmsJUnit1 {
 
 	}
 
+	/**
+	 * Test method for {@link unificationProblem.Algorithms#preUnification(unificationProblem.UnificationProblem)}.
+	 * Fail from (Occ). (Real cycle)
+	 */
+	@Test
+	void testPreUnification6() {
+		String s="f(x,y,z)";
+		String t="g(h(z),i(x),j(y))";
+		unif= InputParser.parse(s+" =? "+t).get(0);
+
+		System.out.println("Before:");
+		System.out.println("P = " + unif.getP().toString());
+		System.out.println("C = " + unif.getC().toString());
+		System.out.println("s = " + unif.getSigma().toString());
+
+		StringBuffer step=new StringBuffer();
+		
+		boolean result=Algorithms.preUnification(unif,step);
+		if(step.length()>0) step.delete(step.length()-2, step.length()-1);
+		System.out.println(step);
+		assertFalse(result);
+
+		
+	}
+	
 }

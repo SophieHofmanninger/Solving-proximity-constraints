@@ -1,5 +1,7 @@
 package elements;
 
+import java.util.ArrayList;
+
 /**
  *
  * The class Variable handles the variables.
@@ -93,6 +95,14 @@ public class Variable extends Element{
 		Variable ret = new Variable(newName,true);
 		setNumberOfNames(getNumberOfNames() + 1);
 		return ret;
+	}
+
+	/* (non-Javadoc)
+	 * @see elements.Element#getVars()
+	 */
+	@Override
+	public ArrayList<Variable> getVars() {
+		return new ArrayList<Variable>();
 	}
 
 

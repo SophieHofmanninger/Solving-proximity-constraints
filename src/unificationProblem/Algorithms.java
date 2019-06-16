@@ -134,11 +134,24 @@ public final class Algorithms {
 
 			if(t.getFirst() instanceof Variable && !(t.getSecond() instanceof Variable)) {
 
-				// Occur Check
-				if(occurs(t)) {
-					steps.append("(Occ), ");
+				// Occur Check 1
+				if(occurs1(t)) {
+					steps.append("(Occ1), ");
 					return false;
 				}
+
+				// Occur Check 2
+
+				SPCSet p= unif.getP().clone();
+				p.remove(t);
+				Variable x = (Variable) t.getFirst();
+				for(Variable xi: t.getSecond().getVars()) {
+					if(occurs2(x,xi,p)) {
+						steps.append("(Occ2), ");
+						return false;
+					}
+				}
+
 
 				// Var. Elimination
 				problem.remove(0);
@@ -156,7 +169,6 @@ public final class Algorithms {
 
 		return true;
 	}
-
 
 	// The Pre-Unification Rules:
 
@@ -250,14 +262,59 @@ public final class Algorithms {
 	}
 
 	/**
-	 * The rule (Occ)
+	 * The rule (Occ) part 1.
 	 * @param t The tuple to check.
 	 * @return {@code boolean} true iff the first occurs in the second.
 	 */
-	private static boolean occurs(Tuple<Element> t) {
+	private static boolean occurs1(Tuple<Element> t) {
 		return t.getSecond().occurs(t.getFirst());
 	}
-
+	/**
+	 * The rule (Occ) part 2.
+	 * @param x The match.
+	 * @param xi The tuples to consider.
+	 * @param p the current set P.
+	 * @return {@code boolean} true iff there is a (real) occurrence cycle.
+	 *
+	 */
+	private static boolean occurs2(Variable x, Variable xi, SPCSet p) {
+		for(int i=0;i<p.size();i++) {
+			Tuple<Element> t = p.get(i);
+			Element cf = t.getFirst();
+			Element cs = t.getSecond();
+			// consider only those who are v - t pairs
+			if(cf instanceof Variable && cf.equals(xi)&&
+					!(cs instanceof Variable)) {
+				// direct match if x is contained.
+				if(cs.occurs(x)) return true;
+				// maybe just another step
+				SPCSet pclone= p.clone();
+				pclone.remove(t);
+				for(Variable v: cs.getVars()) {
+					if(occurs2(x,v,pclone)) {
+						return true;
+					}
+				}
+			}
+			// other way round
+			if(cs instanceof Variable && cs.equals(xi)&&
+					!(cf instanceof Variable)) {
+				// direct match if x is contained.
+				if(cf.occurs(x)) return true;
+				// maybe just another step
+				SPCSet pclone= p.clone();
+				pclone.remove(t);
+				for(Variable v: cf.getVars()) {
+					if(occurs2(x,v,pclone)) {
+						return true;
+					}
+				}
+			}
+			
+			
+		}		
+		return false;
+	}
 
 
 	/**
@@ -308,7 +365,7 @@ public final class Algorithms {
 		float lambda=unif.getLambda();
 		return constraintSimp(prob,proxR,lambda,steps,0);
 	}
-	
+
 	/**
 	 * The constraint simplification algorithm transforms constraint configurations, 
 	 * exhaustively appling special rules.
@@ -366,7 +423,7 @@ public final class Algorithms {
 						break;
 					}
 				}
-				
+
 			}
 
 			// FFS
@@ -411,11 +468,11 @@ public final class Algorithms {
 
 		steps.delete(steps.length()-2, steps.length()); //remove last ,
 		steps.append(System.lineSeparator());
-		
+
 		if(branchSteps.length() > 0) {
 			steps.append(branchSteps);
 		}
-		
+
 		if(error) {
 			steps.insert(0, branch+"[Failed!]: ");
 			if(prob.getBranch() != null) {
@@ -514,18 +571,18 @@ public final class Algorithms {
 		if(cur.getPsi().containsKey(n1.getName())) { //psi.containsKey(n1.getName()) is same a isMemberPsi
 			if(cur.getPsi().get(n1.getName()).size() > 1) {
 				//branchen
-				
+
 				List<Problem> branches = new ArrayList<Problem>();
 				int cBranches = cur.getPsi().get(n1.getName()).size();
 				int nextBranch = NEXT_BRANCH;
 				int lastBranch = NEXT_BRANCH + cBranches-1;
 				boolean success = false;
-				
+
 				steps.delete(steps.length()-6, steps.length());
 				steps.append("Create Branch ["+NEXT_BRANCH+" - "+lastBranch+"]), ");
-	
+
 				NEXT_BRANCH += cBranches;
-				
+
 				for(int i = 0; i<cBranches;i++) {
 					Problem tmp = new Problem();
 					tmp.setC(cur.getC().clone());
@@ -535,15 +592,15 @@ public final class Algorithms {
 					tmp.getPsi().put(n1.getName(), new ArrayList<Element>());
 					tmp.getPsi().get(n1.getName()).add(cur.getPsi().get(n1.getName()).get(i));
 					StringBuffer tmpB = new StringBuffer();
-					
+
 					if(constraintSimp(tmp,r,lambda,tmpB,i+nextBranch)){
 						branches.add(tmp);
 						success = true;
 					}
-					
+
 					branchSteps.append(tmpB);
 				}
-				
+
 				for(Problem p : branches) {
 					if(!cur.getC().isEmpty()) {
 						cur.setC(p.getC());
@@ -556,7 +613,7 @@ public final class Algorithms {
 						appendBranch(cur,p);
 					}
 				}
-				
+
 				return success;
 			}
 			else {
@@ -569,7 +626,7 @@ public final class Algorithms {
 				}
 			}
 
-			
+
 		}
 		else {
 			return false;
@@ -605,7 +662,7 @@ public final class Algorithms {
 	 */
 	private static Map<String,ArrayList<Element>> clonePsi(Map<String, ArrayList<Element>> map){
 		Map<String,ArrayList<Element>> ret = new HashMap<String,ArrayList<Element>>();
-		
+
 		for(Map.Entry<String, ArrayList<Element>> m : map.entrySet()) {
 			ArrayList<Element> temp = new ArrayList<Element>();
 			for(Element t : m.getValue()) {
@@ -615,10 +672,10 @@ public final class Algorithms {
 			ret.put(m.getKey(), temp);
 
 		}
-		
+
 		return ret;
 	}
-	
+
 	/**
 	 * Appends a branch to a Problem.
 	 * If the Problem has already a branch, it appends it to the branch.

@@ -1,4 +1,41 @@
-\section{Theory} \subsection{}
+\section{Introduction} \subsection{}
+
+\begin{frame}[fragile=singleslide]
+	\frametitle{Motivation}
+		For proving theorems, a frequently occurring problem is to find common instances of formulae.
+		\begin{exampleblock}{Example 1}
+			Let \(f\) be a function, \(a,b\) constants and \(x\) a variable. The two expressions
+			\[f(a,x)\quad\text{and}\quad f(a,b)\]
+			can be unified with \(\{x\mapsto b\}\).
+		\end{exampleblock}
+
+  \end{frame}	
+		
+%---------------------------------------------------------------
+
+\begin{frame}[fragile=singleslide]
+	\frametitle{Motivation}
+		For proving theorems, a frequently occurring problem is to find common instances of formulae.
+		\begin{exampleblock}{Example 2}
+			Let \(f,g\) be functions, \(a,b\) constants and \(x\) a variable. The two expressions
+			\[f(a,x)\quad\text{and}\quad g(a,b)\]
+			cannot be unified as \(f\neq g\).
+		\end{exampleblock}
+
+  \end{frame}	
+		
+%---------------------------------------------------------------
+				
+\begin{frame}[fragile=singleslide]
+	\frametitle{Motivation}
+		In 1965 Robinson presented his unification algorithm and solved this problem, his algorithm was improved for better(=faster) performance since.\\ \ \\
+		If we consider now the unification problem \[f(a,x)\simeq^{?} g(a,b)\] again, we might wonder, if we could not ignore \(f\neq g\), if they are ``close'' to each other, i.e. if they are equal in a fuzzy logic sense.\\
+		Being close is represented as a proximity relation, which are symmetric and reflexive, but not necessarily transitive. C. Pau and T. Kutsia solved this problem, presenting an algorithm, which we implemented.
+
+  \end{frame}	
+		
+%---------------------------------------------------------------
+
 
 	\begin{frame}[fragile=singleslide]
 	\frametitle{Introduction}
@@ -36,7 +73,7 @@
 		\begin{frame}[fragile=singleslide]
 	\frametitle{Simple example}
 		Problem to solve: $p(x,y) =? q(f(a),g(b))$\\
-		\\
+		\ \\
 		Solution: \ldots
 	
   \end{frame}	

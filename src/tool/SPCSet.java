@@ -20,10 +20,10 @@ public class SPCSet implements TupleSet<Element> {
 	private ArrayList<Tuple<Element>> content;
 	private final String TOKEN;
 
-/**
- * A set of Tuple &lt;Element &gt;s
- * @param symbol The symbol to use between the first and second element.
- */
+	/**
+	 * A set of Tuple &lt;Element &gt;s
+	 * @param symbol The symbol to use between the first and second element.
+	 */
 	public SPCSet(String symbol) {
 		content=new ArrayList<Tuple<Element>>();
 		TOKEN = symbol;
@@ -137,7 +137,7 @@ public class SPCSet implements TupleSet<Element> {
 					alreadyIn=true;
 					break;
 				}
-				
+
 			}
 			if(!alreadyIn) contentNew.add(t1);
 		}
@@ -181,8 +181,13 @@ public class SPCSet implements TupleSet<Element> {
 		return h;
 	}
 
-	
-	
-	
-	
+	/* (non-Javadoc)
+	 * @see tool.TupleSet#remove(tool.Tuple)
+	 */
+	@Override
+	public boolean remove(Tuple<Element> e) {
+		return content.remove(e);
+	}
 }
+
+

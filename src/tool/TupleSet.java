@@ -62,6 +62,15 @@ public interface TupleSet<E> {
 	 * @return the element that was removed from the set.
 	 */
 	public Tuple<E> remove(int index);
+	
+	/**
+	 * Removes the first occurrence of the specified element from this set,
+	 * if it is present. If the set does not contain the element,
+	 * it is unchanged.
+	 * @param e element to be removed from this set, if present.
+	 * @return {@code true} if this set contained the specified element.
+	 */
+	public boolean remove(Tuple<E> e);
 
 	/**
 	 * Returns {@code true} if this set contains no elements.

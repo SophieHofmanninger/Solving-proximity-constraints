@@ -1,5 +1,7 @@
 package elements;
 
+import java.util.ArrayList;
+
 /**
  *
  * The abstract class Element handles the elements, which can be functions,
@@ -123,5 +125,10 @@ public abstract class Element {
 	protected static void setNumberOfNames(int numberOfNames) {
 		Element.numberOfNames = numberOfNames;
 	}
-
+	
+	/**
+	 * Returns all occurring variables.
+	 * @return a list of all variables.
+	 */
+	public abstract ArrayList<Variable> getVars();
 }

@@ -83,11 +83,11 @@ public class Function extends Element {
 	 */
 	@Override
 	public String toFullString() {
-		
+
 		if(this.arguments.isEmpty()) {
 			return this.getName();
 		}
-		
+
 		String ret = this.getName() + "(";
 
 		for(Element e : arguments){
@@ -98,7 +98,7 @@ public class Function extends Element {
 
 		return ret;
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see elements.Element#occurs(elements.Element)
 	 */
@@ -150,6 +150,26 @@ public class Function extends Element {
 		}
 		return ret;
 	}
+
+	/* (non-Javadoc)
+	 * @see elements.Element#getVars()
+	 */
+	@Override
+	public ArrayList<Variable> getVars() {
+
+		ArrayList<Variable> vars = new ArrayList<Variable>();
+		for(int i=0;i<arguments.size();i++) {
+			if(arguments.get(i)instanceof Variable) {
+				vars.add((Variable) arguments.get(i));
+			}
+			if(arguments.get(i)instanceof Function) {
+				vars.addAll(((Function) arguments.get(i)).getVars());
+			}
+		}
+
+		return vars;
+	}
+
 
 
 }
