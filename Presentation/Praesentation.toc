@@ -1,0 +1,4 @@
+\select@language {naustrian}
+\beamer@sectionintoc {1}{Theory}{3}{0}{1}
+\beamer@sectionintoc {2}{System Model}{9}{0}{2}
+\beamer@sectionintoc {3}{Workflow}{11}{0}{3}

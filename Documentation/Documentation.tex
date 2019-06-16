@@ -73,6 +73,8 @@ Version Number & Changes Summary & Author\\
 \hline
 0.12 & added Command Line Interface & Jan-Michael\\
 \hline
+0.13 & added description steps CS algorithm & Sophie\\
+\hline
 \end{tabular}
 
 \end{center}
@@ -160,7 +162,10 @@ The method changes the problems constraints and pre-unifier accordingly.
 
 \subsubsection{Constraint Simplification Algorithm}
 The constraintSimplification method will be called, if the preUnification method returns true. As the preUnification method, the constraintSimplification method consists of a loop. This loop runs until the set of constraints is empty. As input the method needs the problem, more precisely the set of constraints, and the relation matrix \(\mathcal{R}\). If the set of constraints could be simplified, the method returns true and otherwise false.\\
-Inside the loop, the seven rules to simplify the constraint set, will be applied. Three of the seven rules are hidden, because the NN2 rule is integrated in the NN1 rule, the Fail1 is implemented in FFS and the Fail2 is integrated in the NN1 rule. Moreover it is possible to run the constraint simplification algorithm with and without logging. 
+Inside the loop, the seven rules to simplify the constraint set, will be applied. Three of the seven rules are hidden, because the NN2 rule is integrated in the NN1 rule, the Fail1 is implemented in FFS and the Fail2 is integrated in the NN1 rule. Moreover it is possible to run the constraint simplification algorithm with and without logging. \\
+The steps which are printed by logging can be read as followed: 
+Every new line symbolises a branch. In front of every rowthe branch-number is printed.
+As soon as a new branch will be created there will appear \textit{(Create Branch a - b)}, where \textit{a} and \textit{b} denote the branch-numbers. For example if branch 5 and 6 will be created, it looks like \textit{(Create Branch 5 - 6)}. Moreover it is possible that a branch will be branched. This follows the same notation and can be imagined as a tree.
 
 %----------------------------------------------------------------------------------------
 %	PROBLEM 2

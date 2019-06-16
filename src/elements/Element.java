@@ -3,7 +3,7 @@ package elements;
 /**
  *
  * The abstract class Element handles the elements, which can be functions,
- * constants, variables or names.
+ * or variables.
  *
  * @author  Jan-Michael Holzinger &amp; Sophie Hofmanninger
  * @version 1.1
