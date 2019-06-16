@@ -35,8 +35,8 @@ Class=LaTeXView
 Document=Documentation.tex
 
 [Frame1_View0,0]
-TopLine=66
-Cursor=2360
+TopLine=91
+Cursor=2755
 
 [Frame2]
 Flags=0
