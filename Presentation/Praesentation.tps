@@ -10,15 +10,15 @@ MinPos.y=-1
 MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
-NormalPos.top=36
-NormalPos.right=1701
-NormalPos.bottom=441
+NormalPos.top=53
+NormalPos.right=1667
+NormalPos.bottom=1474
 Class=LaTeXView
-Document=Praesentation.tex
+Document=Inhalt\SystemModelWorkflow.tex
 
 [Frame0_View0,0]
-TopLine=57
-Cursor=1230
+TopLine=29
+Cursor=911
 
 [Frame1]
 Flags=0
@@ -28,15 +28,15 @@ MinPos.y=-1
 MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
-NormalPos.top=36
-NormalPos.right=1701
-NormalPos.bottom=441
+NormalPos.top=53
+NormalPos.right=1667
+NormalPos.bottom=1474
 Class=LaTeXView
-Document=header.tex
+Document=Praesentation.tex
 
 [Frame1_View0,0]
-TopLine=49
-Cursor=449
+TopLine=41
+Cursor=293
 
 [Frame2]
 Flags=0
@@ -46,17 +46,35 @@ MinPos.y=-1
 MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
-NormalPos.top=36
-NormalPos.right=1701
-NormalPos.bottom=441
+NormalPos.top=53
+NormalPos.right=1667
+NormalPos.bottom=1474
+Class=LaTeXView
+Document=header.tex
+
+[Frame2_View0,0]
+TopLine=33
+Cursor=449
+
+[Frame3]
+Flags=0
+ShowCmd=1
+MinPos.x=-1
+MinPos.y=-1
+MaxPos.x=-1
+MaxPos.y=-1
+NormalPos.left=4
+NormalPos.top=53
+NormalPos.right=1667
+NormalPos.bottom=1474
 Class=LaTeXView
 Document=Inhalt\Theory.tex
 
-[Frame2_View0,0]
-TopLine=0
-Cursor=21
+[Frame3_View0,0]
+TopLine=42
+Cursor=1766
 
 [SessionInfo]
-FrameCount=3
-ActiveFrame=2
+FrameCount=4
+ActiveFrame=1
 

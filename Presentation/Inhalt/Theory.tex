@@ -44,7 +44,7 @@
 			\item P: unification problem to be solved
 			\item C: neighborhood constraint
 			\item $\sigma$: set of pre-unifier
-			\item $\psi$: name-class mapping
+			\item $\Phi$: name-class mapping
 		\end{itemize}
   \end{frame}	
 		
@@ -62,9 +62,20 @@
 		
 		\begin{frame}[fragile=singleslide]
 	\frametitle{Rules for Neigborhood Constraints}
-		(FFS) Function Symbols: \ldots \\
-		(NFS) Name vs Function Symbol: \ldots \\
-		\ldots
+		\textcolor[rgb]{0.55,0,0}{(FFS)} $\{f \approx^? g\} \uplus C; \Phi \Rightarrow  C; \Phi; \text{ if } \mathcal{R}(f,g)\geq \lambda$ \\
+		\vspace{0.3cm}
+		\textcolor[rgb]{0.55,0,0}{(NFS)} $\{N \approx^? g\} \uplus C; \Phi \Rightarrow  C; update(\Phi,N\rightarrow \textbf{pc}(g,\mathcal{R},\lambda))$  \\
+		\vspace{0.3cm}
+		\textcolor[rgb]{0.55,0,0}{(FSN)} $\{g \approx^? N\} \uplus C; \Phi \Rightarrow  \{N \approx^? g\} \cup C;\Phi$  \\
+		\vspace{0.3cm}
+		\textcolor[rgb]{0.55,0,0}{(NN1)} $\{N \approx^? M\} \uplus C; \Phi \Rightarrow  C; update(\Phi,N\rightarrow {f}, M\rightarrow \textbf{pc}(f,\mathcal{R},\lambda))$, where $N \in dom(\Phi )$, $f\in \Phi(N)$ \\
+		\vspace{0.3cm}
+		\textcolor[rgb]{0.55,0,0}{(NN2)} $\{M \approx^? N\} \uplus C; \Phi \Rightarrow  \{N \approx^? M\} \cup C;\Phi$, where $M \notin dom(\Phi )$, $N\in dom(\Phi)$ \\
+		\vspace{0.3cm}
+		\textcolor[rgb]{0.55,0,0}{(Fail1)} $\{f \approx^? g\} \uplus C; \Phi \Rightarrow  \perp$, if $\mathcal{R}(f,g) < \lambda$ \\
+		\vspace{0.3cm}
+		\textcolor[rgb]{0.55,0,0}{(Fail2)} $C; \Phi \Rightarrow  \perp$, if there exists $N \in dom(\Phi )$ such that $\Phi (N)=\emptyset$ \\
+		\vspace{0.3cm}
 	
   \end{frame}	
 	
@@ -72,27 +83,9 @@
 		
 		\begin{frame}[fragile=singleslide]
 	\frametitle{Simple example}
-		Problem to solve: $p(x,y) =? q(f(a),g(b))$\\
+		Problem to solve: $p(x,y) =? q(f(a),g(b)) $\\
 		\ \\
 		Solution: \ldots
 	
   \end{frame}	
-	
-%---------------------------------------------------------------
-
-		\begin{frame}[fragile=singleslide]
-	\frametitle{Steps Pre-Unification}
-		\ldots
-	
-  \end{frame}	
-	
-%---------------------------------------------------------------
-
-		\begin{frame}[fragile=singleslide]
-	\frametitle{Steps Constraint-Simplification}
-		\ldots
-	
-  \end{frame}	
-	
-%---------------------------------------------------------------
 	
