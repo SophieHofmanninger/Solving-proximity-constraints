@@ -32,7 +32,7 @@ public class Test {
 		System.out.println(uni2.getLeft().toFullString());
 		System.out.println(uni2.getRight().toFullString());
 
-		String test3 = "p(x,x) =? q(f(y,y),f(a,c))";
+		String test3 = "p(x,z) =? q(f(y,y),f(a,x))";
 		UnificationProblem uni3 = InputParser.parse(test3).get(0);
 
 		System.out.println(uni3.getLeft().toFullString());

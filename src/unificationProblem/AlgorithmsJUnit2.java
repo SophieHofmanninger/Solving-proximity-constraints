@@ -68,65 +68,65 @@ class AlgorithmsJUnit2 {
 
 		//Create PSIs
 		ArrayList<Element> temp;
-		Map<String,ArrayList<Element>> psi1 = new HashMap<String,ArrayList<Element>>();	
+		Map<String,ArrayList<Element>> phi1 = new HashMap<String,ArrayList<Element>>();	
 		temp = new ArrayList<Element>();
 		temp.add(new Function("f"));
-		psi1.put("N1", temp);
+		phi1.put("N1", temp);
 		temp = new ArrayList<Element>();
 		temp.add(new Function("b"));
-		psi1.put("N2", temp);
+		phi1.put("N2", temp);
 		temp = new ArrayList<Element>();
 		temp.add(new Function("f"));
 		temp.add(new Function("g"));
-		psi1.put("N3", temp);
+		phi1.put("N3", temp);
 		temp = new ArrayList<Element>();
 		temp.add(new Function("c"));
-		psi1.put("N4", temp);
+		phi1.put("N4", temp);
 
-		Map<String,ArrayList<Element>> psi2 = new HashMap<String,ArrayList<Element>>();	
+		Map<String,ArrayList<Element>> phi2 = new HashMap<String,ArrayList<Element>>();	
 		temp = new ArrayList<Element>();
 		temp.add(new Function("f"));
-		psi2.put("N1", temp);
+		phi2.put("N1", temp);
 		temp = new ArrayList<Element>();
 		temp.add(new Function("b1"));
-		psi2.put("N2", temp);
+		phi2.put("N2", temp);
 		temp = new ArrayList<Element>();
 		temp.add(new Function("f"));
 		temp.add(new Function("g"));
-		psi2.put("N3", temp);
+		phi2.put("N3", temp);
 		temp = new ArrayList<Element>();
 		temp.add(new Function("c1"));
-		psi2.put("N4", temp);
+		phi2.put("N4", temp);
 
-		Map<String,ArrayList<Element>> psi3 = new HashMap<String,ArrayList<Element>>();	
+		Map<String,ArrayList<Element>> phi3 = new HashMap<String,ArrayList<Element>>();	
 		temp = new ArrayList<Element>();
 		temp.add(new Function("g"));
-		psi3.put("N1", temp);
+		phi3.put("N1", temp);
 		temp = new ArrayList<Element>();
 		temp.add(new Function("b"));
-		psi3.put("N2", temp);
+		phi3.put("N2", temp);
 		temp = new ArrayList<Element>();
 		temp.add(new Function("f"));
 		temp.add(new Function("g"));
-		psi3.put("N3", temp);
+		phi3.put("N3", temp);
 		temp = new ArrayList<Element>();
 		temp.add(new Function("c"));
-		psi3.put("N4", temp);
+		phi3.put("N4", temp);
 
-		Map<String,ArrayList<Element>> psi4 = new HashMap<String,ArrayList<Element>>();	
+		Map<String,ArrayList<Element>> phi4 = new HashMap<String,ArrayList<Element>>();	
 		temp = new ArrayList<Element>();
 		temp.add(new Function("g"));
-		psi4.put("N1", temp);
+		phi4.put("N1", temp);
 		temp = new ArrayList<Element>();
 		temp.add(new Function("b1"));
-		psi4.put("N2", temp);
+		phi4.put("N2", temp);
 		temp = new ArrayList<Element>();
 		temp.add(new Function("f"));
 		temp.add(new Function("g"));
-		psi4.put("N3", temp);
+		phi4.put("N3", temp);
 		temp = new ArrayList<Element>();
 		temp.add(new Function("c1"));
-		psi4.put("N4", temp);
+		phi4.put("N4", temp);
 
 		//Create Matrix		
 		Matrix matrix = new Matrix();
@@ -149,10 +149,10 @@ class AlgorithmsJUnit2 {
 		assertTrue(unif.solveNext());
 		
 		//test PSIs
-		assertTrue(hasPsi(unif.getProb(),psi1));
-		assertTrue(hasPsi(unif.getProb(),psi2));
-		assertTrue(hasPsi(unif.getProb(),psi3));
-		assertTrue(hasPsi(unif.getProb(),psi4));
+		assertTrue(hasPsi(unif.getProb(),phi1));
+		assertTrue(hasPsi(unif.getProb(),phi2));
+		assertTrue(hasPsi(unif.getProb(),phi3));
+		assertTrue(hasPsi(unif.getProb(),phi4));
 
 	}
 	
@@ -178,19 +178,19 @@ class AlgorithmsJUnit2 {
 
 		//Create PSIs
 		ArrayList<Element> temp;
-		Map<String,ArrayList<Element>> psi1 = new HashMap<String,ArrayList<Element>>();	
+		Map<String,ArrayList<Element>> phi1 = new HashMap<String,ArrayList<Element>>();	
 		temp = new ArrayList<Element>();
 		temp.add(new Function("f"));
-		psi1.put("N1", temp);
+		phi1.put("N1", temp);
 		temp = new ArrayList<Element>();
 		temp.add(new Function("a1"));
-		psi1.put("N2", temp);
+		phi1.put("N2", temp);
 		temp = new ArrayList<Element>();
 		temp.add(new Function("c1"));
-		psi1.put("N3", temp);
+		phi1.put("N3", temp);
 		temp = new ArrayList<Element>();
 		temp.add(new Function("b"));
-		psi1.put("M", temp);
+		phi1.put("M", temp);
 
 		//Create Matrix		
 		Matrix matrix = new Matrix();
@@ -210,27 +210,27 @@ class AlgorithmsJUnit2 {
 		assertTrue(unif.solveNext());
 		
 		//test PSIs
-		assertTrue(hasPsi(unif.getProb(),psi1));
+		assertTrue(hasPsi(unif.getProb(),phi1));
 		
 
 	}
 	
 	/**
-	 * Tests if psi occurs in the problem.
+	 * Tests if phi occurs in the problem.
 	 * @param p this is the problem.
-	 * @param psi the psi to look for.
-	 * @return True, if psi in problem. Otherwise false.
+	 * @param phi the phi to look for.
+	 * @return True, if phi in problem. Otherwise false.
 	 */
-	private boolean hasPsi(Problem p, Map<String,ArrayList<Element>> psi) {
+	private boolean hasPsi(Problem p, Map<String,ArrayList<Element>> phi) {
 
 		Map<String,ArrayList<Element>> curPsi = p.getPsi();
 		boolean ok = true;
 		boolean eok = false;
 
-		if(curPsi.size()==psi.size()) {
+		if(curPsi.size()==phi.size()) {
 			for(Map.Entry<String, ArrayList<Element>> m : curPsi.entrySet()) {
-				if(psi.containsKey(m.getKey())) {
-				ArrayList<Element> list = psi.get(m.getKey());
+				if(phi.containsKey(m.getKey())) {
+				ArrayList<Element> list = phi.get(m.getKey());
 					if(m.getValue().size() == list.size()) {
 						for(Element e : m.getValue()) {
 							eok = false;
@@ -270,7 +270,7 @@ class AlgorithmsJUnit2 {
 		}
 
 		if(p.getBranch() != null) {
-			return hasPsi(p.getBranch(),psi);
+			return hasPsi(p.getBranch(),phi);
 		}
 		else {
 			return false;

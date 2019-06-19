@@ -13,8 +13,8 @@ import tool.Tuple;
  * p - contains unification problem to be solved
  * c - set of neighborhood constraint
  * sigma - set of pre unifiers
- * psi - set of name-class mapping
- * branch - contains branch of the problem when psi splits
+ * phi - set of name-class mapping
+ * branch - contains branch of the problem when phi splits
  *
  * @author  Jan-Michael Holzinger &amp; Sophie Hofmanninger
  * @version 1.0
@@ -25,20 +25,20 @@ public class Problem {
 	private SPCSet p;
 	private SPCSet c;
 	private SPCSet sigma;
-	private Map<String,ArrayList<Element>> psi;
+	private Map<String,ArrayList<Element>> phi;
 
 	/**
-	 * @return the psi
+	 * @return the phi
 	 */
 	public Map<String, ArrayList<Element>> getPsi() {
-		return psi;
+		return phi;
 	}
 
 	/**
-	 * @param psi the psi to set
+	 * @param phi the phi to set
 	 */
-	public void setPsi(Map<String, ArrayList<Element>> psi) {
-		this.psi = psi;
+	public void setPsi(Map<String, ArrayList<Element>> phi) {
+		this.phi = phi;
 	}
 
 	private Problem branch = null;
@@ -50,7 +50,7 @@ public class Problem {
 		p = new SPCSet("~?");
 		c = new SPCSet("=?");
 		sigma=new SPCSet("->");
-		psi=new HashMap<String,ArrayList<Element>>();
+		phi=new HashMap<String,ArrayList<Element>>();
 	}
 
 	/**
@@ -62,7 +62,7 @@ public class Problem {
 		p.add(first);
 		c= new SPCSet("=?");
 		sigma=new SPCSet("->");
-		psi=new HashMap<String,ArrayList<Element>>();
+		phi=new HashMap<String,ArrayList<Element>>();
 	}
 
 	/**
@@ -134,7 +134,7 @@ public class Problem {
 		sb+=System.lineSeparator();
 		sb+=("sigma=" + sigma);
 		sb+=System.lineSeparator();
-		sb+=("psi=" + psi);
+		sb+=("phi=" + phi);
 		return sb;
 	}
 
@@ -147,9 +147,9 @@ public class Problem {
 		SPCSet pcopy = p.clone();
 		SPCSet ccopy = c.clone();
 		SPCSet sigmacopy = sigma.clone();
-		Map<String,ArrayList<Element>> psicopy =
+		Map<String,ArrayList<Element>> phicopy =
 				new HashMap<String,ArrayList<Element>>();
-		psicopy.putAll(psi);
+		phicopy.putAll(phi);
 		Problem branchcopy;
 		if(branch==null) {
 			branchcopy=null;
@@ -159,7 +159,7 @@ public class Problem {
 		probcopy.setP(pcopy);
 		probcopy.setC(ccopy);
 		probcopy.setSigma(sigmacopy);
-		probcopy.setPsi(psicopy);
+		probcopy.setPsi(phicopy);
 		probcopy.setBranch(branchcopy);
 
 		return probcopy;
@@ -176,7 +176,7 @@ public class Problem {
 		if(!(p.equals(o.p))) return false;
 		if(!(c.equals(o.c))) return false;
 		if(!(sigma.equals(o.sigma))) return false;
-		if(!(psi.equals(psi))) return false;
+		if(!(phi.equals(phi))) return false;
 		if(branch==null&&o.branch!=null) return false;
 		if(branch!=null&&o.branch==null) return false;
 		if(branch==null&&o.branch==null) return true;
@@ -190,7 +190,7 @@ public class Problem {
 	@Override
 	public int hashCode() {
 		int hc=p.hashCode()+c.hashCode()+sigma.hashCode();
-		hc+=psi.hashCode();
+		hc+=phi.hashCode();
 		if(branch!=null) {
 			hc+=branch.hashCode();
 		}

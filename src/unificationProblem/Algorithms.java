@@ -525,17 +525,17 @@ public final class Algorithms {
 	 * This method describes the rule (NFS).
 	 * @param n1 name 1
 	 * @param f2 function 2
-	 * @param psi name class mapping
+	 * @param phi name class mapping
 	 * @param r relation matrix
 	 * @param lambda the lambda.
 	 * @return  true if method worked successful, false otherwise.
 	 */
-	private static boolean nfs(Element n1, Function f2, Map<String,ArrayList<Element>> psi, Matrix r, float lambda) {
+	private static boolean nfs(Element n1, Function f2, Map<String,ArrayList<Element>> phi, Matrix r, float lambda) {
 
 		ArrayList<Element> list;
 
-		if(psi.containsKey(n1.getName())) {
-			ArrayList<Element> old = psi.get(n1.getName());			
+		if(phi.containsKey(n1.getName())) {
+			ArrayList<Element> old = phi.get(n1.getName());			
 			list = r.getRelations(f2,lambda);
 
 			list = intersection(old,list);
@@ -544,14 +544,14 @@ public final class Algorithms {
 				return false;
 			}
 			else {
-				psi.put(n1.getName(), list);
+				phi.put(n1.getName(), list);
 				return true;
 			}
 
 		}
 		else {
 			list = r.getRelations(f2,lambda);
-			psi.put(n1.getName(), list);	
+			phi.put(n1.getName(), list);	
 			return true;
 		}
 
