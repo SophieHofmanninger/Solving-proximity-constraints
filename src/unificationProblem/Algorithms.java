@@ -165,8 +165,11 @@ public final class Algorithms {
 		}
 
 		unif.getC().trim();
-
-
+		
+		if(steps.length()>1) {
+			steps.delete(steps.length()-2, steps.length());
+		}
+		
 		return true;
 	}
 

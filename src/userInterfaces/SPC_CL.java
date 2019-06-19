@@ -222,6 +222,7 @@ public class SPC_CL {
 		}
 		StringBuffer sb= new StringBuffer();
 		boolean result = sTP.solveNext(sb);
+
 		if(!result) {
 			System.out.println("Pre-unification failed, there is no solution.");
 			if(!silentOn) System.out.println(sb);
