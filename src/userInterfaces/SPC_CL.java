@@ -93,8 +93,8 @@ public class SPC_CL {
 			("Do you want to see intermediate results and steps? Enter y/n");
 			try {
 				String input = br.readLine();
-				if(!input.equals("y")) {
-					silentOn=true;
+				if(!input.equals("n")) {
+					silentOn=false;
 				}
 			} catch (IOException e) {
 
