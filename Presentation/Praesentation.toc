@@ -1,4 +1,4 @@
-\select@language {naustrian}
+\babel@toc {naustrian}{}
 \beamer@sectionintoc {1}{Introduction}{3}{0}{1}
 \beamer@sectionintoc {2}{System Model}{10}{0}{2}
 \beamer@sectionintoc {3}{Workflow}{16}{0}{3}

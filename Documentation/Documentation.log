@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.5.14)  16 JUN 2019 15:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.5.14)  20 JUN 2019 20:12
 entering extended mode
 **./Documentation.tex
 (Documentation.tex
@@ -1608,25 +1608,25 @@ Underfull \hbox (badness 10000) in paragraph at lines 155--160
  []
 
 [4]
-<ToolsModel.png, id=43, 893.3375pt x 715.67375pt>
+<ToolsModel.png, id=43, 893.3375pt x 750.805pt>
 File: ToolsModel.png Graphic file (type png)
 <use ToolsModel.png>
 Package pdftex.def Info: ToolsModel.png  used on input line 195.
-(pdftex.def)             Requested size: 446.66765pt x 357.836pt.
+(pdftex.def)             Requested size: 446.66765pt x 375.40158pt.
  [5 <./ToolsModel.png (PNG copy)>]
-<ElementsModel.png, id=47, 688.5725pt x 763.85374pt>
+<ElementsModel.png, id=47, 689.57625pt x 815.045pt>
 File: ElementsModel.png Graphic file (type png)
 <use ElementsModel.png>
 Package pdftex.def Info: ElementsModel.png  used on input line 197.
-(pdftex.def)             Requested size: 344.2854pt x 381.92593pt.
+(pdftex.def)             Requested size: 344.78728pt x 407.5215pt.
  [6 <./ElementsModel.png (PNG copy)>]
-<UnificationProblemModel.png, id=51, 934.49126pt x 1390.19376pt>
+<UnificationProblemModel.png, id=51, 938.50626pt x 1390.19376pt>
 File: UnificationProblemModel.png Graphic file (type png)
 <use UnificationProblemModel.png>
 Package pdftex.def Info: UnificationProblemModel.png  used on input line 199.
-(pdftex.def)             Requested size: 467.24449pt x 695.09518pt.
+(pdftex.def)             Requested size: 469.25198pt x 695.09518pt.
 
-Overfull \hbox (27.00038pt too wide) in paragraph at lines 199--200
+Overfull \hbox (29.00787pt too wide) in paragraph at lines 199--200
 [][] 
  []
 
@@ -1639,38 +1639,38 @@ File: UIModel.png Graphic file (type png)
 <use UIModel.png>
 Package pdftex.def Info: UIModel.png  used on input line 201.
 (pdftex.def)             Requested size: 151.56587pt x 101.3785pt.
-<WorkFlow.pdf, id=57, 1195.5867pt x 845.07718pt>
+<WorkFlow.pdf, id=57, 364.48169pt x 272.93968pt>
 File: WorkFlow.pdf Graphic file (type pdf)
 <use WorkFlow.pdf>
 Package pdftex.def Info: WorkFlow.pdf  used on input line 206.
-(pdftex.def)             Requested size: 1195.58379pt x 845.07512pt.
+(pdftex.def)             Requested size: 364.48079pt x 272.939pt.
 File: WorkFlow.pdf Graphic file (type pdf)
 <use WorkFlow.pdf>
 Package pdftex.def Info: WorkFlow.pdf  used on input line 206.
-(pdftex.def)             Requested size: 1195.58379pt x 845.07512pt.
-<WorkFlow.pdf, id=60, page=1, 1195.5867pt x 845.07718pt>
+(pdftex.def)             Requested size: 364.48079pt x 272.939pt.
+<WorkFlow.pdf, id=60, page=1, 364.48169pt x 272.93968pt>
 File: WorkFlow.pdf Graphic file (type pdf)
 <use WorkFlow.pdf, page 1>
 Package pdftex.def Info: WorkFlow.pdf , page1 used on input line 206.
-(pdftex.def)             Requested size: 1195.58379pt x 845.07512pt.
+(pdftex.def)             Requested size: 364.48079pt x 272.939pt.
 File: WorkFlow.pdf Graphic file (type pdf)
 <use WorkFlow.pdf, page 1>
 Package pdftex.def Info: WorkFlow.pdf , page1 used on input line 206.
-(pdftex.def)             Requested size: 845.40631pt x 597.55899pt.
+(pdftex.def)             Requested size: 800.66089pt x 599.56953pt.
 
 [8 <./UIModel.png (PNG copy)>]
 File: WorkFlow.pdf Graphic file (type pdf)
 <use WorkFlow.pdf, page 1>
 Package pdftex.def Info: WorkFlow.pdf , page1 used on input line 206.
-(pdftex.def)             Requested size: 845.40631pt x 597.55899pt.
+(pdftex.def)             Requested size: 800.66089pt x 599.56953pt.
 File: WorkFlow.pdf Graphic file (type pdf)
 <use WorkFlow.pdf, page 1>
 Package pdftex.def Info: WorkFlow.pdf , page1 used on input line 206.
-(pdftex.def)             Requested size: 845.40631pt x 597.55899pt.
+(pdftex.def)             Requested size: 800.66089pt x 599.56953pt.
 File: WorkFlow.pdf Graphic file (type pdf)
 <use WorkFlow.pdf, page 1>
 Package pdftex.def Info: WorkFlow.pdf , page1 used on input line 206.
-(pdftex.def)             Requested size: 845.40631pt x 597.55899pt.
+(pdftex.def)             Requested size: 800.66089pt x 599.56953pt.
  [9 <./WorkFlow.pdf
 
 pdfTeX warning: pdflatex.exe (file ./WorkFlow.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSet
@@ -1694,9 +1694,9 @@ msfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
 fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program
  Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/sym
 bols/msbm10.pfb>
-Output written on Documentation.pdf (9 pages, 523309 bytes).
+Output written on Documentation.pdf (9 pages, 491128 bytes).
 PDF statistics:
- 146 PDF objects out of 1000 (max. 8388607)
+ 131 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  73 words of extra memory for PDF output out of 10000 (max. 10000000)
 
