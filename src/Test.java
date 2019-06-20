@@ -102,7 +102,7 @@ public class Test {
 				StringBuffer steps4 = new StringBuffer();
 				
 				Matrix matr4 = new Matrix();
-				matr4.addRelation("a", "b", 0.7f);
+				//matr4.addRelation("a", "b", 0.7f);
 				matr4.addRelation("b", "c", 0.7f);
 				matr4.addRelation("c", "d", 0.7f);
 				//matr4.addRelation("a", "b1", 0.7f);

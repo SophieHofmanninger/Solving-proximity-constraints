@@ -76,5 +76,5 @@ Cursor=449
 
 [SessionInfo]
 FrameCount=4
-ActiveFrame=0
+ActiveFrame=2
 
