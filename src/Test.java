@@ -32,14 +32,17 @@ public class Test {
 		System.out.println(uni2.getLeft().toFullString());
 		System.out.println(uni2.getRight().toFullString());
 
-		String test3 = "p(x,z) =? q(f(y,y),f(a,x))";
+		String test3 = "p(x,z) =? q(f(b),f(x))";
 		UnificationProblem uni3 = InputParser.parse(test3).get(0);
+		
+		String test4 = "p(x,y,x) =? q(f(a),f(b),y)";
+		UnificationProblem uni4 = InputParser.parse(test4).get(0);
 
 		System.out.println(uni3.getLeft().toFullString());
 		System.out.println(uni3.getRight().toFullString());
 		
-		StringBuffer steps = new StringBuffer();
-		
+		//StringBuffer steps = new StringBuffer();
+/*
 		// Test
 		System.out.println(System.lineSeparator()+"Test1:");
 		
@@ -67,7 +70,7 @@ public class Test {
 		System.out.println(uni.resultString());
 		System.out.print(steps);
 		
-		
+*/		
 		// Test3
 		System.out.println(System.lineSeparator()+"Test3:");
 
@@ -81,13 +84,48 @@ public class Test {
 		uni3.setProximityRelations(matr3);
 		uni3.setLambda(0.5f);
 
-
-		System.out.println(uni3.resultString());
-		uni3.solveNext();
-		System.out.println(uni3.resultString());
-		uni3.solveNext();
-		System.out.println(uni3.resultString());
+		StringBuffer steps3 = new StringBuffer();
 		
+		System.out.println(uni3.resultString());
+		uni3.solveNext(steps3);
+		System.out.println(uni3.resultString());
+		System.out.print(steps3);
+		steps3 = new StringBuffer();
+		uni3.solveNext(steps3);
+		System.out.println("\n");
+		System.out.println(uni3.resultString());
+		System.out.print(steps3);
+//*/		
+		// Test4
+				System.out.println(System.lineSeparator()+"Test4:");
+
+				StringBuffer steps4 = new StringBuffer();
+				
+				Matrix matr4 = new Matrix();
+				matr4.addRelation("a", "b", 0.7f);
+				matr4.addRelation("b", "c", 0.7f);
+				matr4.addRelation("c", "d", 0.7f);
+				//matr4.addRelation("a", "b1", 0.7f);
+				//matr4.addRelation("b1", "c1", 0.7f);
+				//matr4.addRelation("c1", "d", 0.7f);
+				matr4.addRelation("f", "g", 0.7f);
+				matr4.addRelation("p", "q", 0.7f);
+				matr4.addRelation("f", "q", 0.2f);
+
+				uni4.setProximityRelations(matr4);
+				uni4.setLambda(0.5f);
+				
+				System.out.println(uni4.resultString());
+				uni4.solveNext(steps4);
+				System.out.println(uni4.resultString());
+				System.out.print(steps4);
+				steps4 = new StringBuffer();
+				uni4.solveNext(steps4);
+				System.out.println("\n");
+				System.out.println(uni4.resultString());
+				System.out.print(steps4);
+				
+				
 		//Test InputParser
 		System.out.println(System.lineSeparator()+"Test InputParser Matrix");
 		
