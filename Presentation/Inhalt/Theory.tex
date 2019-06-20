@@ -52,9 +52,20 @@
 		
 	\begin{frame}[fragile=singleslide]
 	\frametitle{Pre-Unification rules}
-		(Tri) Trivial: \ldots \\
-		(Dec) Decomposition: \ldots \\
-		\ldots
+	\textcolor[rgb]{0.55,0,0}{(Tri)} \(\{x \simeq^? x\} \uplus P;C;\sigma \Rightarrow  P; C;\sigma\) \\
+		\vspace{0.3cm}
+		\textcolor[rgb]{0.55,0,0}{(Dec)} \(\{F(\overline{s_n}) \simeq^? G(\overline{t_n})\} \uplus  P;C;\sigma \Rightarrow \{\overline{s_n \simeq^?t_n}\}\cup P;\{F\approx^? G\}\cup  C;\sigma\) \\
+		\vspace{0.3cm}
+		\textcolor[rgb]{0.55,0,0}{(VE)} \(\{x \simeq^? t\} \uplus P;C;\sigma \Rightarrow  \{t'\simeq^? t\}\cup P{x\mapsto t'}; C;\sigma\{x\mapsto t'\}\) \\
+		\vspace{0.3cm}
+		\textcolor[rgb]{0.55,0,0}{(Ori)} \(\{t \simeq^? x\} \uplus P;C;\sigma \Rightarrow  \{x \simeq^? t\}\cup P; C;\sigma\) \\
+		\vspace{0.3cm}
+		\textcolor[rgb]{0.55,0,0}{(Cla)} \(\{F(\overline{s_n}) \simeq^? G(\overline{t_n})\} \uplus P;C;\sigma \Rightarrow  \bot\text{ if } m\neq n\) \\
+		\vspace{0.3cm}
+		\textcolor[rgb]{0.55,0,0}{(Occ)} \(\{x \simeq^? t\} \uplus P;C;\sigma \Rightarrow  \bot\text{ if there is an occurence cycle of }x\text{ in }t\) \\
+		\vspace{0.3cm}
+		\textcolor[rgb]{0.55,0,0}{(VO)} \(\{x \simeq^? y, \overline{x_n\simeq^? y_n}\};C;\sigma \Rightarrow  \{\overline{x_n\simeq^? y_n}\}\{x\mapsto y\}; C;\sigma\{x\mapsto y\}\) \\
+		\vspace{0.3cm}
 	
   \end{frame}	
 		

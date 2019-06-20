@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.5.14)  20 JUN 2019 20:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.5.14)  20 JUN 2019 21:26
 entering extended mode
 **./Praesentation.tex
 (Praesentation.tex
@@ -1579,26 +1579,29 @@ Package pdftex.def Info: ./Layout/jku.pdf  used on input line 49.
  [6
 
 ]
-File: ./Layout/jku.pdf Graphic file (type pdf)
-<use ./Layout/jku.pdf>
-Package pdftex.def Info: ./Layout/jku.pdf  used on input line 59.
-(pdftex.def)             Requested size: 43.653pt x 21.0pt.
- [7
-
-]
-Overfull \vbox (5.08453pt too high) detected at line 80
+Overfull \vbox (5.08453pt too high) detected at line 70
  []
 
 File: ./Layout/jku.pdf Graphic file (type pdf)
 <use ./Layout/jku.pdf>
-Package pdftex.def Info: ./Layout/jku.pdf  used on input line 80.
+Package pdftex.def Info: ./Layout/jku.pdf  used on input line 70.
+(pdftex.def)             Requested size: 43.653pt x 21.0pt.
+[7
+
+]
+Overfull \vbox (5.08453pt too high) detected at line 91
+ []
+
+File: ./Layout/jku.pdf Graphic file (type pdf)
+<use ./Layout/jku.pdf>
+Package pdftex.def Info: ./Layout/jku.pdf  used on input line 91.
 (pdftex.def)             Requested size: 43.653pt x 21.0pt.
 [8
 
 ]
 File: ./Layout/jku.pdf Graphic file (type pdf)
 <use ./Layout/jku.pdf>
-Package pdftex.def Info: ./Layout/jku.pdf  used on input line 102.
+Package pdftex.def Info: ./Layout/jku.pdf  used on input line 113.
 (pdftex.def)             Requested size: 43.653pt x 21.0pt.
  [9
 
@@ -1617,7 +1620,7 @@ Package pdftex.def Info: ./Layout/jku.pdf  used on input line 14.
  [11
 
 ]
-<Bilder/elements.PNG, id=339, 405.31425pt x 232.4685pt>
+<Bilder/elements.PNG, id=340, 405.31425pt x 232.4685pt>
 File: Bilder/elements.PNG Graphic file (type png)
 <use Bilder/elements.PNG>
 Package pdftex.def Info: Bilder/elements.PNG  used on input line 23.
@@ -1634,7 +1637,7 @@ Package pdftex.def Info: ./Layout/jku.pdf  used on input line 27.
  [12
 
  <./Bilder/elements.PNG>]
-<Bilder/tool.PNG, id=368, 684.75826pt x 214.70212pt>
+<Bilder/tool.PNG, id=369, 684.75826pt x 214.70212pt>
 File: Bilder/tool.PNG Graphic file (type png)
 <use Bilder/tool.PNG>
 Package pdftex.def Info: Bilder/tool.PNG  used on input line 36.
@@ -1656,7 +1659,7 @@ Package pdftex.def Info: ./Layout/jku.pdf  used on input line 40.
 [13
 
  <./Bilder/tool.PNG>]
-<Bilder/unificationProblem.PNG, id=395, 554.97337pt x 220.72462pt>
+<Bilder/unificationProblem.PNG, id=396, 554.97337pt x 220.72462pt>
 File: Bilder/unificationProblem.PNG Graphic file (type png)
 <use Bilder/unificationProblem.PNG>
 Package pdftex.def Info: Bilder/unificationProblem.PNG  used on input line 49.
@@ -1692,7 +1695,7 @@ Package pdftex.def Info: ./Layout/jku.pdf  used on input line 65.
  [16
 
 ]
-<Bilder/WorkFlow.PNG, id=472, 492.84125pt x 372.39125pt>
+<Bilder/WorkFlow.PNG, id=473, 492.84125pt x 372.39125pt>
 File: Bilder/WorkFlow.PNG Graphic file (type png)
 <use Bilder/WorkFlow.PNG>
 Package pdftex.def Info: Bilder/WorkFlow.PNG  used on input line 73.
@@ -1738,11 +1741,12 @@ c}{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program Files/Mi
 c}<C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmss1
 0.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmss12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/l
 mss8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmssbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
-/lm/lmsso10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
-ublic/lm/lmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmtt12.pfb>
-Output written on Praesentation.pdf (17 pages, 320860 bytes).
+/lm/lmsso10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmsso8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
+ublic/lm/lmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
+1/public/lm/lmtt12.pfb>
+Output written on Praesentation.pdf (17 pages, 337496 bytes).
 PDF statistics:
- 547 PDF objects out of 1000 (max. 8388607)
+ 551 PDF objects out of 1000 (max. 8388607)
  43 named destinations out of 1000 (max. 500000)
  120 words of extra memory for PDF output out of 10000 (max. 10000000)
 
