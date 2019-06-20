@@ -14,11 +14,11 @@ NormalPos.top=53
 NormalPos.right=1099
 NormalPos.bottom=489
 Class=LaTeXView
-Document=Inhalt\SystemModelWorkflow.tex
+Document=Inhalt\Theory.tex
 
 [Frame0_View0,0]
-TopLine=27
-Cursor=911
+TopLine=163
+Cursor=3961
 
 [Frame1]
 Flags=0
@@ -32,11 +32,11 @@ NormalPos.top=53
 NormalPos.right=1099
 NormalPos.bottom=489
 Class=LaTeXView
-Document=Praesentation.tex
+Document=Inhalt\SystemModelWorkflow.tex
 
 [Frame1_View0,0]
-TopLine=11
-Cursor=293
+TopLine=25
+Cursor=911
 
 [Frame2]
 Flags=0
@@ -50,11 +50,11 @@ NormalPos.top=53
 NormalPos.right=1099
 NormalPos.bottom=489
 Class=LaTeXView
-Document=header.tex
+Document=Praesentation.tex
 
 [Frame2_View0,0]
-TopLine=31
-Cursor=449
+TopLine=11
+Cursor=293
 
 [Frame3]
 Flags=0
@@ -68,13 +68,13 @@ NormalPos.top=53
 NormalPos.right=1099
 NormalPos.bottom=489
 Class=LaTeXView
-Document=Inhalt\Theory.tex
+Document=header.tex
 
 [Frame3_View0,0]
-TopLine=133
-Cursor=3961
+TopLine=32
+Cursor=449
 
 [SessionInfo]
 FrameCount=4
-ActiveFrame=1
+ActiveFrame=2
 
