@@ -68,7 +68,7 @@ class InputParserJUnit {
 	@Test
 	void testParseNormal1_2() {
 		
-		String test1 =u+" =? "+v;
+		String test1 =u+"=?"+v;
 		
 		
 		UnificationProblem unif1 = InputParser.parse(test1).get(0);
