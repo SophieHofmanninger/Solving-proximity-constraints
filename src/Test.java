@@ -75,8 +75,8 @@ public class Test {
 		System.out.println(System.lineSeparator()+"Test3:");
 
 		Matrix matr3 = new Matrix();
-		matr3.addRelation("a", "a1", 0.7f);
-		matr3.addRelation("a1", "b", 0.7f);
+		//matr3.addRelation("a", "a1", 0.7f);
+		//matr3.addRelation("a1", "b", 0.7f);
 		matr3.addRelation("b", "c1", 0.7f);
 		matr3.addRelation("c1", "c", 0.7f);
 		matr3.addRelation("p", "q", 0.7f);

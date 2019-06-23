@@ -408,7 +408,7 @@ public final class Algorithms {
 		boolean error = false;
 		//NEXT_BRANCH = branch+1;
 
-		while(!constraintProblem.isEmpty()) {
+		while(!constraintProblem.isEmpty()&& !prob.getC().isEmpty()) {
 			t=constraintProblem.get(0);
 
 			// NN1 and NN2
@@ -434,9 +434,10 @@ public final class Algorithms {
 				}
 				else {
 					steps.append("(NN2), (NN1), ");
+					Element temp=t.getFirst();
 					prob.getC().get(0).setFirst(t.getSecond());
-					prob.getC().get(0).setSecond(t.getFirst());
-					if(nn1(t.getSecond(),t.getFirst(),prob, proxR, lambda, steps, branchStepsTemp)) {
+					prob.getC().get(0).setSecond(temp);
+					if(nn1(t.getFirst(),t.getSecond(),prob, proxR, lambda, steps, branchStepsTemp)) {
 						constraintProblem.remove(0);
 						if(branchStepsTemp.length()>0) {
 							branchSteps.append(branchStepsTemp);
