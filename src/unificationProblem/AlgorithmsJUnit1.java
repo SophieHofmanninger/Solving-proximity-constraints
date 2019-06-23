@@ -134,7 +134,6 @@ class AlgorithmsJUnit1 {
 		System.out.println("s = " + unif.getSigma().toString());
 
 		boolean result=Algorithms.preUnification(unif,step);
-		if(step.length()>0) step.delete(step.length()-2, step.length()-1);
 		System.out.println(step);
 		assertTrue(result);
 
@@ -158,9 +157,32 @@ class AlgorithmsJUnit1 {
 		StringBuffer step=new StringBuffer();
 		
 		boolean result=Algorithms.preUnification(unif,step);
-		if(step.length()>0) step.delete(step.length()-2, step.length()-1);
 		System.out.println(step);
 		assertFalse(result);
+
+		
+	}
+	
+	/**
+	 * Test method for {@link unificationProblem.Algorithms#preUnification(unificationProblem.UnificationProblem)}.
+	 * Fail from (Occ). (Real cycle)
+	 */
+	@Test
+	void testPreUnificationPre1() {
+		String s="p(x,z)";
+		String t="q(f(b),f(x))";
+		unif= InputParser.parse(s+" =? "+t).get(0);
+
+		System.out.println("Before:");
+		System.out.println("P = " + unif.getP().toString());
+		System.out.println("C = " + unif.getC().toString());
+		System.out.println("s = " + unif.getSigma().toString());
+
+		StringBuffer step=new StringBuffer();
+		
+		boolean result=Algorithms.preUnification(unif,step);
+		System.out.println(step);
+		assertTrue(result);
 
 		
 	}

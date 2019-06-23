@@ -94,7 +94,39 @@
 		
 		\begin{frame}[fragile=singleslide]
 	\frametitle{Simple example}
+	\(p(x,z) =? q(f(b),f(x)) ; R=\{(a,a'),(a',b),(b,c'),(c',c),(p,q)\}\)\\
+	\(P=\{p \simeq^? q\}\)\\
+	\(C=\{\}\)\\
+	\(\sigma=\{\}\)\\
+	\(\Rightarrow^{\text{Dec}}\)\\
+	\(P=\{x \simeq^? f, z \simeq^? f\}\)\\
+	\(C=\{p \approx^? q\}\)\\
+	\(\sigma=\{\}\)\\
+	\(\Rightarrow^{\text{VE}}\)\\
+	\(P=\{N_1(N_2) \simeq^? f(b), z \simeq^? f\}\)\\
+	\(C=\{p \approx^? q\}\)\\
+	\(\sigma=\{x \mapsto N_1(N_2)\}\)\\
+	\(\Rightarrow^{\text{Dec}^2}\)\\
+	\end{frame}
+	\begin{frame}[fragile=singleslide]
+	\frametitle{Simple example cont.}
+	\(p(x,z) =? q(f(b),f(x)) ; R=\{(a,a'),(a',b),(b,c'),(c',c),(p,q)\}\)\\
+	\(P=\{z \simeq^? f\}\)\\
+	\(C=\{p \approx^? q, N_1 \approx^? f, N_2 \approx^? b\}\)\\
+	\(\sigma=\{x \mapsto N_1(N_2)\}\)\\
+	\(\Rightarrow^{\text{VE}}\)\\
+	\(P=\{N_3(N_4) \simeq^? f(x)\}\)\\
+	\(C=\{p \approx^? q, N_1 \approx^? f, N_2 \approx^? b\}\)\\
+	\(\sigma=\{x \mapsto N_1(N_2)\}\)\\
+	\(\Rightarrow^{\text{Dec}}\)\\
+	\(P=\{N_4 \simeq^? x\}\)\\
+	\(C=\{p \approx^? q, N_1 \approx^? f, N_2 \approx^? b, N_3 f \approx^? f\}\)\\
+	\(\sigma=\{x \mapsto N_1(N_2)\}\)\\
+	\(\Rightarrow^{\text{Dec}}\)\\
+	
+	
 	Pre - fail:  $p(x,a) =? q(f(a),g(b))$\\
+	
 		\vspace{0.5cm}
 		
 		%Pre - ok, CS - fail: \textcolor[rgb]{1,0.41,0.13}{- nur als Beispiel wo deiner funktioniert, aber meiner ned -} $p(x,a) =? q(f(a),b) ; R=\{(b,c),(c,d),(f,g),(p,q)\}$\\
