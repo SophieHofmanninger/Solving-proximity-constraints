@@ -10,15 +10,15 @@ MinPos.y=-1
 MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
-NormalPos.top=53
-NormalPos.right=1667
-NormalPos.bottom=1474
+NormalPos.top=36
+NormalPos.right=1701
+NormalPos.bottom=441
 Class=LaTeXView
 Document=Documentation.tex
 
 [Frame0_View0,0]
-TopLine=270
-Cursor=10322
+TopLine=234
+Cursor=12956
 
 [SessionInfo]
 FrameCount=1

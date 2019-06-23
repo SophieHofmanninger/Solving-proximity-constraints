@@ -4,7 +4,8 @@
 package tool;
 
 /**
- * Simple InputChecker, only checks for non-null.
+ * Simple InputChecker, only checks for non-null, brackets and missing 
+ * arguments.
  * @author Jan-Michael Holzinger &amp; Sophie Hofmanninger
  * @version 1.0
  */

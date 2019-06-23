@@ -124,7 +124,7 @@ public class SPC_CL {
 
 		// Get Open Cases
 		boolean rem=false;
-		if(sTP.checkOpenCases()&&fileSet) {
+		if(!(sTP.checkOpenCases())&&fileSet) {
 			try {
 				FileReader fr = new FileReader(f);
 				BufferedReader bfr = new BufferedReader(fr);
@@ -156,7 +156,7 @@ public class SPC_CL {
 
 
 
-		if(sTP.checkOpenCases()) {
+		if(!(sTP.checkOpenCases())){
 			boolean oneValue=false;
 			String s= "Do you want to enter one value for all ";
 			if(rem) {
@@ -197,7 +197,7 @@ public class SPC_CL {
 
 		}
 
-		while(sTP.checkOpenCases()) {
+		while(!(sTP.checkOpenCases())) {
 			Tuple<Function> oC = sTP.getNextOpenCase();
 			System.out.println
 			("Please enter a proximity value for "+oC.getFirst()

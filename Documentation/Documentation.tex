@@ -78,6 +78,8 @@ Version Number & Changes Summary & Author\\
 0.14 & update command line description & Sophie\\
 & added Web Interface&\\
 \hline
+0.15 & added GUI & Jan-Michael\\
+\hline
 \end{tabular}
 
 \end{center}
@@ -200,6 +202,9 @@ Note: As in the command line interface the equation should be in the format ``lh
 
 You can choose the mode silent or detailed, depending on whether you want to see the steps or not. Afterwards you can set a lambda. Pressing \textit{Reset} resets the input and you can start always from the beginning. Pressing \textit{Enter Function} creates a new table, where the number of additional function can the entered for the relation matrix. For example, if $q(a,b)=p(x,y)$ and $a$ is also related to $c$ then we have to enter 1 additional function with arity 0. By pressing \textit{Enter additional Functions} the user can now build the relation matrix. Pressing \textit{Enter Matrix} yields the solution of the problem.
 
+\subsubsection{Graphical User Interface}
+
+The GUI constists of parts: Equation, Constraints and Results. The user first enters the equation, then the open cases are calculated and shown. Then the user can enter the corresponding proximity relations and click unify. Then the result is shown. If wanted, the second step (constraint simplification) can be performed again - with different lambda.
 
 \section{System Model}
 The program consists of 4 packages,
