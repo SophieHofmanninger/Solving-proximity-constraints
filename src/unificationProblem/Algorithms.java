@@ -434,6 +434,8 @@ public final class Algorithms {
 				}
 				else {
 					steps.append("(NN2), (NN1), ");
+					prob.getC().get(0).setFirst(t.getSecond());
+					prob.getC().get(0).setSecond(t.getFirst());
 					if(nn1(t.getSecond(),t.getFirst(),prob, proxR, lambda, steps, branchStepsTemp)) {
 						constraintProblem.remove(0);
 						if(branchStepsTemp.length()>0) {

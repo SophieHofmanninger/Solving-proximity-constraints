@@ -80,6 +80,7 @@ public class Test {
 		matr3.addRelation("b", "c1", 0.7f);
 		matr3.addRelation("c1", "c", 0.7f);
 		matr3.addRelation("p", "q", 0.7f);
+		//matr3.addRelation("f", "g", 0.7f);
 
 		uni3.setProximityRelations(matr3);
 		uni3.setLambda(0.5f);
