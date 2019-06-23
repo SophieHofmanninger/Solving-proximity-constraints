@@ -54,10 +54,10 @@ public final class Algorithms {
 	 * @return {@code false}, if there is no unifier.
 	 */
 	public static boolean preUnification(UnificationProblem unif, StringBuffer steps) {
-		SPCSet problem = unif.getP();
-		if(problem==null||problem.size()==0) return true;
-		while (problem.size()!=0) {
-			Tuple<Element> t = problem.get(0);
+		SPCSet currentProblem = unif.getP();
+		if(currentProblem==null||currentProblem.size()==0) return true;
+		while (currentProblem.size()!=0) {
+			Tuple<Element> t = currentProblem.get(0);
 
 
 			if(t.getFirst() instanceof Variable && t.getSecond() instanceof Variable) {
@@ -68,25 +68,25 @@ public final class Algorithms {
 				Tuple<Variable> var = new Tuple<Variable>(f,s);
 				if(trivial(var)) {
 					steps.append("(Tri), ");
-					problem.remove(0);
+					currentProblem.remove(0);
 					continue;
 				}
 
 				// Vars Only
 				boolean onlyVars = true;
 				int i=1;
-				while (i<problem.size() && onlyVars) {
-					Tuple<Element> current =problem.get(i);
+				while (i<currentProblem.size() && onlyVars) {
+					Tuple<Element> current =currentProblem.get(i);
 					onlyVars = (current.getFirst() instanceof Variable &&
 							current.getSecond() instanceof Variable);
 					i++;
 				}
 
 				if(onlyVars) {
-					unif.getSigma().add(problem.get(0));
-					problem.remove(0);
+					unif.getSigma().add(currentProblem.get(0));
+					currentProblem.remove(0);
 					steps.append("(VO), ");
-					varsOnly(var,problem);
+					varsOnly(var,currentProblem);
 					continue;
 				}
 
@@ -95,8 +95,8 @@ public final class Algorithms {
 				 * nor are all other tuples of type (var,var). So this tuple
 				 * is placed at the end of the list, so other tuples can be dealt with before.
 				 */
-				problem.remove(0);
-				problem.add(t);
+				currentProblem.remove(0);
+				currentProblem.add(t);
 				continue;
 			}
 
@@ -114,8 +114,8 @@ public final class Algorithms {
 				// Decompose
 				steps.append("(Dec), ");
 				Tuple<ArrayList<Tuple<Element>>> probAndCons = decomposition(fun);
-				problem.remove(0);
-				problem.addAll(0,probAndCons.getFirst());
+				currentProblem.remove(0);
+				currentProblem.addAll(0,probAndCons.getFirst());
 				unif.getC().addAll(probAndCons.getSecond());
 				continue;
 			}
@@ -127,8 +127,8 @@ public final class Algorithms {
 				// Orient
 				steps.append("(Ori), ");
 				Tuple<Element> oriented = orient(t);
-				problem.remove(0);
-				problem.add(0,oriented);
+				currentProblem.remove(0);
+				currentProblem.add(0,oriented);
 				continue;
 			}
 
@@ -154,10 +154,10 @@ public final class Algorithms {
 
 
 				// Var. Elimination
-				problem.remove(0);
+				currentProblem.remove(0);
 				steps.append("(VE), ");
-				Tuple<Element> newTerm = varElim(t,problem);
-				problem.add(0, newTerm);
+				Tuple<Element> newTerm = varElim(t,currentProblem);
+				currentProblem.add(0, newTerm);
 				unif.getSigma().add(new Tuple<Element>(t.getFirst(),newTerm.getFirst()));
 				continue;
 			}
@@ -165,11 +165,11 @@ public final class Algorithms {
 		}
 
 		unif.getC().trim();
-		
+
 		if(steps.length()>1) {
 			steps.delete(steps.length()-2, steps.length());
 		}
-		
+
 		return true;
 	}
 
@@ -214,32 +214,52 @@ public final class Algorithms {
 	 */
 	private static Tuple<Element> varElim
 	(Tuple<Element> t, SPCSet problem) {
-		Element first = (t.getSecond().rename());
+		Element newName = (t.getSecond().rename());
 		for(int i=0;i<problem.size();i++) {
-			problem.get(i).setFirst
-			(tryReplace(problem.get(i).getFirst(),t.getFirst(),first));
-			problem.get(i).setSecond
-			(tryReplace(problem.get(i).getSecond(),t.getFirst(),first));
+			// direct matches:
+			if(problem.get(i).getFirst().equals(t.getFirst())) {
+				problem.get(i).setFirst(newName.clone());
+			}
+			if(problem.get(i).getSecond().equals(t.getFirst())) {
+				problem.get(i).setSecond(newName.clone());
+			}
+			
+			// matches within functions
+			if(problem.get(i).getFirst() instanceof Function) {
+				tryReplace((Function) problem.get(i).getFirst(),
+						t.getFirst(),newName);
+			}
+			if(problem.get(i).getSecond() instanceof Function) {
+				tryReplace((Function) problem.get(i).getSecond(),
+						t.getFirst(),newName);
+			}
 		}
 
 
-		return new Tuple<Element>(first,t.getSecond());
+		return new Tuple<Element>(newName,t.getSecond());
 	}
 
 	/**
 	 * Helper Function makes the checks for replacement and provides a copy.
-	 * @param e The Element (Variable) to replace.
-	 * @param x The Match.
+	 * @param f The function to search for needed replacements.
+	 * @param x The match.
 	 * @param tprime the term to replace with.
-	 * @return the replacement/original term.
 	 */
-	private static Element tryReplace(Element e, Element x, Element tprime) {
-		if(e instanceof Variable && e.equals(x)) {
-			return Variable.replace(tprime); 
-		}else {
-			return e;
+	private static void tryReplace(Function f, Element x, Element tprime) {
+
+		for(int i=0; i<f.getArguments().size();i++) {
+			
+			if(f.getArgument(i) instanceof Function) {
+				tryReplace((Function)f.getArgument(i),x,tprime);
+			}else {
+				if(f.getArgument(i).equals(x)) {
+					f.getArguments().set(i, tprime.clone());
+				}
+			}
 		}
 	}
+
+
 
 
 	/**
@@ -313,8 +333,8 @@ public final class Algorithms {
 					}
 				}
 			}
-			
-			
+
+
 		}		
 		return false;
 	}

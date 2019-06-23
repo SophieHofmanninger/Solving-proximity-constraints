@@ -31,10 +31,10 @@ public class Variable extends Element{
 	/**
 	 * Replaces a Variable with an Element.
 	 * @param e the element the Variable is replaced with
-	 * @return A new Element.
 	 */
-	public static Element replace(Element e) {
-		return e.clone();
+	public void replace(Element e) {
+		this.setName(e.getName());
+		this.representName(e.isName());
 	}
 
 

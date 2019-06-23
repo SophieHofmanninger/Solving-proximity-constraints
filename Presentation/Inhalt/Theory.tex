@@ -39,13 +39,14 @@
 
 	\begin{frame}[fragile=singleslide]
 	\frametitle{Introduction}
-		4 sets:
+		The Algorithm consists of two sub-algorithms and works on (modifies) 4 sets:
 		\begin{itemize}
-			\item P: unification problem to be solved
-			\item C: neighborhood constraint
-			\item $\sigma$: set of pre-unifier
-			\item $\Phi$: name-class mapping
+			\item P: unification problem to be solved ,
+			\item C: neighbourhood constraint,
+			\item $\sigma$: set of pre-unifier,
+			\item $\Phi$: name-class mapping,
 		\end{itemize}
+		where Algorithm 1 modifies \(P,C,\) and \(\sigma\) and Algorithm 2 modifies \(C\) and \(\Phi\). If Algorithm 1 was successful, \(P=\emptyset\), if Algorithm 2 was successful \(C=\emptyset\). 
   \end{frame}	
 		
 %---------------------------------------------------------------
@@ -62,7 +63,7 @@
 		\vspace{0.3cm}
 		\textcolor[rgb]{0.55,0,0}{(Cla)} \(\{F(\overline{s_n}) \simeq^? G(\overline{t_n})\} \uplus P;C;\sigma \Rightarrow  \bot\text{ if } m\neq n\) \\
 		\vspace{0.3cm}
-		\textcolor[rgb]{0.55,0,0}{(Occ)} \(\{x \simeq^? t\} \uplus P;C;\sigma \Rightarrow  \bot\text{ if there is an occurence cycle of }x\text{ in }t\) \\
+		\textcolor[rgb]{0.55,0,0}{(Occ)} \(\{x \simeq^? t\} \uplus P;C;\sigma \Rightarrow  \bot\text{ if there is an occurrence cycle of }x\text{ in }t\) \\
 		\vspace{0.3cm}
 		\textcolor[rgb]{0.55,0,0}{(VO)} \(\{x \simeq^? y, \overline{x_n\simeq^? y_n}\};C;\sigma \Rightarrow  \{\overline{x_n\simeq^? y_n}\}\{x\mapsto y\}; C;\sigma\{x\mapsto y\}\) \\
 		\vspace{0.3cm}
@@ -72,7 +73,7 @@
 %---------------------------------------------------------------
 		
 		\begin{frame}[fragile=singleslide]
-	\frametitle{Rules for Neigborhood Constraints}
+	\frametitle{Rules for Neighbourhood Constraints}
 		\textcolor[rgb]{0.55,0,0}{(FFS)} $\{f \approx^? g\} \uplus C; \Phi \Rightarrow  C; \Phi; \text{ if } \mathcal{R}(f,g)\geq \lambda$ \\
 		\vspace{0.3cm}
 		\textcolor[rgb]{0.55,0,0}{(NFS)} $\{N \approx^? g\} \uplus C; \Phi \Rightarrow  C; update(\Phi,N\rightarrow \textbf{pc}(g,\mathcal{R},\lambda))$  \\
@@ -94,19 +95,55 @@
 		
 		\begin{frame}[fragile=singleslide]
 	\frametitle{Simple example}
-	Pre - fail:  $p(x,a) =? q(f(a),g(b))$\\
+	\(p(x,z) =^? q(f(b),f(x)) ; R=\{(a,a'),(a',b),(b,c'),(c',c),(p,q)\}\)\\
+	\(P=\{p \simeq^? q\}\)\\
+	\(C=\{\}\)\\
+	\(\sigma=\{\}\)\\
+	\(\Rightarrow^{\text{Dec}}\)\\
+	\(P=\{x \simeq^? f, z \simeq^? f\}\)\\
+	\(C=\{p \approx^? q\}\)\\
+	\(\sigma=\{\}\)\\
+	\(\Rightarrow^{\text{VE}}\)\\
+	\(P=\{N_1(N_2) \simeq^? f(b), z \simeq^? f(N_1(N_2))\}\)\\
+	\(C=\{p \approx^? q\}\)\\
+	\(\sigma=\{x \mapsto N_1(N_2)\}\)\\
+	\(\Rightarrow^{\text{Dec}^2}\)\\
+	\end{frame}
+	\begin{frame}[fragile=singleslide]
+	\frametitle{Simple example cont.}
+	\(p(x,z) =^? q(f(b),f(x)) ; R=\{(a,a'),(a',b),(b,c'),(c',c),(p,q)\}\)\\
+	\(P=\{z \simeq^? f\}\)\\
+	\(C=\{p \approx^? q, N_1 \approx^? f, N_2 \approx^? b\}\)\\
+	\(\sigma=\{x \mapsto N_1(N_2)\}\)\\
+	\(\Rightarrow^{\text{VE}}\)\\
+	\(P=\{N_3(N_4(N_5)) \simeq^? f(N_1(N_2))\}\)\\
+	\(C=\{p \approx^? q, N_1 \approx^? f, N_2 \approx^? b\}\)\\
+	\(\sigma=\{x \mapsto N_1(N_2),z \mapsto N_3(N_4(N_5))\}\)\\
+	\(\Rightarrow^{\text{Dec}^3}\)\\
+	\(P=\{\}\)\\
+	\(C=\{p \approx^? q, N_1 \approx^? f, N_2 \approx^? b, N_3 \approx^? f, N_4 \approx^? N_1, N_5 \approx^? N_2\}\)\\
+	\(\sigma=\{x \mapsto N_1(N_2), z \mapsto N_3(N_4(N_5))\}\)\\
+		\end{frame}
+		
+		%---------------------------------------------------------------
+		
+	\begin{frame}[fragile=singleslide]
+	\frametitle{Other examples}
+	Simple examples where the pre-unification fails:
+	\begin{itemize}
+		\item [(Occ)] \(p(x) =^? q(f(x))\)
+		\item [(Cla)] \(p(a,b) =^? q(f(x))\)
+	\end{itemize}
+	
 		\vspace{0.5cm}
 		
-		%Pre - ok, CS - fail: \textcolor[rgb]{1,0.41,0.13}{- nur als Beispiel wo deiner funktioniert, aber meiner ned -} $p(x,a) =? q(f(a),b) ; R=\{(b,c),(c,d),(f,g),(p,q)\}$\\
+		%Pre - ok, CS - fail: \textcolor[rgb]{1,0.41,0.13}{- nur als Beispiel wo deiner funktioniert, aber meiner ned -} $p(x,a) =^? q(f(a),b) ; R=\{(b,c),(c,d),(f,g),(p,q)\}$\\
 		%\vspace{0.5cm}
 		
 		\textbf{Test 4 in Test.java}\\
-		Pre - ok, CS - fail: \textcolor[rgb]{0,0.58,0}{- des ging bei mir, i hätt 5 Schritte und 2 Branches, die aber failen-}$p(x,y,x) =? q(f(a),g(b),y) ; R=\{(b,c),(c,d),(f,g),(p,q)\}$\\
+		Pre - ok, CS - fail: \textcolor[rgb]{0,0.58,0}{- des ging bei mir, i hätt 5 Schritte und 2 Branches, die aber failen-}$p(x,y,x) =^? q(f(a),g(b),y) ; R=\{(b,c),(c,d),(f,g),(p,q)\}$\\
 		\vspace{0.5cm}
-		
-		\textbf{Test 3 in Test.java}\\
-		Pre - ok, CS - ok: \textcolor[rgb]{0,0.58,0}{- des ging bei mir, i hätt 4 Schritte und 1 Branch-}$p(x,z) =? q(f(b),f(x)) ; R=\{(a,a'),(a',b),(b,c'),(c',c),(p,q)\}$\\
-		\vspace{0.5cm}
+
 		
 		Solution: \ldots
 	
