@@ -180,7 +180,7 @@ We provide a command line user interface and a web application for the program.
 
 \subsubsection{Command line interface}
 The command line user interface is implemented in the ``SPC\_CL'' class(SolvingProximityConstraints\_via\_CommandLine). The program can be accessed with no or some of this optional arguments:
-Note: the first argument if any are given is always the equation in the format ``lhs =? rhs'' or ``lhs = rhs''. Be aware, that there should be no blanks in front and after the ``='' / ``=?'' sign.
+Note: the first argument if any are given is always the equation in the format ``lhs =? rhs'' or ``lhs = rhs''. 
 \begin{itemize}
 	\item [] the equation in the format ``lhs =? rhs'' (left hand side and right hand side of the equation.
 	\item [-f] <PATH> a path given to a file where (parts) of the proximity relations are stored the format must follow the convention, that is mentioned below.
@@ -196,7 +196,7 @@ For the web interface we provide a second project which is identical to the orig
  To compile the web application the user has to open the jsp file, which is placed in the WebContent folder, in Eclipse. After pressing the run button, the console asks, if it is allowed to start the server. Press okay and the web interface appears.\\
 \\
 It can be entered more than one problem by splitting them with a ``;''. But be aware, that only the first one will be solved.
-Note: As in the command line interface the equation should be in the format ``lhs =? rhs'' or ``lhs = rhs'', without spaces around the ``='' / ``=?'' sign. 
+Note: As in the command line interface the equation should be in the format ``lhs =? rhs'' or ``lhs = rhs''.
 
 You can choose the mode silent or detailed, depending on whether you want to see the steps or not. Afterwards you can set a lambda. Pressing \textit{Reset} resets the input and you can start always from the beginning. Pressing \textit{Enter Function} creates a new table, where the number of additional function can the entered for the relation matrix. For example, if $q(a,b)=p(x,y)$ and $a$ is also related to $c$ then we have to enter 1 additional function with arity 0. By pressing \textit{Enter additional Functions} the user can now build the relation matrix. Pressing \textit{Enter Matrix} yields the solution of the problem.
 
