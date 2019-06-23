@@ -65,7 +65,7 @@ public class UnificationProblem {
 	 */
 	public boolean checkOpenCases() {
 		this.openCases = this.proximityRelations.getOpenCases();
-		if(this.openCases.size()!=0) {
+		if(this.openCases.size()==0) {
 			return true;
 		}
 		else {
@@ -81,7 +81,15 @@ public class UnificationProblem {
 		if(openCases.size()>0) return openCases.get(0);
 		return null;
 	}
-
+	/**
+	 * @param i the index of the case to return.
+	 * @return a Tuple of Function whos proximity is to be determined, {@code null}
+	 * if the index is out of range.
+	 */
+	public Tuple<Function> getOpenCase(int i){
+		if(openCases.size()<=i || i<0) return null;
+		return openCases.get(i);
+	}
 	/**
 	 * Get the number of open cases.
 	 * @return the number of open Cases.
