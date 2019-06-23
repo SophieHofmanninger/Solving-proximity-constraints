@@ -95,7 +95,11 @@
 		
 		\begin{frame}[fragile=singleslide]
 	\frametitle{Simple example}
-	\(p(x,z) =^? q(f(b),f(x)) ; R=\{(a,a'),(a',b),(b,c'),(c',c),(p,q)\}\)\\
+	\begin{exampleblock}{Example - both success}
+	\(p(x,z) =^? q(f(b),f(x))\) and \(R=\{(b,c'),(c',c),(p,q)\}\)\\
+	\end{exampleblock}
+	\textbf{Pre Unification} \\
+	
 	\(P=\{p \simeq^? q\}\)\\
 	\(C=\{\}\)\\
 	\(\sigma=\{\}\)\\
@@ -104,13 +108,18 @@
 	\(C=\{p \approx^? q\}\)\\
 	\(\sigma=\{\}\)\\
 	\(\Rightarrow^{\text{VE}}\)\\
+	%\(P=\{N_1(N_2) \simeq^? f(b), z \simeq^? f(N_1(N_2))\}\)\\
+	%\(C=\{p \approx^? q\}\)\\
+	%\(\sigma=\{x \mapsto N_1(N_2)\}\)\\
+	%\(\Rightarrow^{\text{Dec}^2}\)\\
+	
+	\end{frame}
+	\begin{frame}[fragile=singleslide]
+	\frametitle{Simple example cont.}
 	\(P=\{N_1(N_2) \simeq^? f(b), z \simeq^? f(N_1(N_2))\}\)\\
 	\(C=\{p \approx^? q\}\)\\
 	\(\sigma=\{x \mapsto N_1(N_2)\}\)\\
 	\(\Rightarrow^{\text{Dec}^2}\)\\
-	\end{frame}
-	\begin{frame}[fragile=singleslide]
-	\frametitle{Simple example cont.}
 	\(p(x,z) =^? q(f(b),f(x)) ; R=\{(a,a'),(a',b),(b,c'),(c',c),(p,q)\}\)\\
 	\(P=\{z \simeq^? f\}\)\\
 	\(C=\{p \approx^? q, N_1 \approx^? f, N_2 \approx^? b\}\)\\
@@ -120,11 +129,53 @@
 	\(C=\{p \approx^? q, N_1 \approx^? f, N_2 \approx^? b\}\)\\
 	\(\sigma=\{x \mapsto N_1(N_2),z \mapsto N_3(N_4(N_5))\}\)\\
 	\(\Rightarrow^{\text{Dec}^3}\)\\
+	\end{frame}
+	
+	\begin{frame}[fragile=singleslide]
+	\frametitle{Simple example cont.}
 	\(P=\{\}\)\\
 	\(C=\{p \approx^? q, N_1 \approx^? f, N_2 \approx^? b, N_3 \approx^? f, N_4 \approx^? N_1, N_5 \approx^? N_2\}\)\\
 	\(\sigma=\{x \mapsto N_1(N_2), z \mapsto N_3(N_4(N_5))\}\)\\
+	
+	\vspace{0.5cm}
+	\textbf{Constraint Simplification}\\
+	\(C=\{p \approx^? q, N_1 \approx^? f, N_2 \approx^? b, N_3 \approx^? f, N_4 \approx^? N_1, N_5 \approx^? N_2\}\)\\
+	\(\Phi=\{\}\)\\
+	\(\Rightarrow^{\text{FFS}}\)\\
+	\(C=\{N_1 \approx^? f, N_2 \approx^? b, N_3 \approx^? f, N_4 \approx^? N_1, N_5 \approx^? N_2\}\)\\
+	\(\Phi=\{\}\)\\
+	\(\Rightarrow^{\text{NFS}^3}\)\\
 		\end{frame}
 		
+		\begin{frame}[fragile=singleslide]
+	\frametitle{Simple example cont.}
+	
+	\textcolor[rgb]{0,0.58,0}{\begin{flushright}
+	\(R=\{(b,c'),(c',c),(p,q)\}\)
+	\end{flushright}}
+	\(C=\{N_4 \approx^? N_1, N_5 \approx^? N_2\}\)\\
+	\(\Phi=\{N1\mapsto \{f\}, N2\mapsto \{b,c'\}, N3\mapsto \{f\} \}\)\\
+	\(\Rightarrow^{\text{NN2}}\)\\
+	\(C=\{N_1 \approx^? N_4, N_5 \approx^? N_2\}\)\\
+	\(\Phi=\{N1\mapsto \{f\}, N2\mapsto \{b,c'\}, N3\mapsto \{f\} \}\)\\
+	\(\Rightarrow^{\text{NN1}}\)\\
+	\(C=\{N_5 \approx^? N_2\}\)\\
+	\(\Phi=\{N1\mapsto \{f\}, N2\mapsto \{b,c'\}, N3\mapsto \{f\} , N4\mapsto \{f\}\}\)\\
+	\(\Rightarrow^{\text{NN2,NN1}}\)\\
+		\end{frame}
+		
+		\begin{frame}[fragile=singleslide]
+	\frametitle{Simple example cont.}
+	\(C=\{\}\)\\
+	\(\Phi_1=\{N1\mapsto \{f\}, N2\mapsto \{b\}, N3\mapsto \{f\} , N4\mapsto \{f\},N5\mapsto \{b,c'\}\}\)\\
+	\(\Phi_2=\{N1\mapsto \{f\}, N2\mapsto \{c'\}, N3\mapsto \{f\} , N4\mapsto \{f\},N5\mapsto \{b,c',c\}\}\)\\
+	
+	\vspace{0.5cm}
+	\textbf{Solution}\\
+	\(\Phi_1=\{N1\mapsto \{f\}, N2\mapsto \{b\}, N3\mapsto \{f\} , N4\mapsto \{f\},N5\mapsto \{b,c'\}\}\)\\
+	\(\Phi_2=\{N1\mapsto \{f\}, N2\mapsto \{c'\}, N3\mapsto \{f\} , N4\mapsto \{f\},N5\mapsto \{b,c',c\}\}\)\\
+	\(\sigma=\{x \mapsto N_1(N_2), z \mapsto N_3(N_4(N_5))\}\)\\
+		\end{frame}
 		%---------------------------------------------------------------
 		
 	\begin{frame}[fragile=singleslide]
@@ -137,8 +188,10 @@
 	
 		\vspace{0.5cm}
 		
-		%Pre - ok, CS - fail: \textcolor[rgb]{1,0.41,0.13}{- nur als Beispiel wo deiner funktioniert, aber meiner ned -} $p(x,a) =^? q(f(a),b) ; R=\{(b,c),(c,d),(f,g),(p,q)\}$\\
-		%\vspace{0.5cm}
+	\begin{exampleblock}{Example - PU success - CS fail}
+	\(p(x,y,x) =^? q(f(a),g(b),y) ; R=\{(b,c),(c,d),(f,g),(p,q)\}\)\\
+	\end{exampleblock}
+	\(P=\{p \simeq^? q\}\)\\
 		
 		\textbf{Test 4 in Test.java}\\
 		Pre - ok, CS - fail: \textcolor[rgb]{0,0.58,0}{- des ging bei mir, i hätt 5 Schritte und 2 Branches, die aber failen-}$p(x,y,x) =^? q(f(a),g(b),y) ; R=\{(b,c),(c,d),(f,g),(p,q)\}$\\
