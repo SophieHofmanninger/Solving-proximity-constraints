@@ -17,8 +17,8 @@ Class=LaTeXView
 Document=Inhalt\Theory.tex
 
 [Frame0_View0,0]
-TopLine=72
-Cursor=3343
+TopLine=96
+Cursor=3396
 
 [Frame1]
 Flags=0
