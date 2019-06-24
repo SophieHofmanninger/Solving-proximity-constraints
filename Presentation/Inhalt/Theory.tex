@@ -80,7 +80,7 @@
 		\vspace{0.3cm}
 		\textcolor[rgb]{0.55,0,0}{(FSN)} $\{g \approx^? N\} \uplus C; \Phi \Rightarrow  \{N \approx^? g\} \cup C;\Phi$  \\
 		\vspace{0.3cm}
-		\textcolor[rgb]{0.55,0,0}{(NN1)} $\{N \approx^? M\} \uplus C; \Phi \Rightarrow  C; update(\Phi,N\rightarrow {f}, M\rightarrow \textbf{pc}(f,\mathcal{R},\lambda))$, where $N \in dom(\Phi )$, $f\in \Phi(N)$ \\
+		\textcolor[rgb]{0.55,0,0}{(NN1)} $\{N \approx^? M\} \uplus C; \Phi \Rightarrow  C; update(\Phi,N\rightarrow \{f\}, M\rightarrow \textbf{pc}(f,\mathcal{R},\lambda))$, where $N \in dom(\Phi )$, $f\in \Phi(N)$ \\
 		\vspace{0.3cm}
 		\textcolor[rgb]{0.55,0,0}{(NN2)} $\{M \approx^? N\} \uplus C; \Phi \Rightarrow  \{N \approx^? M\} \cup C;\Phi$, where $M \notin dom(\Phi )$, $N\in dom(\Phi)$ \\
 		\vspace{0.3cm}
@@ -191,12 +191,14 @@
 		
 	\begin{frame}[fragile=singleslide]
 	\frametitle{Simple example - Pre Unification fails}
-	\begin{exampleblock}{Example - PU fails}
+	\begin{exampleblock}{Example}
 	Examples where the Pre Unification algorithm fails:
-		\begin{itemize}
-				\item [(Occ)] \(p(x) =^? q(f(x))\)
-				\item [(Cla)] \(p(a,b) =^? q(f(x))\)
-		\end{itemize}
+		\begin{gather}
+		\begin{align}
+				\text{\textcolor[rgb]{0,0.58,0}{(Occ)}}\quad & p(x) =^? q(f(x))\\
+				\text{\textcolor[rgb]{0,0.58,0}{(Cla)}}\quad & p(a,b) =^? q(f(x))
+		\end{align}
+		\end{gather}
 	\end{exampleblock}
 		\vspace{0.5cm}
 		\end{frame}
