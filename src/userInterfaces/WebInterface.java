@@ -10,7 +10,7 @@ import unificationProblem.UnificationProblem;
 *
 * The class WebInterface handles methods for the web application.
 * 
-* @author  Jan-Michael Holzinger & Sophie Hofmanninger
+* @author Sophie Hofmanninger
 * @version 1.0
 * 
 */
