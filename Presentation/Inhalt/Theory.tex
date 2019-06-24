@@ -90,10 +90,21 @@
 		\vspace{0.3cm}
 	
   \end{frame}	
+
+%---------------------------------------------------------------
+
+	\begin{frame}[fragile=singleslide]
+	\frametitle{Simple example - both algorithms work}
+	\begin{exampleblock}{Example}
+	Let $p,q$ and $f$ be functions, $b,c,c'$ constants and $x,z$ variables. Then the following unification problem has a solution:\\
+	\[p(x,z) =^? q(f(b),f(x)) \quad \text{with}\quad R=\{(b,c'),(c',c),(p,q)\}\]\\
+	\end{exampleblock}
+	\end{frame}
 	
 %---------------------------------------------------------------
+		% <presentation:0> to hide slide
 		
-		\begin{frame}[fragile=singleslide]
+		\begin{frame}<presentation:0>[fragile=singleslide]
 	\frametitle{Simple example}
 	\begin{exampleblock}{Example - both success}
 	\(p(x,z) =^? q(f(b),f(x))\) and \(R=\{(b,c'),(c',c),(p,q)\}\)\\
@@ -114,7 +125,7 @@
 	%\(\Rightarrow^{\text{Dec}^2}\)\\
 	
 	\end{frame}
-	\begin{frame}[fragile=singleslide]
+	\begin{frame}<presentation:0>[fragile=singleslide]
 	\frametitle{Simple example cont.}
 	\(P=\{N_1(N_2) \simeq^? f(b), z \simeq^? f(N_1(N_2))\}\)\\
 	\(C=\{p \approx^? q\}\)\\
@@ -131,7 +142,7 @@
 	\(\Rightarrow^{\text{Dec}^3}\)\\
 	\end{frame}
 	
-	\begin{frame}[fragile=singleslide]
+	\begin{frame}<presentation:0>[fragile=singleslide]
 	\frametitle{Simple example cont.}
 	\(P=\{\}\)\\
 	\(C=\{p \approx^? q, N_1 \approx^? f, N_2 \approx^? b, N_3 \approx^? f, N_4 \approx^? N_1, N_5 \approx^? N_2\}\)\\
@@ -147,7 +158,7 @@
 	\(\Rightarrow^{\text{NFS}^3}\)\\
 		\end{frame}
 		
-		\begin{frame}[fragile=singleslide]
+		\begin{frame}<presentation:0>[fragile=singleslide]
 	\frametitle{Simple example cont.}
 	
 	\textcolor[rgb]{0,0.58,0}{\begin{flushright}
@@ -164,7 +175,7 @@
 	\(\Rightarrow^{\text{NN2,NN1}}\)\\
 		\end{frame}
 		
-		\begin{frame}[fragile=singleslide]
+		\begin{frame}<presentation:0>[fragile=singleslide]
 	\frametitle{Simple example cont.}
 	\(C=\{\}\)\\
 	\(\Phi_1=\{N1\mapsto \{f\}, N2\mapsto \{b\}, N3\mapsto \{f\} , N4\mapsto \{f\},N5\mapsto \{b,c'\}\}\)\\
@@ -179,26 +190,51 @@
 		%---------------------------------------------------------------
 		
 	\begin{frame}[fragile=singleslide]
-	\frametitle{Other examples}
-	Simple examples where the pre-unification fails:
-	\begin{itemize}
-		\item [(Occ)] \(p(x) =^? q(f(x))\)
-		\item [(Cla)] \(p(a,b) =^? q(f(x))\)
-	\end{itemize}
-	
-		\vspace{0.5cm}
-		
-	\begin{exampleblock}{Example - PU success - CS fail}
-	\(p(x,y,x) =^? q(f(a),g(b),y) ; R=\{(b,c),(c,d),(f,g),(p,q)\}\)\\
+	\frametitle{Simple example - Pre Unification fails}
+	\begin{exampleblock}{Example - PU fails}
+	Examples where the Pre Unification algorithm fails:
+		\begin{itemize}
+				\item [(Occ)] \(p(x) =^? q(f(x))\)
+				\item [(Cla)] \(p(a,b) =^? q(f(x))\)
+		\end{itemize}
 	\end{exampleblock}
-	\(P=\{p \simeq^? q\}\)\\
-		
-		\textbf{Test 4 in Test.java}\\
-		Pre - ok, CS - fail: \textcolor[rgb]{0,0.58,0}{- des ging bei mir, i hätt 5 Schritte und 2 Branches, die aber failen-}$p(x,y,x) =^? q(f(a),g(b),y) ; R=\{(b,c),(c,d),(f,g),(p,q)\}$\\
 		\vspace{0.5cm}
-
-		
-		Solution: \ldots
+		\end{frame}
 	
+	\begin{frame}[fragile=singleslide]
+	\frametitle{Simple example - Constrains Simplification fails}		
+	\begin{exampleblock}{Example}
+	Let $p$ and $f$ be functions, $a,b$ constants and $x,y$ variables. Then for the following unification problem only the Pre Unification algorithm is successful:
+	\[p(a,x,a) =^? q(y,b,x) \quad \text{with} \quad R=\{(b,c),(p,q)\}\]\\
+	\end{exampleblock}
+	\end{frame}
+	
+	\begin{frame}[fragile=singleslide]
+	\frametitle{Simple example cont.}
+	\textbf{Pre Unification}\\
+	\ldots \\
+	\(C=\{p \approx^? q, N_1 \approx^? a, N_2 \approx^? b, a \approx^? N_2\)\\
+	
+	\vspace{0.5cm}
+	\textbf{Constraint Simplification}\\
+	\(C=\{p \approx^? q, N_1 \approx^? a, N_2 \approx^? b, a \approx^? N_2\}\)\\
+	\(\Phi=\{\}\)\\
+	\(\Rightarrow^{\text{FFS}}\)\\
+	\(C=\{N_1 \approx^? a, N_2 \approx^? b, a \approx^? N_2\}\)\\
+	\(\Phi=\{\}\)\\
+	\(\Rightarrow^{\text{NFS}^2}\)\\
   \end{frame}	
 	
+	\begin{frame}[fragile=singleslide]
+	\frametitle{Simple example cont.}
+	\(C=\{ a \approx^? N_2\}\)\\
+	\(\Phi=\{N_1\mapsto \{a\}, N_2\mapsto \{b,c\}\}\)\\
+	\(\Rightarrow^{\text{FSN}}\)\\
+	\(C=\{ N_2 \approx^? a\}\)\\
+	\(\Phi=\{N_1\mapsto \{a\}, N_2\mapsto \{b,c\}\}\)\\
+	\(\Rightarrow^{\text{NFS}}\)\\
+	\(C=\{\}\)\\
+	\(\Phi=\{N_1\mapsto \{a\}, N_2\mapsto \{b,c\},N_2\mapsto \emptyset\}\)\\
+	\(\Rightarrow^{\text{Fail2}}\)\\
+	\(\perp\)
+  \end{frame}

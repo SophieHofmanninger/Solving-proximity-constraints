@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.4.29)  23 JUN 2019 22:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.4.29)  24 JUN 2019 07:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2006,14 +2006,14 @@ Package pdftex.def Info: ./Layout/jku.pdf used on input line 92.
 ]
 File: ./Layout/jku.pdf Graphic file (type pdf)
  <use ./Layout/jku.pdf>
-Package pdftex.def Info: ./Layout/jku.pdf used on input line 116.
+Package pdftex.def Info: ./Layout/jku.pdf used on input line 102.
 (pdftex.def)             Requested size: 43.653pt x 21.0pt.
  [9
 
 ]
 File: ./Layout/jku.pdf Graphic file (type pdf)
  <use ./Layout/jku.pdf>
-Package pdftex.def Info: ./Layout/jku.pdf used on input line 132.
+Package pdftex.def Info: ./Layout/jku.pdf used on input line 202.
 (pdftex.def)             Requested size: 43.653pt x 21.0pt.
 
 [10
@@ -2021,14 +2021,14 @@ Package pdftex.def Info: ./Layout/jku.pdf used on input line 132.
 ]
 File: ./Layout/jku.pdf Graphic file (type pdf)
  <use ./Layout/jku.pdf>
-Package pdftex.def Info: ./Layout/jku.pdf used on input line 148.
+Package pdftex.def Info: ./Layout/jku.pdf used on input line 210.
 (pdftex.def)             Requested size: 43.653pt x 21.0pt.
  [11
 
 ]
 File: ./Layout/jku.pdf Graphic file (type pdf)
  <use ./Layout/jku.pdf>
-Package pdftex.def Info: ./Layout/jku.pdf used on input line 165.
+Package pdftex.def Info: ./Layout/jku.pdf used on input line 226.
 (pdftex.def)             Requested size: 43.653pt x 21.0pt.
  [12
 
@@ -2036,19 +2036,9 @@ Package pdftex.def Info: ./Layout/jku.pdf used on input line 165.
 File: ./Layout/jku.pdf Graphic file (type pdf)
 
 <use ./Layout/jku.pdf>
-Package pdftex.def Info: ./Layout/jku.pdf used on input line 178.
+Package pdftex.def Info: ./Layout/jku.pdf used on input line 240.
 (pdftex.def)             Requested size: 43.653pt x 21.0pt.
  [13
-
-]
-Overfull \vbox (4.98979pt too high) detected at line 203
- []
-
-File: ./Layout/jku.pdf Graphic file (type pdf)
-<use ./Layout/jku.pdf>
-Package pdftex.def Info: ./Layout/jku.pdf used on input line 203.
-(pdftex.def)             Requested size: 43.653pt x 21.0pt.
- [14
 
 ]) (./Inhalt/SystemModelWorkflow.tex
 (./Praesentation.toc)
@@ -2056,7 +2046,7 @@ File: ./Layout/jku.pdf Graphic file (type pdf)
  <use ./Layout/jku.pdf>
 Package pdftex.def Info: ./Layout/jku.pdf used on input line 1.
 (pdftex.def)             Requested size: 43.653pt x 21.0pt.
- [15
+ [14
 
 ]
 File: ./Layout/jku.pdf Graphic file (type pdf)
@@ -2064,9 +2054,9 @@ File: ./Layout/jku.pdf Graphic file (type pdf)
 Package pdftex.def Info: ./Layout/jku.pdf used on input line 14.
 (pdftex.def)             Requested size: 43.653pt x 21.0pt.
 
-[16
+[15
 
-] <Bilder/elements.PNG, id=493, 394.17262pt x 214.09987pt>
+] <Bilder/elements.PNG, id=450, 394.17262pt x 214.09987pt>
 File: Bilder/elements.PNG Graphic file (type png)
 
 <use Bilder/elements.PNG>
@@ -2081,10 +2071,10 @@ File: ./Layout/jku.pdf Graphic file (type pdf)
 <use ./Layout/jku.pdf>
 Package pdftex.def Info: ./Layout/jku.pdf used on input line 27.
 (pdftex.def)             Requested size: 43.653pt x 21.0pt.
- [17
+ [16
 
  <./Bilder/elements.PNG>]
-<Bilder/tool.PNG, id=524, 635.37375pt x 199.04362pt>
+<Bilder/tool.PNG, id=481, 635.37375pt x 199.04362pt>
 File: Bilder/tool.PNG Graphic file (type png)
  <use Bilder/tool.PNG>
 Package pdftex.def Info: Bilder/tool.PNG used on input line 36.
@@ -2103,10 +2093,10 @@ File: ./Layout/jku.pdf Graphic file (type pdf)
 <use ./Layout/jku.pdf>
 Package pdftex.def Info: ./Layout/jku.pdf used on input line 40.
 (pdftex.def)             Requested size: 43.653pt x 21.0pt.
- [18
+ [17
 
  <./Bilder/tool.PNG>]
-<Bilder/unificationProblem.PNG, id=552, 529.67888pt x 214.70212pt>
+<Bilder/unificationProblem.PNG, id=508, 529.67888pt x 214.70212pt>
 File: Bilder/unificationProblem.PNG Graphic file (type png)
 
 <use Bilder/unificationProblem.PNG>
@@ -2126,7 +2116,7 @@ File: ./Layout/jku.pdf Graphic file (type pdf)
 <use ./Layout/jku.pdf>
 Package pdftex.def Info: ./Layout/jku.pdf used on input line 53.
 (pdftex.def)             Requested size: 43.653pt x 21.0pt.
- [19
+ [18
 
  <./Bilder/unificationProblem.PNG>]
 File: ./Layout/jku.pdf Graphic file (type pdf)
@@ -2134,7 +2124,7 @@ File: ./Layout/jku.pdf Graphic file (type pdf)
 <use ./Layout/jku.pdf>
 Package pdftex.def Info: ./Layout/jku.pdf used on input line 62.
 (pdftex.def)             Requested size: 43.653pt x 21.0pt.
- [20
+ [19
 
 ] (./Praesentation.toc)
 File: ./Layout/jku.pdf Graphic file (type pdf)
@@ -2142,9 +2132,9 @@ File: ./Layout/jku.pdf Graphic file (type pdf)
 Package pdftex.def Info: ./Layout/jku.pdf used on input line 65.
 (pdftex.def)             Requested size: 43.653pt x 21.0pt.
 
-[21
+[20
 
-] <Bilder/WorkFlow.PNG, id=637, 492.84125pt x 372.39125pt>
+] <Bilder/WorkFlow.PNG, id=590, 492.84125pt x 372.39125pt>
 File: Bilder/WorkFlow.PNG Graphic file (type png)
 
 <use Bilder/WorkFlow.PNG>
@@ -2154,7 +2144,7 @@ File: ./Layout/jku.pdf Graphic file (type pdf)
  <use ./Layout/jku.pdf>
 Package pdftex.def Info: ./Layout/jku.pdf used on input line 77.
 (pdftex.def)             Requested size: 43.653pt x 21.0pt.
- [22
+ [21
 
  <./Bilder/WorkFlow.PNG>])
 \tf@nav=\write7
@@ -2180,10 +2170,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 35566 strings out of 493013
- 678406 string characters out of 6136993
- 752892 words of memory out of 5000000
- 38350 multiletter control sequences out of 15000+600000
+ 35562 strings out of 493013
+ 678371 string characters out of 6136993
+ 751891 words of memory out of 5000000
+ 38348 multiletter control sequences out of 15000+600000
  66055 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,19n,64p,10356b,799s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2198,10 +2188,10 @@ ve/2016/texmf-dist/fonts/type1/public/lm/lmsso10.pfb><d:/texlive/2016/texmf-dis
 t/fonts/type1/public/lm/lmsso8.pfb><d:/texlive/2016/texmf-dist/fonts/type1/publ
 ic/lm/lmsy10.pfb><d:/texlive/2016/texmf-dist/fonts/type1/public/lm/lmsy8.pfb><d
 :/texlive/2016/texmf-dist/fonts/type1/public/lm/lmtt12.pfb>
-Output written on Praesentation.pdf (22 pages, 277502 bytes).
+Output written on Praesentation.pdf (21 pages, 272716 bytes).
 PDF statistics:
- 721 PDF objects out of 1000 (max. 8388607)
- 642 compressed objects within 7 object streams
- 53 named destinations out of 1000 (max. 500000)
+ 672 PDF objects out of 1000 (max. 8388607)
+ 596 compressed objects within 6 object streams
+ 51 named destinations out of 1000 (max. 500000)
  96 words of extra memory for PDF output out of 10000 (max. 10000000)
 
