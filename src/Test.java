@@ -35,7 +35,7 @@ public class Test {
 		String test3 = "p(x,z) =? q(f(b),f(x))";
 		UnificationProblem uni3 = InputParser.parse(test3).get(0);
 		
-		String test4 = "p(x,y,x) =? q(f(a),f(b),y)";
+		String test4 = "p(a,x,a) =? q(y,b,x)";
 		UnificationProblem uni4 = InputParser.parse(test4).get(0);
 
 		System.out.println(uni3.getLeft().toFullString());
@@ -105,11 +105,11 @@ public class Test {
 				Matrix matr4 = new Matrix();
 				//matr4.addRelation("a", "b", 0.7f);
 				matr4.addRelation("b", "c", 0.7f);
-				matr4.addRelation("c", "d", 0.7f);
+				//matr4.addRelation("c", "d", 0.7f);
 				//matr4.addRelation("a", "b1", 0.7f);
 				//matr4.addRelation("b1", "c1", 0.7f);
 				//matr4.addRelation("c1", "d", 0.7f);
-				matr4.addRelation("f", "g", 0.7f);
+				//matr4.addRelation("f", "g", 0.7f);
 				matr4.addRelation("p", "q", 0.7f);
 				matr4.addRelation("f", "q", 0.2f);
 

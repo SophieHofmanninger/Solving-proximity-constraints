@@ -487,6 +487,7 @@ public final class Algorithms {
 				}
 				else {
 					error = true;
+					steps.append("(Fail2), ");
 					break;
 				}
 			}
