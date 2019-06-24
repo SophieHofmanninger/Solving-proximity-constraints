@@ -223,7 +223,7 @@ class AlgorithmsJUnit2 {
 	 */
 	private boolean hasPsi(Problem p, Map<String,ArrayList<Element>> phi) {
 
-		Map<String,ArrayList<Element>> curPsi = p.getPsi();
+		Map<String,ArrayList<Element>> curPsi = p.getPhi();
 		boolean ok = true;
 		boolean eok = false;
 

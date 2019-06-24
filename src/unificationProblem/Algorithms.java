@@ -414,7 +414,7 @@ public final class Algorithms {
 			// NN1 and NN2
 			if((t.getFirst().isName()) && (t.getSecond().isName())) {
 				branchStepsTemp = new StringBuffer();
-				if(prob.getPsi().containsKey(t.getFirst().getName())) {
+				if(prob.getPhi().containsKey(t.getFirst().getName())) {
 					steps.append("(NN1), ");
 					if(nn1(t.getFirst(),t.getSecond(),prob, proxR, lambda, steps, branchStepsTemp)) {
 						constraintProblem.remove(0);
@@ -468,7 +468,7 @@ public final class Algorithms {
 			//NFS
 			if(t.getFirst().isName() && t.getSecond().isName() ==false) {
 				steps.append("(NFS), ");
-				if(nfs(t.getFirst(),(Function)t.getSecond(),prob.getPsi(),proxR,lambda)) {
+				if(nfs(t.getFirst(),(Function)t.getSecond(),prob.getPhi(),proxR,lambda)) {
 					constraintProblem.remove(0);
 					continue;
 				}
@@ -482,7 +482,7 @@ public final class Algorithms {
 			//FSN
 			if(t.getFirst().isName()==false && t.getSecond().isName()) {
 				steps.append("(FSN), ");
-				if(nfs(t.getSecond(),(Function)t.getFirst(),prob.getPsi(),proxR,lambda)) {
+				if(nfs(t.getSecond(),(Function)t.getFirst(),prob.getPhi(),proxR,lambda)) {
 					constraintProblem.remove(0);
 					continue;
 				}
@@ -507,7 +507,7 @@ public final class Algorithms {
 				prob.setP(prob.getBranch().getP());
 				prob.setC(prob.getBranch().getC());
 				prob.setSigma(prob.getBranch().getSigma());
-				prob.setPsi(prob.getBranch().getPsi());
+				prob.setPhi(prob.getBranch().getPhi());
 				prob.setBranch(prob.getBranch().getBranch());
 				return true;
 			}
@@ -596,12 +596,12 @@ public final class Algorithms {
 	 */
 	private static boolean nn1(Element n1, Element n2, Problem cur, Matrix r, float lambda, StringBuffer steps, StringBuffer branchSteps) {
 
-		if(cur.getPsi().containsKey(n1.getName())) { //psi.containsKey(n1.getName()) is same a isMemberPsi
-			if(cur.getPsi().get(n1.getName()).size() > 1) {
+		if(cur.getPhi().containsKey(n1.getName())) { //psi.containsKey(n1.getName()) is same a isMemberPsi
+			if(cur.getPhi().get(n1.getName()).size() > 1) {
 				//branchen
 
 				List<Problem> branches = new ArrayList<Problem>();
-				int cBranches = cur.getPsi().get(n1.getName()).size();
+				int cBranches = cur.getPhi().get(n1.getName()).size();
 				int nextBranch = NEXT_BRANCH;
 				int lastBranch = NEXT_BRANCH + cBranches-1;
 				boolean success = false;
@@ -616,9 +616,9 @@ public final class Algorithms {
 					tmp.setC(cur.getC().clone());
 					tmp.setP(cur.getP());
 					tmp.setSigma(cur.getSigma());
-					tmp.setPsi(clonePsi(cur.getPsi()));
-					tmp.getPsi().put(n1.getName(), new ArrayList<Element>());
-					tmp.getPsi().get(n1.getName()).add(cur.getPsi().get(n1.getName()).get(i));
+					tmp.setPhi(clonePsi(cur.getPhi()));
+					tmp.getPhi().put(n1.getName(), new ArrayList<Element>());
+					tmp.getPhi().get(n1.getName()).add(cur.getPhi().get(n1.getName()).get(i));
 					StringBuffer tmpB = new StringBuffer();
 
 					if(constraintSimp(tmp,r,lambda,tmpB,i+nextBranch)){
@@ -632,7 +632,7 @@ public final class Algorithms {
 				for(Problem p : branches) {
 					if(!cur.getC().isEmpty()) {
 						cur.setC(p.getC());
-						cur.setPsi(p.getPsi());
+						cur.setPhi(p.getPhi());
 						if(p.getBranch()!=null) {
 							appendBranch(cur,p.getBranch());
 						}
@@ -645,7 +645,7 @@ public final class Algorithms {
 				return success;
 			}
 			else {
-				if(nfs(n2,new Function(cur.getPsi().get(n1.getName()).get(0).getName()),cur.getPsi(),r,lambda)) {
+				if(nfs(n2,new Function(cur.getPhi().get(n1.getName()).get(0).getName()),cur.getPhi(),r,lambda)) {
 					return true;
 				}
 				else {

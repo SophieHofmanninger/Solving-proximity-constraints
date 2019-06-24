@@ -307,7 +307,7 @@ public class UnificationProblem {
 					p=p.getBranch();
 				}
 				ret += "psi"+i+" = [";
-				for(Map.Entry<String, ArrayList<Element>> m : p.getPsi().entrySet()) {
+				for(Map.Entry<String, ArrayList<Element>> m : p.getPhi().entrySet()) {
 					ret += m.getKey() + " -> {";
 					for(Element e : m.getValue()) {
 						ret += e.getName() + ",";

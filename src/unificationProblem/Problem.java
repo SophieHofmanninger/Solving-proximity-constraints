@@ -30,14 +30,14 @@ public class Problem {
 	/**
 	 * @return the phi
 	 */
-	public Map<String, ArrayList<Element>> getPsi() {
+	public Map<String, ArrayList<Element>> getPhi() {
 		return phi;
 	}
 
 	/**
 	 * @param phi the phi to set
 	 */
-	public void setPsi(Map<String, ArrayList<Element>> phi) {
+	public void setPhi(Map<String, ArrayList<Element>> phi) {
 		this.phi = phi;
 	}
 
@@ -159,7 +159,7 @@ public class Problem {
 		probcopy.setP(pcopy);
 		probcopy.setC(ccopy);
 		probcopy.setSigma(sigmacopy);
-		probcopy.setPsi(phicopy);
+		probcopy.setPhi(phicopy);
 		probcopy.setBranch(branchcopy);
 
 		return probcopy;
