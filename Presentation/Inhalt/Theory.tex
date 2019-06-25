@@ -52,7 +52,7 @@
 %---------------------------------------------------------------
 		
 	\begin{frame}[fragile=singleslide]
-	\frametitle{Pre-Unification rules}
+	\frametitle{pre-Unification rules}
 	\textcolor[rgb]{0.55,0,0}{(Tri)} \(\{x \simeq^? x\} \uplus P;C;\sigma \Rightarrow  P; C;\sigma\) \\
 		\vspace{0.3cm}
 		\textcolor[rgb]{0.55,0,0}{(Dec)} \(\{F(\overline{s_n}) \simeq^? G(\overline{t_n})\} \uplus  P;C;\sigma \Rightarrow \{\overline{s_n \simeq^?t_n}\}\cup P;\{F\approx^? G\}\cup  C;\sigma\) \\
@@ -94,8 +94,8 @@
 %---------------------------------------------------------------
 
 	\begin{frame}[fragile=singleslide]
-	\frametitle{Simple example - both algorithms work}
-	\begin{exampleblock}{Example}
+	\frametitle{Simple example about how both algorithms work}
+	\begin{exampleblock}{Example 3}
 	Let $p,q$ and $f$ be functions, $b,c,c'$ constants and $x,z$ variables. Then the following unification problem has a solution:\\
 	\[p(x,z) =^? q(f(b),f(x)) \quad \text{with}\quad R=\{(b,c'),(c',c),(p,q)\}\]\\
 	\end{exampleblock}
@@ -109,7 +109,7 @@
 	\begin{exampleblock}{Example - both success}
 	\(p(x,z) =^? q(f(b),f(x))\) and \(R=\{(b,c'),(c',c),(p,q)\}\)\\
 	\end{exampleblock}
-	\textbf{Pre Unification} \\
+	\textbf{pre-Unification} \\
 	
 	\(P=\{p \simeq^? q\}\)\\
 	\(C=\{\}\)\\
@@ -190,9 +190,9 @@
 		%---------------------------------------------------------------
 		
 	\begin{frame}[fragile=singleslide]
-	\frametitle{Simple example - Pre Unification fails}
-	\begin{exampleblock}{Example}
-	Examples where the Pre Unification algorithm fails:
+	\frametitle{Simple example - pre-Unification fails}
+	\begin{exampleblock}{Example [Fail pU] }
+	Examples where the pre-Unification algorithm fails:
 		\begin{gather}
 		\begin{align}
 				\text{\textcolor[rgb]{0,0.58,0}{(Occ)}}\quad & p(x) =^? q(f(x))\\
@@ -204,16 +204,16 @@
 		\end{frame}
 	
 	\begin{frame}[fragile=singleslide]
-	\frametitle{Simple example - Constrains Simplification fails}		
-	\begin{exampleblock}{Example}
-	Let $p$ and $f$ be functions, $a,b$ constants and $x,y$ variables. Then for the following unification problem only the Pre Unification algorithm is successful:
+	\frametitle{Simple example - Constraint Simplification fails}		
+	\begin{exampleblock}{Example [Fail CS]}
+	Let $p$ and $f$ be functions, $a,b$ constants and $x,y$ variables. Then for the following unification problem only the pre-Unification algorithm is successful:
 	\[p(a,x,a) =^? q(y,b,x) \quad \text{with} \quad R=\{(b,c),(p,q)\}\]\\
 	\end{exampleblock}
 	\end{frame}
 	
 	\begin{frame}[fragile=singleslide]
 	\frametitle{Simple example cont.}
-	\textbf{Pre Unification}\\
+	\textbf{pre-Unification}\\
 	\ldots \\
 	\(C=\{p \approx^? q, N_1 \approx^? a, N_2 \approx^? b, a \approx^? N_2\}\)\\
 	
