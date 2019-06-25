@@ -19,7 +19,7 @@ import tool.Matrix;
  * @author Jan-Michael Holzinger &amp; Sophie Hofmanninger
  * @version 1.0
  */
-class InputParserJUnit {
+class InputParserJUnitTests {
 
 	String s;
 	String t;

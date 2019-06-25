@@ -21,7 +21,7 @@ import tool.Tuple;
  * @author Sophie Hofmanninger
  * @version 1.0
  */
-class AlgorithmsJUnit2 {
+class AlgorithmsJUnit2Tests {
 
 	UnificationProblem unif;
 

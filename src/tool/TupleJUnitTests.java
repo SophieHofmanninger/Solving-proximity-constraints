@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
  * @version 1.0
 
  */
-class TupleJUnit {
+class TupleJUnitTests {
 
 	/**
 	 * @throws java.lang.Exception ignored

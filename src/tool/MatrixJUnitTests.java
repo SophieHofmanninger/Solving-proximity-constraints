@@ -20,7 +20,7 @@ import elements.Function;
  * @author Sophie Hofmanninger
  * @version 2.0
  */
-class MatrixJUnit {
+class MatrixJUnitTests {
 	
 	 Matrix m;
 	 

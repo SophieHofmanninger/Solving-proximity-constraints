@@ -18,7 +18,7 @@ import elements.Variable;
  * @author Jan-Michael Holzinger &amp; Sophie Hofmanninger
  * @version 1.0
  */
-class UnificationProblemJUnit {
+class UnificationProblemJUnitTests {
 
 	UnificationProblem unif;
 	UnificationProblem unifClone;

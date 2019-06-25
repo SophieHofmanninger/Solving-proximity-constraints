@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
  * @author Jan-Michael Holzinger
  * @version 1.0
  */
-class AlgorithmsJUnit1 {
+class AlgorithmsJUnit1Tests {
 
 	UnificationProblem unif;
 

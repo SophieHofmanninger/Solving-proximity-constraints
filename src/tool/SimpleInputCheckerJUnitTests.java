@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
  * @author Jan-Michael Holzinger &amp; Sophie Hofmanninger
  * @version 1.0
  */
-class SimpleInputCheckerJUnit {
+class SimpleInputCheckerJUnitTests {
 	InputChecker inpC;
 	
 
