@@ -38,60 +38,41 @@ import java.awt.event.ActionEvent;
 public class SPC_GUI {
 
 	private static SPC_GUI Instance = new SPC_GUI();
+	
 	private JFrame frmSolvingProximityConstraints;
+	
+	private JPanel paneltop;
+	private JPanel panelConstraints;
+	private JPanel panelCenter;
+	private JPanel panelStart;
+	private JPanel panelResult;
+	private JPanel panelEnd;
+	private JPanel panelSouth;
+	
+	private JLabel lblResults;
+	private JLabel lblresultString;
+	private JLabel lblSteps;
+	private JLabel lblSteps1;
+	private JLabel lblSteps2;
+	private JLabel lblConstraints;
+	private JLabel lblLambda;
+	
 	private JTextField txtlhs;
 	private JTextField txtrhs;
-	private Component verticalStrut;
-	private Component horizontalGlue;
-	private Component horizontalGlue_1;
+	private JTextField txtL;
+	
 	private JButton btnRead;
-	private JPanel paneltop;
-	private Component horizontalStrut;
-	private Component horizontalStrut_1;
-	private Component verticalStrut_1;
-	private Component verticalStrut_2;
-	private Component verticalStrut_3;
-	private JPanel panelConstraints;
+	private JButton btnUnify;
 
 	private String s="";
 	private String t="";
 	private float lambda=0;
 	private ArrayList<JLabel> lol= new ArrayList<JLabel>();
 	private ArrayList<JTextField> lot= new ArrayList<JTextField>();
-	private JPanel panelCenter;
-	private JPanel panelStart;
-	private JLabel lblConstraints;
-	private Component horizontalStrut_2;
-	private Component horizontalStrut_3;
-	private JPanel panelEnd;
-	private JLabel lblLambda;
-	private JTextField txtL;
-	private Component horizontalStrut_4;
-	private JButton btnUnify;
-	private Component horizontalStrut_5;
-	private Component horizontalStrut_6;
-	private Component horizontalStrut_7;
-	private Component horizontalStrut_8;
-	private Component horizontalStrut_9;
-	private Component horizontalGlue_2;
-	private Component horizontalStrut_10;
-	private Component horizontalStrut_11;
-	private Component horizontalStrut_12;
-
-	UnificationProblem sTP;
-
-	UnificationProblem intermediateResult;
-	private JPanel panelSouth;
-	private Component horizontalStrut_13;
-	private Component horizontalStrut_14;
-	private JPanel panelResult;
-	private Component verticalStrut_4;
-	private Component verticalStrut_5;
-	private JLabel lblResults;
-	private JLabel lblresultString;
-	private JLabel lblSteps;
-	private JLabel lblSteps1;
-	private JLabel lblSteps2;
+	
+	private UnificationProblem sTP;
+	private UnificationProblem intermediateResult;
+	
 
 
 	/**
@@ -139,6 +120,31 @@ public class SPC_GUI {
 		frmSolvingProximityConstraints.getContentPane().add(paneltop, BorderLayout.NORTH);
 		paneltop.setLayout(new BorderLayout(0, 0));
 
+		Component verticalStrut;
+		Component horizontalGlue;
+		Component horizontalGlue_1;
+		Component horizontalStrut;
+		Component horizontalStrut_1;
+		Component verticalStrut_1;
+		Component verticalStrut_2;
+		Component verticalStrut_3;
+		Component horizontalStrut_2;
+		Component horizontalStrut_3;
+		Component horizontalStrut_4;
+		Component horizontalStrut_5;
+		Component horizontalStrut_6;
+		Component horizontalStrut_7;
+		Component horizontalStrut_8;
+		Component horizontalStrut_9;
+		Component horizontalGlue_2;
+		Component horizontalStrut_10;
+		Component horizontalStrut_11;
+		Component horizontalStrut_12;
+		Component horizontalStrut_13;
+		Component horizontalStrut_14;
+		Component verticalStrut_4;
+		Component verticalStrut_5;
+		
 		JPanel panelEq = new JPanel();
 		paneltop.add(panelEq);
 		panelEq.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
