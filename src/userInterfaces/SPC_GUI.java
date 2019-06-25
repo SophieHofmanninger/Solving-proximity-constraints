@@ -388,12 +388,15 @@ public class SPC_GUI {
 						txtL.setVisible(false);
 						btnUnify.setVisible(false);
 						btnUnify.setEnabled(false);
+						lblSteps1.setText(sb1.toString());
 					}else {
 						intermediateResult=sTP.clone();
 						result = sTP.solveNext(sb2);
 						if(!result) {
 							JOptionPane.showMessageDialog(frmSolvingProximityConstraints, "Constraint simplification failed, there is no solution.",
 									"Information", JOptionPane.INFORMATION_MESSAGE);
+						lblSteps1.setText(sb1.toString());
+						lblSteps2.setText(sb2.toString());
 						}else {
 						lblresultString.setText(sTP.resultString());
 						lblSteps1.setText(sb1.toString());

@@ -107,7 +107,7 @@ public final class Algorithms {
 				// Clash
 				Tuple<Function> fun = new Tuple<Function>(f,s);
 				if(clash(fun)) {
-					steps.append("(Cla), ");
+					steps.append("(Cla)");
 					return false;
 				}
 
@@ -136,7 +136,7 @@ public final class Algorithms {
 
 				// Occur Check 1
 				if(occurs1(t)) {
-					steps.append("(Occ1), ");
+					steps.append("(Occ1)");
 					return false;
 				}
 
@@ -147,7 +147,7 @@ public final class Algorithms {
 				Variable x = (Variable) t.getFirst();
 				for(Variable xi: t.getSecond().getVars()) {
 					if(occurs2(x,xi,p)) {
-						steps.append("(Occ2), ");
+						steps.append("(Occ2)");
 						return false;
 					}
 				}

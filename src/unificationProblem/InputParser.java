@@ -84,7 +84,7 @@ public class InputParser {
 			}
 			if(c=='(') {
 				closing = getIndexOfCorrespondingBracket(input,pos);
-				elem = new Function(name);
+				elem = new Function(name.trim());
 				boolean alreadyIn = false;
 				for(int i =0; i< listOfFunctions.size();i++) {
 					if(elem.equals(listOfFunctions.get(i))) alreadyIn=true;
@@ -122,17 +122,17 @@ public class InputParser {
 				else {
 					inName = true;
 					name += c;
-					elem = new Function(name, true);
+					elem = new Function(name.trim(), true);
 				}
 			}
 			else {
-				elem.setName(name);
+				elem.setName(name.trim());
 				return elem;
 			}
 		}
 		if(name!="") {
 			
-			elem.setName(name);
+			elem.setName(name.trim());
 			if(elem instanceof Function && ((Function) elem).arity()==0) {
 				boolean alreadyIn = false;
 				for(int i =0; i< listOfFunctions.size();i++) {
