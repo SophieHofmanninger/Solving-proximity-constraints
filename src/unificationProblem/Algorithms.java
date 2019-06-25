@@ -16,7 +16,7 @@ import tool.SPCSet;
 import tool.Tuple;
 
 /**
- * This class is stores the needed Algorithms as static functions.
+ * This class stores the needed Algorithms as static functions.
  * @author Jan-Michael Holzinger &amp; Sophie Hofmanninger
  * @version 1.0
  *

@@ -16,9 +16,9 @@ import unificationProblem.Algorithms;
 
 /**
  *
- * The class Unifier handles the left and right part of the unification problem. 
- * This means that the unification problem will be splitted in a left and right hand side.
- * For example: p(x,y,x) =? q(f(a),g(b),y) has the left= p(x,y,x) , right= q(f(a),g(b),y)
+ * The class UnificationProblem provides the core features of the project.
+ * For example it handles the openCases and solves the unification problem
+ * by using the pre- Unification algorithm and Constraint simplification algorithm.
  *
  * @author  Jan-Michael Holzinger &amp; Sophie Hofmanninger
  * @version 1.1

@@ -77,6 +77,7 @@ public class SPC_GUI {
 
 	/**
 	 * Launch the application.
+	 * @param args Nothing.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
