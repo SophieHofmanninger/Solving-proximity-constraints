@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.5.14)  25 JUN 2019 07:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.5.14)  25 JUN 2019 17:22
 entering extended mode
 **./Praesentation.tex
 (Praesentation.tex
@@ -1284,17 +1284,7 @@ File: tikzlibrarytopaths.code.tex 2019/05/09 v3.1.3 (3.1.3)
 ("C:\Program Files\MiKTeX 2.9\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryfit.code.tex"
 File: tikzlibraryfit.code.tex 2019/05/09 v3.1.3 (3.1.3)
 ) (header.tex
-(beamerouterthemejku.sty) (beamercolorthemejku.sty) (beamerinnerthemejku.sty)) (Praesentation.aux
-
-LaTeX Warning: Label `fig:elements' multiply defined.
-
-
-LaTeX Warning: Label `fig:elements' multiply defined.
-
-
-LaTeX Warning: Label `fig:elements' multiply defined.
-
-)
+(beamerouterthemejku.sty) (beamercolorthemejku.sty) (beamerinnerthemejku.sty)) (Praesentation.aux)
 \openout1 = `Praesentation.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 56.
@@ -1315,7 +1305,8 @@ LaTeX Font Info:    Checking defaults for LSB/skaknew/m/n on input line 56.
 LaTeX Font Info:    ... okay on input line 56.
 LaTeX Font Info:    Checking defaults for LSF/skaknew/m/n on input line 56.
 LaTeX Font Info:    Try loading font information for LSF+skaknew on input line 56.
- ("C:\Program Files\MiKTeX 2.9\tex/latex/chessfss\lsfskaknew.fd"
+
+("C:\Program Files\MiKTeX 2.9\tex/latex/chessfss\lsfskaknew.fd"
 File: lsfskaknew.fd 2006/03/31 v1.0 Chess font definitions
 )
 LaTeX Font Info:    ... okay on input line 56.
@@ -1486,7 +1477,7 @@ Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 )
 Overfull \vbox (9.0pt too high) has occurred while \output is active []
 
-<./Layout/jku.pdf, id=37, 475.7775pt x 228.855pt>
+<./Layout/jku.pdf, id=41, 475.7775pt x 228.855pt>
 File: ./Layout/jku.pdf Graphic file (type pdf)
 <use ./Layout/jku.pdf>
 Package pdftex.def Info: ./Layout/jku.pdf  used on input line 56.
@@ -1651,7 +1642,7 @@ Package pdftex.def Info: ./Layout/jku.pdf  used on input line 14.
  [15
 
 ]
-<Bilder/elements.PNG, id=501, 394.17262pt x 214.09987pt>
+<Bilder/elements.PNG, id=586, 394.17262pt x 214.09987pt>
 File: Bilder/elements.PNG Graphic file (type png)
 <use Bilder/elements.PNG>
 Package pdftex.def Info: Bilder/elements.PNG  used on input line 23.
@@ -1668,17 +1659,12 @@ Package pdftex.def Info: ./Layout/jku.pdf  used on input line 27.
  [16
 
  <./Bilder/elements.PNG>]
-<Bilder/tool.PNG, id=534, 635.37375pt x 199.04362pt>
+<Bilder/tool.PNG, id=624, 635.37375pt x 199.04362pt>
 File: Bilder/tool.PNG Graphic file (type png)
 <use Bilder/tool.PNG>
 Package pdftex.def Info: Bilder/tool.PNG  used on input line 36.
 (pdftex.def)             Requested size: 312.9803pt x 98.05157pt.
-pdfTeX warning (ext4): destination with the same identifier (name{fig:elements}) has been already used, duplicate ignore
-d
-<to be read again> 
-                   \relax 
-l.37 		\label{fig:elements}
-                           
+
 Overfull \hbox (5.69043pt too wide) in paragraph at lines 36--38
  [] 
  []
@@ -1690,17 +1676,12 @@ Package pdftex.def Info: ./Layout/jku.pdf  used on input line 40.
 [17
 
  <./Bilder/tool.PNG>]
-<Bilder/unificationProblem.PNG, id=564, 529.67888pt x 214.70212pt>
+<Bilder/unificationProblem.PNG, id=660, 529.67888pt x 214.70212pt>
 File: Bilder/unificationProblem.PNG Graphic file (type png)
 <use Bilder/unificationProblem.PNG>
 Package pdftex.def Info: Bilder/unificationProblem.PNG  used on input line 49.
 (pdftex.def)             Requested size: 312.9803pt x 126.86969pt.
-pdfTeX warning (ext4): destination with the same identifier (name{fig:elements}) has been already used, duplicate ignore
-d
-<to be read again> 
-                   \relax 
-l.50 		\label{fig:elements}
-                           
+
 Overfull \hbox (5.69043pt too wide) in paragraph at lines 49--51
  [] 
  []
@@ -1712,17 +1693,12 @@ Package pdftex.def Info: ./Layout/jku.pdf  used on input line 53.
 [18
 
  <./Bilder/unificationProblem.PNG>]
-<Bilder/userInterfaces.PNG, id=594, 520.344pt x 83.41162pt>
+<Bilder/userInterfaces.PNG, id=696, 520.344pt x 83.41162pt>
 File: Bilder/userInterfaces.PNG Graphic file (type png)
 <use Bilder/userInterfaces.PNG>
 Package pdftex.def Info: Bilder/userInterfaces.PNG  used on input line 62.
 (pdftex.def)             Requested size: 312.9803pt x 50.17336pt.
-pdfTeX warning (ext4): destination with the same identifier (name{fig:elements}) has been already used, duplicate ignore
-d
-<to be read again> 
-                   \relax 
-l.63 		\label{fig:elements}
-                           
+
 Overfull \hbox (5.69043pt too wide) in paragraph at lines 62--64
  [] 
  []
@@ -1741,7 +1717,7 @@ Package pdftex.def Info: ./Layout/jku.pdf  used on input line 69.
  [20
 
 ]
-<Bilder/WorkFlow.PNG, id=656, 492.84125pt x 371.3875pt>
+<Bilder/WorkFlow.PNG, id=770, 492.84125pt x 371.3875pt>
 File: Bilder/WorkFlow.PNG Graphic file (type png)
 <use Bilder/WorkFlow.PNG>
 Package pdftex.def Info: Bilder/WorkFlow.PNG  used on input line 77.
@@ -1752,7 +1728,36 @@ Package pdftex.def Info: ./Layout/jku.pdf  used on input line 81.
 (pdftex.def)             Requested size: 43.653pt x 21.0pt.
  [21
 
- <./Bilder/WorkFlow.PNG>])
+ <./Bilder/WorkFlow.PNG>]) (Inhalt/Tools.tex
+(Praesentation.toc)
+File: ./Layout/jku.pdf Graphic file (type pdf)
+<use ./Layout/jku.pdf>
+Package pdftex.def Info: ./Layout/jku.pdf  used on input line 1.
+(pdftex.def)             Requested size: 43.653pt x 21.0pt.
+ [22
+
+]
+File: ./Layout/jku.pdf Graphic file (type pdf)
+<use ./Layout/jku.pdf>
+Package pdftex.def Info: ./Layout/jku.pdf  used on input line 6.
+(pdftex.def)             Requested size: 43.653pt x 21.0pt.
+ [23
+
+]
+File: ./Layout/jku.pdf Graphic file (type pdf)
+<use ./Layout/jku.pdf>
+Package pdftex.def Info: ./Layout/jku.pdf  used on input line 13.
+(pdftex.def)             Requested size: 43.653pt x 21.0pt.
+ [24
+
+]
+File: ./Layout/jku.pdf Graphic file (type pdf)
+<use ./Layout/jku.pdf>
+Package pdftex.def Info: ./Layout/jku.pdf  used on input line 19.
+(pdftex.def)             Requested size: 43.653pt x 21.0pt.
+ [25
+
+])
 \tf@nav=\write7
 \openout7 = `Praesentation.nav'.
 
@@ -1768,17 +1773,13 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 70.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 70.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 70.
 Package rerunfilecheck Info: File `Praesentation.out' has not changed.
-(rerunfilecheck)             Checksum: EDE5938B6501923E23FF022E26DEFD03;292.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
+(rerunfilecheck)             Checksum: 985B28E847B62496922E8B9A766EDFA8;373.
  ) 
 Here is how much of TeX's memory you used:
- 37219 strings out of 492895
- 707115 string characters out of 3133485
- 786194 words of memory out of 3000000
- 40397 multiletter control sequences out of 15000+200000
+ 37251 strings out of 492895
+ 707508 string characters out of 3133485
+ 788231 words of memory out of 3000000
+ 40412 multiletter control sequences out of 15000+200000
  594753 words of font info for 68 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,22n,70p,782b,816s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1790,9 +1791,9 @@ mss8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmssbx10.pfb><C:/Pro
 /lm/lmsso10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmsso8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
 ublic/lm/lmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
 1/public/lm/lmtt12.pfb>
-Output written on Praesentation.pdf (21 pages, 382812 bytes).
+Output written on Praesentation.pdf (25 pages, 435579 bytes).
 PDF statistics:
- 739 PDF objects out of 1000 (max. 8388607)
- 51 named destinations out of 1000 (max. 500000)
- 125 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 997 PDF objects out of 1000 (max. 8388607)
+ 63 named destinations out of 1000 (max. 500000)
+ 133 words of extra memory for PDF output out of 10000 (max. 10000000)
 
