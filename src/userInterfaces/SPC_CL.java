@@ -38,7 +38,7 @@ public class SPC_CL {
 	 */
 
 	public static void main(String[] args) {
-
+		
 		// equation, file, lambda, silentOn
 		String equation=null;
 		File f=null;
@@ -145,7 +145,7 @@ public class SPC_CL {
 				System.out.println
 				("Error getting proximity relations from file");
 			}
-			if(sTP.checkOpenCases()) {
+			if(!(sTP.checkOpenCases())) {
 				System.out.println
 				("File information incomplete - Missing: "+sTP.getNumberOfOpenCases());
 				rem=true;

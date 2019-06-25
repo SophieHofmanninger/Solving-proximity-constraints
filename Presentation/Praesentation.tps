@@ -10,14 +10,14 @@ MinPos.y=-1
 MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
-NormalPos.top=32
-NormalPos.right=709
-NormalPos.bottom=602
+NormalPos.top=36
+NormalPos.right=1701
+NormalPos.bottom=441
 Class=LaTeXView
 Document=Inhalt\Theory.tex
 
 [Frame0_View0,0]
-TopLine=183
+TopLine=181
 Cursor=5565
 
 [Frame1]
@@ -28,14 +28,14 @@ MinPos.y=-1
 MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
-NormalPos.top=32
-NormalPos.right=709
-NormalPos.bottom=602
+NormalPos.top=36
+NormalPos.right=1701
+NormalPos.bottom=441
 Class=LaTeXView
 Document=Inhalt\Tools.tex
 
 [Frame1_View0,0]
-TopLine=90
+TopLine=70
 Cursor=2935
 
 [Frame2]
@@ -46,14 +46,14 @@ MinPos.y=-1
 MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
-NormalPos.top=32
-NormalPos.right=709
-NormalPos.bottom=602
+NormalPos.top=36
+NormalPos.right=1701
+NormalPos.bottom=441
 Class=LaTeXView
 Document=Inhalt\SystemModelWorkflow.tex
 
 [Frame2_View0,0]
-TopLine=81
+TopLine=70
 Cursor=1852
 
 [Frame3]
@@ -64,9 +64,9 @@ MinPos.y=-1
 MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
-NormalPos.top=32
-NormalPos.right=709
-NormalPos.bottom=602
+NormalPos.top=36
+NormalPos.right=1701
+NormalPos.bottom=441
 Class=LaTeXView
 Document=Praesentation.tex
 
@@ -82,9 +82,9 @@ MinPos.y=-1
 MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
-NormalPos.top=32
-NormalPos.right=709
-NormalPos.bottom=602
+NormalPos.top=36
+NormalPos.right=1701
+NormalPos.bottom=441
 Class=LaTeXView
 Document=header.tex
 
