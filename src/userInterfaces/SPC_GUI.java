@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-import java.awt.GridLayout;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Component;
@@ -19,18 +18,12 @@ import javax.swing.Box;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import javax.swing.border.LineBorder;
-import java.awt.Color;
-import javax.swing.border.SoftBevelBorder;
-
 import elements.Function;
 import tool.SimpleInputChecker;
 import tool.Tuple;
 import unificationProblem.InputParser;
 import unificationProblem.UnificationProblem;
 
-import javax.swing.border.BevelBorder;
-import javax.swing.border.MatteBorder;
 import javax.swing.border.EtchedBorder;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;

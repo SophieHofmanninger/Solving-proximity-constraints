@@ -13,8 +13,10 @@ import elements.Function;
 import elements.Variable;
 
 /**
- * @author JAN
- *
+ * Test Cases for UnificationProblem.
+ * Further testing also done by testing the Interfaces.
+ * @author Jan-Michael Holzinger &amp; Sophie Hofmanninger
+ * @version 1.0
  */
 class UnificationProblemJUnit {
 
@@ -49,17 +51,24 @@ class UnificationProblemJUnit {
 	void tearDown() throws Exception {
 	}
 
+	/**
+	 * Test equals().
+	 */
 	@Test
 	void testEquals() {
 		assertTrue(unif.equals(unifClone));
 		assertFalse(unif.equals(unifModClone));
 	}
 	
-	
+	/**
+	 * Test hasCode().
+	 */
 	@Test
 	void testHashCode() {
 		assertEquals(unif.hashCode(),unifClone.hashCode());
 		assertFalse(unif.hashCode()==unifModClone.hashCode());
 	}
 
+	
+	
 }
