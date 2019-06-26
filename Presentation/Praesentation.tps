@@ -17,8 +17,8 @@ Class=LaTeXView
 Document=Inhalt\Theory.tex
 
 [Frame0_View0,0]
-TopLine=324
-Cursor=9612
+TopLine=325
+Cursor=9634
 
 [Frame1]
 Flags=0
@@ -35,7 +35,7 @@ Class=LaTeXView
 Document=Inhalt\Tools.tex
 
 [Frame1_View0,0]
-TopLine=165
+TopLine=82
 Cursor=2935
 
 [Frame2]
@@ -53,8 +53,8 @@ Class=LaTeXView
 Document=Inhalt\SystemModelWorkflow.tex
 
 [Frame2_View0,0]
-TopLine=104
-Cursor=1852
+TopLine=0
+Cursor=280
 
 [Frame3]
 Flags=0
@@ -71,7 +71,7 @@ Class=LaTeXView
 Document=Praesentation.tex
 
 [Frame3_View0,0]
-TopLine=2
+TopLine=4
 Cursor=316
 
 [Frame4]
@@ -89,7 +89,7 @@ Class=LaTeXView
 Document=header.tex
 
 [Frame4_View0,0]
-TopLine=36
+TopLine=44
 Cursor=600
 
 [SessionInfo]
