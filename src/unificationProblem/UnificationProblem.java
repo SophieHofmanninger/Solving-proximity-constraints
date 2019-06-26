@@ -136,7 +136,7 @@ public class UnificationProblem {
 	 * @param p value for the open cases.
 	 */
 	public void setAllOpenCasesTo(float p) {
-		if(this.checkOpenCases()) {
+		if(!this.checkOpenCases()) {
 			ArrayList<Tuple<Function>> tempOC = new ArrayList<Tuple<Function>>(openCases);
 			for(Tuple<Function> t : tempOC) {
 				this.closeCase(t, p);
