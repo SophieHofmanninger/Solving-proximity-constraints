@@ -6,7 +6,7 @@ import unificationProblem.UnificationProblem;
 
 /**
  *
- * The class Test contains the main method. 
+ * The class Test is only here to try things out and see what happen.
  * 
  * @author  Jan-Michael Holzinger &amp; Sophie Hofmanninger
  * @version 1.0
@@ -15,7 +15,7 @@ import unificationProblem.UnificationProblem;
 public class Test {
 
 	/**
-	 * This is the main method.
+	 * This is the main method to do dummy tests.
 	 * @param args Nothing
 	 */
 	public static void main(String[] args) {
