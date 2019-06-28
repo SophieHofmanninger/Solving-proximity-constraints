@@ -1,0 +1,288 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Lachaise Assignment
+% LaTeX Template
+% Version 1.0 (26/6/2018)
+%
+% This template originates from:
+% http://www.LaTeXTemplates.com
+%
+% Authors:
+% Marion Lachaise & François Févotte
+% Vel (vel@LaTeXTemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{article}
+
+\input{structure.tex} % Include the file specifying the document structure and custom commands
+
+%----------------------------------------------------------------------------------------
+%	ASSIGNMENT INFORMATION
+%----------------------------------------------------------------------------------------
+
+\title{Project: Solving proximity constraints} % Title of the assignment
+
+\author{Jan-Michael Holzinger\thanks{jan.holzinger@gmx.at} \and Sophie Hofmanninger\thanks{sophie@hofmanninger.co.at}} % Author name and email address
+
+\date{JKU Linz --- SS2019} % University, school and/or department name(s) and a date
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Print the title
+
+%----------------------------------------------------------------------------------------
+%	INTRODUCTION
+%----------------------------------------------------------------------------------------
+
+\begin{center}
+\begin{tabular}[h]{|l|l|l|}
+\hline
+Version Number & Changes Summary & Author\\
+\hline
+0.1 & & Jan-Michael\\
+\hline
+0.2 & added System Model & Jan-Michael\\
+\hline
+0.3 & modified Parser, added Workflow & Jan-Michael\\
+\hline
+0.4 & add ConstraintSimplification & Sophie\\
+\hline
+0.5 & Proximity Relation (as Matrix) added & Jan-Michael\\
+\hline
+0.6 & update system model, update matrix & Sophie\\
+\hline
+0.7 & added UML & Jan-Michael\\
+\hline
+0.8 & added User Interfaces & Jan-Michael\\
+\hline
+0.9 & minor changes in matrix description & Sophie\\
+& update constraint simplification&\\
+\hline
+0.10 & updated UML files & Jan-Michael\\
+\hline
+0.11 & added Input Checker & Jan-Michael\\
+\hline
+0.12 & added Command Line Interface & Jan-Michael\\
+\hline
+0.13 & added description steps CS algorithm & Sophie\\
+\hline
+0.14 & update command line description & Sophie\\
+& added Web Interface&\\
+\hline
+0.15 & added GUI & Jan-Michael\\
+\hline
+1.0 & first release & \\
+\hline
+\end{tabular}
+
+\end{center}
+\section{System Overview}
+
+We split the problem in 4 (5) smaller tasks:
+\begin{enumerate}
+	\item Input Processing,
+	\item Pre-Unification,
+	\item Constraint Simplification,
+	\item Input/Output.
+	\item [O.] Web-Integration.
+\end{enumerate}
+
+\includepdf[pages=-]{Model}
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+\subsection{Input Processing} 
+\subsubsection{InputParser}
+The first idea here is to copy, alter and extend the existing code, in the class InputParser.
+\\ \ \\
+\noindent
+\subsubsection{Input Checker}
+We want to be able to check the input for example for missing parenthesis and so on. Therefore we will allow the user to specify an InputChecker. The idea is, to create an Interface, with just a method check(String):boolean. This then can be implemented by the implementation of the checkers.
+\subsubsection{Proximity Relations}
+For the Proximity Relations \(\mathcal{R}\) and the \(\lambda\)\textit{-cut} we have the following idea:\\
+\begin{enumerate}
+	\item We try to get the number of function symbols with the same arity. 
+	\item We let the user input the values to construct a symmetric matrix that consists of values in \([0,1]\). This matrix must have a 1 in the main diagonal. All values below are 0. Therefore they will not be stored in the implementation.
+	\item We let the user (later) input \(\lambda\in[0,1]\) and calculate the set \(\mathcal{R}_\lambda\).
+\end{enumerate}
+
+\noindent
+The current implementation of InputParser creates a list of all Functions. This list is then sorted by arity, i.e. let \(f,g\) be functions with arity \(a,b \in \mathbb{N}\) respectively. Then \(a<b \Rightarrow f\prec g\).\\
+Let now \(n\in\mathbb{N}\) be the size of the list, the list then represents the caption of a \(n\times n\) matrix. Assume the problem contains functions with arity 0,1,\dots,m. Let \(k_l\) be the number of Functions with arity \(l\). Then 
+\[\sum_{l=0}^{m}k_l=n.\]
+The matrix then looks like 
+\[\kbordermatrix{
+    & f_{0_1} & f_{0_2} & \dots & f_{0_{k_0}} & f_{1_1} & f_{1_2} & \dots & f_{1_{k_1}} & \dots & f_{m_1} & f_{m_2} & \dots & f_{m_{k_m}}\\
+    f_{0_1}     & 1 & (*) & (*) & (*) & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+    f_{0_2}     & * & 1 & (*) & (*) & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+    \vdots      & * & * & \ddots & (*) & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+    f_{0_{k_0}} & * & * & * & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+    f_{1_1}     & 0 & 0 & 0 & 0 & 1 & (*) & (*) & (*) & 0 & 0 & 0 & 0 & 0\\		
+		f_{1_2}     & 0 & 0 & 0 & 0 & * & 1 & (*) & (*) & 0 & 0 & 0 & 0 & 0\\
+		\vdots      & 0 & 0 & 0 & 0 & * & * & \ddots & (*) & 0 & 0 & 0 & 0 & 0\\
+		f_{1_{k_1}} & 0 & 0 & 0 & 0 & * & * & * & 1 & 0 & 0 & 0 & 0 & 0\\
+		\vdots      & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \ddots & 0 & 0 & 0 & 0\\
+		f_{m_1}     & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & (*) & (*) & (*)\\
+		f_{m_2}     & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & * & 1 & (*) & (*)\\
+		\vdots      & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & * & * & \ddots & (*)\\
+		f_{m_{k_m}} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & * & * & * & 1\\
+  }\quad,\]
+where:
+\begin{itemize}
+	\item the 1's in the diagonal are fixed, as a function must have proximity 1 to itself,
+	\item the 0's are fixed, as functions with different aritys can't be close,
+	\item the values where the entry is * must be of the same value as their (*) counterpart, as the matrix is symmetric.
+\end{itemize} 
+Hence, we only need to get the values for the positions marked with (*). We call such a position ``open case'', and we make a list of open cases. Before asking the user to enter relation values, we will generate the list of open cases inside of the matrix. After generation of the list, we will wait for user input. With the valid user input we will build the proximity relation matrix. \\ \ \\
+\noindent
+If we want to retrieve a value, i.e. if we want to know \(\mathcal{R}(s_1,s_2)\) for given \(s_1,s_2\), we can call \(getRelation(s_1,s_2)\). To get all relation pairs of \(s_1\), that have a relation value greater or equal to \(\lambda\), the method \(getRelations(s_1,\lambda)\) can be used. Moreover it is possible to get all reation elements of the matirix by calling \(getListOf Functions()\). This will return all \( f_{i_{k_j}}\), where \( 0\leq i \leq m\) and \( 0\leq j \leq m\).
+%\[i:= \mathrm{sortedListOfFunctions}.\mathrm{getIndex}(s_1)\quad\text{and}\quad j:= \mathrm{sortedListOfFunctions}.\mathrm{getIndex}(s_2),\]
+%and then just get the value at position \((i,j)\).
+
+%------------------------------------------------
+\subsection{Algorithms}
+
+We implement the Algorithms in an own class, that has two public  static functions, preUnification and constraintSimplification. The other methods are only used for the construction of the two simplification algorithms and therefore they are private and static. The methods should take two inputs, mandatory an unification problem, and optional a StringBuffer, to log certain events.
+
+\subsubsection{Pre-Unification Algorithm}
+The preUnification method consists of a loop, that runs until either \(\mathrm{P}=\emptyset\) or it is detected, that there is no solution to the problem.\\
+Inside the loop body, the 7 pre-unification rules are iteratively applied to the first element (which gets popped by doing so). The method returns true, iff the pre-unification was successful.
+\\ \ \\
+\noindent 
+The method changes the problems constraints and pre-unifier accordingly.
+	
+%------------------------------------------------
+
+\subsubsection{Constraint Simplification Algorithm}
+The constraintSimplification method will be called, if the preUnification method returns true. As the preUnification method, the constraintSimplification method consists of a loop. This loop runs until the set of constraints is empty. As input the method needs the problem, more precisely the set of constraints, and the relation matrix \(\mathcal{R}\). If the set of constraints could be simplified, the method returns true and otherwise false.\\
+Inside the loop, the seven rules to simplify the constraint set, will be applied. Three of the seven rules are hidden, because the NN2 rule is integrated in the NN1 rule, the Fail1 is implemented in FFS and the Fail2 is integrated in the NN1 rule. Moreover it is possible to run the constraint simplification algorithm with and without logging. \\
+The steps which are printed by logging can be read as followed: 
+Every new line symbolises a branch. In front of every row the branch-number is printed.
+As soon as a new branch will be created there will appear \textit{(Create Branch a - b)}, where \textit{a} and \textit{b} denote the branch-numbers. For example if branch 5 and 6 will be created, it looks like \textit{(Create Branch 5 - 6)}. Moreover it is possible that a branch will be branched. This follows the same notation and can be imagined as a tree.
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 2
+%----------------------------------------------------------------------------------------
+
+\subsection{Input/Output}
+
+We provide a command line user interface and a web application for the program.
+
+\subsubsection{Command line interface}
+The command line user interface is implemented in the ``SPC\_CL'' class(SolvingProximityConstraints\_via\_CommandLine). The program can be accessed with no or some of this optional arguments:
+Note: the first argument if any are given is always the equation in the format ``lhs =? rhs'' or ``lhs = rhs''. 
+\begin{itemize}
+	\item [] the equation in the format ``lhs =? rhs'' (left hand side and right hand side of the equation.
+	\item [-f] <PATH> a path given to a file where (parts) of the proximity relations are stored the format must follow the convention, that is mentioned below.
+	\item [-s] silent mode on/off, default is off, -s with no argument switches on, optional argument ``n'' switches off.
+	\item [-l] followed by the lambda value.
+\end{itemize}
+
+The proximity relations must be stored in a text file, one line for each relation, where the two functions (or constants) are separated with ``,'' (comma) and the lambda value, also separated with ``,''.
+
+\subsubsection{Web interface}
+For the web interface we provide a second project which is identical to the original, but it is a WEB-project. In our case the WEB-project is only thought to run the web application. To run the web application, it is important, that the project is a WEB-project, all java files are in the classes folder (WEB-INF) and the tomcat server is correctly adjusted.
+
+ To compile the web application the user has to open the jsp file, which is placed in the WebContent folder, in Eclipse. After pressing the run button, the console asks, if it is allowed to start the server. Press okay and the web interface appears.\\
+\\
+It can be entered more than one problem by splitting them with a ``;''. But be aware, that only the first one will be solved.
+Note: As in the command line interface the equation should be in the format ``lhs =? rhs'' or ``lhs = rhs''.
+
+You can choose the mode silent or detailed, depending on whether you want to see the steps or not. Afterwards you can set a lambda. Pressing \textit{Reset} resets the input and you can start always from the beginning. Pressing \textit{Enter Function} creates a new table, where the number of additional function can the entered for the relation matrix. For example, if $q(a,b)=p(x,y)$ and $a$ is also related to $c$ then we have to enter 1 additional function with arity 0. By pressing \textit{Enter additional Functions} the user can now build the relation matrix. Pressing \textit{Enter Matrix} yields the solution of the problem.
+
+\subsubsection{Graphical User Interface}
+
+The GUI constists of parts: Equation, Constraints and Results. The user first enters the equation, then the open cases are calculated and shown. Then the user can enter the corresponding proximity relations and click unify. Then the result is shown. If wanted, the second step (constraint simplification) can be performed again - with different lambda.
+
+\section{System Model}
+The program consists of 4 packages,
+\begin{itemize}
+	\item tool
+	\item elements
+	\item unificationProblem
+	\item userInterfaces
+\end{itemize}
+\includegraphics[scale=0.5]{ToolsModel}
+\newpage
+\includegraphics[scale=0.5]{ElementsModel}
+\newpage
+\includegraphics[scale=0.5]{UnificationProblemModel}
+\newpage
+\includegraphics[scale=0.5]{UIModel}
+
+
+\section{Work Flow}
+The typical workflow looks like this:
+\includepdf[landscape=true, pages=-]{WorkFlow}
+% File contents
+%\begin{file}[hello.py]
+%\begin{lstlisting}[language=Python]
+%#! /usr/bin/python
+%
+%import sys
+%sys.stdout.write("Hello World!\n")
+%\end{lstlisting}
+%\end{file}
+
+
+
+
+% Command-line "screenshot"
+%\begin{commandline}
+	%\begin{verbatim}
+		%$ chmod +x hello.py
+		%$ ./hello.py
+%
+		%Hello World!
+	%\end{verbatim}
+%\end{commandline}
+
+% Numbered question, with an optional title
+
+%\begin{question}[\itshape (with optional title)]
+	%In congue risus leo, in gravida enim viverra id.
+%\end{question}
+
+%\begin{question}
+	%Quisque ullamcorper placerat ipsum. Cras nibh. Morbi vel justo vitae lacus tincidunt ultrices. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+%
+	%% Subquestions numbered with letters
+	%\begin{enumerate}[(a)]
+		%\item Do this.
+		%\item Do that.
+		%\item Do something else.
+	%\end{enumerate}
+%\end{question}
+
+
+
+% Warning text, with a custom title
+%\begin{warn}[Notice:]
+  %In congue risus leo, in gravida enim viverra id.
+%\end{warn}
+%\begin{info} % Information block
+	%This is an interesting piece of information, to which the reader should pay special attention. 
+%\end{info}
+
+% Math equation/formula
+%\begin{equation}
+%	I = \int_{a}^{b} f(x) \; \text{d}x.
+%\end{equation}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
