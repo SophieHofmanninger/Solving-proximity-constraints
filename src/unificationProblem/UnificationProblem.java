@@ -314,7 +314,12 @@ public class UnificationProblem {
 					}
 					ret = ret.substring(0,ret.length()-1) + "},";					
 				}					
-				ret = ret.substring(0,ret.length()-1)+"],";
+				if(ret.length()>8) {
+					ret = ret.substring(0,ret.length()-1)+"],";
+				}
+				else {
+					ret += "]";
+				}
 				ret += System.lineSeparator();
 				i++;
 			}while(p.getBranch() != null);

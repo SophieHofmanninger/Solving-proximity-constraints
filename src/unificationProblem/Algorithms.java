@@ -494,9 +494,11 @@ public final class Algorithms {
 			}
 		}
 
-		steps.delete(steps.length()-2, steps.length()); //remove last ,
-		steps.append(System.lineSeparator());
-
+		if(steps.length()>2) {
+			steps.delete(steps.length()-2, steps.length()); //remove last ,
+			steps.append(System.lineSeparator());
+		}
+		
 		if(branchSteps.length() > 0) {
 			steps.append(branchSteps);
 		}

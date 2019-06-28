@@ -2,6 +2,8 @@ package elements;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -32,7 +34,13 @@ class FunctionJUnitTest {
 	void testAddArgument() {
 		Function f = new Function("f");
 		Variable x= new Variable("x");
-		assertEquals("hi", "ji");
+		Variable y= new Variable("y");
+		ArrayList<Element> arg=new ArrayList<Element>();
+		arg.add(x);
+		arg.add(y);
+		f.setArguments(arg);
+		f.addArgument(x);
+		assertEquals("f(x,y,x)", f.toFullString());
 	}
 
 }

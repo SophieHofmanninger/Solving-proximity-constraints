@@ -27,12 +27,36 @@ class VariableJUnitTest {
 	void tearDown() throws Exception {
 	}
 
+	/**
+	 * Test for method clone.
+	 */
 	@Test
 	void testClone() {
 		Variable x= new Variable("x");
 		Variable y= new Variable("y");
-		Variable w= new Variable();
 		assertTrue(x.clone().equals(x));
+		assertFalse(y.clone().equals(x));
 	}
-
+	
+	/**
+	 * Test for method mapsto.
+	 */
+	@Test
+	void testMapsto() {
+		Variable x= new Variable("x");
+		Variable z= new Variable("z");
+		x.mapsto(z);
+		assertEquals("z",x.toString());
+	}
+	
+	/**
+	 * Test for method replace.
+	 */
+	@Test
+	void testReplace() {
+		Variable x= new Variable("x");
+		Variable z= new Variable("z");
+		x.replace(z);
+		assertTrue(x.equals(z));
+	}
 }
