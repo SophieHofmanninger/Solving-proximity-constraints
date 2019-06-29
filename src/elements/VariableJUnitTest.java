@@ -59,4 +59,15 @@ class VariableJUnitTest {
 		x.replace(z);
 		assertTrue(x.equals(z));
 	}
+	
+	/**
+	 * Test for method rename.
+	 */
+	@Test
+	void testRename() {
+		Variable x= new Variable("x",true);
+		Variable z= new Variable("z",true);
+		assertEquals("1N",x.rename().toString());
+		assertEquals("2N",z.rename().toString());
+	}
 }
